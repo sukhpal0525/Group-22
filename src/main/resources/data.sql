@@ -24,5 +24,5 @@ INSERT INTO `webproduct` (`Name`, `Amount`, `Description`,`Category`,`AmountAvai
 
 
 -- Admin Account (Password = 'admin')
-INSERT INTO `webuser` (`Email`, `FirstName`, `LastName`,`Password`) VALUES
-  ('admin@aston.com', 'Admin', 'Admin', '$2a$10$AOYMzvkn8MISJsQR3Q0kXO0ZmFMJXQO6mw7IH/p2PfpJO.zCfrLlK');
+--INSERT INTO `webuser` (`Email`, `FirstName`, `LastName`,`Password`) VALUES
+--  ('admin@aston.com', 'Admin', 'Admin', '$2a$10$AOYMzvkn8MISJsQR3Q0kXO0ZmFMJXQO6mw7IH/p2PfpJO.zCfrLlK');
