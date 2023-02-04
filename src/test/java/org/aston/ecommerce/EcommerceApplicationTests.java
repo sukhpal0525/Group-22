@@ -1,10 +1,10 @@
-package org.aston.pclab;
+package org.aston.ecommerce;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ApplicationTests {
+class EcommerceApplicationTests {
 
 	@Test
 	void contextLoads() {
