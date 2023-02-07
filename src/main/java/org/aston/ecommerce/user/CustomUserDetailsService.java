@@ -11,6 +11,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     private UserRepository userRepo;
 
     @Override
+    //Appears to be the 'username' that is the parameter, but in reality, it is actually the email due to a configuration in the 'WebSecurityConfig' class, which is why this parameter is able to be passed into the 'findByEmail' method.
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepo.findByEmail(username);
         if (user == null) {

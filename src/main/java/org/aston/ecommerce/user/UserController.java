@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class UserController {
 
@@ -38,5 +40,12 @@ public class UserController {
         return "register_success";
     }
 
+    @GetMapping("/list_users")
+    public String listUsers(Model model) {
+        List<User> listUsers = userRepo.findAll();
+        model.addAttribute("listUsers", listUsers);
+
+        return "list_users";
+    }
 
 }

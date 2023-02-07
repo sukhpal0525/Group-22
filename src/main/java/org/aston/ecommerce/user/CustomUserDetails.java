@@ -48,4 +48,8 @@ public class CustomUserDetails implements UserDetails {
         return true;
     }
 
+    public String getActualUsernameNotEmail(){
+        return user.getUsername();
+    }
+
 }
