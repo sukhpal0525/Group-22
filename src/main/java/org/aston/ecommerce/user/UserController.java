@@ -18,5 +18,12 @@ public class UserController {
         return "userDashboard";
     }
 
+    @GetMapping("/register")
+    public String showRegistrationForm(Model model) {
+        model.addAttribute("user", new User());
+
+        return "signup_form";
+    }
+
 
 }
