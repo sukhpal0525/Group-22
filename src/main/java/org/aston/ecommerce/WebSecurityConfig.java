@@ -51,7 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/list_users").authenticated()
                 .anyRequest().permitAll()
                 .and()
-                .formLogin()
+                .formLogin().loginPage("/login").permitAll()
                 .usernameParameter("email")
                 .defaultSuccessUrl("/list_users")
                 .permitAll()
