@@ -2,6 +2,7 @@ package org.aston.ecommerce.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -11,7 +12,9 @@ public class UserController {
     private UserRepository userRepo;
 
     @GetMapping("/user-dashboard")
-    public String viewHomePage() {
+    public String viewHomePage(Model model) {
+        model.addAttribute("header", "Welcome Group 22 User Dashboard");
+
         return "userDashboard";
     }
 
