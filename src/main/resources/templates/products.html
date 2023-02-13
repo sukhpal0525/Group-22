@@ -1,42 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Products</title>
-  <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <title>Products Page</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
+<body>
 
-<body class="body_inner inner_con body_inner_pro">
+<div class="py-4 album">
+    <div class="container">
+        <div class="row">
 
-<div class="wrapper">
-  <div class="pro_row1">
-    <div class="pro_col">
-      <img src="/Images/motherboard.jpg"/>
-      <h3>MotherBoard</h3>
-      <h4>Price: <span>£30</span></h4>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-      <button class="pro_button"></button>
-    </div><!--pro_col-->
-    <div class="pro_col">
-      <img src="/Images/motherboard.jpg"/>
-      <h3>MotherBoard</h3>
-      <h4>Price: <span>£30</span></h4>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-      <button class="pro_button"></button>
-    </div><!--pro_col-->
-    <div class="pro_col">
-      <img src="/Images/motherboard.jpg"/>
-      <h3>MotherBoard</h3>
-      <h4>Price: <span>£30</span></h4>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-      <button class="pro_button"></button>
-    </div><!--pro_col-->
-  </div><!--pro_row1-->
-</div><!--wrapper-->
+<!--          <div class="col-xl-3" th:each="products : ${products}">-->
+<!--              <div class="card" style="width: 16rem;">-->
+<!--                  <img class="card-img-top" src="..." alt="Image">-->
+<!--                  <div class="card-body">-->
+<!--                      <p class="card-title" th:text = "${products.Name}"></p>-->
+<!--                      <hr>-->
+<!--                      <p class="card-text" th:text = "${products.Amount}"></p>-->
+<!--                      <a href="#" class="btn btn-primary">Buy</a>-->
+<!--                  </div>-->
+<!--              </div>-->
+<!--          </div>-->
 
-</body>
-</html>
-
+            <div class="col-md-4" th:each="products : ${products}">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <!-- <p class="card-text" th:text = "${products.ID}"></p>
+                        <img class="img-custom mx-auto d-block" src="..." width="300" height="200">-->
+                        <p class="card-title" th:text = "${products.Name}"></p>
+                        <p class="card-text" th:text = "${products.Amount}"></p>
+                        <button type="button" class="btn btn-sm btn-outline-secondary mx-auto d-block">Buy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
