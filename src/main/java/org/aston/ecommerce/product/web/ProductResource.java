@@ -35,15 +35,14 @@ public class ProductResource {
     }
 
     @GetMapping("/products/list/{category}")
-    public ResponseEntity getProducts(
-            @PathVariable("category") String categoryStr) {
-
+    public String getProducts(Model model, @PathVariable("category") String categoryStr) {
         List<Product> products = new ArrayList<>();
         Category category = Category.parseCategoryStr(categoryStr.toUpperCase());
         if (category != null) {
             products.addAll(this.productRepository.findAllByCategory(category));
         }
 
-        return ResponseEntity.of(Optional.of(products));
+        model.addAttribute("products", products);
+        return "products_category";
     }
 }
