@@ -9,31 +9,40 @@
 </head>
 <body>
 
-<div>
-    <h1>Login</h1>
-</div>
+<div class="video-container">
+    <video autoplay muted loop>
+        <source src="/Images/loginBacking" type="video/mp4"/>
+    </video>
 
-<form th:action="@{/login}" method="post">
+    <div class="spacing-login"><br></div>
 
+    <div class="login-form">
+        <form th:action="@{/login}" method="post">
 
-    <div th:if="${errorMsg}" th:text="${errorMsg}" class="alert alert-danger"></div>
-    <div th:if="${msg}" th:text="${msg}" class="alert alert-success"></div>
-
-
-    <label for="email">Email: </label>
-    <input type="text" name="email" id="email" class="form-control"/>
-
-
-    <label for="password">Password: </label>
-    <input type="password" id="password" name="password" class="form-control"/>
+            <div th:if="${errorMsg}" th:text="${errorMsg}" class="alert alert-danger"></div>
+            <div th:if="${msg}" th:text="${msg}" class="alert alert-success"></div>
 
 
-    <div>
-        <button type="submit">Login</button>
+            <label for="email">Email: </label>
+            <input type="text" name="email" id="email" class="form-control"/>
+
+
+            <label for="password">Password: </label>
+            <input type="password" id="password" name="password" class="form-control"/>
+
+
+            <div>
+                <button type="submit">Login</button>
+            </div>
+
+        </form>
     </div>
 
-</form>
+    <div class="spacing-login"><br></div>
+
 
 </div>
+
+
 </body>
 </html>
