@@ -113,7 +113,12 @@ header .header_content a.learn, .main_contact ul li input[type="submit"], .learn
 
 /*-------------------- LOGIN AND SIGNUP -------------------*/
 
-
+.b-video{
+   position: absolute;
+   right: 0;
+   bottom: 0;
+   z-index: -1;
+}
 
 .login-box {
   position: absolute;
@@ -152,7 +157,7 @@ header .header_content a.learn, .main_contact ul li input[type="submit"], .learn
     transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
     border: none;
     color: #e0e0e0;
-    background: #232323;
+    background: #131313;
     display: block;
     height: 36px;
     padding: 8px 10px;
@@ -172,7 +177,7 @@ header .header_content a.learn, .main_contact ul li input[type="submit"], .learn
  font-family: inherit;
  font-weight: 600;
  color: #e0e0e0;
- background-color: #232323;
+ background-color: #131313;
  margin-bottom: 15px;
  margin-top: 20px;
 }
