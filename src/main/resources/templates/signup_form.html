@@ -1,49 +1,45 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="ISO-8859-1">
-  <title>Sign Up - Group 22</title>
-  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
-  <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-  <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <meta charset="ISO-8859-1">
+    <title>Sign Up - Group 22</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container text-center">
-  <div>
-    <h1>User Registration - Sign Up</h1>
-  </div>
-  <form th:action="@{/process_register}" th:object="${user}"
-        method="post" style="max-width: 600px; margin: 0 auto;">
-    <div class="m-3">
 
-      <div class="form-group row">
-        <label class="col-4 col-form-label">Username: </label>
-        <div class="col-8">
-          <input type="text" th:field="*{username}" class="form-control"
-                 required minlength="2" maxlength="45"/>
+<video autoplay loop muted plays-inline class="b-video">
+    <source src="/Images/loginBackingEdit.mp4" type="video/mp4">
+</video>
+
+<div class="login-box">
+
+    <p>Sign Up</p>
+
+    <form th:action="@{/process_register}" th:object="${user}"
+          method="post">
+
+
+        <input type="text" th:field="*{username}" class="form-control"
+               required minlength="2" maxlength="45" placeholder="Username"/>
+
+        <input type="email" th:field="*{email}" class="form-control" placeholder="Email" required/>
+
+
+        <input type="password" th:field="*{password}" class="form-control"
+               required minlength="6" maxlength="64" placeholder="Password"/>
+
+        <div class="submitting">
+            <button type="submit" class="submit-btn">Sign Up</button>
         </div>
-      </div>
 
-      <div class="form-group row">
-        <label class="col-4 col-form-label">E-mail: </label>
-        <div class="col-8">
-          <input type="email" th:field="*{email}" class="form-control" required />
+        <div class="redirecting">
+            <h3>Already have an account? <a href="" class="a2">Log In!</a></h3>
         </div>
-      </div>
 
-      <div class="form-group row">
-        <label class="col-4 col-form-label">Password: </label>
-        <div class="col-8">
-          <input type="password" th:field="*{password}" class="form-control"
-                 required minlength="6" maxlength="64"/>
-        </div>
-      </div>
-
-      <div>
-        <button type="submit" class="btn btn-primary">Sign Up</button>
-      </div>
-    </div>
-  </form>
+    </form>
 </div>
+
 </body>
 </html>
