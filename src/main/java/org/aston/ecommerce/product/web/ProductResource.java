@@ -45,4 +45,13 @@ public class ProductResource {
         model.addAttribute("products", products);
         return "products_category";
     }
+
+    @GetMapping("/product/{id}")
+    public String returnProduct(Model model, @PathVariable("id") String id){
+
+        Optional<Product> product = this.productRepository.findById(Long.parseLong(id));
+        model.addAttribute("product", product.get());
+
+        return "product_display";
+    }
 }
