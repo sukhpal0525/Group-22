@@ -1,5 +1,7 @@
 package org.aston.ecommerce.user;
 
+import org.aston.ecommerce.basket.Basket;
+
 import javax.persistence.*;
 
 @Entity
@@ -30,6 +32,8 @@ public class User {
     @Column(nullable = false, columnDefinition = "tinyint(1) default 0")
     private boolean isAdmin;
 
+    @OneToOne(mappedBy = "user")
+    private Basket basket;
 
     public String getUsername() {
         return username;
