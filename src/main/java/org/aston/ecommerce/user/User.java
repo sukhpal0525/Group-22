@@ -30,6 +30,7 @@ public class User {
     @Column(nullable = false, columnDefinition = "tinyint(1) default 0")
     private boolean isAdmin;
 
+
     public String getUsername() {
         return username;
     }
