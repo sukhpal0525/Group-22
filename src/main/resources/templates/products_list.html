@@ -3,7 +3,7 @@
 <head>
     <title>Products Page</title>
     <meta charset="UTF-8"/>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
@@ -12,26 +12,27 @@
     <div class="container">
         <div class="row">
 
-<!--          <div class="col-xl-3" th:each="products : ${products}">-->
-<!--              <div class="card" style="width: 16rem;">-->
-<!--                  <img class="card-img-top" src="..." alt="Image">-->
-<!--                  <div class="card-body">-->
-<!--                      <p class="card-title" th:text = "${products.Name}"></p>-->
-<!--                      <hr>-->
-<!--                      <p class="card-text" th:text = "${products.Amount}"></p>-->
-<!--                      <a href="#" class="btn btn-primary">Buy</a>-->
-<!--                  </div>-->
-<!--              </div>-->
-<!--          </div>-->
+            <!--          <div class="col-xl-3" th:each="products : ${products}">-->
+            <!--              <div class="card" style="width: 16rem;">-->
+            <!--                  <img class="card-img-top" src="..." alt="Image">-->
+            <!--                  <div class="card-body">-->
+            <!--                      <p class="card-title" th:text = "${products.Name}"></p>-->
+            <!--                      <hr>-->
+            <!--                      <p class="card-text" th:text = "${products.Amount}"></p>-->
+            <!--                      <a href="#" class="btn btn-primary">Buy</a>-->
+            <!--                  </div>-->
+            <!--              </div>-->
+            <!--          </div>-->
 
             <div class="col-md-4" th:each="products : ${products}">
                 <div class="card mb-4">
                     <div class="card-body">
                         <!-- <p class="card-text" th:text = "${products.ID}"></p>
                         <img class="img-custom mx-auto d-block" src="..." width="300" height="200">-->
-                        <p class="card-title" th:text = "${products.Name}"></p>
-                        <p class="card-text" th:text = "${products.Amount}"></p>
-                        <button type="button" class="btn btn-sm btn-outline-secondary mx-auto d-block">Buy</button>
+                        <p class="card-title" th:text="${products.Name}"></p>
+                        <p class="card-text" th:text="${products.Amount}"></p>
+                        <button type="button" class="btn btn-sm btn-outline-secondary mx-auto d-block"><a
+                                th:href="@{/product/{id}(id=${products.id})}">Buy</a></button>
                     </div>
                 </div>
             </div>
