@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="ISO-8859-1">
-  <title>[[${product.Name}]] - Group 22</title>
-  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
-  <div th:replace="fragments/nav_bar :: styles"></div>
-  <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-  <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <meta charset="ISO-8859-1">
+    <title>[[${product.Name}]] - Group 22</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <div th:replace="fragments/nav_bar :: styles"></div>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 
 <div th:replace="fragments/nav_bar :: header"></div>
 
 <div class="container text-center">
-  <h1 th:text="${product.Name}"></h1>
-  <p th:text="${product.Description}"></p>
+    <div class="h1 mt-2" th:text="${product.Name}"></div>
+    <p th:text="${product.Description}"></p>
+    <p class="text-muted" th:text="${#numbers.formatCurrency(product.Amount)}"></p>
+    <div class="alert alert-warning" role="alert" th:if="${product.AmountAvailable <= 20}">
+        Warning! This item is low in stock. <strong>Only [[${product.AmountAvailable}]] left</strong>
+    </div>
 </div>
 
 </body>
