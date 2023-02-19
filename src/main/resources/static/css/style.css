@@ -109,7 +109,7 @@ header .header_content a.learn, .main_contact ul li input[type="submit"], .learn
 
 /*-------------------- Products --------------------------*/
 .video-container {
-    height: 350px;
+    height: 300px;
     width: 100%;
     position: relative;
     display: flex;
