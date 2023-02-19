@@ -128,23 +128,10 @@ header .header_content a.learn, .main_contact ul li input[type="submit"], .learn
 .video-container .caption {
   z-index: 1;
   position: relative;
-  font-weight:1200px;
   text-align: center;
   color: #fff;
   width:100%;
 
-}
-
-.caption p{
-    font-size: 18px;
-    color: #fff;
-    font-family: inherit;
-    font-weight: 500;
-    cursor: pointer;
-    position: relative;
-    border: none;
-    background: none;
-    text-transform: uppercase;
 }
 
 .pro_row1{width:100%; float:left;}
