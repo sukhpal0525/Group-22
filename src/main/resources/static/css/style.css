@@ -107,7 +107,65 @@ header .header_content a.learn, .main_contact ul li input[type="submit"], .learn
 .about_box{ width:47%; margin:auto; text-align:center;}
 .about_box h5, .main_project ul li h5{ color:#0055a5;}
 
-/*products*/
+/*-------------------- Products --------------------------*/
+.video-container {
+    height: 525px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    min-width: 100%;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.video-container .caption {
+  z-index: 1;
+  position: relative;
+  font-size:60px;
+  font-weight:1200px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+  margin:auto;
+  width:50%;
+
+}
+
+.caption p{
+    font-size: 18px;
+    color: #fff;
+    font-family: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    background: none;
+    text-transform: uppercase;
+}
+
+
+button {
+    font-size: 18px;
+    color: #fff;
+    font-family: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    background: none;
+    text-transform: uppercase;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: color;
+}
+
 .pro_row1{width:100%; float:left;}
 .pro_col{width:33.33%; float:left; text-align:center; border-right:2px;}
 
