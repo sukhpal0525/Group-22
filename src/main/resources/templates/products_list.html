@@ -31,9 +31,13 @@
                         <img class="img-custom mx-auto d-block" src="..." width="300" height="200">-->
                         <p class="card-title" th:text="${products.Name}"></p>
                         <p class="card-text" th:text="${products.Amount}"></p>
-                        <a th:href="@{/product/{id}(id=${products.id})}" class="text-reset text-decoration-none">
-                            <button type="button" class="btn btn-sm btn-outline-secondary mx-auto d-block">Buy</button>
-                        </a>
+                        <div class="d-flex justify-content-center">
+                            <a th:href="@{/product/{id}(id=${products.id})}"
+                               class="text-reset text-decoration-none d-inline">
+                                <button type="button" class="btn btn-sm btn-outline-secondary mx-auto text-center">Buy
+                                </button>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
