@@ -128,9 +128,7 @@ header .header_content a.learn, .main_contact ul li input[type="submit"], .learn
 .video-container .caption {
   z-index: 1;
   position: relative;
-  font-size:60px;
   font-weight:1200px;
-  text-transform: uppercase;
   text-align: center;
   color: #fff;
   width:100%;
