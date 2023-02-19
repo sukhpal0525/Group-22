@@ -22,7 +22,6 @@ INSERT INTO `webproduct` (`Name`, `Amount`, `Description`,`Category`,`AmountAvai
   ('ASRock B450 Steel Legend', 99.99, 'B450 chipset, RGB lighting', @MOTHERBOARD, 50),
   ('EVGA Z590 Dark', 399.99, 'Z590 chipset, WiFi 6, dual LAN, RGB lighting', @MOTHERBOARD, 60);
 
-
 -- Admin Account (Password = 'admin')
 --INSERT INTO `webuser` (`Email`, `FirstName`, `LastName`,`Password`) VALUES
 --  ('admin@aston.com', 'Admin', 'Admin', '$2a$10$AOYMzvkn8MISJsQR3Q0kXO0ZmFMJXQO6mw7IH/p2PfpJO.zCfrLlK');

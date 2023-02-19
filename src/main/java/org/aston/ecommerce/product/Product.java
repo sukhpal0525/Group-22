@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.aston.ecommerce.basket.Basket;
+//import org.aston.ecommerce.basket.Basket;
 
 @Data
 @Table(name = "WebProduct")
@@ -14,7 +14,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", unique = true, nullable = false)
+    @Column(name = "ProductID", unique = true, nullable = false)
     private Long id;
 
     @Column(name = "Name")
@@ -33,6 +33,6 @@ public class Product {
     @Column(name = "AmountAvailable")
     private Integer amountAvailable;
 
-    @OneToOne(mappedBy = "product")
-    private Basket basket;
+//    @OneToOne(mappedBy = "WebProduct")
+//    private Basket basket;
 }
