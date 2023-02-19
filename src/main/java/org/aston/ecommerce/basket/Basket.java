@@ -6,7 +6,7 @@ import org.aston.ecommerce.user.User;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "basket")
+@Table(name = "WebBasket")
 public class Basket {
 
     @Id

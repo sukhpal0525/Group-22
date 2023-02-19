@@ -1,11 +1,11 @@
 package org.aston.ecommerce.user;
 
-import org.aston.ecommerce.basket.Basket;
+//import org.aston.ecommerce.basket.Basket;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "WebUser")
 public class User {
 
     public Long getId() {
@@ -18,6 +18,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "UserID", unique = true, nullable = false)
     private Long id;
 
     @Column(nullable = false, unique = true, length = 45)
@@ -32,8 +33,8 @@ public class User {
     @Column(nullable = false, columnDefinition = "tinyint(1) default 0")
     private boolean isAdmin;
 
-    @OneToOne(mappedBy = "user")
-    private Basket basket;
+//    @OneToOne(mappedBy = "user")
+//    private Basket basket;
 
     public String getUsername() {
         return username;
