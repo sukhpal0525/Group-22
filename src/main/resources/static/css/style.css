@@ -134,6 +134,7 @@ header .header_content a.learn, .main_contact ul li input[type="submit"], .learn
 
 }
 
+.pro_main {width:100%; margin-top:20px; }
 .pro_row1{width:100%; float:left;}
 .pro_col{width:33.33%; float:left; text-align:center; border-right:2px;}
 

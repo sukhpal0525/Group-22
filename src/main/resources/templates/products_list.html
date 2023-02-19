@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <title>PCLab | Product</title>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <!--<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />-->
     <link href="/css/style.css" rel="stylesheet" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
@@ -51,9 +51,8 @@
     </div>
 </div>
 <div class="wrapper">
-<div class="py-4 album">
-    <div class="container">
-        <div class="row">
+<div class="pro_main">
+        <div class="pro_row1">
 
 <!--          <div class="col-xl-3" th:each="products : ${products}">-->
 <!--              <div class="card" style="width: 16rem;">-->
@@ -67,19 +66,16 @@
 <!--              </div>-->
 <!--          </div>-->
 
-            <div class="col-md-4" th:each="products : ${products}">
-                <div class="card mb-4">
-                    <div class="card-body">
+            <div class="col" th:each="products : ${products}">
+                    <div class="pro_body">
                         <!-- <p class="card-text" th:text = "${products.ID}"></p>
                         <img class="img-custom mx-auto d-block" src="..." width="300" height="200">-->
-                        <p class="card-title" th:text = "${products.Name}"></p>
-                        <p class="card-text" th:text = "${products.Amount}"></p>
+                        <h5 th:text = "${products.Name}"></h5>
+                        <p  th:text = "${products.Amount}"></p>
                         <button type="button" class="btn btn-sm btn-outline-secondary mx-auto d-block">Buy</button>
 
                     </div>
-                </div>
             </div>
-        </div>
     </div>
 </div>
 </div><!--wrapper-->
