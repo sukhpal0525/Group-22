@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -7,11 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
     <link rel="stylesheet" href="/css/aboutus.css">
+    <div th:replace="fragments/nav_bar :: styles"></div>
 
 </head>
 
 
 <body>
+
+<div th:replace="fragments/nav_bar :: header"></div>
+
     <div class="bottom-content">
         <h1>About Us</h1>
         <p>
