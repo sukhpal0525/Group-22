@@ -16,6 +16,9 @@
         add items to your
         basket.
     </div>
+    <div th:unless="${isNotLoggedIn}" th:if="${empty}" class="mt-2 alert alert-secondary">
+        Your basket is currently empty right now.
+    </div>
 </div>
 </body>
 </html>
