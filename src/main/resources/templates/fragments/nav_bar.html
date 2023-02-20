@@ -3,44 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <section th:fragment="styles">
-    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+        <link href="/css/style.css" rel="stylesheet" type="text/css"/>
     </section>
 </head>
 <body>
 <section th:fragment="header">
-<div class="top_box_main">
-    <div class="top_bar">
-        <div class="wrapper">
-            <ul class="right">
-                <li><a th:href="@{/login}">Login</a></li>
-                <li>| </li>
-                <li><a th:href="@{/register}">Signup</a></li>
-                <li>| </li>
-                <li><a href="#">Basket</a></li>
-            </ul>
-        </div>
-    </div>
-    <!--top_bar-->
-</div><!--top_box_main-->
-
-
-<div class="wrapper pad_top">
-    <div class="header_top">
-        <div class="logo"> <a th:href="@{/home}"><img src="/Images/logo.png" /></a> </div>
-        <div class="main_nav">
-            <nav>
-                <ul>
-                    <li><a th:href="@{/home}" class="active">Home </a></li>
-                    <li><a th:href="@{/aboutus}">About us</a></li>
-                    <li><a th:href="@{/products/list}">Products </a></li>
-                    <li><a href="#"> Button</a></li>
-                    <li><a href="#">Contact </a></li>
+    <div class="top_box_main">
+        <div class="top_bar">
+            <div class="wrapper">
+                <ul class="right">
+                    <li th:if="${#request.userPrincipal == null}"><a th:href="@{/login}">Login</a></li>
+                    <li th:if="${#request.userPrincipal == null}">|</li>
+                    <li th:if="${#request.userPrincipal == null}"><a th:href="@{/register}">Signup</a></li>
+                    <li th:unless="${#request.userPrincipal == null}"><a href="javascript:;"
+                                                                         onclick="document.getElementById('logoutForm').submit();"
+                                                                         role="menuitem">Logout</a></li>
+                    <li>|</li>
+                    <li><a href="#">Basket</a></li>
                 </ul>
+            </div>
+        </div>
+        <!--top_bar-->
+    </div><!--top_box_main-->
 
-            </nav>
+
+    <div class="wrapper pad_top">
+        <div class="header_top">
+            <div class="logo"><a th:href="@{/home}"><img src="/Images/logo.png"/></a></div>
+            <div class="main_nav">
+                <nav>
+                    <ul>
+                        <li><a th:href="@{/home}" class="active">Home </a></li>
+                        <li><a th:href="@{/aboutus}">About us</a></li>
+                        <li><a th:href="@{/products/list}">Products </a></li>
+                        <li><a href="#"> Button</a></li>
+                        <li><a href="#">Contact </a></li>
+                    </ul>
+
+                </nav>
+            </div>
         </div>
     </div>
-</div>
+
+    <!-- Hidden form so that the login link works -->
+    <form name="logoutForm" th:action="@{/logout}" method="post" id="logoutForm">
+        <input hidden type="submit" value="Sign Out"/>
+    </form>
 
 </section>
 </body>

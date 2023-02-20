@@ -21,8 +21,8 @@
     <p>Login</p>
     <form th:action="@{/login}" method="post">
 
-        <div th:if="${errorMsg}" th:text="${errorMsg}" class="alert alert-danger"></div>
-        <div th:if="${msg}" th:text="${msg}" class="alert alert-success"></div>
+        <div th:if="${errorMsg}" th:text="${errorMsg}" style="color: white;"></div>
+        <div th:if="${msg}" th:text="${msg}" style="color: white;"></div>
 
 
         <input type="text" name="email" id="email" class="form-control" placeholder="Email"/>
@@ -34,7 +34,7 @@
     </form>
 
     <div class="redirecting">
-        <h3>Don't have an account? <a href="" class="a2">Sign up!</a></h3>
+        <h3>Don't have an account? <a th:href="@{/register}" class="a2">Sign up!</a></h3>
     </div>
 
 </div>
