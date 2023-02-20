@@ -3,6 +3,7 @@ package org.aston.ecommerce.user;
 import org.aston.ecommerce.basket.Basket;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -32,8 +33,8 @@ public class User {
     @Column(nullable = false, columnDefinition = "tinyint(1) default 0")
     private boolean isAdmin;
 
-    @OneToOne(mappedBy = "user")
-    private Basket basket;
+    @OneToMany(mappedBy = "user")
+    private List<Basket> baskets;
 
     public String getUsername() {
         return username;
@@ -65,5 +66,9 @@ public class User {
 
     public void setAdmin(boolean admin) {
         isAdmin = admin;
+    }
+
+    public List<Basket> getBaskets() {
+        return baskets;
     }
 }

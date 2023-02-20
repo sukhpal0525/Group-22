@@ -16,11 +16,11 @@ public class Basket {
     @Column(nullable = false, columnDefinition = "INT default 0")
     private Integer amount;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id")
     private Product product;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 

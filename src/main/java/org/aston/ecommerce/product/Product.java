@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.aston.ecommerce.basket.Basket;
 
+import java.util.List;
+
 @Data
 @Table(name = "WebProduct")
 @Entity
@@ -33,6 +35,6 @@ public class Product {
     @Column(name = "AmountAvailable")
     private Integer amountAvailable;
 
-    @OneToOne(mappedBy = "product")
-    private Basket basket;
+    @OneToMany(mappedBy = "product")
+    private List<Basket> baskets;
 }

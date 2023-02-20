@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Basket - Group 22</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <div th:replace="fragments/nav_bar :: styles"></div>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:replace="fragments/nav_bar :: header"></div>
+
+<div class="container text-center">
+    <div th:if="${isNotLoggedIn}" class="mt-2 alert alert-danger">Sorry. You need to be logged in to
+        add items to your
+        basket.
+    </div>
+</div>
+</body>
+</html>
