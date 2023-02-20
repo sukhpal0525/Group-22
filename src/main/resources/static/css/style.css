@@ -766,7 +766,7 @@ a {
 }
 
 /*-------------------- About Us -------------------*/
-
+/* Had to change name of class from 'container' because it was interfering with bootstrap class also called 'container' */
 .about_us__container {
     background: url(../Images/pcbackground.jpg) no-repeat center center fixed;
     background-size: 100%;
