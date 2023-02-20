@@ -25,7 +25,7 @@
         <div th:if="${errorMsg}" th:text="${errorMsg}" style="color: red;"></div>
 
         <div th:if="${successMsg}" class="success-msg">
-            Success! <a th:href="@{/login}">Click here to login</a>
+            Success! <a th:href="@{/login}">Click here to Log In</a>
         </div>
 
         <input type="text" th:field="*{username}" class="form-control"
