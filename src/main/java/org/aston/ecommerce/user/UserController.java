@@ -45,7 +45,8 @@ public class UserController {
             return "redirect:/register";
         }
 
-        return "register_success";
+        redirectAttrs.addFlashAttribute("successMsg", "true");
+        return "redirect:/register";
     }
 
     @GetMapping("/list_users")

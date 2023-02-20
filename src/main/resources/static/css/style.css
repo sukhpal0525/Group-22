@@ -234,11 +234,20 @@ header .header_content a.learn, .main_contact ul li input[type="submit"], .learn
     color: #460a47;
 }
 
+.login-box .success-msg{
+    color: green;
+}
 
+.login-box .success-msg a{
+    color: #3c763d;
+    font-weight: bold;
+}
 
+.login-box .success-msg a:hover{
+    color: #3c763d;
+    text-decoration: underline;
 
-
-
+}
 
 
 
