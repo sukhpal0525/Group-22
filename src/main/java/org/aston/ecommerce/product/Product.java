@@ -16,7 +16,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", unique = true, nullable = false)
+    @Column(name = "ProductID")
     private Long id;
 
     @Column(name = "Name")
@@ -34,7 +34,4 @@ public class Product {
 
     @Column(name = "AmountAvailable")
     private Integer amountAvailable;
-
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    private List<Basket> baskets;
 }
