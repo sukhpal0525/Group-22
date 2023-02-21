@@ -781,7 +781,8 @@ a {
 .about_us__container .sub-page {
     text-align: center;
     padding: 20px 0;
-    font-size: 25px;
+    font-size: 50px;
+    font-weight: 700px;
     line-height: 150px;
     color: #fff;
 }
