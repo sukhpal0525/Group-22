@@ -24,7 +24,8 @@
         <tr>
             <th>Name</th>
             <th>Amount</th>
-            <th>Amount</th>
+            <th>Total</th>
+            <th>Delete</th>
         </tr>
         </thead>
         <tbody>
@@ -32,6 +33,9 @@
             <td th:text="${basket.product.Name}"></td>
             <td th:text="${basket.amount}"></td>
             <td th:text="${#numbers.formatCurrency(basket.product.Amount*basket.amount)}"></td>
+            <td>
+                <a th:href="@{/basket_delete/{id}(id=${basket.id})}" class="btn btn-danger" style="margin-top: -1px;">Delete</a>
+            </td>
         </tr>
         </tbody>
     </table>

@@ -89,7 +89,7 @@ public class ProductResource {
 
         //Check to see if the user tried to order an amount larger than what is currently available in stock
         if(Integer.parseInt(purchase.getNum_ordered()) > product.getAmountAvailable()){
-            redirectAttrs.addFlashAttribute("purchase_fail", "Error! You ordered more products than there was available in stock.");
+            redirectAttrs.addFlashAttribute("purchase_fail", "Error! You tried to order more products than there is currently available in stock.");
         }else{
             product.setAmountAvailable(product.getAmountAvailable() - Integer.parseInt(purchase.getNum_ordered()));
             this.productRepository.save(product);

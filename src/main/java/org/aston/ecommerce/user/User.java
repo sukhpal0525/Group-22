@@ -33,7 +33,7 @@ public class User {
     @Column(nullable = false, columnDefinition = "tinyint(1) default 0")
     private boolean isAdmin;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Basket> baskets;
 
     public String getUsername() {
