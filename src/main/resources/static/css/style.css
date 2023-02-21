@@ -803,10 +803,6 @@ a {
     margin: 10%;
 }
 
-.padding {
-    padding-top: 500px;
-}
-
 .c4padder {
     margin: 10%;
 }
@@ -822,4 +818,11 @@ a {
 .container4 img {
     float: left;
     padding-right: 3%;
+}
+
+.padding {
+    padding-top: 500px;
+    border-top: #460a47 2px solid;
+    margin-left: 2%;
+    margin-right: 2%;
 }
