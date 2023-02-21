@@ -3,12 +3,19 @@ package org.aston.ecommerce.product.web;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import org.aston.ecommerce.basket.Basket;
+import org.aston.ecommerce.basket.BasketRepository;
 import org.aston.ecommerce.product.Category;
 import org.aston.ecommerce.product.Product;
 import org.aston.ecommerce.product.ProductRepository;
 import org.aston.ecommerce.product.Purchase;
+import org.aston.ecommerce.user.CustomUserDetails;
+import org.aston.ecommerce.user.User;
+import org.aston.ecommerce.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,6 +28,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class ProductResource {
 
     private final ProductRepository productRepository;
+    @Autowired
+    private BasketRepository basketRepository;
+    @Autowired
+    private UserRepository userRepo;
 
     @Autowired
     public ProductResource(ProductRepository productRepository) {
@@ -65,6 +76,13 @@ public class ProductResource {
     @PostMapping("/product_purchase")
     public String processRegister(Purchase purchase, BindingResult result, RedirectAttributes redirectAttrs) {
 
+        //See if user is logged in
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if(!(principal instanceof CustomUserDetails)){
+            return "redirect:/login";
+        }
+
         Optional<Product> optProduct = this.productRepository.findById(Long.parseLong(purchase.getProduct_id()));
         Product product = optProduct.get();
 
@@ -73,6 +91,18 @@ public class ProductResource {
         }else{
             product.setAmountAvailable(product.getAmountAvailable() - Integer.parseInt(purchase.getNum_ordered()));
             this.productRepository.save(product);
+
+            //Find currently logged-in user
+            String username = ((CustomUserDetails) principal).getUsername();
+            User loggedInUser = userRepo.findByEmail(username);
+
+            Basket addToBasket = new Basket();
+            addToBasket.setAmount(Integer.parseInt(purchase.getNum_ordered()));
+            addToBasket.setProduct(product);
+            addToBasket.setUser(loggedInUser);
+
+            this.basketRepository.save(addToBasket);
+
             redirectAttrs.addFlashAttribute("purchase_success", "yes");
         }
 
