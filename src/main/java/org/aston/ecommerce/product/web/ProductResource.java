@@ -6,12 +6,15 @@ import java.util.Optional;
 import org.aston.ecommerce.product.Category;
 import org.aston.ecommerce.product.Product;
 import org.aston.ecommerce.product.ProductRepository;
+import org.aston.ecommerce.product.Purchase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class ProductResource {
@@ -52,6 +55,14 @@ public class ProductResource {
         Optional<Product> product = this.productRepository.findById(Long.parseLong(id));
         model.addAttribute("product", product.get());
 
+        //For form submission
+        model.addAttribute("purchase", new Purchase(id, "1"));
+
         return "product_display";
+    }
+
+    @PostMapping("/product_purchase")
+    public ResponseEntity processRegister(Purchase purchase, BindingResult result) {
+        return ResponseEntity.of( Optional.of(purchase));
     }
 }
