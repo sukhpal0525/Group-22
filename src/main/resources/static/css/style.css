@@ -811,6 +811,14 @@ a {
     margin: 10%;
 }
 
+.c4padder h3 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #460a47;
+    text-align: center;
+    padding-top: 9%;
+}
+
 .container4 img {
     float: left;
     padding-right: 3%;
