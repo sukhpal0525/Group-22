@@ -789,9 +789,6 @@ a {
 
 .container3 {
     line-height: 1.5em;
-    border-bottom: #460a47 2px solid;
-    margin-left: 2%;
-    margin-right: 2%;
 }
 
 .container3 img {
@@ -805,6 +802,12 @@ a {
 
 .c4padder {
     margin: 10%;
+}
+
+.container {
+    border-bottom: #460a47 2px solid;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
 .c4padder h3 {
@@ -822,7 +825,10 @@ a {
 
 .padding {
     padding-top: 500px;
-    border-top: #460a47 2px solid;
+}
+
+.container4 {
+    border-bottom: #460a47 2px solid;
     margin-left: 2%;
     margin-right: 2%;
 }
