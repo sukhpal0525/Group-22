@@ -11,7 +11,7 @@ a, a:hover{ transition:500ms linear color, 500ms linear background, 500ms linear
 .top_bar .wrapper ul.social li{ border-right:1px solid #004898; text-align:center;}
 .top_bar .wrapper ul.social li a{ width:30px; height:22px; display:block; padding-top:10px;}
 .top_bar .wrapper ul.social li:first-child{ background:#fff;}
-.header_top{ width:100%;  min-height:118px; height:auto;}
+.header_top{ width:100%;  min-height:118px; height:auto; float:left;}
 .logo{ width:210px;  height:110px;  float:left; background:#fff; border-radius:0 0 22px 22px; padding-top:7px;}
 .main_nav{  min-height:82px; height:auto; float:right; margin-top:43px;}
 nav{ width:100%; float:right; min-height:40px; height:auto;}
