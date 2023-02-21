@@ -195,6 +195,7 @@ header .header_content a.learn,
     margin-bottom: 30px;
 }
 
+
 /*slider*/
 
 #carousel div {
@@ -750,23 +751,26 @@ a {
     color: #460a47;
 }
 
-.login-box .success-msg{
+.login-box .success-msg {
     color: green;
 }
 
-.login-box .success-msg a{
+.login-box .success-msg a {
     color: #3c763d;
     font-weight: bold;
 }
 
-.login-box .success-msg a:hover{
+.login-box .success-msg a:hover {
     color: #3c763d;
     text-decoration: underline;
-
 }
 
+
 /*-------------------- About Us -------------------*/
+
+
 /* Had to change name of class from 'container' because it was interfering with bootstrap class also called 'container' */
+
 .about_us__container {
     background: url(../Images/pcbackground.jpg) no-repeat center center fixed;
     background-size: 100%;
@@ -787,6 +791,14 @@ a {
 }
 
 .container3 img {
-    float: left;
-    margin-right: 50px;
+    float: right;
+    padding-left: 3%;
+}
+
+.c3padder {
+    margin: 10%;
+}
+
+.padding {
+    padding-top: 300px;
 }
