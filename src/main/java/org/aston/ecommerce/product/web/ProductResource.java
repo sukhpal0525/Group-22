@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class ProductResource {
@@ -62,7 +63,19 @@ public class ProductResource {
     }
 
     @PostMapping("/product_purchase")
-    public ResponseEntity processRegister(Purchase purchase, BindingResult result) {
-        return ResponseEntity.of( Optional.of(purchase));
+    public String processRegister(Purchase purchase, BindingResult result, RedirectAttributes redirectAttrs) {
+
+        Optional<Product> optProduct = this.productRepository.findById(Long.parseLong(purchase.getProduct_id()));
+        Product product = optProduct.get();
+
+        if(Integer.parseInt(purchase.getNum_ordered()) > product.getAmountAvailable()){
+            redirectAttrs.addFlashAttribute("purchase_fail", "Error! You ordered more products than there was available in stock.");
+        }else{
+            product.setAmountAvailable(product.getAmountAvailable() - Integer.parseInt(purchase.getNum_ordered()));
+            this.productRepository.save(product);
+            redirectAttrs.addFlashAttribute("purchase_success", "yes");
+        }
+
+        return "redirect:/product/"+purchase.getProduct_id();
     }
 }
