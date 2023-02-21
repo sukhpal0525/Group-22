@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.List;
+
 @Controller
 public class BasketController {
 
@@ -25,13 +27,16 @@ public class BasketController {
         if (principal instanceof CustomUserDetails) {
             String username = ((CustomUserDetails) principal).getUsername();
             User loggedInUser = userRepo.findByEmail(username);
+            //See if the currently logged-in user has an empty basket or not
             if(loggedInUser.getBaskets().size() < 1){
                 model.addAttribute("empty", "yes");
+            }else{
+                List<Basket> usersCurrentBasket = loggedInUser.getBaskets();
+                model.addAttribute("listBaskets", usersCurrentBasket);
             }
         } else {
             model.addAttribute("isNotLoggedIn", "yes");
         }
-
 
         return "basket";
     }

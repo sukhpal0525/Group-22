@@ -79,6 +79,7 @@ public class ProductResource {
         //See if user is logged in
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
+        //If user is not logged in, then send them to the login page because they need to be logged-in in order to add a product to their basket
         if(!(principal instanceof CustomUserDetails)){
             return "redirect:/login";
         }
@@ -86,6 +87,7 @@ public class ProductResource {
         Optional<Product> optProduct = this.productRepository.findById(Long.parseLong(purchase.getProduct_id()));
         Product product = optProduct.get();
 
+        //Check to see if the user tried to order an amount larger than what is currently available in stock
         if(Integer.parseInt(purchase.getNum_ordered()) > product.getAmountAvailable()){
             redirectAttrs.addFlashAttribute("purchase_fail", "Error! You ordered more products than there was available in stock.");
         }else{
