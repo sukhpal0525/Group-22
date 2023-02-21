@@ -14,20 +14,20 @@
 
 <div class="container text-center" style="max-width: 700px;">
     <div class="mt-4 alert alert-success" th:if="${purchase_success}" role="alert">Success! Product has been added to
-        basket.
+        basket. <a class="alert-link" th:href="@{/basket}">Click here to view it</a>
     </div>
     <div class="mt-4 alert alert-danger" th:if="${purchase_fail}" th:text="${purchase_fail}" role="alert"></div>
     <div class="h1 mt-4" th:text="${product.Name}"></div>
     <p th:text="${product.Description}"></p>
     <p class="text-muted" th:text="${#numbers.formatCurrency(product.Amount)}"></p>
     <div class="alert alert-warning" role="alert"
-         th:if="${product.AmountAvailable <= 20 && product.AmountAvailable > 1}">
+         th:if="${product.AmountAvailable <= 20 && product.AmountAvailable >= 1}">
         Warning! This item is low in stock. <strong>Only [[${product.AmountAvailable}]] left</strong>
     </div>
     <div class="alert alert-danger" role="alert" th:if="${product.AmountAvailable < 1}">
         Warning! The product is out of stock.
     </div>
-    <form th:if="${product.AmountAvailable > 1}" th:action="@{/product_purchase}" th:object="${purchase}"
+    <form th:if="${product.AmountAvailable >= 1}" th:action="@{/product_purchase}" th:object="${purchase}"
           method="post">
         <input type="hidden" th:field="*{product_id}"/>
         <div class="row justify-content-between mx-auto">
