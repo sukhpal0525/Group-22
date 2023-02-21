@@ -803,3 +803,12 @@ a {
 .padding {
     padding-top: 300px;
 }
+
+.c4padder {
+    margin: 10%;
+}
+
+.container4 img {
+    float: left;
+    padding-right: 3%;
+}
