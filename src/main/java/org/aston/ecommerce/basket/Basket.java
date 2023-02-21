@@ -6,22 +6,23 @@ import org.aston.ecommerce.user.User;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "basket")
+@Table(name = "WebBasket")
 public class Basket {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "BasketID")
     private Long id;
 
     @Column(nullable = false, columnDefinition = "INT default 0")
     private Integer amount;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_id")
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "ProductID")
     private Product product;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
+    @ManyToOne()
+    @JoinColumn(name = "UserID")
     private User user;
 
     public Long getId() {

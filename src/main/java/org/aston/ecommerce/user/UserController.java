@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -30,14 +32,21 @@ public class UserController {
     }
 
     @PostMapping("/process_register")
-    public String processRegister(User user) {
+    public String processRegister(User user, BindingResult result, RedirectAttributes redirectAttrs) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
 
-        userRepo.save(user);
+        try {
+            userRepo.save(user);
+        }
+        catch(Exception e) {
+            redirectAttrs.addFlashAttribute("errorMsg", "Error: Details invalid. Try again.");
+            return "redirect:/register";
+        }
 
-        return "register_success";
+        redirectAttrs.addFlashAttribute("successMsg", "true");
+        return "redirect:/register";
     }
 
     @GetMapping("/list_users")

@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.aston.ecommerce.basket.Basket;
 
+import java.util.List;
+
 @Data
 @Table(name = "WebProduct")
 @Entity
@@ -14,7 +16,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", unique = true, nullable = false)
+    @Column(name = "ProductID")
     private Long id;
 
     @Column(name = "Name")
@@ -32,7 +34,4 @@ public class Product {
 
     @Column(name = "AmountAvailable")
     private Integer amountAvailable;
-
-    @OneToOne(mappedBy = "product")
-    private Basket basket;
 }

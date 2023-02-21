@@ -195,7 +195,6 @@ header .header_content a.learn,
     margin-bottom: 30px;
 }
 
-
 /*slider*/
 
 #carousel div {
@@ -751,17 +750,31 @@ a {
     color: #460a47;
 }
 
+.login-box .success-msg{
+    color: green;
+}
+
+.login-box .success-msg a{
+    color: #3c763d;
+    font-weight: bold;
+}
+
+.login-box .success-msg a:hover{
+    color: #3c763d;
+    text-decoration: underline;
+
+}
 
 /*-------------------- About Us -------------------*/
-
-.container {
+/* Had to change name of class from 'container' because it was interfering with bootstrap class also called 'container' */
+.about_us__container {
     background: url(../Images/pcbackground.jpg) no-repeat center center fixed;
     background-size: 100%;
     height: 200px;
     background-position: 0 -140px;
 }
 
-.sub-page {
+.about_us__container .sub-page {
     text-align: center;
     padding: 20px 0;
     font-size: 25px;
