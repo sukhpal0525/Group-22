@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface ProductRepository extends CrudRepository<Product, Long> {
 
     List<Product> findAllByCategory(Category category);
-
     List<Product> findAll();
+    List<Product> findByNameContainingIgnoreCase(String query);
 }
