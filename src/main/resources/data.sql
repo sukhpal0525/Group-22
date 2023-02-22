@@ -34,8 +34,8 @@ INSERT INTO `webproduct` (`Name`, `Amount`, `Description`,`Category`,`AmountAvai
 
 
 -- Admin Account (Password = 'admin')
-INSERT INTO `webuser` (`Email`, `UserName`, `Password`) VALUES
-  ('admin@aston.com', 'Admin', '$2a$10$AOYMzvkn8MISJsQR3Q0kXO0ZmFMJXQO6mw7IH/p2PfpJO.zCfrLlK');
+--INSERT INTO `webuser` (`Email`, `UserName`, `Password`) VALUES
+--  ('admin@aston.com', 'Admin', '$2a$10$AOYMzvkn8MISJsQR3Q0kXO0ZmFMJXQO6mw7IH/p2PfpJO.zCfrLlK');
 
-INSERT INTO `weborder` (`UserID`, `ProductID`, `Quantity`) VALUES
-  (1, 4, 5);
+--INSERT INTO `weborder` (`UserID`, `ProductID`, `Quantity`) VALUES
+--  (1, 4, 5);

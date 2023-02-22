@@ -17,12 +17,12 @@ public class Basket {
     @Column(nullable = false, columnDefinition = "INT default 0")
     private Integer amount;
 
-    @ManyToOne
-    @JoinColumn(referencedColumnName = "ProductID")
+    @ManyToOne()
+    @JoinColumn(name = "product_id")
     private Product product;
 
     @ManyToOne()
-    @JoinColumn(name = "UserID")
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Long getId() {
