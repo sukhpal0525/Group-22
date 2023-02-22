@@ -768,9 +768,6 @@ a {
 
 /*-------------------- About Us -------------------*/
 
-
-/* Had to change name of class from 'container' because it was interfering with bootstrap class also called 'container' */
-
 .about_us__container {
     background: url(../Images/pcbackground.jpg) no-repeat center center fixed;
     background-size: 100%;
@@ -796,6 +793,12 @@ a {
     padding-left: 3%;
 }
 
+.container4 iframe {
+    float: left;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
 .c3padder {
     margin: 10%;
 }
@@ -805,7 +808,6 @@ a {
 }
 
 .container {
-    border-bottom: #460a47 2px solid;
     margin-left: 2%;
     margin-right: 2%;
 }
@@ -813,7 +815,6 @@ a {
 .c4padder h3 {
     font-size: 30px;
     font-weight: 700;
-    color: #460a47;
     text-align: center;
     padding-top: 9%;
 }
@@ -824,11 +825,52 @@ a {
 }
 
 .padding {
-    padding-top: 500px;
+    padding-top: 10px;
+}
+
+.container {
+    margin-bottom: 200px;
 }
 
 .container4 {
-    border-bottom: #460a47 2px solid;
     margin-left: 2%;
     margin-right: 2%;
+    margin-top: 10%;
+}
+
+
+/*-------------------- Footer -------------------*/
+
+footer {
+    background-color: greenyellow;
+    color: #e0e0e0;
+    padding: 20px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    flex-direction: column;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.footer_box {
+    justify-content: space-between;
+    align-items: center;
+    background-color: red;
+    width: 250px;
+    margin: 0 auto;
+    margin: 1%;
+}
+
+.b2 {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.b3 {
+    width: 500px;
 }
