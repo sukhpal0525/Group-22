@@ -4,6 +4,8 @@ import org.aston.ecommerce.product.Product;
 import org.aston.ecommerce.user.User;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "WebBasket")
@@ -21,9 +23,12 @@ public class Basket {
     @JoinColumn(name = "ProductID")
     private Product product;
 
-    @ManyToOne()
+    @OneToOne
     @JoinColumn(name = "UserID")
     private User user;
+
+    @OneToMany(mappedBy = "basket")
+    private List<BasketItem> basketItems = new ArrayList<>();
 
     public Long getId() {
         return id;
