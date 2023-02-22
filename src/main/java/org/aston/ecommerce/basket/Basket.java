@@ -18,11 +18,11 @@ public class Basket {
     private Integer amount;
 
     @ManyToOne()
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "ProductID")
     private Product product;
 
     @ManyToOne()
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "UserID")
     private User user;
 
     public Long getId() {
