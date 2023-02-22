@@ -35,6 +35,6 @@ public class Product {
     @Column(name = "AmountAvailable")
     private Integer amountAvailable;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    private List<Basket> baskets;
+//    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+//    private List<Basket> baskets;
 }
