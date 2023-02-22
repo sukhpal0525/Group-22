@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -7,11 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
     <link rel="stylesheet" href="/css/aboutus.css">
+    <div th:replace="fragments/nav_bar :: styles"></div>
+    <!-- <link rel="stylesheet" href="/css/style.css"> -->
 
 </head>
 
-
 <body>
+
+    <div th:replace="fragments/nav_bar :: header"></div>
+    <!--
     <div class="bottom-content">
         <h1>About Us</h1>
         <p>
@@ -30,13 +34,37 @@
             <a>
                 <ion-icon name="logo-instagram"></ion-icon>
             </a>
+-->
+    <div class="about_us__container">
+        <div class="container2">
+            <div class="sub-page">
+                <h2>About Us</h2>
+            </div>
         </div>
     </div>
 
 
+    <div class="container3">
+        <div class="c3padder">
+            <img src="/Images/aboutus_pic.jpg" alt="aboutus" width="450">
+            <h3><span>About Us</span></h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    </div>
 
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <div class="container4">
+        <div class="c4padder">
+            <img src="/Images/aboutus_pic.jpg" alt="aboutus" width="450"></img>
+
+            <h3><span>We Strive To Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, aperiam.</span></h3>
+
+        </div>
+    </div>
+
+
+    <div class="padding">
+    </div>
 </body>
 
 </html>

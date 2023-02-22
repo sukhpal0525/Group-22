@@ -5,6 +5,8 @@
     <title>PCLabs | Product</title>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
     <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <div th:replace="fragments/nav_bar :: styles"></div>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
@@ -76,6 +78,37 @@
                             <p class="card-text" th:text = "${products.Amount}"></p>
                             <button type="button" class="btn btn-sm btn-outline-secondary mx-auto d-block">Buy</button>
 
+<div th:replace="fragments/nav_bar :: header"></div>
+
+<div class="py-4 album">
+    <div class="container">
+        <div class="row">
+
+            <!--          <div class="col-xl-3" th:each="products : ${products}">-->
+            <!--              <div class="card" style="width: 16rem;">-->
+            <!--                  <img class="card-img-top" src="..." alt="Image">-->
+            <!--                  <div class="card-body">-->
+            <!--                      <p class="card-title" th:text = "${products.Name}"></p>-->
+            <!--                      <hr>-->
+            <!--                      <p class="card-text" th:text = "${products.Amount}"></p>-->
+            <!--                      <a href="#" class="btn btn-primary">Buy</a>-->
+            <!--                  </div>-->
+            <!--              </div>-->
+            <!--          </div>-->
+
+            <div class="col-md-4" th:each="products : ${products}">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <!-- <p class="card-text" th:text = "${products.ID}"></p>
+                        <img class="img-custom mx-auto d-block" src="..." width="300" height="200">-->
+                        <p class="card-title" th:text="${products.Name}"></p>
+                        <p class="card-text" th:text="${products.Amount}"></p>
+                        <div class="d-flex justify-content-center">
+                            <a th:href="@{/product/{id}(id=${products.id})}"
+                               class="text-reset text-decoration-none d-inline">
+                                <button type="button" class="btn btn-sm btn-outline-secondary mx-auto text-center">Buy
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>

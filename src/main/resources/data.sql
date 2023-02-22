@@ -5,7 +5,17 @@ SET @GPU = 2;
 SET @MEMORY = 3;
 SET @STORAGE = 4;
 
--- Processor
+-- Configs
+SET FOREIGN_KEY_CHECKS = 0;
+
+TRUNCATE TABLE `webproduct`;
+TRUNCATE TABLE `webuser`;
+TRUNCATE TABLE `weborder`;
+TRUNCATE TABLE `webbasket`;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+-- Processor\
 INSERT INTO `webproduct` (`Name`, `Amount`, `Description`,`Category`,`AmountAvailable`) VALUES
   ('Intel Core i9-11900K', 399.99, '11th Gen, 16-core, 32-thread processor', @PROCESSOR, 40),
   ('AMD Ryzen 9 5900X', 449.99, '12-core, 24-thread processor with 3.7 GHz base clock', @PROCESSOR, 50),
@@ -24,5 +34,8 @@ INSERT INTO `webproduct` (`Name`, `Amount`, `Description`,`Category`,`AmountAvai
 
 
 -- Admin Account (Password = 'admin')
---INSERT INTO `webuser` (`Email`, `FirstName`, `LastName`,`Password`) VALUES
---  ('admin@aston.com', 'Admin', 'Admin', '$2a$10$AOYMzvkn8MISJsQR3Q0kXO0ZmFMJXQO6mw7IH/p2PfpJO.zCfrLlK');
+INSERT INTO `webuser` (`Email`, `UserName`, `Password`) VALUES
+  ('admin@aston.com', 'Admin', '$2a$10$AOYMzvkn8MISJsQR3Q0kXO0ZmFMJXQO6mw7IH/p2PfpJO.zCfrLlK');
+
+INSERT INTO `weborder` (`UserID`, `ProductID`, `Quantity`) VALUES
+  (1, 4, 5);
