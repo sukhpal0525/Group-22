@@ -270,22 +270,22 @@ box-shadow: 0px 0px 30px 1px #ca34cc;
 }
 
 #hcard2{
-background-image: url('CPU.png');
+background-image: url('/Images/CPU.png');
 background-size: cover;
 }
 
 #hcard3{
-background-image: url('Monitor.png');
+background-image: url('/Images/Monitor.png');
 background-size: cover;
 }
 
 #hcard4{
-    background-image: url('Keyboard.png');
+    background-image: url('/Images/Keyboard.png');
     background-size: cover;
 }
 
 #hcard5{
-    background-image: url('Mouse.png');
+    background-image: url('/Images/Mouse.png');
     background-size: cover;
 }
 
