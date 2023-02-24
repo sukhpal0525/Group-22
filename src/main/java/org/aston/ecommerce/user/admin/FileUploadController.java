@@ -28,5 +28,5 @@ public class FileUploadController {
     public String uploadImage(Model model, @RequestParam("file")MultipartFile file) {
         return("IGNORE_ME");
     }
-    
+
 }
