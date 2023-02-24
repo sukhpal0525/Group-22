@@ -215,6 +215,79 @@ header .header_content a.learn,
     margin: 5px 2% 5px 0;
 }
 
+/*------ cards on home page--------*/
+.cards-homepage{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-right: 100px;
+    margin-left: 100px;
+    flex-wrap: wrap;
+}
+
+.homepage-card {
+    width: 190px;
+    height: 254px;
+    background-image: radial-gradient(at 86% 18%, hsla(289,56%,30%,1) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, hsla(285,64%,30%,1) 0px, transparent 50%),
+    radial-gradient(at 67% 66%, hsla(279,75%,16%,1) 0px, transparent 50%),
+    radial-gradient(at 6% 86%, hsla(246,78%,30%,1) 0px, transparent 50%),
+    radial-gradient(at 84% 86%, hsla(283,70%,28%,1) 0px, transparent 50%),
+    radial-gradient(at 2% 10%, hsla(274,100%,27%,1) 0px, transparent 50%);
+    border-radius: 20px;
+    transition: all .3s;
+    margin: 20px;
+}
+
+.homepage-card2 {
+width: 190px;
+height: 254px;
+background-color: #1a1a1a;
+border-radius:;
+transition: all .2s;
+}
+
+.homepage-card2 p{
+    color: #fff;
+    text-align: left;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.homepage-card2:hover {
+transform: scale(0.98);
+border-radius: 1rem;
+}
+
+.homepage-card:hover {
+box-shadow: 0px 0px 30px 1px #ca34cc;
+}
+
+#hcard1{
+    background-image: url('GPU.png');
+    background-size: cover;
+}
+
+#hcard2{
+background-image: url('CPU.png');
+background-size: cover;
+}
+
+#hcard3{
+background-image: url('Monitor.png');
+background-size: cover;
+}
+
+#hcard4{
+    background-image: url('Keyboard.png');
+    background-size: cover;
+}
+
+#hcard5{
+    background-image: url('Mouse.png');
+    background-size: cover;
+}
 
 /*.home_row1_col1 ul li:nth-child(1),*/
 
