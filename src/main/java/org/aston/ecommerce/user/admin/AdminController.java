@@ -16,10 +16,17 @@ public class AdminController {
     @Autowired
     private UserRepository userRepository;
 
+<<<<<<< HEAD
     @GetMapping("admin-dashboard")
     public String adminView(Model model) {
         model.addAttribute("header","Admin Dashboard");
         return "admin-dashboard";
+=======
+    @GetMapping("admin/dashboard")
+    public String adminView(Model model) {
+        model.addAttribute("header","Admin Dashboard");
+        return "admin/dashboard";
+>>>>>>> d574993 (Added admin branch)
     }
 
     //This method needs to check if the user is an admin or not.
