@@ -59,7 +59,9 @@ public class ProductResource {
         }
 
         model.addAttribute("products", products);
-        return "products_category";
+
+        model.addAttribute("search", new Search());
+        return "products_list";
     }
 
     @GetMapping("/product/{id}")

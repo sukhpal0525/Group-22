@@ -32,7 +32,7 @@
                 <button type="submit" class="btn btn-primary">Search</button>
             </div>
         </form>
-        <div class="row">
+        <div class="row" th:if="${products.size() > 0}">
             <div class="col-md-4" th:each="products : ${products}">
                 <div class="card mb-4">
                     <div class="card-body">
@@ -50,6 +50,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div th:unless="${products.size() > 0}" class="mt-2 alert alert-secondary">
+            Sorry. No products were found.
         </div>
     </div>
 </div><!--wrapper-->
