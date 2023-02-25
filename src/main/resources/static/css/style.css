@@ -10,7 +10,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: "Roboto";
+    font-family: 'Roboto', sans-serif;
 }
 
 a,
@@ -296,7 +296,7 @@ background-size: cover;
 .home_row1_col1{ width:70%; min-height:280px; height:auto; float:left; margin-top:45px;}
 .home_row1_col1 img{ border:2px solid #0055a5; float:left; border-radius:3px;}
 .home_row1_col1_row1{ width:58%; min-height:270px; height:auto; float:right; }
-.home_row1_col1_row1 h1, .home_row1_col1_row1 h2{ line-height:30px; margin:0; height:25px;width:100%; font-size:16px; font-weight:400px; color:#9D20C9; float:left; text-align:left; padding:0; }
+.home_row1_col1_row1 h1, .home_row1_col1_row1 h2{ line-height:30px; margin:0; height:25px;width:100%; font-size:16px; color:#9D20C9; float:left; text-align:left; padding:0; }
 .home_row1_col1_row1 h2{ font-size:12px; color:#9da1aa; margin:5px 0;font-weight:normal;}
 .home_row1_col1_row1 p, .inner_con p{ font-size:15px; color:#818894; padding:15px 0; border-top:1px solid #e5e6eb; width:100%; float:left; line-height:30px; text-align:justify;}
 .home_row1_col1_row1 a, .home_row1_col1 ul li input[type="submit"], .butn{ font-size:13px; text-transform:uppercase; color:#fff; padding:15px 30px;float:left; background:#0055a5; box-shadow:0 3px 0 #002a52; border-radius:5px;}
