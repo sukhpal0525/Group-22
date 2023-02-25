@@ -21,7 +21,11 @@
     <p th:text="${product.Description}"></p>
     <p class="text-muted" th:text="${#numbers.formatCurrency(product.Amount)}"></p>
     <div class="alert alert-warning" role="alert"
-         th:if="${product.AmountAvailable <= 20 && product.AmountAvailable >= 1}">
+         th:if="${product.AmountAvailable <= 20 && product.AmountAvailable > 10}">
+        Warning! This item is low in stock. <strong>Only [[${product.AmountAvailable}]] left</strong>
+    </div>
+    <div class="alert alert-danger" role="alert"
+         th:if="${product.AmountAvailable <= 10 && product.AmountAvailable > 0}">
         Warning! This item is low in stock. <strong>Only [[${product.AmountAvailable}]] left</strong>
     </div>
     <div class="alert alert-danger" role="alert" th:if="${product.AmountAvailable < 1}">

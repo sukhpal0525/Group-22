@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.coyote.Response;
 import org.aston.ecommerce.basket.Basket;
 import org.aston.ecommerce.basket.BasketRepository;
-import org.aston.ecommerce.product.Category;
-import org.aston.ecommerce.product.Product;
-import org.aston.ecommerce.product.ProductRepository;
-import org.aston.ecommerce.product.Purchase;
+import org.aston.ecommerce.product.*;
 import org.aston.ecommerce.user.CustomUserDetails;
 import org.aston.ecommerce.user.User;
 import org.aston.ecommerce.user.UserRepository;
@@ -42,6 +40,8 @@ public class ProductResource {
     @GetMapping("/products/list")
     private String getProducts(Model model) {
         model.addAttribute("products", productRepository.findAll());
+
+        model.addAttribute("search", new Search());
         return "products_list";
     }
 
@@ -59,7 +59,9 @@ public class ProductResource {
         }
 
         model.addAttribute("products", products);
-        return "products_category";
+
+        model.addAttribute("search", new Search());
+        return "products_list";
     }
 
     @GetMapping("/product/{id}")
@@ -124,5 +126,20 @@ public class ProductResource {
         List<Product> products = productRepository.findByNameContainingIgnoreCase(query);
         model.addAttribute("product", products);
         return "products_search";
+    }
+
+    @PostMapping("/product_search")
+    public String productSearch(Search search, BindingResult result, RedirectAttributes redirectAttrs, Model model) {
+
+        if(search.getSearch().trim().isEmpty()){
+            return "redirect:/products/list";
+        }
+
+        List<Product> foundProducts = this.productRepository.findAllByName(search.getSearch());
+
+        model.addAttribute("products", foundProducts);
+
+        model.addAttribute("search", new Search());
+        return "products_list";
     }
 }

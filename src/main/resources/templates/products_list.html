@@ -23,7 +23,16 @@
 
 <div class="py-4 album">
     <div class="container">
-        <div class="row">
+        <form class="row align-items-center my-3" th:action="@{/product_search}" th:object="${search}"
+        method="post" >
+            <div class="col-xl-11 col-lg-10 col-md-10">
+                <input type="text" name="search" class="form-control" th:field="*{search}" placeholder="Search...">
+            </div>
+            <div class="col-xl-1 col-lg-2 col-md-2 mt-md-0 mt-2">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </form>
+        <div class="row" th:if="${products.size() > 0}">
             <div class="col-md-4" th:each="products : ${products}">
                 <div class="card mb-4">
                     <div class="card-body">
@@ -41,6 +50,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div th:unless="${products.size() > 0}" class="mt-2 alert alert-secondary">
+            Sorry. No products were found.
         </div>
     </div>
 </div><!--wrapper-->
