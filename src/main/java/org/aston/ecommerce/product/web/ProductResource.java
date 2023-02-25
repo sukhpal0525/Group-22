@@ -44,8 +44,6 @@ public class ProductResource {
     @GetMapping("/products/list")
     private String getProducts(Model model) {
         model.addAttribute("products", productRepository.findAll());
-
-        model.addAttribute("search", new Search());
         return "products_list";
     }
 
