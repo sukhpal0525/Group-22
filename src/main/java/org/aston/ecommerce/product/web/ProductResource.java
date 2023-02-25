@@ -12,11 +12,15 @@ import org.aston.ecommerce.user.CustomUserDetails;
 import org.aston.ecommerce.user.User;
 import org.aston.ecommerce.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.support.BindingAwareModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -57,10 +61,8 @@ public class ProductResource {
         if (category != null) {
             products.addAll(this.productRepository.findAllByCategory(category));
         }
-
         model.addAttribute("products", products);
 
-        model.addAttribute("search", new Search());
         return "products_list";
     }
 
@@ -82,6 +84,7 @@ public class ProductResource {
         //See if user is logged in
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
+        // TODO: Authentication should be handled by the security config, not in endpoint methods
         //If user is not logged in, then send them to the login page because they need to be logged-in in order to add a product to their basket
         if (!(principal instanceof CustomUserDetails)) {
             return "redirect:/login";
@@ -115,31 +118,51 @@ public class ProductResource {
     }
 
     @GetMapping("/search")
-    public String searchProducts(@RequestParam(name = "query") String query, Model model) {
-        List<Product> products = productRepository.findByNameContainingIgnoreCase(query);
-        model.addAttribute("products", products);
-        return "search";
-    }
+    public String getSearch(Model model) {
+        // Preload first 10 products for the search page
+        if (!model.containsAttribute("products")) {
+            Pageable limit = PageRequest.of(0, 10);
+            Page<Product> products = this.productRepository.findAll(limit);
 
-    @GetMapping("/products/{query}")
-    public String searchProducts(Model model, @PathVariable("query") String query) {
-        List<Product> products = productRepository.findByNameContainingIgnoreCase(query);
-        model.addAttribute("product", products);
-        return "products_search";
-    }
-
-    @PostMapping("/product_search")
-    public String productSearch(Search search, BindingResult result, RedirectAttributes redirectAttrs, Model model) {
-
-        if(search.getSearch().trim().isEmpty()){
-            return "redirect:/products/list";
+            model.addAttribute("products", products.getContent());
+            model.addAttribute("searchQuery", "");
         }
-
-        List<Product> foundProducts = this.productRepository.findAllByName(search.getSearch());
-
-        model.addAttribute("products", foundProducts);
-
-        model.addAttribute("search", new Search());
         return "products_list";
     }
+
+    @PostMapping("/search/products")
+    public String searchProducts(
+            @RequestParam(name = "searchQuery") String query, RedirectAttributes model) {
+
+        if (query.trim().isEmpty()) {
+            return "redirect:/search";
+        }
+        List<Product> products = productRepository.findByNameContainingIgnoreCase(query);
+        model.addFlashAttribute("products", products);
+        model.addFlashAttribute("searchQuery", query);
+
+        return "redirect:/search";
+    }
+
+//    @GetMapping("/products/{query}")
+//    public String searchProducts(Model model, @PathVariable("query") String query) {
+//        List<Product> products = productRepository.findByNameContainingIgnoreCase(query);
+//        model.addAttribute("product", products);
+//        return "products_search";
+//    }
+//
+//    @PostMapping("/product_search")
+//    public String productSearch(Search search, BindingResult result, RedirectAttributes redirectAttrs, Model model) {
+//
+//        if(search.getSearch().trim().isEmpty()){
+//            return "redirect:/products/list";
+//        }
+//
+//        List<Product> foundProducts = this.productRepository.findAllByName(search.getSearch());
+//
+//        model.addAttribute("products", foundProducts);
+//
+//        model.addAttribute("search", new Search());
+//        return "products_list";
+//    }
 }
