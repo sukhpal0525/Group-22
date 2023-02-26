@@ -300,42 +300,21 @@ background-size: cover;
 .home_row1_col2 ul li:nth-child(4n) a{ border:0;}
 
 /*-------------------- Products --------------------------*/
-.video-container {
-    height: 300px;
-    width: 100%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    min-width: 100%;
-}
-.video-container video {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  object-fit: cover;
-  z-index: 0;
+.product_container {
+    background: url(../Images/pcbackground.jpg) no-repeat center center fixed;
+    background-size: 100%;
+    height: 200px;
+    background-position: 0 -140px;
 }
 
-.video-container .caption {
-  z-index: 1;
-  position: relative;
-  text-align: center;
-  color: #fff;
-  width:100%;
-
-}
-.pro_row1 {
-    width: 100%;
-    float: left;
-}
-
-.pro_col {
-    width: 33.33%;
-    float: left;
+.product_container .sub_page_product {
     text-align: center;
-    border-right: 2px;
+    padding: 20px 0;
+    font-size: 50px;
+    font-weight: 700px;
+    line-height: 150px;
+    color: #fff;
 }
-
 /*-------------------- Item Page -------------------*/
 
 
