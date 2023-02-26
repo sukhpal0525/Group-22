@@ -301,7 +301,7 @@ background-size: cover;
 
 /*-------------------- Products --------------------------*/
 .product_container {
-    background: url(../Images/pcbackground.jpg) no-repeat center center fixed;
+    background: url(../Images/pro_bg.jpg) no-repeat center center fixed;
     background-size: 100%;
     height: 200px;
     background-position: 0 -140px;
