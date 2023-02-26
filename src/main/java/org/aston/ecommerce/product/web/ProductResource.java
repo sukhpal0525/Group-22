@@ -83,18 +83,37 @@ public class ProductResource {
         return "redirect:/product/" + purchase.getProduct_id();
     }
 
-    @GetMapping("/search")
-    public String getSearch(Model model) {
-        // Preload first 10 products for the search page
-        if (!model.containsAttribute("products")) {
-            // Create a pageable object to limit the number of results
-            Pageable limit = PageRequest.of(0, 10);
-            // Retrieve the first page of products from the database
-            Page<Product> products = this.productRepository.findAll(limit);
+//    @GetMapping("/search")
+//    public String getSearch(Model model) {
+//        // Preload first 10 products for the search page
+//        if (!model.containsAttribute("products")) {
+//            // Create a pageable object to limit the number of results
+//            Pageable limit = PageRequest.of(0, 10);
+//            // Retrieve the first page of products from the database
+//            Page<Product> products = this.productRepository.findAll(limit);
+//
+//            model.addAttribute("products", products.getContent());
+//            model.addAttribute("searchQuery", "");
+//        }
+//        return "products_list";
+//    }
 
-            model.addAttribute("products", products.getContent());
-            model.addAttribute("searchQuery", "");
+    @GetMapping("/search")
+    public String getSearch(Model model, @RequestParam(name = "searchQuery", required = false) String query) {
+
+        List<Product> products = null;
+
+        if (query == null) {
+            // Preload first 10 products for the search page
+            Pageable limit = PageRequest.of(0, 10);
+            Page<Product> productsPage = this.productRepository.findAll(limit);
+            products = productsPage.getContent();
+        } else {
+            products = productRepository.findByNameContainingIgnoreCase(query);
         }
+        model.addAttribute("products", products);
+        model.addAttribute("searchQuery", query);
+
         return "products_list";
     }
 
