@@ -65,6 +65,7 @@ float:left;
 
 .right-icons {
 width:20%;
+position: relative;
 float:right;
 display: flex;
 align-items: center;
@@ -79,8 +80,8 @@ cursor: pointer;
 
 .dropdown-menu {
 position: absolute;
-top: 70px;
-right: 0;
+top: 35px;
+left: 0;
 background-color: #fff;
 border: 1px solid #e7e7e7;
 border-radius: 5px;
@@ -93,7 +94,7 @@ display: block;
 margin: 5px 0;
 }
 
-.right-icons .person:hover + .dropdown-menu {
+.right-icons .person:hover .dropdown-menu {
 display: block;
 }
 
