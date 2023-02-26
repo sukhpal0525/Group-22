@@ -27,100 +27,93 @@ a:hover {
     max-width: 1130px;
     margin: auto;
 }
-
-.top_bar {
-    width: 100%;
-    min-height: 32px;
-    height: auto;
-    background: #0055a5;
-}
-
-.top_bar .wrapper ul li {
-    float: left;
-    color: #fff;
-    font-size: 11px;
-    padding: 0 11px;
-    line-height: 28px;
-}
-
-.top_bar .wrapper ul li a {
-    color: #fff;
-    font-weight: bold;
-}
-
-.right {
-    float: right !important;
-}
-
-.top_bar .wrapper ul li a:hover {
-    color: #000;
-}
-
-.top_bar .wrapper ul.social li {
-    border-right: 1px solid #004898;
-    text-align: center;
-}
-
-.top_bar .wrapper ul.social li a {
-    width: 30px;
-    height: 22px;
-    display: block;
-    padding-top: 10px;
-}
-
-.top_bar .wrapper ul.social li:first-child {
-    background: #fff;
-}
-
-.header_top {
-    width: 100%;
-    min-height: 118px;
-    height: auto;
-}
-
-.logo {
-    width: 210px;
-    height: 110px;
-    float: left;
-    background: #fff;
-    border-radius: 0 0 22px 22px;
-    padding-top: 7px;
-}
-
-.main_nav {
-    min-height: 82px;
-    height: auto;
-    float: right;
-    margin-top: 43px;
-}
-
+/*------------ nav bar --------------*/
 nav {
-    width: 100%;
-    float: right;
-    min-height: 40px;
-    height: auto;
+background-color: #e7e7e7;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 10px 30px;
+}
+nav ul li{
+float:left;
+margin:0 2px;
 }
 
-nav ul li {
-    float: left;
-    margin: 0 2px;
+nav a {
+text-decoration: none;
+color: #323232;
+font-size: 18px;
+margin: 0 10px;
 }
 
-nav ul li a {
-    padding: 10px 12px;
-    color: #fff;
-    text-transform: capitalize;
-    border: 1px solid rgba(255, 255, 255, 0);
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+nav a:hover {
+color: #fff;
+background-color: #323232;
+border-radius: 5px;
 }
 
-nav ul li a:hover,
-nav ul li a.active {
-    border: 1px solid #fff;
+.logo{
+width:20%;
+float:left;
 }
 
+.pages{
+width:80%;
+float:left;
+}
+
+.right-icons {
+width:20%;
+float:right;
+display: flex;
+align-items: center;
+}
+
+.right-icons img {
+height: 30px;
+width: 30px;
+margin: 0 5px;
+cursor: pointer;
+}
+
+.dropdown-menu {
+position: absolute;
+top: 70px;
+right: 0;
+background-color: #fff;
+border: 1px solid #e7e7e7;
+border-radius: 5px;
+padding: 10px;
+display: none;
+}
+
+.dropdown-menu a {
+display: block;
+margin: 5px 0;
+}
+
+.right-icons .person:hover + .dropdown-menu {
+display: block;
+}
+
+@media screen and (max-width: 768px) {
+nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+nav a {
+    display: block;
+    margin: 5px 0;
+}
+
+.right-icons {
+    margin-top: 10px;
+}
+}
+/*--------- slider --------*/
 header {
     width: 100%;
     min-height: 315px;
