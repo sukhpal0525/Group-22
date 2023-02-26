@@ -41,16 +41,16 @@ public class ProductResource {
         this.productRepository = productRepository;
     }
 
-    @GetMapping("/products/list")
+    @GetMapping("/products")
     private String getProducts(Model model) {
         model.addAttribute("products", productRepository.findAll());
         return "products_list";
     }
 
-    @GetMapping("/products")
-    public ResponseEntity getProducts() {
-        return ResponseEntity.of(Optional.of(this.productRepository.findAll()));
-    }
+//    @GetMapping("/products")
+//    public ResponseEntity getProducts() {
+//        return ResponseEntity.of(Optional.of(this.productRepository.findAll()));
+//    }
 
     @GetMapping("/products/list/{category}")
     public String getProducts(Model model, @PathVariable("category") String categoryStr) {
@@ -87,7 +87,9 @@ public class ProductResource {
     public String getSearch(Model model) {
         // Preload first 10 products for the search page
         if (!model.containsAttribute("products")) {
+            // Create a pageable object to limit the number of results
             Pageable limit = PageRequest.of(0, 10);
+            // Retrieve the first page of products from the database
             Page<Product> products = this.productRepository.findAll(limit);
 
             model.addAttribute("products", products.getContent());
@@ -109,26 +111,4 @@ public class ProductResource {
 
         return "redirect:/search";
     }
-
-//    @GetMapping("/products/{query}")
-//    public String searchProducts(Model model, @PathVariable("query") String query) {
-//        List<Product> products = productRepository.findByNameContainingIgnoreCase(query);
-//        model.addAttribute("product", products);
-//        return "products_search";
-//    }
-//
-//    @PostMapping("/product_search")
-//    public String productSearch(Search search, BindingResult result, RedirectAttributes redirectAttrs, Model model) {
-//
-//        if(search.getSearch().trim().isEmpty()){
-//            return "redirect:/products/list";
-//        }
-//
-//        List<Product> foundProducts = this.productRepository.findAllByName(search.getSearch());
-//
-//        model.addAttribute("products", foundProducts);
-//
-//        model.addAttribute("search", new Search());
-//        return "products_list";
-//    }
 }
