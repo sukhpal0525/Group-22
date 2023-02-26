@@ -80,13 +80,14 @@ cursor: pointer;
 
 .dropdown-menu {
 position: absolute;
-top: 35px;
+top: 32px;
 left: 0;
 background-color: #fff;
 border: 1px solid #e7e7e7;
 border-radius: 5px;
 padding: 10px;
 display: none;
+z-index: 10;
 }
 
 .dropdown-menu a {
