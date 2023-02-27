@@ -1,27 +1,13 @@
 package org.aston.ecommerce.basket;
 
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
 import org.aston.ecommerce.product.Product;
 import org.aston.ecommerce.user.User;
 
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
-@Data
-@ToString(exclude = "user")
-@EqualsAndHashCode(exclude = "user")
 @Table(name = "WebBasket")
 public class Basket {
 
@@ -30,25 +16,49 @@ public class Basket {
     @Column(name = "BasketID")
     private Long id;
 
-    @Column(columnDefinition = "INT default 0")
+    @Column(nullable = false, columnDefinition = "INT default 0")
     private Integer amount;
+
+    @ManyToOne()
+    @JoinColumn(name = "ProductID")
+    private Product product;
 
     @OneToOne
     @JoinColumn(name = "UserID")
     private User user;
 
-    @OneToMany(mappedBy = "basket", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "basket")
     private List<BasketItem> basketItems = new ArrayList<>();
 
-    public BasketItem getBasketItemForProduct(Product product) {
-        return basketItems.stream()
-                .filter((item) -> item.getProduct().equals(product))
-                .findAny()
-                .orElse(null);
+    public Long getId() {
+        return id;
     }
 
-    public boolean containsProduct(Product product) {
-        return basketItems.stream().anyMatch((item) -> item.getProduct().equals(product));
+    public void setId(Long id) {
+        this.id = id;
     }
 
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
