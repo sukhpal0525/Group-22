@@ -673,7 +673,7 @@ a {
 /*-------------------- Footer -------------------*/
 
 footer {
-    background-color: greenyellow;
+    background-color: #323232;
     color: #e0e0e0;
     padding: 20px;
     text-align: center;
@@ -690,11 +690,12 @@ footer {
 
 .footer_box {
     justify-content: space-between;
-    align-items: center;
-    background-color: red;
+    align-items: left;
+    background-color: #323232;
     width: 250px;
     margin: 0 auto;
     margin: 1%;
+    text-align: left;
 }
 
 .b2 {
