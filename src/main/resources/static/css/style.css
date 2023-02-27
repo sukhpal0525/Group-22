@@ -684,7 +684,7 @@ footer {
     letter-spacing: 1px;
     margin-top: 20px;
     flex-direction: column;
-    height: 200px;
+    height: 250px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -700,9 +700,17 @@ footer {
     text-align: left;
 }
 
+.b1 li {
+    margin-bottom: 10px;
+}
+
 .b2 {
     margin-left: 10%;
     margin-right: 10%;
+}
+
+.b2 li {
+    margin-bottom: 10px;
 }
 
 .b3 {
