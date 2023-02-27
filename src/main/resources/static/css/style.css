@@ -705,6 +705,47 @@ footer {
 
 .b3 {
     width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin: 1%;
+}
+
+.b3 .logo {
+    /* make the logo fit nside the b3 div */
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    margin: 1%;
+    align-items: center;
+}
+
+.b3 .logo img {
+    width: 60%;
+    height: auto;
+    margin: 0 auto;
+    margin: 1%;
+    align-items: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.b3 .icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    margin: 1%;
+    text-align: left;
+}
+
+.b3 .icons i {
+    font-size: 30px;
+    color: #e0e0e0;
+    margin: 0 12px;
 }
 
 
