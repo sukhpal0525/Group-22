@@ -5,13 +5,14 @@ import javax.transaction.Transactional;
 import org.aston.ecommerce.product.Product;
 import org.aston.ecommerce.product.ProductRepository;
 import org.aston.ecommerce.user.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class BasketService {
 
-    private final ProductRepository productRepository;
-    private final BasketRepository basketRepository;
+    @Autowired private final ProductRepository productRepository;
+    @Autowired private final BasketRepository basketRepository;
 
     public BasketService(ProductRepository productRepository, BasketRepository basketRepository) {
         this.productRepository = productRepository;
@@ -20,7 +21,6 @@ public class BasketService {
 
     @Transactional
     public boolean addItemToBasket(Long productId, Integer numOrdered, User user) {
-
         boolean success = false;
 
         Optional<Product> optProduct = this.productRepository.findById(productId);
@@ -29,7 +29,6 @@ public class BasketService {
         Basket basket = user.getBasket();
 
         if (!(numOrdered > product.getAmountAvailable())) {
-
             product.setAmountAvailable(product.getAmountAvailable() - numOrdered);
             product = this.productRepository.save(product);
 
@@ -41,7 +40,6 @@ public class BasketService {
             } else {
                 numOrdered += basketItem.getAmount();
             }
-
             basketItem.setAmount(numOrdered);
             basket.getBasketItems().add(basketItem);
 
@@ -49,8 +47,6 @@ public class BasketService {
 
             success = true;
         }
-
         return success;
     }
-
 }

@@ -21,10 +21,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/basket")
 public class BasketController {
 
-    @Autowired
-    private UserRepository userRepo;
-    @Autowired
-    private BasketService basketService;
+    @Autowired private UserRepository userRepo;
+    @Autowired private BasketService basketService;
 
     @GetMapping
     public String viewBasket(Model model) {
@@ -43,14 +41,11 @@ public class BasketController {
         } else {
             model.addAttribute("isNotLoggedIn", "yes");
         }
-
         return "basket";
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteBasketItem(Model model,
-                                   @PathVariable("id") String id) {
-
+    public String deleteBasketItem(Model model, @PathVariable("id") String id) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if (principal instanceof CustomUserDetails) {
@@ -68,7 +63,6 @@ public class BasketController {
         } else {
             model.addAttribute("isNotLoggedIn", "yes");
         }
-
         return "redirect:/basket";
     }
 
@@ -85,7 +79,6 @@ public class BasketController {
         if (!(principal instanceof CustomUserDetails)) {
             return "redirect:/login";
         }
-
         //Find currently logged-in user
         String username = ((CustomUserDetails) principal).getUsername();
         User loggedInUser = userRepo.findByEmail(username);
@@ -99,8 +92,6 @@ public class BasketController {
         } else {
             redirectAttrs.addFlashAttribute("purchase_fail", "Error! You tried to order more products than there is currently available in stock.");
         }
-
         return "redirect:/product/" + productId;
     }
-
 }
