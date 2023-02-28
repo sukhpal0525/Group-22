@@ -26,6 +26,7 @@
 .container3 img {
     float: right;
     padding-left: 3%;
+    opacity: 0.5;
 }
 
 .container4 iframe {
