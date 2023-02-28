@@ -60,10 +60,14 @@ body {
 }
 
 .c4padder h3 {
-    font-size: 30px;
+    font-size: 40px;
     font-weight: 700;
     text-align: center;
     padding-top: 9%;
+}
+
+.c4padder span {
+    font-size: 40px;
 }
 
 .container4 img {
@@ -94,6 +98,12 @@ body {
 .button {
     text-align: center;
     padding-top: 20px;
+    font-size: 30px;
+}
+
+.button a {
+    color: #a7a4a4;
+    text-decoration: none;
 }
 
 
