@@ -1,3 +1,7 @@
+body {
+    /* background-color: #e7e7e7; */
+}
+
 .about_us__container {
     background: url(../Images/pcbackground.jpg) no-repeat center center fixed;
     background-size: 100%;
@@ -21,6 +25,13 @@
 
 .container3 {
     line-height: 1.5em;
+}
+
+.container3 h3 {
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+    padding-bottom: 5%;
 }
 
 .container3 img {
@@ -112,6 +123,7 @@ footer {
     margin: 0 auto;
     margin: 1%;
     text-align: left;
+    margin-left: 7%;
 }
 
 .b1 li {
