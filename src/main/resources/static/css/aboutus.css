@@ -26,7 +26,7 @@
 .container3 img {
     float: right;
     padding-left: 3%;
-    opacity: 0.5;
+    opacity: 0.6;
 }
 
 .container4 iframe {
@@ -116,6 +116,16 @@ footer {
 
 .b1 li {
     margin-bottom: 10px;
+}
+
+.b1 a {
+    color: #e7e7e7;
+    text-decoration: none;
+}
+
+.b2 a {
+    color: #e7e7e7;
+    text-decoration: none;
 }
 
 .b2 {
