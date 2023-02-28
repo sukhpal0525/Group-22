@@ -9,15 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-<!--video here-->
-<div class="video-container">
-    <video autoplay muted loop>
-        <source src="/Images/productpageVideo.mp4" type="video/mp4" />
-    </video>
-    <div class="caption">
-        <div th:replace="fragments/nav_bar :: header"></div>
+
+<div th:replace="fragments/nav_bar :: header"></div>
+<div class="product_container">
+    <div class="container2">
+        <div class="sub_page_product">
+            <h2>Products</h2>
+        </div>
     </div>
-    <h2>Products</h2>
 </div>
 
 <div class="py-4 album">
