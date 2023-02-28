@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,7 +27,8 @@
 
         </div>
         <div class="right-icons">
-            <a th:href="@{/home}"><img src="/Images/profile.png"/>
+            <div class="person">
+            <a th:href="@{/home}" style="display: block;" ><img src="/Images/profile.png"/></a>
             <div class="dropdown-menu">
                 <li th:if="${#request.userPrincipal == null}"><a th:href="@{/login}">Login</a></li>
                 <li th:if="${#request.userPrincipal == null}"><a th:href="@{/register}">Signup</a></li>
@@ -34,8 +36,8 @@
                                                                      onclick="document.getElementById('logoutForm').submit();"
                                                                      role="menuitem">Logout</a></li>
             </div>
-            </a>
-            <a th:href="@{/home}"><img src="/Images/shopping-basket.png"/></a>
+            </div>
+            <a th:href="@{/basket}"><img src="/Images/shopping-basket.png"/></a>
         </div>
         </div><!--wrapper-->
     </nav>

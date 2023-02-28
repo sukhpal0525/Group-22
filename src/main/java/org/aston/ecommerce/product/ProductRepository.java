@@ -13,6 +13,4 @@ public interface ProductRepository extends CrudRepository<Product, Long>, JpaRep
     List<Product> findAllByCategory(Category category);
     List<Product> findAll();
     List<Product> findByNameContainingIgnoreCase(String query);
-    @Query("SELECT p FROM Product p WHERE p.name LIKE %?1%")
-    List<Product> findAllByName(String name);
 }
