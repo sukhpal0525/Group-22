@@ -40,10 +40,33 @@ body {
     opacity: 0.6;
 }
 
+.container4 {
+    background: url(../Images/header_4.jpg) no-repeat center center fixed;
+    background-size: 100%;
+    /* change the size of the image */
+    height: 320px;
+    background-position: 0 -140px;
+    color: #e7e7e7;
+}
+
 .container4 iframe {
     float: left;
     padding-left: 3%;
     padding-right: 3%;
+}
+
+.container4 h3 {
+    font-size: 80px;
+    font-weight: 700;
+    text-align: right;
+    float: right;
+}
+
+.container4 p {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: right;
+    float: right;
 }
 
 .c3padder {
@@ -87,6 +110,27 @@ body {
     margin-left: 2%;
     margin-right: 2%;
     margin-top: 10%;
+}
+
+.c5padder {
+    margin: 10%;
+    /* flex col */
+    display: flex;
+    flex-direction: column;
+}
+
+.c5padder h3 {
+    font-size: 60px;
+    font-weight: bolder;
+    text-align: right;
+    padding-top: 8%;
+}
+
+.c5padder p {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: right;
+    padding-top: 3%;
 }
 
 .text {
