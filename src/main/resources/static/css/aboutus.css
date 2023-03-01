@@ -25,6 +25,7 @@ body {
 
 .container3 {
     line-height: 1.5em;
+    padding-bottom: 2%;
 }
 
 .container3 h3 {
@@ -71,10 +72,11 @@ body {
 
 .c3padder {
     margin: 10%;
+    margin-bottom: 10%;
 }
 
 .c4padder {
-    margin: 10%;
+    margin: 5%;
 }
 
 .container {
@@ -103,7 +105,7 @@ body {
 }
 
 .container {
-    margin-bottom: 200px;
+    margin-bottom: 100px;
 }
 
 .container4 {
