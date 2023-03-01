@@ -391,124 +391,31 @@ header {
     }
     /*-------------------- Item Page -------------------*/
     /*-------------------- Login and Signup -------------------*/
-    .b-video {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        z-index: -1;
+    .login-box{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: 1fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        margin:100px;
     }
-    .login-box {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        padding: 40px;
-        margin: 20px auto;
-        transform: translate(-50%, -55%);
-        box-sizing: border-box;
-        backdrop-filter: blur(12px) saturate(155%);
-        -webkit-backdrop-filter: blur(12px) saturate(155%);
-        background-color: rgba(0, 0, 0, 0.92);
-        border-radius: 12px;
-        border: 1px solid rgba(209, 213, 219, 0.3);
+    
+    .account-form{
+        grid-area: 1 / 1 / 2 / 2;
     }
-    .login-box form {
-        width: 400px;
+    
+    .video-bar{
+        grid-area: 1 / 2 / 2 / 3;
     }
-    .login-box p {
-        padding: 30px 0px 20px 0px;
-        color: #fff;
-        text-align: center;
-        font-size: 1.5rem;
-        font-weight: bold;
-        letter-spacing: 1px;
-    }
-    .login-box input {
-        font-size: 14px;
-        border-radius: 6px;
-        line-height: 1.5;
-        height: 15px;
-        width: 95%;
-        margin-bottom: 15px;
-        transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
-        border: none;
-        color: #e0e0e0;
-        background: #131313;
-        display: block;
-        height: 36px;
-        padding: 8px 10px;
-        margin-top: 10px;
-    }
-    .submit-btn {
-        position: relative;
-        font-size: 15px;
-        text-decoration: none;
-        padding: 12px 18px;
-        display: inline-block;
-        border-radius: 6em;
-        transition: all .2s;
-        border: none;
-        font-family: inherit;
-        font-weight: 600;
-        color: #e0e0e0;
-        background-color: #131313;
-        margin-bottom: 15px;
-        margin-top: 20px;
-    }
-    .submit-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    }
-    .submit-btn:active {
-        transform: translateY(-1px);
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    }
-    .submit-btn::after {
-        content: "";
-        display: inline-block;
-        height: 100%;
+    
+    .video-bar video{
         width: 100%;
-        border-radius: 100px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        transition: all .4s;
+        height: 100%;
+        object-fit: cover;
     }
-    .submit-btn::after {
-        background-color: #460a47;
-    }
-    .submit-btn:hover::after {
-        transform: scaleX(1.4) scaleY(1.6);
-        opacity: 0;
-    }
-    .submitting {
-        display: flex;
-        justify-content: center;
-    }
-    .redirecting {
-        display: flex;
-        justify-content: center;
-    }
-    .login-box h3,
-    a {
-        color: #e0e0e0;
-        font-size: 16px;
-        margin-top: 10px;
-    }
-    .login-box a:hover {
-        color: #460a47;
-    }
-    .login-box .success-msg {
-        color: green;
-    }
-    .login-box .success-msg a {
-        color: #3c763d;
-        font-weight: bold;
-    }
-    .login-box .success-msg a:hover {
-        color: #3c763d;
-        text-decoration: underline;
-    }
+
+
+
     /*-------------------- About Us -------------------*/
     .about_us__container {
         background: url(../Images/pcbackground.jpg) no-repeat center center fixed;
