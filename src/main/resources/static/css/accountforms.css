@@ -1,0 +1,129 @@
+body{
+    background-color: #e7e7e7;
+}
+
+.spacing{
+    padding:20px;
+}
+
+.login-box{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    box-shadow:  -26px 26px 52px #bebebe,
+    26px -26px 52px #ffffff;
+    width: 75vh;
+}
+
+.account-form{
+    grid-area: 1 / 1 / 2 / 2;
+    padding: 0px 30px 0px 60px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.account-form h3{
+    padding: 50px 0px 0px 0px;
+    font-weight: 500;
+    font-size: 1.8rem;
+    vertical-align: bottom;
+    margin: 0%;
+    margin-left: 5px;
+    text-transform: capitalize;
+}
+
+.account-form .inputs-account{
+    margin:15px 0px 15px 0px;
+}
+
+.account-form .inputs-account input{
+    width: 80%;
+    padding: 8px;
+    line-height: 28px;
+    border: 2px solid transparent;
+    border-bottom-color: #777;
+    padding: .2rem 0;
+    outline: none;
+    background-color: transparent;
+    color: #323232;
+    transition: .3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.inputs-account input:hover::placeholder, .inputs-account input:focus::placeholder{
+    color:#acef20;
+}
+
+.account-form button{
+    font-size: 12px;
+    position: relative;
+    margin-top:20px;
+    padding: 1em 2.5em 1em 2.5em;
+    border: none;
+    border-radius: 2em;
+    background-color:#acef20 ;
+    transition: all 0.1s linear;
+    box-shadow: 0 0.4em 1em rgba(0, 0, 0, 0.1);
+}
+
+.account-form button:active{
+    transform: scale(0.95);
+}
+
+.account-form button span{
+    color: #ffff;
+    font-size: 15px;
+}
+
+.account-form button .border{
+    position: absolute;
+    border: 0.15em solid #acef20;
+    transition: all 0.2s 0.08s linear;
+    top: 50%;
+    left: 50%;
+    width: 6em;
+    height: 2em;
+    transform: translate(-50%, -50%);
+}
+
+.account-form button:hover .border{
+    display: block;
+    width: 8.3em;
+    height: 3.9em;
+    border-radius: 2em;
+}
+
+.account-form p{
+    font-size: 12px;
+    padding-top: 20px;
+}
+
+.account-form a{
+    text-decoration: none;
+    color: #323232;
+}
+
+.account-form a:hover{
+    color:#acef20;
+}
+
+.redirect{
+    margin-bottom: 40px;
+}
+
+.video-bar{
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+.video-bar video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
