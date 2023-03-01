@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,32 +13,43 @@
 
     <nav>
         <div class="wrapper">
-            <div class="logo">
-                <a th:href="@{/home}"><img src="/Images/logo.png"/></a>
+        <div class="logo">
+            <a th:href="@{/home}"><img src="/Images/logo.png"/></a>
+        </div>
+        <div class="pages">
+            <ul class="right">
+                <li>|</li>
+                <li><a th:href="@{/home}" class="active">Home</a></li>
+                <li>|</li>
+                <li><a th:href="@{/aboutus}">About us</a></li>
+                <li>|</li>
+                <li th:if="${#request.userPrincipal == null}"><a th:href="@{/login}">Login</a></li>
+                <li th:if="${#request.userPrincipal == null}">|</li>
+                <li th:if="${#request.userPrincipal == null}"><a th:href="@{/register}">Signup</a></li>
+                <li th:unless="${#request.userPrincipal == null}"><a href="javascript:;" onclick="document.getElementById('logoutForm').submit();" role="menuitem">Logout</a></li>
+                <li>|</li>
+                <li><a th:href="@{/basket}">Basket</a></li>
+                <li>|</li>
+                <li><a th:href="@{/products/search}">Products</a></li>
+                <li>|</li>
+                <li><a th:href="@{/orders/past_orders}">Orders</a></li>
+                <li>|</li>
+                <li><a th:href="@{/user-dashboard}">Dashboard</a></li>
+            </ul>
+        </div>
+        <div class="right-icons">
+            <div class="person">
+            <a th:href="@{/home}" style="display: block;" ><img src="/Images/profile.png"/></a>
+            <div class="dropdown-menu">
+                <li th:if="${#request.userPrincipal == null}"><a th:href="@{/login}">Login</a></li>
+                <li th:if="${#request.userPrincipal == null}"><a th:href="@{/register}">Signup</a></li>
+                <li th:unless="${#request.userPrincipal == null}"><a href="javascript:;"
+                                                                     onclick="document.getElementById('logoutForm').submit();"
+                                                                     role="menuitem">Logout</a></li>
             </div>
-            <div class="pages">
-                <ul class="right">
-                    <li>|</li>
-                    <li><a th:href="@{/home}" class="active">Home</a></li>
-                    <li>|</li>
-                    <li><a th:href="@{/aboutus}">About us</a></li>
-                    <li><a th:href="@{/products}">Products </a></li>
-                    <li><a th:href="@{/products}">Contact Us </a></li>
-                </ul>
             </div>
-            <div class="right-icons">
-                <div class="person">
-                    <a th:href="@{/home}" style="display: block;" ><img src="/Images/profile.png"/></a>
-                    <div class="dropdown-menu">
-                        <li th:if="${#request.userPrincipal == null}"><a th:href="@{/login}">Login</a></li>
-                        <li th:if="${#request.userPrincipal == null}"><a th:href="@{/register}">Signup</a></li>
-                        <li th:unless="${#request.userPrincipal == null}"><a href="javascript:;"
-                                                                             onclick="document.getElementById('logoutForm').submit();"
-                                                                             role="menuitem">Logout</a></li>
-                    </div>
-                </div>
-                <a th:href="@{/basket}"><img src="/Images/shopping-basket.png"/></a>
-            </div>
+            <a th:href="@{/basket}"><img src="/Images/shopping-basket.png"/></a>
+        </div>
         </div><!--wrapper-->
     </nav>
     <!-- Hidden form so that the login link works -->
