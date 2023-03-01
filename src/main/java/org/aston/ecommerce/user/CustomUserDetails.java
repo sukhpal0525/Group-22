@@ -1,10 +1,16 @@
 package org.aston.ecommerce.user;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
+import java.util.HashSet;
+import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+@Slf4j
 public class CustomUserDetails implements UserDetails {
 
     private User user;
@@ -15,7 +21,14 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+
+        if (user != null && user.isAdmin()) {
+            log.info("Detected admin {}", user.getEmail());
+            authorities.add(new SimpleGrantedAuthority("ADMIN"));
+        }
+        return authorities;
     }
 
     @Override

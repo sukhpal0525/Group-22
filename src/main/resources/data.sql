@@ -11,7 +11,9 @@ SET FOREIGN_KEY_CHECKS = 0;
 TRUNCATE TABLE `webproduct`;
 TRUNCATE TABLE `webuser`;
 TRUNCATE TABLE `weborder`;
+TRUNCATE TABLE `weborderitem`;
 TRUNCATE TABLE `webbasket`;
+TRUNCATE TABLE `webbasketitem`;
 
 SET FOREIGN_KEY_CHECKS = 1;
 
@@ -34,8 +36,16 @@ INSERT INTO `webproduct` (`Name`, `Amount`, `Description`,`Category`,`AmountAvai
 
 
 -- Admin Account (Password = 'admin')
-INSERT INTO `webuser` (`Email`, `UserName`, `Password`) VALUES
-  ('admin@aston.com', 'Admin', '$2a$10$AOYMzvkn8MISJsQR3Q0kXO0ZmFMJXQO6mw7IH/p2PfpJO.zCfrLlK');
+INSERT INTO `webuser` (`Email`, `UserName`, `Password`, `IsAdmin`) VALUES
+  ('admin@aston.com', 'Admin', '$2a$10$AOYMzvkn8MISJsQR3Q0kXO0ZmFMJXQO6mw7IH/p2PfpJO.zCfrLlK', 1),
+-- Test Account (Password = 'admin')
+  ('test@test.com', 'Test User', '$2a$10$AOYMzvkn8MISJsQR3Q0kXO0ZmFMJXQO6mw7IH/p2PfpJO.zCfrLlK', 0);
 
-INSERT INTO `weborder` (`UserID`, `ProductID`, `Quantity`) VALUES
-  (1, 4, 5);
+
+INSERT INTO `webbasket` (`UserID`) VALUES
+  (1);
+
+INSERT INTO `webbasketitem` (`BasketID`, `ProductID`, `Amount`) VALUES
+  (1, 4, 5),
+  (1, 2, 1),
+  (1, 5, 3);
