@@ -390,29 +390,7 @@ header {
         padding-top: 78px;
     }
     /*-------------------- Item Page -------------------*/
-    /*-------------------- Login and Signup -------------------*/
-    .login-box{
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        grid-template-rows: 1fr;
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
-        margin:100px;
-    }
-    
-    .account-form{
-        grid-area: 1 / 1 / 2 / 2;
-    }
-    
-    .video-bar{
-        grid-area: 1 / 2 / 2 / 3;
-    }
-    
-    .video-bar video{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+
 
 
 
