@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Basket - Group 22</title>
-<!--    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>-->
-    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
     <div th:replace="fragments/nav_bar :: styles"></div>
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div th:replace="fragments/nav_bar :: header"></div>
@@ -30,15 +30,16 @@
         </thead>
         <tbody>
         <tr th:each="basket: ${listBaskets}">
-            <td th:text="${basket.product.Name}"></td>
+            <td th:text="${basket.product.name}"></td>
             <td th:text="${basket.amount}"></td>
             <td th:text="${#numbers.formatCurrency(basket.product.Amount*basket.amount)}"></td>
             <td>
-                <a th:href="@{/basket_delete/{id}(id=${basket.id})}" class="btn btn-danger" style="margin-top: -1px;">Delete</a>
+                <a th:href="@{/basket/delete/{id}(id=${basket.id})}" class="btn btn-danger" style="margin-top: -1px;">Delete</a>
             </td>
         </tr>
         </tbody>
     </table>
+    <a th:href="@{/orders/basket_order}" class="btn btn-primary" th:unless="${isNotLoggedIn}">Submit</a>
 </div>
 </body>
 </html>
