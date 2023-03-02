@@ -1,52 +1,101 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="ISO-8859-1">
+  <head>
+    <meta charset="ISO-8859-1" />
     <title>Sign Up - Group 22</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="/css/accountforms.css"
+    />
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-</head>
-<body>
-
-<div th:replace="fragments/nav_bar :: header"></div>
-
-<video autoplay loop muted plays-inline class="b-video">
-    <source src="/Images/loginBackingEdit.mp4" type="video/mp4">
-</video>
-
-<div class="login-box">
-
-    <p>Sign Up!</p>
-
-    <form th:action="@{/process_register}" th:object="${user}"
-          method="post">
-
-        <div th:if="${errorMsg}" th:text="${errorMsg}" style="color: red;"></div>
-
-        <div th:if="${successMsg}" class="success-msg">
-            Success! <a th:href="@{/login}">Click here to Log In</a>
-        </div>
-
-        <input type="text" th:field="*{username}" class="form-control"
-               required minlength="2" maxlength="45" placeholder="Username"/>
-
-        <input type="email" th:field="*{email}" class="form-control" placeholder="Email" required/>
+    <script
+      type="text/javascript"
+      src="/webjars/bootstrap/js/bootstrap.min.js"
+    ></script>
+  </head>
+  <body>
+    <div th:replace="fragments/nav_bar :: header"></div>
 
 
-        <input type="password" th:field="*{password}" class="form-control"
-               required minlength="6" maxlength="64" placeholder="Password"/>
+    <div class="login-box">
+      <div class="account-form">
+            <div class="spacing"></div>
 
-        <div class="submitting">
-            <button type="submit" class="submit-btn">Sign Up</button>
-        </div>
+            <h3>SIGN UP</h3>
 
-        <div class="redirecting">
-            <h3>Already have an account? <a th:href="@{/login}" class="a2">Log In!</a></h3>
-        </div>
+            <form
+            th:action="@{/process_register}"
+            th:object="${user}"
+            method="post"
+            >
+                <div
+                    th:if="${errorMsg}"
+                    th:text="${errorMsg}"
+                    style="color: red"
+                ></div>
 
-    </form>
-</div>
+                <div th:if="${successMsg}" class="success-msg">
+                    Success! <a th:href="@{/login}">Click here to Log In</a>
+                </div>
 
-</body>
+                <div class="inputs-account">
+                    <input
+                    type="text"
+                    th:field="*{username}"
+                    class="form-control"
+                    required
+                    minlength="2"
+                    maxlength="45"
+                    placeholder="Username"
+                    />
+                </div>
+
+                <div class="inputs-account">
+                    <input
+                    type="email"
+                    th:field="*{email}"
+                    class="form-control"
+                    placeholder="Email"
+                    required
+                    />
+                </div>
+
+                <div class="inputs-account">
+                    <input
+                    type="password"
+                    th:field="*{password}"
+                    class="form-control"
+                    required
+                    minlength="6"
+                    maxlength="64"
+                    placeholder="Password"
+                    />
+                </div>
+
+                <button class="green-rounded" type="submit">
+                    <span>Submit</span>
+                    <div class="borderwide green-rounded"></div>
+                </button>
+
+
+                <div class="redirect">
+                    <p>
+                    Already have an account?
+                    <a th:href="@{/login}" class="a2">Log In!</a>
+                    </p>
+                </div>
+            </form>
+            <div class="spacing"></div>
+      </div>
+
+      <div class="video-bar">
+        <video autoplay muted loop>
+            <source src="/Images/loginBackingEdit.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+
+    </div>
+  </body>
 </html>
