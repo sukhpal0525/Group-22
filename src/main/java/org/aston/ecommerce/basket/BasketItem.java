@@ -25,5 +25,4 @@ public class BasketItem {
     @ManyToOne
     @JoinColumn(name = "ProductID")
     private Product product;
-
 }

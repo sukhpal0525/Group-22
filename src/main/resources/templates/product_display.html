@@ -3,8 +3,7 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>[[${product.Name}]] - Group 22</title>
-<!--    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>-->
-    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
     <div th:replace="fragments/nav_bar :: styles"></div>
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
@@ -22,23 +21,19 @@
     <p th:text="${product.Description}"></p>
     <p class="text-muted" th:text="${#numbers.formatCurrency(product.Amount)}"></p>
     <div class="alert alert-warning" role="alert"
-         th:if="${product.AmountAvailable <= 20 && product.AmountAvailable > 10}">
-        Warning! This item is low in stock. <strong>Only [[${product.AmountAvailable}]] left</strong>
-    </div>
-    <div class="alert alert-danger" role="alert"
-         th:if="${product.AmountAvailable <= 10 && product.AmountAvailable > 0}">
+         th:if="${product.AmountAvailable <= 20 && product.AmountAvailable >= 1}">
         Warning! This item is low in stock. <strong>Only [[${product.AmountAvailable}]] left</strong>
     </div>
     <div class="alert alert-danger" role="alert" th:if="${product.AmountAvailable < 1}">
         Warning! The product is out of stock.
     </div>
-    <form th:if="${product.AmountAvailable >= 1}" th:action="@{/product_purchase}" th:object="${purchase}"
+    <form th:if="${product.AmountAvailable >= 1}" th:action="@{/basket/add}"
           method="post">
-        <input type="hidden" th:field="*{product_id}"/>
+        <input type="hidden" th:value="${productId}" name="productId"/>
         <div class="row justify-content-between mx-auto">
             <div class="col-md-9 col-sm-7 col-12">
-                <input type="number" th:field="*{num_ordered}" min="1" value="1" class="form-control"
-                       placeholder="Amount"/>
+                <input type="number" th:value="${numOrdered}" min="1" value="1" class="form-control"
+                       placeholder="Amount" name="numOrdered"/>
             </div>
             <div class="col-md-3 col-sm-5 col-12 mt-3 mt-sm-0">
                 <button type="submit" class="btn btn-primary">Add to Basket</button>

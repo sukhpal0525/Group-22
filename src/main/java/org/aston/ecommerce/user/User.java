@@ -1,11 +1,16 @@
 package org.aston.ecommerce.user;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.aston.ecommerce.basket.Basket;
 
 import javax.persistence.*;
 import java.util.List;
+import org.aston.ecommerce.product.Product;
 
 @Entity
+@Data
 @Table(name = "WebUser")
 public class User {
 
@@ -34,42 +39,11 @@ public class User {
     @Column(nullable = false, columnDefinition = "tinyint(1) default 0")
     private boolean isAdmin;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Basket> baskets;
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Basket basket = new Basket();
 
-    public String getUsername() {
-        return username;
+    public boolean isBasketEmpty() {
+        return basket == null || basket.getBasketItems() == null || basket.getBasketItems().isEmpty();
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public boolean isAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
-    }
-
-    public List<Basket> getBaskets() {
-        return baskets;
-    }
 }
