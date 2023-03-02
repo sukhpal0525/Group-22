@@ -31,7 +31,60 @@ a:hover {
     margin: auto;
 }
 
+/*------------ Buttons --------------*/
+/*----Green round button----*/
+.account-form button{
+    font-size: 12px;
+    position: relative;
+    margin-top:20px;
+    padding: 1em 2.5em 1em 2.5em;
+    border: none;
+    border-radius: 2em;
+    background-color:#acef20 ;
+    transition: all 0.1s linear;
+    box-shadow: 0 0.4em 1em rgba(0, 0, 0, 0.1);
+}
 
+.account-form button:active{
+    transform: scale(0.95);
+}
+
+.account-form button span{
+    color: #ffff;
+    font-size: 15px;
+}
+
+.account-form button .border{
+    position: absolute;
+    border: 0.15em solid #acef20;
+    transition: all 0.2s 0.08s linear;
+    top: 50%;
+    left: 50%;
+    width: 6em;
+    height: 2em;
+    transform: translate(-50%, -50%);
+}
+
+.account-form button:hover .border{
+    display: block;
+    width: 8.3em;
+    height: 3.9em;
+    border-radius: 2em;
+}
+
+.account-form p{
+    font-size: 12px;
+    padding-top: 20px;
+}
+
+.account-form a{
+    text-decoration: none;
+    color: #323232;
+}
+
+.account-form a:hover{
+    color:#acef20;
+}
 /*------------ nav bar --------------*/
 
 nav {
@@ -376,20 +429,35 @@ margin-top:155px;
     height: 324px;
     background-position: 0 -140px;
 }
-
+ .container2{
+ width:100%;
+ text-align:center;
+ position:relative;
+ }
 .sub_page_product {
     text-align: center;
     padding: 20px 0;
-    .pro_row1 {
+    width:50%;
+    position: absolute;
+    left: 25%;
+    }
+.pro_row1 {
         width: 100%;
         float: left;
-    }
-    .sub_page_product h2 {
+        }
+.sub_page_product h2 {
         font-size: 80px;
         font-weight: 700;
         color: #e7e7e7;
         padding-top: 78px;
+       padding-bottom:24px;
     }
+.form-control{
+    width:90%;
+    float:right;
+    border-radius: 35px;
+    text-indent:20px;
+}
     /*-------------------- Item Page -------------------*/
 
 
