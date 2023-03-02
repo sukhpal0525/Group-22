@@ -16,36 +16,37 @@
 
     <nav>
         <div class="wrapper">
-        <div class="logo">
-            <a th:href="@{/home}"><img src="/Images/logo.png"/ width="200px"></a>
-        </div>
-        <div class="pages">
-            <ul class="right">
-                <li>|</li>
-                <li><a th:href="@{/home}" class="active">Home</a></li>
-                <li>|</li>
-                <li><a th:href="@{/aboutus}">About us</a></li>
-            </ul>
-        </div>
-        <div class="right-icons">
-            <div class="person">
-            <a th:href="@{/home}" style="display: block;" ><i class="fas fa-user"></i></a>
-            <div class="dropdown-menu">
-                <li th:if="${#request.userPrincipal == null}"><a th:href="@{/login}">Login</a></li>
-                <li th:if="${#request.userPrincipal == null}"><a th:href="@{/register}">Signup</a></li>
-                <li th:unless="${#request.userPrincipal == null}"><a href="javascript:;"
-                                                                     onclick="document.getElementById('logoutForm').submit();"
-                                                                     role="menuitem">Logout</a></li>
+            <div class="logo">
+                <a th:href="@{/home}"><img src="/Images/logo.png" width="200px"></a>
             </div>
+            <div class="pages">
+                <ul>
+                    <li><a th:href="@{/home}" class="active">Home</a></li>
+                    <li><a th:href="@{/products/search}">Products</a></li>
+                    <li><a th:href="@{/aboutus}">About us</a></li>
+                    <!-- When user is logged in -->
+                    <li th:if="${#request.userPrincipal != null}"><a th:href="@{/orders/past_orders}">Orders</a></li>
+                    <li th:if="${#request.userPrincipal != null}"><a th:href="@{/user-dashboard}">Dashboard</a></li>
+                </ul>
             </div>
-            <a th:href="@{/basket}"><i class="fas fa-shopping-basket"></i></a>
-        </div>
+            <div class="right-icons">
+                <div class="person">
+                    <a th:href="@{/home}" style="display: block;" ><i class="fas fa-user"></i></a>
+                    <div class="dropdown-menu">
+                        <li th:if="${#request.userPrincipal == null}"><a th:href="@{/login}">Login</a></li>
+                        <li th:if="${#request.userPrincipal == null}"><a th:href="@{/register}">Signup</a></li>
+                        <li th:unless="${#request.userPrincipal == null}"><a href="javascript:;"
+                                                                             onclick="document.getElementById('logoutForm').submit();"
+                                                                             role="menuitem">Logout</a></li>
+                    </div>
+                </div>
+                <a th:href="@{/basket}"><i class="fas fa-shopping-basket"></i></a>
+            </div>
         </div><!--wrapper-->
-    </nav>
-    <!-- Hidden form so that the login link works -->
-    <form name="logoutForm" th:action="@{/logout}" method="post" id="logoutForm">
-        <input hidden type="submit" value="Sign Out"/>
-    </form>
+        <!-- Hidden form so that the login link works -->
+        <form name="logoutForm" th:action="@{/logout}" method="post" id="logoutForm">
+            <input hidden type="submit" value="Sign Out"/>
+        </form>
 
 </section>
 </body>
