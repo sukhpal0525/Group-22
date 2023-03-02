@@ -32,59 +32,7 @@ a:hover {
 }
 
 /*------------ Buttons --------------*/
-/*----Green round button----*/
-.account-form button{
-    font-size: 12px;
-    position: relative;
-    margin-top:20px;
-    padding: 1em 2.5em 1em 2.5em;
-    border: none;
-    border-radius: 2em;
-    background-color:#acef20 ;
-    transition: all 0.1s linear;
-    box-shadow: 0 0.4em 1em rgba(0, 0, 0, 0.1);
-}
 
-.account-form button:active{
-    transform: scale(0.95);
-}
-
-.account-form button span{
-    color: #ffff;
-    font-size: 15px;
-}
-
-.account-form button .border{
-    position: absolute;
-    border: 0.15em solid #acef20;
-    transition: all 0.2s 0.08s linear;
-    top: 50%;
-    left: 50%;
-    width: 6em;
-    height: 2em;
-    transform: translate(-50%, -50%);
-}
-
-.account-form button:hover .border{
-    display: block;
-    width: 8.3em;
-    height: 3.9em;
-    border-radius: 2em;
-}
-
-.account-form p{
-    font-size: 12px;
-    padding-top: 20px;
-}
-
-.account-form a{
-    text-decoration: none;
-    color: #323232;
-}
-
-.account-form a:hover{
-    color:#acef20;
-}
 /*------------ nav bar --------------*/
 
 nav {
@@ -457,6 +405,27 @@ margin-top:155px;
     float:right;
     border-radius: 35px;
     text-indent:20px;
+}
+.btn-primary{
+background-color:#ACEF20;
+border-color:#ACEF20;
+}
+.btn-primary:hover {
+background-color:#ACEF20;
+border-color:#ACEF20;
+}
+.btn{
+border-radius: 2.25rem;
+}
+.card-body{
+text-align:center;
+}
+.btn-outline-secondary {
+border-color:#ACEF20;
+}
+.btn-outline-secondary:hover {
+border-color:#ACEF20;
+background-color:#ACEF20;
 }
     /*-------------------- Item Page -------------------*/
 
