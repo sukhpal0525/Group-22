@@ -38,10 +38,18 @@ public class ProductController {
 //        return ResponseEntity.of(this.productService.findAll());
 //    }
 
-    @GetMapping("/products/list/{category}")
-    public String getProducts(Model model, @PathVariable("category") String categoryStr) {
-        model.addAttribute("products", this.productService.findByCategory(categoryStr));
-        return "products_category";
+    @GetMapping("/products/list/category")
+    public String getProducts(Model model, @RequestParam(name = "categorySelect", required = false) String categoryStr) {
+
+
+        List<Product> products = this.productService.findByCategory(categoryStr);
+
+        if(products == null) products = this.productService.findAll().get();
+
+        model.addAttribute("products", products);
+
+        model.addAttribute("categorySelect", categoryStr);
+        return "products_list";
     }
 
     @GetMapping("/product/{id}")
