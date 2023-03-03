@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Basket - Group 22</title>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+<!--    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>-->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
     <div th:replace="fragments/nav_bar :: styles"></div>
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
@@ -11,7 +12,7 @@
 <body>
 <div th:replace="fragments/nav_bar :: header"></div>
 
-<div class="container text-center">
+<div class="importContainer text-center">
     <div th:if="${isNotLoggedIn}" class="mt-2 alert alert-danger">Sorry. You need to be logged in to
         add items to your
         basket.
@@ -39,7 +40,7 @@
         </tr>
         </tbody>
     </table>
-    <a th:href="@{/orders/basket_order}" class="btn btn-primary" th:unless="${isNotLoggedIn}">Submit</a>
+    <a th:href="@{/orders/basket_order}" class="btn btn-primary" th:if="not (${isNotLoggedIn} or ${empty})">Submit</a>
 </div>
 </body>
 </html>
