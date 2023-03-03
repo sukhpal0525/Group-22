@@ -19,7 +19,7 @@ body {
 
 a,
 a:hover {
-    transition: 500ms linear color, 500ms linear background, 500ms linear border;
+    transition: 250ms linear color, 250ms linear background, 250ms linear border;
 }
 
 .c {
@@ -32,6 +32,7 @@ a:hover {
     margin: auto;
 }
 
+/*------------ Buttons --------------*/
 
 /*------------ nav bar --------------*/
 
@@ -377,20 +378,56 @@ margin-top:155px;
     height: 324px;
     background-position: 0 -140px;
 }
-
+ .container2{
+ width:100%;
+ text-align:center;
+ position:relative;
+ }
 .sub_page_product {
     text-align: center;
     padding: 20px 0;
-    .pro_row1 {
+    width:50%;
+    position: absolute;
+    left: 25%;
+    }
+.pro_row1 {
         width: 100%;
         float: left;
-    }
-    .sub_page_product h2 {
+        }
+.sub_page_product h2 {
         font-size: 80px;
         font-weight: 700;
         color: #e7e7e7;
         padding-top: 78px;
+       padding-bottom:24px;
     }
+.form-control{
+    width:90%;
+    float:right;
+    border-radius: 35px;
+    text-indent:20px;
+}
+.btn-primary{
+background-color:#ACEF20;
+border-color:#ACEF20;
+}
+.btn-primary:hover {
+background-color:#ACEF20;
+border-color:#ACEF20;
+}
+.btn{
+border-radius: 2.25rem;
+}
+.card-body{
+text-align:center;
+}
+.btn-outline-secondary {
+border-color:#ACEF20;
+}
+.btn-outline-secondary:hover {
+border-color:#ACEF20;
+background-color:#ACEF20;
+}
     /*-------------------- Item Page -------------------*/
 
 
