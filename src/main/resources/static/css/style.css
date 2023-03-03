@@ -5,7 +5,7 @@
     list-style-type: none;
     border: 0;
     outline: none;
-    text-decoration: none;
+    text-decoration: none !important;
     font-family: 'Roboto', sans-serif;
     
 }
@@ -74,6 +74,7 @@ nav a:hover {
 
 .pages ul {
 padding-left:20%;
+float:left;
 }
 
 .right-icons {
@@ -402,7 +403,7 @@ margin-top:155px;
        padding-bottom:24px;
     }
 .form-control{
-    width:90%;
+    width:100%;
     float:right;
     border-radius: 35px;
     text-indent:20px;
@@ -418,6 +419,40 @@ border-color:#ACEF20;
 .btn{
 border-radius: 2.25rem;
 }
+
+/*----------- Filter ----------*/
+.filter_main{
+  width:100%;
+  float: left;
+  margin: 20px 0;
+}
+.product_filter{
+  float:right;
+}
+.product_filter label {
+  margin-right: 10px;
+}
+
+.product_filter select {
+  padding: 5px;
+}
+
+.product_filter .items .item {
+  display: none;
+}
+
+.product_filter .items .item.category1 {
+  display: block;
+}
+
+.product_filter select:focus + .items .item {
+  display: none;
+}
+
+.product_filter select:focus + .items .item[class*="category"]:not(.category-all) {
+  display: block;
+}
+
 .card-body{
 text-align:center;
 }
