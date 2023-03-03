@@ -76,14 +76,13 @@ body {
 }
 
 .c4padder {
-    margin: 5%;
+    margin: 5% !important;
 }
 
 .container {
     margin-left: 2%;
     margin-right: 2%;
 }
-
 .c4padder h3 {
     font-size: 40px;
     font-weight: 700;
@@ -102,10 +101,6 @@ body {
 
 .padding {
     padding-top: 10px;
-}
-
-.container {
-    margin-bottom: 100px;
 }
 
 .container4 {
