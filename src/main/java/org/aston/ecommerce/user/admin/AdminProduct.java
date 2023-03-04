@@ -51,9 +51,8 @@ public class AdminProduct {
     @GetMapping("/admin/products/{id}")
     public String getProduct(Model model, @PathVariable("id") String id) {
         Optional<Product> product = this.productRepository.findById(Long.parseLong(id));
-        model.addAttribute("amProduct",product.get());
-        model.addAttribute("amProductId", id);
-        model.addAttribute("numOrdered", "1");
+        model.addAttribute("product",product.get());
+        model.addAttribute("productId", id);
         return "admin_product_edit";
     }
 
