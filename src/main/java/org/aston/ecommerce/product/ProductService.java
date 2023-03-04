@@ -40,4 +40,8 @@ public class ProductService {
         return Optional.of(this.productRepository.findAll());
     }
 
+    public void updateProduct(Product product) {
+        productRepository.save(product);
+    }
+
 }

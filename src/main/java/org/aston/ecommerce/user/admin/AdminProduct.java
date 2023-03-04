@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
@@ -54,6 +52,12 @@ public class AdminProduct {
         model.addAttribute("product",product.get());
         model.addAttribute("productId", id);
         return "admin_product_edit";
+    }
+
+    @PostMapping("/admin/products/{id}")
+    public String updateProduct(@ModelAttribute("product") Product product) {
+        productService.updateProduct(product);
+        return "redirect:/admin/products";
     }
 
 }
