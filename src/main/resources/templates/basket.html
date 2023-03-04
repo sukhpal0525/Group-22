@@ -30,7 +30,8 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="basket: ${listBaskets}">
+        <tr th:each="basket: ${listBaskets}" style="cursor: pointer"
+            th:attr="onclick=|rowClicked('${basket.product.id}')|">
             <td th:text="${basket.product.name}"></td>
             <td th:text="${basket.amount}"></td>
             <td th:text="${#numbers.formatCurrency(basket.product.Amount*basket.amount)}"></td>
@@ -43,4 +44,11 @@
     <a th:href="@{/orders/basket_order}" class="btn btn-primary" th:if="not (${isNotLoggedIn} or ${empty})">Submit</a>
 </div>
 </body>
+
+<script>
+    function rowClicked(id) {
+        location.href = "/product/" + id;
+    }
+</script>
+
 </html>
