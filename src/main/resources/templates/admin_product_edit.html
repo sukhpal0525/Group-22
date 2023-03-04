@@ -15,13 +15,14 @@
 <p>You are editing this Product:</p>
 <p th:text="${product.Name}"></p>
 <div class="form_for_editing">
-    <form method="post" th:action="@{/admin/products/{id}(id=${product.Id}}" th:object="${product}">
-        <label>Name:</label>
+    <form method="post" th:action="@{/admin/products/{id}(id=${product.Id})}" th:object="${product}">
         <input type="text" th:field="*{Name}" />
         <label>Description:</label>
         <input type="textarea" th:field="*{Description}" />
         <label>Stock Level:</label>
         <input type="number" th:field="*{AmountAvailable}" />
+        <label>Price:</label>
+        <input type="number" th:field="*{Amount}" />
         <button type="submit">Save Changes</button>
     </form>
 </div>
