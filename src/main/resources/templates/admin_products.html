@@ -38,7 +38,7 @@
                         <p class="card-title" th:text="${products.name}"></p>
                         <p class="card-text" th:text="'&pound;' + ${products.amount}"></p>
                         <div class="d-flex justify-content-center">
-                            <a th:href="@{/product/{id}(id=${products.id})}"
+                            <a th:href="@{/admin/products/{id}(id=${products.id})}"
                                class="text-reset text-decoration-none d-inline">
                                 <button type="button" class="btn btn-sm btn-outline-secondary mx-auto text-center">Edit Product</button><!--Edit-->
                             </a>
