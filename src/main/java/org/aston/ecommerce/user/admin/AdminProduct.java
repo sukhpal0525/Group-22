@@ -60,4 +60,16 @@ public class AdminProduct {
         return "redirect:/admin/products";
     }
 
+    @GetMapping("/admin/products/new")
+    public String showAddForm(Model model) {
+        model.addAttribute("product", new Product());
+        return "admin_add_product";
+    }
+
+    @PostMapping("/admin/products")
+    public String addProduct(@ModelAttribute("product") Product product) {
+        productRepository.save(product);
+        return "redirect:/admin/products";
+    }
+
 }

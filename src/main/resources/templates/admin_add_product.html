@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Product</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <div th:replace="fragments/nav_bar :: styles"></div>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+<form method="post" th:action="@{/admin/products}" th:objects="${product}">
+    <label>Name:</label>
+    <input type="text" th:field="*{name}" />
+    <label>Description:</label>
+    <input type="textarea" th:field="*{description}" />
+    <label>Price:</label>
+    <input type="number" th:field="*{amount}" />
+    <label>Stock Level:</label>
+    <input type="number" th:field="*{amountAvailable}" />
+    <button type="submit">Add Product</button>
+</form>
+</body>
+</html>
