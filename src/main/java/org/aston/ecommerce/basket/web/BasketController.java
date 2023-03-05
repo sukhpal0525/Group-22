@@ -7,6 +7,7 @@ import org.aston.ecommerce.user.CustomUserDetails;
 import org.aston.ecommerce.user.User;
 import org.aston.ecommerce.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.Arrays;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/basket")
@@ -94,4 +98,57 @@ public class BasketController {
         }
         return "redirect:/product/" + productId;
     }
+
+    @GetMapping("/edit/{id}")
+    public String editBasketItem(Model model, @PathVariable("id") String id) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (principal instanceof CustomUserDetails) {
+            String username = ((CustomUserDetails) principal).getUsername();
+            User loggedInUser = userRepo.findByEmail(username);
+            Basket basket = loggedInUser.getBasket();
+            BasketItem toEdit = basket.getBasketItems().stream()
+                    .filter((item) -> item.getId().equals(Long.parseLong(id)))
+                    .findFirst()
+                    .orElse(null);
+            if(toEdit == null) return "redirect:/basket";
+            model.addAttribute("basketItem", toEdit);
+            return "basket_edit";
+        }else{
+            return "redirect:/basket";
+        }
+    }
+
+    @PostMapping("/edit")
+    public String postEditBasketItem(
+            @RequestParam("newAmount") String newAmountStr,
+            @RequestParam("productId") String productIdStr,
+            @RequestParam("basketItemId") String basketItemIdStr,
+            RedirectAttributes redirectAttrs) {
+
+        //See if user is logged in
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        //If user is not logged in, then send them to the login page because they need to be logged-in in order to add a product to their basket
+        if (!(principal instanceof CustomUserDetails)) {
+            return "redirect:/basket";
+        }
+        //Find currently logged-in user
+        String username = ((CustomUserDetails) principal).getUsername();
+        User loggedInUser = userRepo.findByEmail(username);
+
+        Integer newAmount = Integer.parseInt(newAmountStr);
+        Long productId = Long.parseLong(productIdStr);
+
+        boolean editSuccess = this.basketService.editBasketItemAmount(productId, newAmount, loggedInUser);
+        if (editSuccess) {
+            redirectAttrs.addFlashAttribute("edit_success", "yes");
+        } else {
+            redirectAttrs.addFlashAttribute("edit_fail", "Error! You tried to order more products than there is currently available in stock.");
+        }
+
+        return "redirect:/basket/edit/" + basketItemIdStr;
+    }
+
+
 }
