@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-<form method="post" th:action="@{/admin/products}" th:objects="${product}">
+<form method="post" th:action="@{/admin/products/new}" th:objects="${product}">
     <label>Name:</label>
     <input type="text" th:field="*{name}" />
     <label>Description:</label>

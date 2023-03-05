@@ -66,7 +66,7 @@ public class AdminProduct {
         return "admin_add_product";
     }
 
-    @PostMapping("/admin/products")
+    @PostMapping("/admin/products/new")
     public String addProduct(@ModelAttribute("product") Product product) {
         productRepository.save(product);
         return "redirect:/admin/products";
