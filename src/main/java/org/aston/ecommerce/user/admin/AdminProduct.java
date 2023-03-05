@@ -5,6 +5,8 @@ import org.aston.ecommerce.product.Product;
 import org.aston.ecommerce.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -61,7 +63,10 @@ public class AdminProduct {
     }
 
     @GetMapping("/admin/products/new")
-    public String showAddForm(Model model) {
+    public String showAddForm(Model model, Authentication authentication) {
+//        if(authentication != null) {
+//            System.out.println(authentication.getAuthorities());
+//        }
         model.addAttribute("product", new Product());
         return "admin_add_product";
     }
