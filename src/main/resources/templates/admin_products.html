@@ -28,6 +28,12 @@
 
 <div class="py-4 album">
     <div class="wrapper">
+        <div class="alert alert-warning mt-2" role="alert" th:each="amberProduct : ${amberProducts}">
+            Product [[${amberProduct.name}]] is low in stock. <strong>Only [[${amberProduct.AmountAvailable}]] left</strong>
+        </div>
+        <div class="alert alert-danger mt-2" role="alert" th:each="emptyProduct : ${emptyProducts}">
+            Product [[${emptyProduct.name}]] is out of stock.
+        </div>
         <div class="clearfix">
             <div class="filter_main">
                 <div class="product_filter">

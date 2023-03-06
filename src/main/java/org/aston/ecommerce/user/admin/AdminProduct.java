@@ -32,6 +32,8 @@ public class AdminProduct {
     @GetMapping("/admin/products")
     public String displayProducts(Model model) {
         model.addAttribute("products", this.productService.findAll().get());
+        model.addAttribute("amberProducts", this.productService.findAmberProducts());
+        model.addAttribute("emptyProducts", this.productService.findProductsOutOfStock());
         return "admin_products";
     }
     //TODO: Finish This
