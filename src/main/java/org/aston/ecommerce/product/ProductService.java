@@ -1,5 +1,6 @@
 package org.aston.ecommerce.product;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -52,6 +53,7 @@ public class ProductService {
                 .stream()
                 .filter(c -> c.getAmountAvailable() <= 20 && c.getAmountAvailable() >= 1)
                 .collect(Collectors.toList());
+        Collections.sort(returnProducts, (Product p1, Product p2) -> p1.getAmountAvailable() - p2.getAmountAvailable());
         return returnProducts;
     }
 
