@@ -18,7 +18,7 @@
     <form method="post" th:action="@{/admin/products/{id}(id=${product.Id})}" th:object="${product}">
         <input type="text" th:field="*{Name}" />
         <label>Description:</label>
-        <input type="textarea" th:field="*{Description}" />
+        <input type="text" th:field="*{description}" />
         <label>Stock Level:</label>
         <input type="number" th:field="*{AmountAvailable}" />
         <label>Price:</label>

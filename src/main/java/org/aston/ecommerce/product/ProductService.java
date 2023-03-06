@@ -2,6 +2,8 @@ package org.aston.ecommerce.product;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -42,6 +44,24 @@ public class ProductService {
 
     public void updateProduct(Product product) {
         productRepository.save(product);
+    }
+
+    //Return all products that are in stock yet have a stock level below 21
+    public List<Product> findAmberProducts(){
+        List<Product> returnProducts = this.productRepository.findAll()
+                .stream()
+                .filter(c -> c.getAmountAvailable() <= 20 && c.getAmountAvailable() >= 1)
+                .collect(Collectors.toList());
+        return returnProducts;
+    }
+
+    //Return all products that are out of stock
+    public List<Product> findProductsOutOfStock(){
+        List<Product> returnProducts = this.productRepository.findAll()
+                .stream()
+                .filter(c -> c.getAmountAvailable() < 20)
+                .collect(Collectors.toList());
+        return returnProducts;
     }
 
 }

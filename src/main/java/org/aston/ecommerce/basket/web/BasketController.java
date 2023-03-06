@@ -87,6 +87,12 @@ public class BasketController {
         String username = ((CustomUserDetails) principal).getUsername();
         User loggedInUser = userRepo.findByEmail(username);
 
+        //If user is admin, then do not allow them to add item to basket
+        if(loggedInUser.isAdmin()){
+            redirectAttrs.addFlashAttribute("purchase_fail", "Error! Admin users cannot add products to their basket.");
+            return "redirect:/product/" + Long.parseLong(productIdStr);
+        }
+
         Integer numOrdered = Integer.parseInt(numOrderedStr);
         Long productId = Long.parseLong(productIdStr);
 

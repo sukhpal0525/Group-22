@@ -34,7 +34,7 @@ public class AdminProduct {
         model.addAttribute("products", this.productService.findAll().get());
         return "admin_products";
     }
-
+    //TODO: Finish This
     @GetMapping("admin/products/get")
     public String getProducts(Model model, @RequestParam(name="searchQuery", required = false)String query) {
         List<Product> products = null;
