@@ -43,7 +43,8 @@ INSERT INTO `webuser` (`Email`, `UserName`, `Password`, `IsAdmin`) VALUES
 
 
 INSERT INTO `webbasket` (`UserID`) VALUES
-  (1);
+  (1),
+  (2);
 
 INSERT INTO `webbasketitem` (`BasketID`, `ProductID`, `Amount`) VALUES
   (1, 4, 5),
