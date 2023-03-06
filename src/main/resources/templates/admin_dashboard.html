@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Admin Dashboard - Group 22</title>
+  <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+  <div th:replace="fragments/nav_bar :: styles"></div>
+  <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div th:replace="fragments/nav_bar :: header"></div>
+
+<div class="importContainer text-center">
+  <h1 class="mt-4">Admin Dashboard</h1>
+  <h3><a th:href="@{/admin/products}">View Products</a></h3>
+  <h3><a th:href="@{/admin/products/new}">Add Product</a></h3>
+  <h3><a th:href="@{/admin/all-orders}">View Orders</a></h3>
+</div>
+
+</body>
+</html>
