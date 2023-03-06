@@ -3,26 +3,36 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Product Edit</title>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
-    <link href="/css/style.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
     <div th:replace="fragments/nav_bar :: styles"></div>
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-<p>You are editing this Product:</p>
-<p th:text="${product.Name}"></p>
-<div class="form_for_editing">
+
+<div th:replace="fragments/nav_bar :: header"></div>
+<div class="importContainer">
+<h2>You are editing [[${product.Name}]]</h2>
     <form method="post" th:action="@{/admin/products/{id}(id=${product.Id})}" th:object="${product}">
-        <input type="text" th:field="*{Name}" />
-        <label>Description:</label>
-        <input type="text" th:field="*{description}" />
-        <label>Stock Level:</label>
-        <input type="number" th:field="*{AmountAvailable}" />
-        <label>Price:</label>
-        <input type="number" th:field="*{Amount}" />
-        <button type="submit">Save Changes</button>
+        <div class="form-group">
+            <label>Name:</label>
+            <input class="importForm-control" type="text" th:field="*{Name}" required/>
+        </div>
+        <div class="form-group">
+            <label>Description:</label>
+            <textarea class="importForm-control" type="text" th:field="*{description}"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Price:</label>
+            <input class="importForm-control" type="number" th:field="*{Amount}" step="0.01" min="1" required/>
+        </div>
+        <div class="form-group">
+            <label>Stock Level:</label>
+            <input class="importForm-control" type="number" th:field="*{AmountAvailable}" min="1" required/>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
     </form>
 </div>
+</body>
+</html>
