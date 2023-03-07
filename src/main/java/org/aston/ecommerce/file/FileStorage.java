@@ -1,4 +1,4 @@
-package org.aston.ecommerce.user.admin;
+package org.aston.ecommerce.file;
 
 import java.nio.file.Path;
 import java.util.stream.Stream;
