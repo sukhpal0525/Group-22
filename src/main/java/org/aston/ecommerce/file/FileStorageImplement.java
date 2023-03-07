@@ -1,4 +1,4 @@
-package org.aston.ecommerce.user.admin;
+package org.aston.ecommerce.file;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -7,6 +7,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
+
+import org.aston.ecommerce.file.FileStorage;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
