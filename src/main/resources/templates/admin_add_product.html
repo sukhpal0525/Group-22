@@ -14,7 +14,8 @@
 <div th:replace="fragments/nav_bar :: header"></div>
 
 <div class="importContainer">
-    <form method="post" th:action="@{/admin/products/new}" th:object="${product}">
+    <div class="mt-4 alert alert-danger" th:if="${fail_msg}" th:text="${fail_msg}" role="alert"></div>
+    <form method="post" th:action="@{/admin/products/new}" enctype="multipart/form-data">
         <div class="form-group">
             <label for="name">Name:</label>
             <input class="importForm-control" type="text" id="name" name="name" required/>
@@ -41,6 +42,11 @@
         <div class="form-group">
             <label for="amountAvailable">Amount Available:</label>
             <input class="importForm-control" type="number" id="amountAvailable" name="amountAvailable" min="1" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="amountAvailable">Photo:</label>
+            <input class="importForm-control" type="file" name="file" accept="image/png, image/jpeg" />
         </div>
 
         <button type="submit" class="btn btn-primary">Add Product</button>

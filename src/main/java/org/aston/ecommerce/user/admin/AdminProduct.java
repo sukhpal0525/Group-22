@@ -5,6 +5,7 @@ import org.aston.ecommerce.product.Product;
 import org.aston.ecommerce.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -12,8 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,10 +27,13 @@ public class AdminProduct {
 
     private final ProductRepository productRepository;
 
+    private final FileStorage fileStorageService;
+
     @Autowired
-    public AdminProduct(ProductRepository productRepository, ProductService productService) {
+    public AdminProduct(ProductRepository productRepository, ProductService productService, FileStorage fileStorageService) {
         this.productRepository = productRepository;
         this.productService = productService;
+        this.fileStorageService = fileStorageService;
     }
     @GetMapping("/admin/products")
     public String displayProducts(Model model) {
@@ -69,13 +75,35 @@ public class AdminProduct {
 //        if(authentication != null) {
 //            System.out.println(authentication.getAuthorities());
 //        }
-        model.addAttribute("product", new Product());
+        //model.addAttribute("product", new Product());
         return "admin_add_product";
     }
 
     @PostMapping("/admin/products/new")
-    public String addProduct(@ModelAttribute("product") Product product) {
-        productRepository.save(product);
+    public String addProduct(Model model, @RequestParam("name") String nameStr,
+                                     @RequestParam("description") String descriptionStr,
+                                     @RequestParam("amount") Double amountD,
+                                     @RequestParam("amountAvailable") Integer amountAvailableI,
+                                     @RequestParam("file") MultipartFile file) {
+
+        Product newProduct = new Product();
+        newProduct.setName(nameStr); newProduct.setDescription(descriptionStr);
+        newProduct.setAmount(amountD); newProduct.setAmountAvailable(amountAvailableI);
+
+        try{
+            this.productRepository.save(newProduct);
+        }catch(Exception e){
+            model.addAttribute("fail_msg", "Error! Failed to add product");
+            return "admin_add_product";
+        }
+
+        try {
+            this.fileStorageService.save(file);
+        } catch (Exception e) {
+            model.addAttribute("fail_msg", "Could not upload the image: " + file.getOriginalFilename() + ". Error: " + e.getMessage());
+            return "admin_add_product";
+        }
+
         return "redirect:/admin/products";
     }
 
