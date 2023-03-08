@@ -1,6 +1,7 @@
 package org.aston.ecommerce.user.admin;
 
 import org.aston.ecommerce.file.FileStorage;
+import org.aston.ecommerce.product.Category;
 import org.aston.ecommerce.product.ProductRepository;
 import org.aston.ecommerce.product.Product;
 import org.aston.ecommerce.product.ProductService;
@@ -12,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.Optional;
@@ -54,15 +56,54 @@ public class AdminProduct {
 
     @GetMapping("/admin/products/{id}")
     public String getProduct(Model model, @PathVariable("id") String id) {
-        Optional<Product> product = this.productRepository.findById(Long.parseLong(id));
-        model.addAttribute("product",product.get());
+        Optional<Product> optProduct = this.productRepository.findById(Long.parseLong(id));
+        Product product = optProduct.get();
         model.addAttribute("productId", id);
+        model.addAttribute("productName", product.getName());
+        model.addAttribute("productDescription", product.getDescription());
+        model.addAttribute("productCategory", product.getCategory().name().toLowerCase());
+        model.addAttribute("productAmount", product.getAmount());
+        model.addAttribute("productAmountAvailable", product.getAmountAvailable());
         return "admin_product_edit";
     }
 
     @PostMapping("/admin/products/{id}")
-    public String updateProduct(@ModelAttribute("product") Product product) {
-        productService.updateProduct(product);
+    public String updateProduct(@PathVariable("id") String id,
+                                @RequestParam("name") String nameStr,
+                                @RequestParam("description") String descriptionStr,
+                                @RequestParam("amount") Double amountD,
+                                @RequestParam("amountAvailable") Integer amountAvailableI,
+                                @RequestParam("category") String categoryStr,
+                                @RequestParam("file") MultipartFile file,
+                                RedirectAttributes redirectAttrs) {
+        Category category = this.productService.returnCategoryFromString(categoryStr);
+
+        Optional<Product> optProduct = this.productRepository.findById(Long.parseLong(id));
+        Product editProduct = optProduct.get();
+        editProduct.setName(nameStr); editProduct.setDescription(descriptionStr);
+        editProduct.setAmount(amountD); editProduct.setAmountAvailable(amountAvailableI);
+        editProduct.setCategory(category);
+
+        try{
+            this.productRepository.save(editProduct);
+        }catch(Exception e){
+            redirectAttrs.addFlashAttribute("fail_msg", "Error! Failed to add product");
+            return "redirect:/admin/products/" + id;
+        }
+
+        //File upload is optional, so return now if image upload was not given
+        if(file.isEmpty()) return "redirect:/admin/products";
+
+        try {
+            this.fileStorageService.save(file);
+        } catch (Exception e) {
+            //Do not return error if the file already exists. Just do not upload that's all.
+            if(!(e.getMessage().equals("That filename already exists."))){
+                redirectAttrs.addFlashAttribute("fail_msg", "Could not upload the image: " + file.getOriginalFilename() + ". Error: " + e.getMessage());
+                return "redirect:/admin/products/" + id;
+            }
+        }
+
         return "redirect:/admin/products";
     }
 
@@ -74,17 +115,21 @@ public class AdminProduct {
         //model.addAttribute("product", new Product());
         return "admin_add_product";
     }
-
+    //TODO: Handle category input
     @PostMapping("/admin/products/new")
     public String addProduct(Model model, @RequestParam("name") String nameStr,
                                      @RequestParam("description") String descriptionStr,
                                      @RequestParam("amount") Double amountD,
                                      @RequestParam("amountAvailable") Integer amountAvailableI,
-                                     @RequestParam("file") MultipartFile file) {
+                                     @RequestParam("file") MultipartFile file,
+                                     @RequestParam("category") String categoryStr) {
+
+        Category category = this.productService.returnCategoryFromString(categoryStr);
 
         Product newProduct = new Product();
         newProduct.setName(nameStr); newProduct.setDescription(descriptionStr);
         newProduct.setAmount(amountD); newProduct.setAmountAvailable(amountAvailableI);
+        newProduct.setCategory(category);
 
         try{
             this.productRepository.save(newProduct);
@@ -93,11 +138,17 @@ public class AdminProduct {
             return "admin_add_product";
         }
 
+        //File upload is optional, so return now if image upload was not given
+        if(file.isEmpty()) return "redirect:/admin/products";
+
         try {
             this.fileStorageService.save(file);
         } catch (Exception e) {
-            model.addAttribute("fail_msg", "Could not upload the image: " + file.getOriginalFilename() + ". Error: " + e.getMessage());
-            return "admin_add_product";
+            //Do not return error if the file already exists. Just do not upload that's all.
+            if(!(e.getMessage().equals("That filename already exists."))){
+                model.addAttribute("fail_msg", "Could not upload the image: " + file.getOriginalFilename() + ". Error: " + e.getMessage());
+                return "admin_add_product";
+            }
         }
 
         return "redirect:/admin/products";
