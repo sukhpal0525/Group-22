@@ -82,7 +82,7 @@ public class AdminProduct {
         Product editProduct = optProduct.get();
         editProduct.setName(nameStr); editProduct.setDescription(descriptionStr);
         editProduct.setAmount(amountD); editProduct.setAmountAvailable(amountAvailableI);
-        editProduct.setCategory(category);
+        editProduct.setCategory(category); editProduct.setUrl(file.isEmpty() ? null : file.getOriginalFilename());
 
         try{
             this.productRepository.save(editProduct);
@@ -129,7 +129,7 @@ public class AdminProduct {
         Product newProduct = new Product();
         newProduct.setName(nameStr); newProduct.setDescription(descriptionStr);
         newProduct.setAmount(amountD); newProduct.setAmountAvailable(amountAvailableI);
-        newProduct.setCategory(category);
+        newProduct.setCategory(category); newProduct.setUrl(file.isEmpty() ? null : file.getOriginalFilename());
 
         try{
             this.productRepository.save(newProduct);
