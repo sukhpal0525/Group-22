@@ -39,6 +39,10 @@ public class ProductService {
         return null;
     }
 
+    public Category returnCategoryFromString(String categoryStr){
+        return Category.parseCategoryStr(categoryStr.toUpperCase());
+    }
+
     public Optional<List<Product>> findAll() {
         return Optional.of(this.productRepository.findAll());
     }
