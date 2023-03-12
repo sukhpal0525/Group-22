@@ -4,9 +4,10 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>Group 22</title>
-    <link rel="stylesheet"
-          type="text/css"
-          href="/webjars/bootstrap/css/bootstrap.min.css" />
+<!--    <link rel="stylesheet"-->
+<!--          type="text/css"-->
+<!--          href="/webjars/bootstrap/css/bootstrap.min.css"/>-->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
     <div th:replace="fragments/nav_bar :: styles"></div>
     <script type="text/javascript"
             src="/webjars/jquery/jquery.min.js"></script>
@@ -16,6 +17,7 @@
         * ol {
             list-style-type: decimal !important;
         }
+
     </style>
 </head>
 
@@ -23,16 +25,16 @@
 
     <div th:replace="fragments/nav_bar :: header"></div>
 
-    <div class="container mx-0">
+    <div class="importContainer text-center">
         <div th:if="${isNotLoggedIn}"
              class="mt-2 alert alert-danger">
             Sorry. You need to be logged in to add items to view past orders.
         </div>
+        <div th:if="${empty}"
+             class="mt-2 alert alert-secondary">
+            You have no past orders.
+        </div>
         <div class="row w-100" th:unless="${isNotLoggedIn}">
-            <div th:if="${empty}"
-                 class="mt-2 alert alert-secondary">
-                You have no past orders.
-            </div>
             <div class="col-12 w-100"
                  th:unless="${empty}">
                  <h1 class="display-4 mb-3">Past Orders</h1>

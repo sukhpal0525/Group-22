@@ -22,11 +22,14 @@
             <div class="pages">
                 <ul>
                     <li><a th:href="@{/home}" class="active">Home</a></li>
-                    <li><a th:href="@{/products/search}">Products</a></li>
-                    <li><a th:href="@{/aboutus}">About us</a></li>
+                    <li><a th:href="@{/products}">Products</a></li>
+                    <li><a th:href="@{/aboutus}">About Us</a></li>
+                    <li><a th:href="@{/contactus}">Contact Us</a></li>
                     <!-- When user is logged in -->
-                    <li th:if="${#request.userPrincipal != null}"><a th:href="@{/orders/past_orders}">Orders</a></li>
-                    <li th:if="${#request.userPrincipal != null}"><a th:href="@{/user-dashboard}">Dashboard</a></li>
+                    <li th:if="${#request.userPrincipal != null} ? (${#request.userPrincipal.principal.isAdmin} ? false : true) : true">
+                        <a th:href="@{/orders/past_orders}">Orders</a></li>
+                    <li th:if="${#request.userPrincipal != null} ? ${#request.userPrincipal.principal.isAdmin} : false">
+                        <a th:href="@{/admin/dashboard}">Dashboard</a></li>
                 </ul>
             </div>
             <div class="right-icons">

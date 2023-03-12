@@ -49,4 +49,36 @@ public class BasketService {
         }
         return success;
     }
+
+    @Transactional
+    public boolean editBasketItemAmount(Long productId, Integer newAmount, User user) {
+        boolean success = false;
+
+        Optional<Product> optProduct = this.productRepository.findById(productId);
+        Product product = optProduct.get();
+
+        Basket basket = user.getBasket();
+
+        BasketItem basketItem = basket.getBasketItemForProduct(product);
+        Integer oldAmount = basketItem.getAmount();
+        //No need to do anything if the same amount is being dealt with
+        if(oldAmount.equals(newAmount)) return true;
+
+        if(!(newAmount > (product.getAmountAvailable() + oldAmount))){
+            basketItem.setAmount(newAmount);
+            basket.getBasketItems().set(basket.getBasketItems().indexOf(basketItem), basketItem);
+            this.basketRepository.save(basket);
+
+            if(newAmount < oldAmount){
+                product.setAmountAvailable(product.getAmountAvailable() + (oldAmount - newAmount));
+            }else if(newAmount > oldAmount){
+                product.setAmountAvailable(product.getAmountAvailable() - (newAmount - oldAmount));
+            }
+            this.productRepository.save(product);
+
+            success = true;
+        }
+
+        return success;
+    }
 }

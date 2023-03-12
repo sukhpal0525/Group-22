@@ -56,7 +56,7 @@ public class OrderController {
             User user = userRepository.findByEmail(username);
             //See if the currently logged-in user has an empty basket or not
             if (user.isBasketEmpty()) {
-                model.addAttribute("empty", "yes");
+                return "redirect:/home";
             } else {
                 Order order = orderService.createOrder(user);
                 order = orderService.placeOrder(order);
@@ -71,7 +71,7 @@ public class OrderController {
                 }
             }
         } else {
-            model.addAttribute("isNotLoggedIn", "yes");
+            return "redirect:/login";
         }
         return "orders_display";
     }

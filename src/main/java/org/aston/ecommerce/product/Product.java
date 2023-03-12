@@ -35,4 +35,7 @@ public class Product {
     @Column(name = "AmountAvailable")
     private Integer amountAvailable;
 
+    @Column(name = "Url")
+    private String url;
+
 }

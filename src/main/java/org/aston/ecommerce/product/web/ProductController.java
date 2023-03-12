@@ -2,6 +2,8 @@ package org.aston.ecommerce.product.web;
 
 import java.util.List;
 import java.util.Optional;
+
+import org.aston.ecommerce.file.FileService;
 import org.aston.ecommerce.product.Product;
 import org.aston.ecommerce.product.ProductRepository;
 import org.aston.ecommerce.product.ProductService;
@@ -20,11 +22,13 @@ public class ProductController {
 
     private final ProductRepository productRepository;
     private final ProductService productService;
+    private final FileService fileService;
 
     @Autowired
-    public ProductController(ProductRepository productRepository, ProductService productService) {
+    public ProductController(ProductRepository productRepository, ProductService productService, FileService fileService) {
         this.productRepository = productRepository;
         this.productService = productService;
+        this.fileService = fileService;
     }
 
     @GetMapping("/products")
@@ -38,21 +42,33 @@ public class ProductController {
 //        return ResponseEntity.of(this.productService.findAll());
 //    }
 
-    @GetMapping("/products/list/{category}")
-    public String getProducts(Model model, @PathVariable("category") String categoryStr) {
-        model.addAttribute("products", this.productService.findByCategory(categoryStr));
-        return "products_category";
+    @GetMapping("/products/list/category")
+    public String getProducts(Model model, @RequestParam(name = "categorySelect", required = false) String categoryStr) {
+
+
+        List<Product> products = this.productService.findByCategory(categoryStr);
+
+        if(products == null) products = this.productService.findAll().get();
+
+        model.addAttribute("products", products);
+
+        model.addAttribute("categorySelect", categoryStr);
+        return "products_list";
     }
 
     @GetMapping("/product/{id}")
     public String returnProduct(Model model, @PathVariable("id") String id) {
 
-        Optional<Product> product = this.productRepository.findById(Long.parseLong(id));
-        model.addAttribute("product", product.get());
+        Optional<Product> optProduct = this.productRepository.findById(Long.parseLong(id));
+        if(!optProduct.isPresent()) return "redirect:/products";
+        Product product = optProduct.get();
+        model.addAttribute("product", product);
 
         //For form submission
         model.addAttribute("productId", id);
         model.addAttribute("numOrdered", "1");
+
+        model.addAttribute("productImage", this.fileService.getImageByName(product.getUrl()));
 
         return "product_display";
     }
