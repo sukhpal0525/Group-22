@@ -24,8 +24,8 @@
         <tr th:each="order : ${allOrders}">
             <td th:text="${order.id}"></td>
             <td th:text="${order.transactionNumber}"></td>
-            <td th:text="${order.orderDate}"></td>
-            <td th:text="${order.orderAmount}"></td>
+            <td th:text="${#temporals.format(order.orderDate, 'dd/MM/yyyy')}"></td>
+            <td th:text="${#numbers.formatCurrency(order.orderAmount)}"></td>
         </tr>
         </tbody>
     </table>
