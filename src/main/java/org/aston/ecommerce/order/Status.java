@@ -20,4 +20,14 @@ public enum Status {
     public Integer id() {
         return this.id;
     }
+
+    @Override
+    public String toString() {
+        switch(this){
+            case UNPROCESSED: return "Unprocessed";
+            case PROCESSED: return "Processed";
+            case SHIPPED: return "Shipped";
+            default: throw new IllegalArgumentException();
+        }
+    }
 }
