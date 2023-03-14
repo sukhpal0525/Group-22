@@ -1,6 +1,6 @@
 .basket-active{
     display: grid;
-    grid-template-columns: 1fr 3fr .2fr repeat(2, 1fr);
+    grid-template-columns: 1fr 3fr .05fr repeat(2, 1fr);
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
@@ -22,6 +22,10 @@
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+}
+
+.item-card:hover{
+    background: #d2d2d2;
 }
 
 .product-title{
@@ -52,11 +56,15 @@
 
 .basket-summary{
     grid-area: 1 / 4 / 2 / 5;
+}
+
+.basket-card{
     width: 100%;
-    padding: 20px 0px 20px 0px;
+    height: 25vh;
+    padding: 27px 0px 27px 0px;
     height: auto;
     border-radius: 15px;
-    background: #ffffff;
+    background-color: #ffffff;
     margin: 10px;
     display: grid;
     grid-template-columns: 1fr;
@@ -120,14 +128,29 @@
 
 .checkout-button{
     grid-area: 3 / 1 / 4 / 2;
-    margin: 8px 0px;
+    margin: 20px 5px;
+    text-align: center;
+}
+
+.check-b{
+    background-color: #169c0a;
+    color:#ffff;
+    padding: 15px 25%;
+    border-radius: 8px;
+}
+
+.check-b:hover{
+    background-color: #e9e9e9;
+    color: #169c0a;
 }
 
 .del-item a{
     text-decoration: none;
     color: #169c0a;
+    padding: 10px;
 }
 
 .del-item a:hover{
     color: red;
 }
+
