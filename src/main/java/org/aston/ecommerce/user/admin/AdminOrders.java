@@ -34,8 +34,8 @@ public class AdminOrders {
 
     @GetMapping("/admin/all-orders")
     public String returnAllOrders(Model model) {
-//        List<Order> allOrders = this.orderRepository.findAll();
-//        log.debug("Number of orders: {}", allOrders.size());
+//      List<Order> allOrders = this.orderRepository.findAll();
+//      log.debug("Number of orders: {}", allOrders.size());
         model.addAttribute("allOrders", this.orderService.findOrdersByStatusAndDate());
         model.addAttribute("unprocessedOrders", this.orderService.findUnprocessedOrders());
         return "admin_orders";
