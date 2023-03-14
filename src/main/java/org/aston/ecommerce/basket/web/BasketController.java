@@ -147,13 +147,12 @@ public class BasketController {
         Long productId = Long.parseLong(productIdStr);
 
         boolean editSuccess = this.basketService.editBasketItemAmount(productId, newAmount, loggedInUser);
-        if (editSuccess) {
-            redirectAttrs.addFlashAttribute("edit_success", "yes");
-        } else {
+        if (!editSuccess) {
             redirectAttrs.addFlashAttribute("edit_fail", "Error! You tried to order more products than there is currently available in stock.");
+            return "redirect:/basket/edit/" + basketItemIdStr;
         }
 
-        return "redirect:/basket/edit/" + basketItemIdStr;
+        return "redirect:/basket";
     }
 
 

@@ -12,9 +12,6 @@
 <div th:replace="fragments/nav_bar :: header"></div>
 
 <div class="importContainer text-center" style="max-width: 700px;">
-    <div class="mt-4 alert alert-success" th:if="${edit_success}" role="alert">Success! Basket has been altered. <a
-            class="alert-link" th:href="@{/basket}">Click here to view it</a>
-    </div>
     <div class="mt-4 alert alert-danger" th:if="${edit_fail}" th:text="${edit_fail}" role="alert"></div>
     <h1 class="mt-4">Edit Amount</h1>
     <h4 th:text="${basketItem.product.Name}"></h4>
