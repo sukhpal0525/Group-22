@@ -13,6 +13,9 @@
 
 <div th:replace="fragments/nav_bar :: header"></div>
 <div class="importContainer">
+<div class="mt-4 alert alert-success" th:if="${success_msg}" role="alert">Success! Product has been edited. <a
+        class="alert-link" th:href="@{/product/{id}(id=${productId})}">Click here to view it</a>
+</div>
 <div class="mt-4 alert alert-danger" th:if="${fail_msg}" th:text="${fail_msg}" role="alert"></div>
 <h2>You are editing [[${productName}]]</h2>
     <form method="post" th:action="@{/admin/products/{id}(id=${productId})}" enctype="multipart/form-data">

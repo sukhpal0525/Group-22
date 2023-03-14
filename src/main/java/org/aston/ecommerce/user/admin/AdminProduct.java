@@ -92,7 +92,10 @@ public class AdminProduct {
         }
 
         //File upload is optional, so return now if image upload was not given
-        if(file.isEmpty()) return "redirect:/admin/products";
+        if(file.isEmpty()){
+            redirectAttrs.addFlashAttribute("success_msg", "true");
+            return "redirect:/admin/products/" + id;
+        }
 
         try {
             this.fileStorageService.save(file);
@@ -103,8 +106,8 @@ public class AdminProduct {
                 return "redirect:/admin/products/" + id;
             }
         }
-
-        return "redirect:/admin/products";
+        redirectAttrs.addFlashAttribute("success_msg", "true");
+        return "redirect:/admin/products/" + id;
     }
 
     @GetMapping("/admin/products/new")

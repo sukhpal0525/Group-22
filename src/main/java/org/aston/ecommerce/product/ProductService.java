@@ -51,13 +51,13 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    //Return all products that are in stock yet have a stock level below 21 in descending order
+    //Return all products that are in stock yet have a stock level below 21 in ascending order such that the products with the lowest stock are shown first
     public List<Product> findAmberProducts(){
         List<Product> returnProducts = this.productRepository.findAll()
                 .stream()
                 .filter(c -> c.getAmountAvailable() <= 20 && c.getAmountAvailable() >= 1)
                 .collect(Collectors.toList());
-        Collections.sort(returnProducts, (Product p1, Product p2) -> p2.getAmountAvailable() - p1.getAmountAvailable());
+        Collections.sort(returnProducts, (Product p1, Product p2) -> p1.getAmountAvailable() - p2.getAmountAvailable());
         return returnProducts;
     }
 
