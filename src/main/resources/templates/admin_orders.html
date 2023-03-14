@@ -27,14 +27,15 @@
         </thead>
         <tbody>
         <tr th:each="order : ${allOrders}" >
-            <td th:text="${order.id}"></td>
-            <td th:text="${order.transactionNumber}"></td>
-            <td th:text="${#temporals.format(order.orderDate, 'dd/MM/yyyy HH:mm:ss')}"></td>
-            <td th:text="${#numbers.formatCurrency(order.orderAmount)}"></td>
-            <td class="hover-underline-container"
-                th:attr="onclick=|rowClicked('${order.id}')|">
-                <div class="hover-underline-animation"
-                     th:text="${order.status.toString()}"></div>
+            <td th:text="${order.id}" style="cursor: pointer;" th:attr="onclick=|rowClicked('${order.id}')|"></td>
+            <td th:text="${order.transactionNumber}" style="cursor: pointer;"
+                th:attr="onclick=|rowClicked('${order.id}')|"></td>
+            <td th:text="${#temporals.format(order.orderDate, 'dd/MM/yyyy HH:mm:ss')}" style="cursor: pointer;"
+                th:attr="onclick=|rowClicked('${order.id}')|"></td>
+            <td th:text="${#numbers.formatCurrency(order.orderAmount)}" style="cursor: pointer;"
+                th:attr="onclick=|rowClicked('${order.id}')|"></td>
+            <td class="hover-underline-container" th:attr="onclick=|statusClicked('${order.id}')|">
+                <div class="hover-underline-animation" th:text="${order.status.toString()}"></div>
             </td>
         </tr>
         </tbody>
@@ -43,8 +44,12 @@
 </body>
 
 <script>
-    function rowClicked(id) {
+    function statusClicked(id) {
         location.href = "/admin/edit_order/" + id;
+    }
+
+    function rowClicked(id) {
+        location.href = "/admin/view_order/" + id;
     }
 </script>
 

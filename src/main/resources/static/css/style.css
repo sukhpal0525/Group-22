@@ -641,6 +641,7 @@ background-color:#ACEF20;
     .hover-underline-container > .hover-underline-animation {
       display: inline-block;
       position: relative;
+      color: #007bff;
     }
 
     .hover-underline-container > .hover-underline-animation::after {
@@ -651,7 +652,7 @@ background-color:#ACEF20;
       height: 2px;
       bottom: -5px;
       left: 0;
-      background-color: black;
+      background-color: #007bff;
       transform-origin: bottom center;
       transition: transform 0.25s ease-out;
     }
