@@ -106,6 +106,7 @@ public class AdminProduct {
                 return "redirect:/admin/products/" + id;
             }
         }
+        
         redirectAttrs.addFlashAttribute("success_msg", "true");
         return "redirect:/admin/products/" + id;
     }
@@ -118,7 +119,7 @@ public class AdminProduct {
         //model.addAttribute("product", new Product());
         return "admin_add_product";
     }
-
+    //TODO: Handle category input
     @PostMapping("/admin/products/new")
     public String addProduct(Model model, @RequestParam("name") String nameStr,
                                      @RequestParam("description") String descriptionStr,
