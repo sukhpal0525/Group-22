@@ -147,7 +147,7 @@ body {
 
 a,
 a:hover {
-    transition: 250ms linear color, 250ms linear background, 250ms linear border;
+    transition: 0ms linear color, 250ms linear background, 0ms linear border;
 }
 
 .c {
