@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>PCLabs | Admin Product Dashboard</title>
+<!--    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />-->
+<!--    <link href="/css/style.css" rel="stylesheet" type="text/css" />-->
+<!--    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>-->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <div th:replace="fragments/nav_bar :: styles"></div>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+
+<div th:replace="fragments/nav_bar :: header"></div>
+
+<div class="product_container">
+    <div class="container2">
+        <div class="sub_page_product">
+            <h2>Edit Products</h2>
+            <form class="row align-items-center my-3" th:action="@{/admin/products/get}" method="get">
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="py-4 album">
+    <div class="wrapper">
+        <div class="alert alert-warning mt-2 text-center" role="alert" th:each="amberProduct : ${amberProducts}">
+            Product [[${amberProduct.name}]] is low in stock. <strong>Only [[${amberProduct.AmountAvailable}]] left. </strong>
+            <a class="alert-link" th:href="@{/admin/products/{id}(id=${amberProduct.id})}">Click here to edit.</a>
+        </div>
+        <div class="alert alert-danger mt-2 text-center" role="alert" th:each="emptyProduct : ${emptyProducts}">
+            Product [[${emptyProduct.name}]] is out of stock.
+            <a class="alert-link" th:href="@{/admin/products/{id}(id=${emptyProduct.id})}">Click here to edit.</a>
+        </div>
+        <div class="clearfix">
+            <div class="filter_main">
+                <div class="product_filter">
+                </div><!--maybe add later on-->
+            </div>
+        </div>
+        <div class="row" th:if="${products.size() > 0}">
+            <div class="col-md-4" th:each="products : ${products}">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <p class="card-title" th:text="${products.name}"></p>
+                        <p class="card-text" th:text="'&pound;' + ${products.amount}"></p>
+                        <div class="d-flex justify-content-center">
+                            <a th:href="@{/admin/products/{id}(id=${products.id})}"
+                               class="text-reset text-decoration-none d-inline">
+                                <button type="button" class="btn mt-2 btn-sm btn-outline-secondary mx-auto text-center">Edit Product</button><!--Edit-->
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <a th:href="@{/admin/products/new}">
+                <button type="button" class="btn btn-sm btn-outline-secondary mx-auto text-center">Add New Product</button>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

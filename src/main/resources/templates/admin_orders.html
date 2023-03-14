@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>PCLabs | Admin Order View</title>
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <div th:replace="fragments/nav_bar :: styles"></div>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:replace="fragments/nav_bar :: header"></div>
+<div class="importContainer text-center">
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+        <tr>
+            <th>Order ID</th>
+            <th>Transaction Number</th>
+            <th>Order Date</th>
+            <th>Order Amount</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="order : ${allOrders}">
+            <td th:text="${order.id}"></td>
+            <td th:text="${order.transactionNumber}"></td>
+            <td th:text="${order.orderDate}"></td>
+            <td th:text="${order.orderAmount}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

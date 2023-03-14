@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit [[${basketItem.product.Name}]] - Group 22</title>
+  <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+  <div th:replace="fragments/nav_bar :: styles"></div>
+  <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:replace="fragments/nav_bar :: header"></div>
+
+<div class="importContainer text-center" style="max-width: 700px;">
+    <div class="mt-4 alert alert-success" th:if="${edit_success}" role="alert">Success! Basket has been altered. <a
+            class="alert-link" th:href="@{/basket}">Click here to view it</a>
+    </div>
+    <div class="mt-4 alert alert-danger" th:if="${edit_fail}" th:text="${edit_fail}" role="alert"></div>
+    <h1 class="mt-4">Edit Amount</h1>
+    <h4 th:text="${basketItem.product.Name}"></h4>
+    <div class="alert alert-warning" role="alert"
+         th:if="${basketItem.product.AmountAvailable <= 20 && basketItem.product.AmountAvailable >= 1}">
+        Warning! This item is low in stock. <strong>Only [[${basketItem.product.AmountAvailable}]] left</strong>
+    </div>
+    <div class="alert alert-danger" role="alert" th:if="${basketItem.product.AmountAvailable < 1}">
+        Warning! The product is out of stock.
+    </div>
+    <form  th:action="@{/basket/edit}" method="post">
+        <input type="hidden" th:value="${basketItem.product.id}" name="productId"/>
+        <input type="hidden" th:value="${basketItem.id}" name="basketItemId"/>
+        <div class="row justify-content-between mx-auto">
+            <div class="col-md-9 col-sm-7 col-12">
+                <input type="number" th:value="${basketItem.amount}" min="1" value="1" class="form-control"
+                       placeholder="Amount" name="newAmount"/>
+            </div>
+            <div class="col-md-3 col-sm-5 col-12 mt-3 mt-sm-0">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
