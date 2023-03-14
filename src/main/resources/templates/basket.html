@@ -50,13 +50,33 @@
           </div>
         </div>
         <div class="basket-summary">
-            <div class="summ-card">
+            <div class="summ-title">
+                <h3>TOTAL</h3>
+                <div class="lined"></div>
+            </div>
+            <div class="order-det">
+                <div class="price-title1">
+                    <h5>Sub-total</h5>
+                </div>
+                <div class="price-no1">
+                    <h6>£X.XX</h6>
+                </div>
+
+                <div class="price-title2">
+                    <h5>Delivery</h5>
+                </div>
+                <div class="price-no2">
+                    <h6>Standard</h6>
+                </div>
+            </div>
+            <div class="checkout-button">
                 <a
                 th:href="@{/orders/basket_order}"
                 th:if="not (${isNotLoggedIn} or ${empty})"
-                >Submit</a
-            >
+                >CHECKOUT</a>
             </div>
+
+
         </div>
     </div>
 
