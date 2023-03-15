@@ -1,0 +1,39 @@
+.checkout-page{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.order-success{
+    grid-area: 1 / 1 / 2 / 2;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1.5fr) 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.centered{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 15%;
+}
+
+.order-summ{
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+.success-image{
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.success-text{
+    grid-area: 2 / 1 / 3 / 2;
+}
+
+.return-home-btn{
+    grid-area: 3 / 1 / 4 / 2;
+}
