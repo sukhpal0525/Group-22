@@ -15,10 +15,22 @@
   <body>
     <div th:replace="fragments/nav_bar :: header"></div>
 
-    <div class="importContainer text-center">
-      <div th:if="${isNotLoggedIn}" class="mt-2 alert alert-danger">
-        Sorry. You need to be logged in to add items to your basket.
+    <div class="basket-notlogged" th:if="${isNotLoggedIn}">
+      <div class="image-notlogged">
+        <img src="/Images/notlogged.png" alt="Image not loading" class="centered">
       </div>
+      <div class="text-notlogged">
+        <p>Sorry. You need to be logged in to add items to your basket.</p>
+      </div>
+      <div class="button-tolog">
+        <button> LOG IN
+        </button>
+      </div>
+
+    </div>
+
+    <div class="importContainer text-center">
+
       <div th:if="${empty}" class="mt-2 alert alert-secondary">
         Your basket is currently empty right now.
     </div>
