@@ -13,6 +13,7 @@ import org.aston.ecommerce.basket.BasketItem;
 import org.aston.ecommerce.order.Order.OrderItem;
 import org.aston.ecommerce.product.Product;
 import org.aston.ecommerce.product.ProductRepository;
+import org.aston.ecommerce.product.ProductService;
 import org.aston.ecommerce.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,7 @@ public class OrderService {
 
     @Autowired private OrderRepository orderRepository;
     @Autowired private ProductRepository productRepository;
+    @Autowired private ProductService productService;
 
     public List<Order> getOrdersByCustomerId(Long customerId) {
         return orderRepository.findAllByCustomerId(customerId);
@@ -42,6 +44,24 @@ public class OrderService {
             order.getOrderItems().add(orderItem);
         }
         return order;
+    }
+
+    public long getTotalOrders() {
+        return orderRepository.count();
+    }
+
+    public double getTotalRevenue() {
+        List<Order> orders = orderRepository.findAll();
+        return orders.stream().mapToDouble(Order::getOrderAmount).sum();
+    }
+
+    public double getTotalProfit() {
+        List<Order> orders = orderRepository.findAll();
+        double markupPercentage = productService.getMarkupPercentage();
+        return orders.stream()
+                .flatMap(order -> order.getOrderItems().stream())
+                .mapToDouble(orderItem -> (orderItem.getAmount() / markupPercentage - orderItem.getProduct().getCost()) * orderItem.getNumOfItems())
+                .sum();
     }
 
     @Transactional
