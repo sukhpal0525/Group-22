@@ -23,15 +23,14 @@
         <p>Sorry. You need to be logged in to add items to your basket.</p>
       </div>
       <div class="button-tolog">
-        <p>LOG IN</p>
+        <button> LOG IN
+        </button>
       </div>
 
     </div>
 
     <div class="importContainer text-center">
-      <div th:if="${isNotLoggedIn}" class="mt-2 alert alert-danger">
-        Sorry. You need to be logged in to add items to your basket.
-      </div>
+
       <div th:if="${empty}" class="mt-2 alert alert-secondary">
         Your basket is currently empty right now.
     </div>
