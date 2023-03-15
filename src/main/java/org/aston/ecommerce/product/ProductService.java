@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final double markupPercentage = 1.20;
 
     @Autowired
     public ProductService(ProductRepository productRepository) {
@@ -69,5 +70,8 @@ public class ProductService {
                 .collect(Collectors.toList());
         return returnProducts;
     }
-
+    
+    public double getMarkupPercentage() {
+        return markupPercentage;
+    }
 }
