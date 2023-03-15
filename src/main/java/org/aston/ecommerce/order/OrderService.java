@@ -52,6 +52,15 @@ public class OrderService {
         return orders.stream().mapToDouble(Order::getOrderAmount).sum();
     }
 
+    public double getTotalProfit() {
+        List<Order> orders = orderRepository.findAll();
+        double markupPercentage = productService.getMarkupPercentage();
+        return orders.stream()
+                .flatMap(order -> order.getOrderItems().stream())
+                .mapToDouble(orderItem -> (orderItem.getAmount() / markupPercentage - orderItem.getProduct().getCost()) * orderItem.getNumOfItems())
+                .sum();
+    }
+
     @Transactional
     public Order placeOrder(final Order order) {
 
