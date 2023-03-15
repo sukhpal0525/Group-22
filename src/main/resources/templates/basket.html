@@ -29,10 +29,18 @@
 
     </div>
 
-    <div class="importContainer text-center">
+    <div class="basket-notlogged" th:if="${empty}">
+      <div class="image-notlogged">
+        <img src="/Images/emptybasket.png" alt="Image not loading" class="centered">
+      </div>
+      <div class="text-notlogged">
+        <p>Your basket is currently empty.</p>
+      </div>
+      <div class="button-tolog">
+        <button> CONTINUE SHOPPING
+        </button>
+      </div>
 
-      <div th:if="${empty}" class="mt-2 alert alert-secondary">
-        Your basket is currently empty right now.
     </div>
 
     <div class="basket-active" th:if="${listBaskets != null}">
@@ -99,4 +107,5 @@
       location.href = "/basket/edit/" + id;
     }
   </script>
+  <div th:replace="fragments/footer :: footer"></div>
 </html>
