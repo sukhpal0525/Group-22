@@ -56,11 +56,14 @@ public class OrderService {
     }
 
     public double getTotalProfit() {
-        List<Order> orders = orderRepository.findAll();
         double markupPercentage = productService.getMarkupPercentage();
-        return orders.stream()
+        return orderRepository.findAll().stream()
                 .flatMap(order -> order.getOrderItems().stream())
-                .mapToDouble(orderItem -> (orderItem.getAmount() / markupPercentage - orderItem.getProduct().getCost()) * orderItem.getNumOfItems())
+                .mapToDouble(orderItem -> {
+                    double itemCost = orderItem.getProduct().getCost() != null ? orderItem.getProduct().getCost() : 0.0;
+                    double markupAmount = orderItem.getAmount() / markupPercentage;
+                    return (markupAmount - itemCost) * orderItem.getNumOfItems();
+                })
                 .sum();
     }
 
