@@ -44,6 +44,11 @@ public class Order {
     @Column(name = "OrderAmount")
     private Double orderAmount;
 
+    //E.g., mark as processed, mark as shipped
+    @Column(name = "Status", nullable = false)
+    @Enumerated(EnumType.ORDINAL)
+    private Status status = Status.UNPROCESSED;
+
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<OrderItem> orderItems = new ArrayList<>();
 

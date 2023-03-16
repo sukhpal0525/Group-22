@@ -1,6 +1,9 @@
 package org.aston.ecommerce.order;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +13,7 @@ import org.aston.ecommerce.basket.BasketItem;
 import org.aston.ecommerce.order.Order.OrderItem;
 import org.aston.ecommerce.product.Product;
 import org.aston.ecommerce.product.ProductRepository;
+import org.aston.ecommerce.product.ProductService;
 import org.aston.ecommerce.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +24,7 @@ public class OrderService {
 
     @Autowired private OrderRepository orderRepository;
     @Autowired private ProductRepository productRepository;
+    @Autowired private ProductService productService;
 
     public List<Order> getOrdersByCustomerId(Long customerId) {
         return orderRepository.findAllByCustomerId(customerId);
@@ -39,6 +44,28 @@ public class OrderService {
             order.getOrderItems().add(orderItem);
         }
         return order;
+    }
+
+    public long getTotalOrders() {
+        return orderRepository.count();
+    }
+
+    public double getTotalRevenue() {
+        List<Order> orders = orderRepository.findAll();
+        return orders.stream().mapToDouble(Order::getOrderAmount).sum();
+    }
+
+    public String getTotalProfit() {
+        double markupMultiplier = productService.getMarkupMultiplier();
+        double totalProfit = orderRepository.findAll().stream()
+                .flatMap(order -> order.getOrderItems().stream())
+                .mapToDouble(orderItem -> {
+                    double itemCost = (orderItem.getProduct().getCost() != null ? orderItem.getProduct().getCost() : 0.0);
+                    double markupAmount = (orderItem.getAmount() - (orderItem.getAmount() * markupMultiplier));
+                    return (markupAmount - itemCost) * orderItem.getNumOfItems();
+                })
+                .sum();
+        return String.format("%.2f", totalProfit);
     }
 
     @Transactional
@@ -64,5 +91,33 @@ public class OrderService {
         order.getOrderItems().removeAll(order.getRejectedItems());
 
         return orderRepository.save(order);
+    }
+
+    //Return all orders in ASCENDING order based on their date grouped by their enum status such that the most recent orders are shown first
+    public List<Order> findOrdersByStatusAndDate(){
+        List<Order> returnOrders = this.orderRepository.findAll();
+        Collections.sort(returnOrders, new Comparator<Order>() {
+            @Override
+            public int compare(Order o1, Order o2) {
+                if(o1.getStatus() == o2.getStatus()){
+                    //ASCENDING
+                    return o1.getOrderDate().compareTo(o2.getOrderDate());
+                }else{
+                    return o1.getStatus().compareTo(o2.getStatus());
+                }
+            }
+        });
+        return returnOrders;
+    }
+
+    //Return all orders that are unprocessed in DESCENDING order based on when they were made such that the oldest unprocessed order is shown first
+    public List<Order> findUnprocessedOrders(){
+        List<Order> returnOrders = this.orderRepository.findAll()
+                .stream()
+                .filter(o -> o.getStatus() == Status.UNPROCESSED)
+                .collect(Collectors.toList());
+        //DESCENDING
+        Collections.sort(returnOrders, (Order o1, Order o2) -> o2.getOrderDate().compareTo(o1.getOrderDate()));
+        return returnOrders;
     }
 }

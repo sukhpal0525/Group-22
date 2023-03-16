@@ -1,201 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-* {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    border: 0;
-    outline: none;
-    text-decoration: none !important;
-    font-family: 'Roboto', sans-serif;
-    
-}
 
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-    background-color: #e7e7e7;
-}
-
-a,
-a:hover {
-    transition: 250ms linear color, 250ms linear background, 250ms linear border;
-}
-
-.c {
-    clear: both;
-}
-
-.wrapper {
-    width: 100%;
-    max-width: 1130px;
-    margin: auto;
-}
-
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-
-
-nav {
-    background-color: #e7e7e7;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 30px;
-}
-
-nav ul li {
-    float: left;
-    margin: 0 2px;
-}
-
-nav a {
-    text-decoration: none;
-    color: #323232;
-    font-size: 22px;
-    font-weight:700;
-    margin: 0 10px;
-}
-
-nav a:hover {
-    color:#ACEF20;
-}
-
-.logo {
-    width: 20%;
-    float: left;
-}
-
-.pages {
-    width: 70%;
-    float: left;
-    margin-top:18px;
-}
-
-.pages ul {
-padding-left:20%;
-float:left;
-}
-
-.right-icons {
-    width: 10%;
-    position: relative;
-    float: right;
-    display: flex;
-    align-items: center;
-    margin-top:18px;
-}
-
-.right-icons img {
-    height: 30px;
-    width: 30px;
-    margin: 0 5px;
-    cursor: pointer;
-      filter: brightness(50%) saturate(100%) hue-rotate(0deg) sepia(100%) invert(0%) opacity(100%);
-}
-
-.fas {
-font-size:30px;
-color:#323232;
-}
-
-i.fas.fa-shopping-basket:hover {
-  color:#ACEF20;
-}
-
-i.fas.fa-user:hover{
-color:#ACEF20;
-}
-
-.dropdown-menu {
-    position: absolute;
-    top: 32px;
-    left: 0;
-    background-color: #e7e7e7;
-    border: 1px solid #ACEF20;
-    border-radius: 5px;
-    padding: 10px;
-    display: none;
-    z-index: 10;
-}
-
-.dropdown-menu a {
-    display: block;
-    margin: 5px 0;
-}
-
-.right-icons .person:hover .dropdown-menu {
-    display: block;
-}
-
-@media screen and (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px;
-    }
-    nav a {
-        display: block;
-        margin: 5px 0;
-    }
-    .right-icons {
-        margin-top: 10px;
-    }
-}
-
-
-/*--------- slider --------*/
-
-header {
-    width: 100%;
-    min-height: 315px;
-    height: auto;
-    text-align: center;
-    padding-bottom: 20px;
-}
-
-.header_content h1 {
-    text-align: center;
-    padding-top: 78px;
-    font-size: 80px;
-    font-weight: 700;
-    color: #e7e7e7;
-}
-
-
-/*slider*/
-
-#carousel div {
-    height: 500px;
-    float: left;
-}
-
-#carousel img {
-    min-width: 100%;
-    min-height: 432px;
-}
-
-.back_area {
-    width: 100%;
-    height: 432px;
-    overflow: hidden;
-    position: absolute;
-    z-index: -9999;
-    top: 88px;
-}
-.home_row1_col1 ul li {
-    width: 31%;
-    float: left;
-    margin: 5px 2% 5px 0;
-}
-
-body{
-    background-color: #e7e7e7;
-}
 
 .spacing{
     padding:20px;
@@ -212,14 +15,16 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #ffffff;
-    box-shadow:  -26px 26px 52px #bebebe,
-    26px -26px 52px #ffffff;
-    width: 75vh;
+    height:auto;
+}
+
+.footer-acc{
+    margin-top:85vh;
 }
 
 .account-form{
     grid-area: 1 / 1 / 2 / 2;
-    padding: 0px 30px 0px 60px;
+    padding: 0px 0px 0px 60px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -232,6 +37,7 @@ body{
     vertical-align: bottom;
     margin: 0%;
     text-transform: capitalize;
+    color:#323232;
 }
 
 .account-form .inputs-account{
@@ -252,64 +58,39 @@ body{
 }
 
 .inputs-account input:hover::placeholder, .inputs-account input:focus::placeholder{
-    color:#acef20;
-}
+    color:#169c0a;
+    border-bottom-color:#169c0a ;
+} 
 
-.account-form button{
-    font-size: 12px;
-    position: relative;
-    margin-top:20px;
-    padding: 1em 2.5em 1em 2.5em;
+button {
     border: none;
-    border-radius: 2em;
-    background-color:#acef20 ;
-    transition: all 0.1s linear;
-    box-shadow: 0 0.4em 1em rgba(0, 0, 0, 0.1);
-}
-
-.account-form button:active{
-    transform: scale(0.95);
-}
-
-.account-form button span{
-    color: #ffff;
+    font-family: sans-serif;
     font-size: 15px;
+    background: transparent;
+    color: #323232;
+    border: solid 1px #323232;
+    padding: 10px;
+    border-radius: 4px;
+    transition-duration: 0.2s;
+    margin:10px 0px;
 }
 
-.account-form button .border{
-    position: absolute;
-    border: 0.15em solid #acef20;
-    transition: all 0.2s 0.08s linear;
-    top: 50%;
-    left: 50%;
-    width: 6em;
-    height: 2em;
-    transform: translate(-50%, -50%);
+button:before {
+    content: "»";
+    opacity: 0;
+    margin-left: -15px;
+    transition-duration: 0.2s;
 }
 
-.account-form button .borderwide{
-    position: absolute;
-    border: 0.15em solid #acef20;
-    transition: all 0.2s 0.08s linear;
-    top: 50%;
-    left: 50%;
-    width: 6em;
-    height: 2em;
-    transform: translate(-50%, -50%);
+button:hover:before {
+    margin-left: 0px;
+    opacity: 1;
 }
 
-.account-form button:hover .border{
-    display: block;
-    width: 8.3em;
-    height: 3.9em;
-    border-radius: 2em;
-}
-
-.account-form button:hover .borderwide{
-    display: block;
-    width: 9.2em;
-    height: 3.9em;
-    border-radius: 2em;
+button:hover {
+    color: #169c0a;
+    background: #fff;
+    border: solid 1px #169c0a;
 }
 
 .account-form p{
@@ -323,7 +104,7 @@ body{
 }
 
 .account-form a:hover{
-    color:#acef20;
+    color: #169c0a;
 }
 
 .redirect{

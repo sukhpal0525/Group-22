@@ -32,10 +32,23 @@ public class Product {
     @Column(name = "Amount")
     private Double amount;
 
+    @Column(name = "Cost")
+    private Double cost = 0.0;
+
     @Column(name = "AmountAvailable")
     private Integer amountAvailable;
 
     @Column(name = "Url")
     private String url;
+
+    @Column(name = "OnSale", columnDefinition = "boolean default false")
+    private Boolean onSale = false;
+
+    @Column(name = "Sale")
+    private Double sale = 0.0;
+
+    public double getSellingPrice(double markupPercentage) {
+        return cost * markupPercentage;
+    }
 
 }

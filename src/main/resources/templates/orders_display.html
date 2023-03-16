@@ -1,57 +1,71 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="ISO-8859-1">
+  <head>
+    <meta charset="ISO-8859-1" />
     <title>Group 22</title>
-<!--    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>-->
-    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="/css/global.css" />
+    <link rel="stylesheet" type="text/css" href="/css/checkout.css" />
+    <!--    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>-->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <div th:replace="fragments/nav_bar :: styles"></div>
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <script
+      type="text/javascript"
+      src="/webjars/bootstrap/js/bootstrap.min.js"
+    ></script>
     <style>
-        * ol {
-            list-style-type: decimal !important;
-        }
+      * ol {
+        list-style-type: decimal !important;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <div th:replace="fragments/nav_bar :: header"></div>
 
-<div th:replace="fragments/nav_bar :: header"></div>
-
-<div class="importContainer text-center">
-    <div class="row w-100">
-        <div th:if="${order != null}" class="w-100">
-            <div class="mt-4 alert alert-success" th:if="${purchase_success}" role="alert">
-                Success! Order has been submitted!
-            </div>
-            <div class="h1 mt-4" th:text="'Order Amount: ' + ${#numbers.formatCurrency(order.orderAmount)}"></div>
-            <hr class="border border-dark"/>
-            <div class="pt-3 bg-light" th:each="orderItem : ${order.orderItems}">
-                <div class="h3 mt-4" th:text="${orderItem.product.name}"></div>
-                <p th:text="${orderItem.product.description}"></p>
-                <p class="text-muted" th:text="${orderItem.numOfItems + ' x ' + #numbers.formatCurrency(orderItem.product.amount) + ' - (' + #numbers.formatCurrency(orderItem.amount) + ')'}"></p>
-                <div class="alert alert-warning" role="alert"
-                     th:if="${orderItem.product.amountAvailable <= 20 && orderItem.product.amountAvailable >= 1}">
-                    Warning! This item is low in stock. <strong>Only [[${orderItem.product.amountAvailable}]] left</strong>
-                </div>
-                <div class="alert alert-danger" role="alert" th:if="${orderItem.product.amountAvailable < 1}">
-                    Warning! The product is out of stock.
-                </div>
-                <hr class="mb-0"/>
-            </div>
+    <div class="checkout-page">
+      <div class="order-success">
+        <div class="success-image">
+          <img
+            src="/Images/greentick.png"
+            alt="Image not loading"
+            class="centered"
+          />
         </div>
-        <div th:if="${purchase_fail}" class="w-100">
-            <div class="mt-4 alert text-left alert-warning" role="alert">
-                <h4 class="alert-heading">Warning!</h4>
-                <div th:text="${purchase_fail}"></div>
-                <hr />
-                <ol class="px-3" th:each="orderItem : ${order.rejectedItems}">
-                    <li th:text="${orderItem.product.name + ' - ' + orderItem.numOfItems + 'x @ ' + #numbers.formatCurrency(orderItem.product.amount) + ' (Available: ' + orderItem.product.amountAvailable + ')'}"></li>
-                </ol>
-            </div>
+        <div class="success-text">
+          <h2>Order Successful!</h2>
+          <br />
+          <h6>Thanks for shopping with PCLabs.</h6>
+          <h6>Shop again with us soon</h6>
         </div>
+        <div class="return-home-btn">
+          <button>   RETURN HOME</button>
+        </div>
+      </div>
+      <div class="order-summ">
+        <div class="summ-title">
+          <h2>Order Summary</h2>
+        </div>
+        <div
+          class="summ-val"
+          th:text="${#numbers.formatCurrency(order.orderAmount)}"
+        ></div>
+        <div class="summ-items">
+          <div class="item-card" th:each="orderItem : ${order.orderItems}">
+            <div class="prod-name">
+              <h4 th:text="${orderItem.product.name}"></h4>
+            </div>
+            <div class="prod-quan">
+              <p th:text="${orderItem.numOfItems}"></p>
+            </div>
+            <div class="prod-price">
+              <p>£X.XX</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
 
-</body>
+    <div th:replace="fragments/footer :: footer"></div>
+
+  </body>
 </html>
