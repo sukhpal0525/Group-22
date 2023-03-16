@@ -37,7 +37,7 @@
     vertical-align: bottom;
     margin: 0%;
     text-transform: capitalize;
-    color:#169c0a;
+    color:#323232;
 }
 
 .account-form .inputs-account{
@@ -59,6 +59,7 @@
 
 .inputs-account input:hover::placeholder, .inputs-account input:focus::placeholder{
     color:#169c0a;
+    border-bottom-color:#169c0a ;
 } 
 
 button {
