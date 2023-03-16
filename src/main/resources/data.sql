@@ -34,13 +34,14 @@ INSERT INTO `webproduct` (`Name`, `Amount`, `Description`,`Category`,`AmountAvai
   ('ASRock B450 Steel Legend', 99.99, 'B450 chipset, RGB lighting', @MOTHERBOARD, 50),
   ('EVGA Z590 Dark', 399.99, 'Z590 chipset, WiFi 6, dual LAN, RGB lighting', @MOTHERBOARD, 60);
 
+INSERT INTO `webproduct` (`Name`, `Amount`, `Description`,`Category`,`AmountAvailable`, `OnSale`, `Sale`) VALUES
+  ('ASUS ROG Maximus XIII Hero (SALE)', 329.99, 'Z590 chipset, WiFi 6, RGB lighting', @MOTHERBOARD, 20, 1, 0.30);
 
 -- Admin Account (Password = 'admin')
 INSERT INTO `webuser` (`Email`, `UserName`, `Password`, `IsAdmin`) VALUES
   ('admin@aston.com', 'Admin', '$2a$10$AOYMzvkn8MISJsQR3Q0kXO0ZmFMJXQO6mw7IH/p2PfpJO.zCfrLlK', 1),
 -- Test Account (Password = 'admin')
   ('test@test.com', 'Test User', '$2a$10$AOYMzvkn8MISJsQR3Q0kXO0ZmFMJXQO6mw7IH/p2PfpJO.zCfrLlK', 0);
-
 
 INSERT INTO `webbasket` (`UserID`) VALUES
   (1),
