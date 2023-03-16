@@ -41,6 +41,12 @@ public class Product {
     @Column(name = "Url")
     private String url;
 
+    @Column(name = "OnSale", columnDefinition = "boolean default false")
+    private Boolean onSale = false;
+
+    @Column(name = "Sale")
+    private Double sale = 0.0;
+
     public double getSellingPrice(double markupPercentage) {
         return cost * markupPercentage;
     }
