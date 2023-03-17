@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PCLabs | Error</title>
+</head>
+<body>
+<!--
+Custom Error Handling, returns this page instead!
+-->
+<h1>An error has occurred</h1>
+<p>
+  Please check the URL, and try again. If the error persists, please contact us below with your error details:
+</p>
+<div class="contact">
+    <a th:href="@{/contactus}">
+        <button type="button">Contact Us!</button>
+    </a>
+</div>
+</body>
+</html>
