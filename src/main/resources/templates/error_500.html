@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Internal Server Error</title>
+</head>
+<body>
+<h1>An Internal Server Error Has Occurred.</h1>
+<p>
+  There has been an error with our server. Please try again in a bit.
+  If this persists, contact us here:
+</p>
+<div class="contact">
+  <a th:href="@{/contactus}">
+    <button type="button">Contact Us!</button>
+  </a>
+</div>
+</body>
+</html>
