@@ -41,6 +41,7 @@ public class BasketController {
                 model.addAttribute("empty", "yes");
             } else {
                 model.addAttribute("listBaskets", loggedInUser.getBasket().getBasketItems());
+                model.addAttribute("basketTotal", this.basketService.getTotalOfBasket(loggedInUser.getBasket()));
             }
         } else {
             model.addAttribute("isNotLoggedIn", "yes");
