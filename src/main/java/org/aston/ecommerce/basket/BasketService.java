@@ -81,4 +81,14 @@ public class BasketService {
 
         return success;
     }
+
+    public Double getTotalOfBasket(Basket basket){
+        Double returnDouble = 0.0;
+
+        for(BasketItem basketItem : basket.getBasketItems()){
+            returnDouble += (basketItem.getAmount() * basketItem.getProduct().getAmount());
+        }
+
+        return returnDouble;
+    }
 }
