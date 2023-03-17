@@ -42,7 +42,7 @@ body {
 }
 
 .container4 {
-    background: url(../Images/aboutus_img.jpg) no-repeat center center fixed;
+    background: url(../Images/aboutus_image.png) no-repeat center center fixed;
     background-size: 100%;
     /* change the size of the image */
     height: 320px;
