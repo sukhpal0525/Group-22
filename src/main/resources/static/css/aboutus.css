@@ -71,8 +71,8 @@ body {
 }
 
 .c3padder {
-    margin: 10%;
-    margin-bottom: 10%;
+    margin: 7%;
+    margin-bottom: 7%;
 }
 
 .c4padder {
@@ -107,11 +107,11 @@ body {
 .container4 {
     margin-left: 2%;
     margin-right: 2%;
-    margin-top: 10%;
+    margin-top: 7%;
 }
 
 .c5padder {
-    margin: 10%;
+    margin: 7%;
     /* flex col */
     display: flex;
     flex-direction: column;
@@ -144,7 +144,7 @@ body {
 }
 
 .button a {
-    color: #a7a4a4;
+    color: #323232;
     text-decoration: none;
 }
 
