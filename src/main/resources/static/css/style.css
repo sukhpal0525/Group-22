@@ -43,7 +43,7 @@ a:hover {
 /*------------ nav bar --------------*/
 
 nav {
-    background-color: #e7e7e7;
+    background-color: #323232;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -57,7 +57,7 @@ nav ul li {
 
 nav a {
     text-decoration: none;
-    color: #323232;
+    color: #e7e7e7;
     font-size: 22px;
     font-weight:700;
     margin: 0 10px;
@@ -79,7 +79,7 @@ nav a:hover {
 }
 
 .pages ul {
-padding-left:20%;
+padding-left:16%;
 float:left;
 }
 
@@ -102,7 +102,7 @@ float:left;
 
 .fas {
 font-size:30px;
-color:#323232;
+color:#e7e7e7;
 }
 
 i.fas.fa-shopping-basket:hover {
@@ -117,7 +117,7 @@ color:#169c0a;
     position: absolute;
     top: 32px;
     left: 0;
-    background-color: #e7e7e7;
+    background-color: #323232;
     border: 1px solid #169c0a;
     border-radius: 5px;
     padding: 10px;
@@ -189,7 +189,7 @@ header {
     overflow: hidden;
     position: absolute;
     z-index: -9999;
-    top: 88px;
+    top: 77px;
 }
 .home_row1_col1 ul li {
     width: 31%;
@@ -276,11 +276,11 @@ header {
 .home_row1 {
     width: 100%;
     height: auto;
-    border-top: 1px solid #9D20C9;
+    border-top: 1px solid #169c0a;
     margin-top: 60px;
 }
 .home_row1_addition{
-margin-top:155px;
+margin-top:107px;
 }
 .home_row1 h1 {
     width: 17%;
