@@ -64,7 +64,7 @@ nav a {
 }
 
 nav a:hover {
-    color:#ACEF20;
+    color:#169c0a;
 }
 
 .logo {
@@ -106,11 +106,11 @@ color:#323232;
 }
 
 i.fas.fa-shopping-basket:hover {
-  color:#ACEF20;
+  color:#169c0a;
 }
 
 i.fas.fa-user:hover{
-color:#ACEF20;
+color:#169c0a;
 }
 
 .dropdown-menu {
@@ -118,7 +118,7 @@ color:#ACEF20;
     top: 32px;
     left: 0;
     background-color: #e7e7e7;
-    border: 1px solid #ACEF20;
+    border: 1px solid #169c0a;
     border-radius: 5px;
     padding: 10px;
     display: none;
@@ -241,7 +241,7 @@ header {
 
 /*
 .homepage-card:hover {
-    box-shadow: 0px 0px 30px 1px #ACEF20;
+    box-shadow: 0px 0px 30px 1px #169c0a;
 }
 */
 
@@ -371,7 +371,7 @@ margin-top:155px;
 
 .home_row1_col2 ul li a:hover,
 .home_row1_col2 ul li a.active {
-    color: #ACEF20;
+    color: #169c0a;
 }
 
 .home_row1_col2 ul li:nth-child(4n) a {
@@ -417,12 +417,12 @@ margin-top:155px;
     text-indent:20px;
 }
 .btn-primary{
-background-color:#ACEF20;
-border-color:#ACEF20;
+background-color:#169c0a;
+border-color:#169c0a;
 }
 .btn-primary:hover {
-background-color:#ACEF20;
-border-color:#ACEF20;
+background-color:#169c0a;
+border-color:#169c0a;
 }
 .btn{
 border-radius: 2.25rem;
@@ -465,11 +465,11 @@ border-radius: 2.25rem;
 text-align:center;
 }
 .btn-outline-secondary {
-border-color:#ACEF20;
+border-color:#169c0a;
 }
 .btn-outline-secondary:hover {
-border-color:#ACEF20;
-background-color:#ACEF20;
+border-color:#169c0a;
+background-color:#169c0a;
 }
     /*-------------------- Item Page -------------------*/
 
