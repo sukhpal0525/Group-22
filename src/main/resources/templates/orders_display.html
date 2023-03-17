@@ -38,7 +38,7 @@
           <h6>Shop again with us soon</h6>
         </div>
         <div class="return-home-btn">
-          <button>   RETURN HOME</button>
+          <button style="cursor: pointer" onclick="location.href='/home';">RETURN HOME</button>
         </div>
       </div>
       <div class="order-summ">
@@ -58,7 +58,7 @@
               <p th:text="${orderItem.numOfItems}"></p>
             </div>
             <div class="prod-price">
-              <p>£X.XX</p>
+              <p th:text="${#numbers.formatCurrency(orderItem.product.amount)}"></p>
             </div>
           </div>
         </div>
