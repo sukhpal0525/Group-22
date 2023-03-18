@@ -19,7 +19,7 @@
     background-color: #ffffff;
     box-shadow:  -26px 26px 52px #bebebe;
     width: 55vw;
-    margin-top: 3vh;
+    margin-top: 3.5vh;
   }
   
   .login-form{
@@ -135,7 +135,9 @@ button:hover {
     resize: vertical;
   }
   
-   
+  .footer-acc{
+    margin-top:87vh;
+}
   
   
    
