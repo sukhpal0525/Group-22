@@ -40,116 +40,7 @@ a:hover {
 
 /*------------ Buttons --------------*/
 
-/*------------ nav bar --------------*/
-
-nav {
-    background-color: #323232;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 30px;
-}
-
-nav ul li {
-    float: left;
-    margin: 0 2px;
-}
-
-nav a {
-    text-decoration: none;
-    color: #e7e7e7;
-    font-size: 22px;
-    font-weight:700;
-    margin: 0 10px;
-}
-
-nav a:hover {
-    color:#169c0a;
-}
-
-.logo {
-    width: 20%;
-    float: left;
-}
-
-.pages {
-    width: 70%;
-    float: left;
-    margin-top:18px;
-}
-
-.pages ul {
-padding-left:16%;
-float:left;
-}
-
-.right-icons {
-    width: 10%;
-    position: relative;
-    float: right;
-    display: flex;
-    align-items: center;
-    margin-top:18px;
-}
-
-.right-icons img {
-    height: 30px;
-    width: 30px;
-    margin: 0 5px;
-    cursor: pointer;
-      filter: brightness(50%) saturate(100%) hue-rotate(0deg) sepia(100%) invert(0%) opacity(100%);
-}
-
-.fas {
-font-size:30px;
-color:#e7e7e7;
-}
-
-i.fas.fa-shopping-basket:hover {
-  color:#169c0a;
-}
-
-i.fas.fa-user:hover{
-color:#169c0a;
-}
-
-.dropdown-menu {
-    position: absolute;
-    top: 32px;
-    left: 0;
-    background-color: #323232;
-    border: 1px solid #169c0a;
-    border-radius: 5px;
-    padding: 10px;
-    display: none;
-    z-index: 10;
-}
-
-.dropdown-menu a {
-    display: block;
-    margin: 5px 0;
-}
-
-.right-icons .person:hover .dropdown-menu {
-    display: block;
-}
-
-@media screen and (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px;
-    }
-    nav a {
-        display: block;
-        margin: 5px 0;
-    }
-    .right-icons {
-        margin-top: 10px;
-    }
-}
-
-
+/*------------ nav bar --------------*/F
 /*--------- slider --------*/
 
 header {
@@ -189,7 +80,6 @@ header {
     overflow: hidden;
     position: absolute;
     z-index: -9999;
-    top: 77px;
 }
 .home_row1_col1 ul li {
     width: 31%;
@@ -419,10 +309,12 @@ margin-top:107px;
 .btn-primary{
 background-color:#169c0a;
 border-color:#169c0a;
+text-indent:6px;
 }
 .btn-primary:hover {
 background-color:#169c0a;
 border-color:#169c0a;
+text-indent:0px;
 }
 .btn{
 border-radius: 2.25rem;
@@ -466,10 +358,12 @@ text-align:center;
 }
 .btn-outline-secondary {
 border-color:#169c0a;
+text-indent:6px;
 }
 .btn-outline-secondary:hover {
 border-color:#169c0a;
 background-color:#169c0a;
+text-indent:0px;
 }
     /*-------------------- Item Page -------------------*/
 
