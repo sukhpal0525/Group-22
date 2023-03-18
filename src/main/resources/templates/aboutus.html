@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
     <link rel="stylesheet" href="/css/aboutus.css">
+    <link rel="stylesheet" href="/css/global.css">
     <div th:replace="fragments/nav_bar :: styles"></div>
     <!-- import boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -14,7 +15,7 @@
 </head>
 
 <body>
-<div th:replace="fragments/nav_bar :: header"></div>
+    <div th:replace="fragments/nav_bar :: header"></div>
     <!--
     <div class="bottom-content">
         <h1>About Us</h1>
@@ -35,14 +36,22 @@
                 <ion-icon name="logo-instagram"></ion-icon>
             </a>
 -->
-    <div class="about_us__container">
+    <!--   <div class="about_us__container">
         <div class="container2">
             <div class="sub-page">
                 <h2>About Us</h2>
             </div>
         </div>
     </div>
-
+ -->
+    <div class="video-container">
+        <video autoplay muted loop>
+        <source src="/Images/loginBackingEdit.mp4" type="video/mp4" />
+    </video>
+        <div class="caption">
+            <h2>ABOUT US</h2>
+        </div>
+    </div>
 
     <div class="container3 container">
         <div class="c3padder">
@@ -66,7 +75,7 @@
         <div class="c4padder">
             <h3><span>FEEL LIKE SUPPORTING US?</span></h3>
             <div class="button">
-                <a href="/contactus">SHOP NOW</a>
+                <button><a href="/contactus"> SHOP NOW</a></button>
             </div>
         </div>
     </div>

@@ -58,7 +58,7 @@
               <p th:text="${orderItem.numOfItems}"></p>
             </div>
             <div class="prod-price">
-              <p>£X.XX</p>
+              <p th:text="${#numbers.formatCurrency(orderItem.product.amount)}"></p>
             </div>
           </div>
         </div>

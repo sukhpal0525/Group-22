@@ -43,7 +43,7 @@ a:hover {
 /*------------ nav bar --------------*/
 
 nav {
-    background-color: #e7e7e7;
+    background-color: #323232;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -57,14 +57,14 @@ nav ul li {
 
 nav a {
     text-decoration: none;
-    color: #323232;
+    color: #e7e7e7;
     font-size: 22px;
     font-weight:700;
     margin: 0 10px;
 }
 
 nav a:hover {
-    color:#ACEF20;
+    color:#169c0a;
 }
 
 .logo {
@@ -79,7 +79,7 @@ nav a:hover {
 }
 
 .pages ul {
-padding-left:20%;
+padding-left:16%;
 float:left;
 }
 
@@ -102,23 +102,23 @@ float:left;
 
 .fas {
 font-size:30px;
-color:#323232;
+color:#e7e7e7;
 }
 
 i.fas.fa-shopping-basket:hover {
-  color:#ACEF20;
+  color:#169c0a;
 }
 
 i.fas.fa-user:hover{
-color:#ACEF20;
+color:#169c0a;
 }
 
 .dropdown-menu {
     position: absolute;
     top: 32px;
     left: 0;
-    background-color: #e7e7e7;
-    border: 1px solid #ACEF20;
+    background-color: #323232;
+    border: 1px solid #169c0a;
     border-radius: 5px;
     padding: 10px;
     display: none;
@@ -189,7 +189,7 @@ header {
     overflow: hidden;
     position: absolute;
     z-index: -9999;
-    top: 88px;
+    top: 77px;
 }
 .home_row1_col1 ul li {
     width: 31%;
@@ -241,7 +241,7 @@ header {
 
 /*
 .homepage-card:hover {
-    box-shadow: 0px 0px 30px 1px #ACEF20;
+    box-shadow: 0px 0px 30px 1px #169c0a;
 }
 */
 
@@ -276,11 +276,11 @@ header {
 .home_row1 {
     width: 100%;
     height: auto;
-    border-top: 1px solid #9D20C9;
+    border-top: 1px solid #169c0a;
     margin-top: 60px;
 }
 .home_row1_addition{
-margin-top:155px;
+margin-top:107px;
 }
 .home_row1 h1 {
     width: 17%;
@@ -371,7 +371,7 @@ margin-top:155px;
 
 .home_row1_col2 ul li a:hover,
 .home_row1_col2 ul li a.active {
-    color: #ACEF20;
+    color: #169c0a;
 }
 
 .home_row1_col2 ul li:nth-child(4n) a {
@@ -417,12 +417,12 @@ margin-top:155px;
     text-indent:20px;
 }
 .btn-primary{
-background-color:#ACEF20;
-border-color:#ACEF20;
+background-color:#169c0a;
+border-color:#169c0a;
 }
 .btn-primary:hover {
-background-color:#ACEF20;
-border-color:#ACEF20;
+background-color:#169c0a;
+border-color:#169c0a;
 }
 .btn{
 border-radius: 2.25rem;
@@ -465,11 +465,11 @@ border-radius: 2.25rem;
 text-align:center;
 }
 .btn-outline-secondary {
-border-color:#ACEF20;
+border-color:#169c0a;
 }
 .btn-outline-secondary:hover {
-border-color:#ACEF20;
-background-color:#ACEF20;
+border-color:#169c0a;
+background-color:#169c0a;
 }
     /*-------------------- Item Page -------------------*/
 

@@ -20,7 +20,7 @@ body {
 /*------------ nav bar --------------*/
 
 nav {
-    background-color: #e7e7e7;
+    background-color: #323232;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -34,14 +34,14 @@ nav ul li {
 
 nav a {
     text-decoration: none;
-    color: #323232;
+    color: #e7e7e7;
     font-size: 22px;
     font-weight:700;
     margin: 0 10px;
 }
 
 nav a:hover {
-    color:#ACEF20;
+    color:#169c0a;
 }
 
 .logo {
@@ -56,7 +56,7 @@ nav a:hover {
 }
 
 .pages ul {
-padding-left:20%;
+padding-left:16%;
 float:left;
 }
 
@@ -79,23 +79,23 @@ float:left;
 
 .fas {
 font-size:30px;
-color:#323232;
+color:#e7e7e7;
 }
 
 i.fas.fa-shopping-basket:hover {
-  color:#ACEF20;
+  color:#169c0a;
 }
 
 i.fas.fa-user:hover{
-color:#ACEF20;
+color:#169c0a;
 }
 
 .dropdown-menu {
     position: absolute;
     top: 32px;
     left: 0;
-    background-color: #e7e7e7;
-    border: 1px solid #ACEF20;
+    background-color: #323232;
+    border: 1px solid #169c0a;
     border-radius: 5px;
     padding: 10px;
     display: none;
@@ -124,18 +124,6 @@ color:#ACEF20;
     .right-icons {
         margin-top: 10px;
     }
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-* {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    border: 0;
-    outline: none;
-    text-decoration: none !important;
-    font-family: 'Roboto', sans-serif;
-    
 }
 
 body {
