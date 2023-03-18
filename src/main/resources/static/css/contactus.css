@@ -1,4 +1,4 @@
-*{
+*{ 
     font-family: sans-serif;
   }
   
@@ -17,9 +17,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #ffffff;
-    box-shadow:  -26px 26px 52px #bebebe,
-    26px -26px 52px #ffffff;
+    box-shadow:  -26px 26px 52px #bebebe;
     width: 75vh;
+    margin-top: 7vh;
   }
   
   .login-form{
