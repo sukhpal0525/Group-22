@@ -59,13 +59,10 @@
               <div class="pricing" th:if="${basket.product.onSale}">
                   <p th:text="${#numbers.formatCurrency((basket.product.amount - basket.product.amount * basket.product.sale) * basket.amount)}"></p>
               </div>
-              <div class="pricing">
-                  <div th:if="${basket.product.onSale}">
-                      <span class="text-danger">
-                          <del th:text="'&pound;' + ${#numbers.formatDecimal(basket.product.amount, 0, 'COMMA', 2, 'POINT')}" style="text-decoration: line-through !important;"></del>&nbsp;
-                          <strong th:text="'&pound;' + ${#numbers.formatDecimal((basket.product.amount - basket.product.amount * basket.product.sale) * basket.amount, 0, 'COMMA', 2, 'POINT')}"></strong>
-                      </span>
-                  </div>
+              <div class="pricing" th:if="!${basket.product.onSale}">
+                  <p th:text="${#numbers.formatCurrency(basket.product.amount * basket.amount)}"></p>
+              </div>
+
             <div class="del-item">
               <a
                 th:href="@{/basket/delete/{id}(id=${basket.id})}"
@@ -104,8 +101,8 @@
                     >CHECKOUT</a>
                 </div>
             </div>
+
         </div>
-     </div>
     </div>
 
   <script>
