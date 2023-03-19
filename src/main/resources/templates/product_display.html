@@ -3,16 +3,13 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>[[${product.Name}]] - Group 22</title>
-<!--    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>-->
     <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
     <div th:replace="fragments/nav_bar :: styles"></div>
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-
 <div th:replace="fragments/nav_bar :: header"></div>
-
 <div class="importContainer text-center" style="max-width: 700px;">
     <div class="mt-4 alert alert-success" th:if="${purchase_success}" role="alert">Success! Product has been added to
         basket. <a class="alert-link" th:href="@{/basket}">Click here to view it</a>
@@ -20,7 +17,11 @@
     <div class="mt-4 alert alert-danger" th:if="${purchase_fail}" th:text="${purchase_fail}" role="alert"></div>
     <div class="h1 mt-4" th:text="${product.Name}"></div>
     <p th:text="${product.Description}"></p>
-    <p class="text-muted" th:text="${#numbers.formatCurrency(product.Amount)}"></p>
+    <div class="text-danger" th:if="${product.OnSale}">
+        <del th:text="${#numbers.formatCurrency(product.Amount)}" style="text-decoration: line-through !important;"></del>&nbsp;
+        <strong th:text="${#numbers.formatCurrency(product.Amount - product.Amount * product.Sale)}"></strong>
+    </div>
+    <p class="text-muted" th:if="!${product.OnSale}" th:text="${#numbers.formatCurrency(product.Amount)}"></p>
     <div class="alert alert-warning" role="alert"
          th:if="${product.AmountAvailable <= 20 && product.AmountAvailable >= 1}">
         Warning! This item is low in stock. <strong>Only [[${product.AmountAvailable}]] left</strong>
@@ -44,6 +45,5 @@
         </div>
     </form>
 </div>
-
 </body>
 </html>

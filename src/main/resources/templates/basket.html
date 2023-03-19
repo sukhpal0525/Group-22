@@ -55,12 +55,14 @@
             <div class="product-title">
               <h4 th:text="${basket.product.name}"></h4>
             </div>
-            <div class="product-quan"><p th:text="${basket.amount}"></p></div>
-            <div class="pricing">
-              <p
-                th:text="${#numbers.formatCurrency(basket.product.Amount*basket.amount)}"
-              ></p>
-            </div>
+              <div class="product-quan"><p th:text="${basket.amount}"></p></div>
+              <div class="pricing" th:if="${basket.product.onSale}">
+                  <p th:text="${#numbers.formatCurrency((basket.product.amount - basket.product.amount * basket.product.sale) * basket.amount)}"></p>
+              </div>
+              <div class="pricing" th:if="!${basket.product.onSale}">
+                  <p th:text="${#numbers.formatCurrency(basket.product.amount * basket.amount)}"></p>
+              </div>
+
             <div class="del-item">
               <a
                 th:href="@{/basket/delete/{id}(id=${basket.id})}"

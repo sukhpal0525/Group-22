@@ -45,10 +45,7 @@
         <div class="summ-title">
           <h3>Order Summary</h3>
         </div>
-        <div
-          class="summ-val"
-          th:text="${#numbers.formatCurrency(order.orderAmount)}"
-        ></div>
+        <div class="summ-val" th:text="${#numbers.formatCurrency(order.orderAmount)}"></div>
         <div class="summ-items">
           <div class="item-card" th:each="orderItem : ${order.orderItems}">
             <div class="prod-name">
@@ -57,12 +54,19 @@
             <div class="prod-quan">
               <p th:text="${orderItem.numOfItems}"></p>
             </div>
-            <div class="prod-price">
+            <div class="prod-price" th:if="${orderItem.product.onSale}">
+                <span class="text-danger">
+                    <del th:text="'&pound;' + ${#numbers.formatDecimal(orderItem.product.amount, 0, 'COMMA', 2, 'POINT')}" style="text-decoration: line-through !important;"></del>&nbsp;
+                    <strong th:text="'&pound;' + ${#numbers.formatDecimal((orderItem.product.amount - orderItem.product.amount * orderItem.product.sale), 0, 'COMMA', 2, 'POINT')}"></strong>
+                </span>
+            </div>
+            <div class="prod-price" th:if="!${orderItem.product.onSale}">
               <p th:text="${#numbers.formatCurrency(orderItem.product.amount)}"></p>
             </div>
           </div>
         </div>
       </div>
+
     </div>
 
 
