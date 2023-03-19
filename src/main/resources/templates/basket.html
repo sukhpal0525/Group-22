@@ -52,15 +52,20 @@
             style="cursor: pointer"
             th:attr="onclick=|rowClicked('${basket.id}')|"
           >
-            <div class="product-title">
-              <h4 th:text="${basket.product.name}"></h4>
-            </div>
-              <div class="product-quan"><p th:text="${basket.amount}"></p></div>
-              <div class="pricing" th:if="${basket.product.onSale}">
-                  <p th:text="${#numbers.formatCurrency((basket.product.amount - basket.product.amount * basket.product.sale) * basket.amount)}"></p>
+              <div class="product-title">
+                  <h4 th:text="${basket.product.name}"></h4>
               </div>
-              <div class="pricing" th:if="!${basket.product.onSale}">
-                  <p th:text="${#numbers.formatCurrency(basket.product.amount * basket.amount)}"></p>
+              <div class="product-quan"><p th:text="${basket.amount}"></p></div>
+              <div class="pricing">
+                  <div th:if="${basket.product.onSale}">
+                      <span class="text-danger">
+                          <del th:text="'&pound;' + ${#numbers.formatDecimal(basket.product.amount, 0, 'COMMA', 2, 'POINT')}" style="text-decoration: line-through !important;"></del>&nbsp;
+                          <strong th:text="'&pound;' + ${#numbers.formatDecimal((basket.product.amount - basket.product.amount * basket.product.sale) * basket.amount, 0, 'COMMA', 2, 'POINT')}"></strong>
+                      </span>
+                  </div>
+                  <div th:if="!${basket.product.onSale}">
+                      <p th:text="${#numbers.formatCurrency(basket.product.amount * basket.amount)}"></p>
+                  </div>
               </div>
 
             <div class="del-item">
