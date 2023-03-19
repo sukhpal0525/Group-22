@@ -1,8 +1,13 @@
 package org.aston.ecommerce.report;
 
 import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import org.aston.ecommerce.product.Product;
+import org.aston.ecommerce.product.ProductRepository;
 import org.aston.ecommerce.user.CustomUserDetails;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -14,9 +19,11 @@ public class ReportGenerator {
     private final Font secondHeaderFont = new Font(Font.FontFamily.HELVETICA, 14);
     private final Font subFont = new Font(Font.FontFamily.HELVETICA, 11);
     private final Font subFontBold = new Font(Font.FontFamily.HELVETICA, 11, Font.BOLD);
+    private final ProductRepository productRepository;
 
-    public ReportGenerator(CustomUserDetails currUser){
+    public ReportGenerator(CustomUserDetails currUser, ProductRepository productRepository){
         this.currUser = currUser;
+        this.productRepository = productRepository;
     }
 
 
@@ -25,12 +32,12 @@ public class ReportGenerator {
         PdfWriter.getInstance(document, response.getOutputStream());
         document.open();
         this.addMetaData(document);
-        this.addTitlePage(document);
+        this.addContent(document);
         document.close();
     }
 
 
-    private void addTitlePage(Document document) throws DocumentException {
+    private void addContent(Document document) throws DocumentException {
         Paragraph preface = new Paragraph();
         // Empty line
         this.addEmptyLine(preface, 1);
@@ -42,8 +49,31 @@ public class ReportGenerator {
                 subFontBold));
 
         document.add(preface);
-        // Start a new page
-        document.newPage();
+
+        this.createStockLevelTable(document);
+    }
+
+    private void createStockLevelTable(Document document) throws DocumentException {
+        Paragraph stockPara = new Paragraph();
+        // Empty line
+        this.addEmptyLine(stockPara, 1);
+        // Write the header
+        stockPara.add(new Paragraph("Current Stock Level", headerFont));
+        this.addEmptyLine(stockPara, 1);
+        PdfPTable table = new PdfPTable(2);
+
+        PdfPCell c1 = new PdfPCell(new Phrase("Name", subFontBold));
+        table.addCell(c1);
+
+        c1 = new PdfPCell(new Phrase("Stock Level", subFontBold));
+        table.addCell(c1);
+
+        for(Product product : this.productRepository.findAll()){
+            table.addCell(product.getName());
+            table.addCell(product.getAmountAvailable().toString());
+        }
+        stockPara.add(table);
+        document.add(stockPara);
     }
 
     private void addMetaData(Document document){
