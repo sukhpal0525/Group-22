@@ -82,13 +82,17 @@ public class BasketService {
         return success;
     }
 
-    public Double getTotalOfBasket(Basket basket){
+    public Double getTotalOfBasket(Basket basket) {
         Double returnDouble = 0.0;
 
-        for(BasketItem basketItem : basket.getBasketItems()){
-            returnDouble += (basketItem.getAmount() * basketItem.getProduct().getAmount());
-        }
+        for (BasketItem basketItem : basket.getBasketItems()) {
+            double productPrice = basketItem.getProduct().getAmount();
 
+            if (basketItem.getProduct().getOnSale()) {
+                productPrice = productPrice * (1 - basketItem.getProduct().getSale());
+            }
+            returnDouble += (basketItem.getAmount() * productPrice);
+        }
         return returnDouble;
     }
 }
