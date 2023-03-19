@@ -75,6 +75,10 @@ body {
     margin-bottom: 7%;
 }
 
+.c3padder p {
+    font-size: 18px;
+}
+
 .c4padder {
     margin: 5% !important;
 }
