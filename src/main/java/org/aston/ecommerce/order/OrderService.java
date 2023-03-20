@@ -93,10 +93,24 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
-    //Return all orders in ASCENDING order based on their date grouped by their enum status such that the most recent orders are shown first
+    public List<Order> findAllIncomingAndOutgoingOrders(){
+        List<Order> returnOrders = this.orderRepository.findAll()
+                .stream()
+                .filter(o -> o.getStatus() != Status.FAILED && o.getStatus() != Status.SUCCESS)
+                .collect(Collectors.toList());
+        this.sortOrdersByStatusThenDate(returnOrders);
+        return returnOrders;
+    }
+
     public List<Order> findOrdersByStatusAndDate(){
         List<Order> returnOrders = this.orderRepository.findAll();
-        Collections.sort(returnOrders, new Comparator<Order>() {
+        this.sortOrdersByStatusThenDate(returnOrders);
+        return returnOrders;
+    }
+
+    //Sort all orders in ASCENDING order based on their date grouped by their enum status such that the most recent orders are shown first
+    private void sortOrdersByStatusThenDate(List<Order> takeOrders){
+        Collections.sort(takeOrders, new Comparator<Order>() {
             @Override
             public int compare(Order o1, Order o2) {
                 if(o1.getStatus() == o2.getStatus()){
@@ -107,7 +121,6 @@ public class OrderService {
                 }
             }
         });
-        return returnOrders;
     }
 
     //Return all orders that are unprocessed in DESCENDING order based on when they were made such that the oldest unprocessed order is shown first

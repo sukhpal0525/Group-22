@@ -1,7 +1,8 @@
 package org.aston.ecommerce.report.web;
 
 import com.itextpdf.text.DocumentException;
-import org.aston.ecommerce.product.ProductRepository;
+import org.aston.ecommerce.order.OrderService;
+import org.aston.ecommerce.product.ProductService;
 import org.aston.ecommerce.report.ReportGenerator;
 import org.aston.ecommerce.user.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,9 @@ import java.util.Date;
 public class ReportController {
 
     @Autowired
-    private ProductRepository productRepository;
+    private ProductService productService;
+    @Autowired
+    private OrderService orderService;
 
 
     @GetMapping("/add")
@@ -47,7 +50,7 @@ public class ReportController {
         String headerValue = "attachment; filename=PC_Labs_Admin_Report_" + currentDateTime + ".pdf";
         response.setHeader(headerKey, headerValue);
 
-        ReportGenerator reportGenerator = new ReportGenerator(currUser, productRepository);
+        ReportGenerator reportGenerator = new ReportGenerator(currUser, this.productService, this.orderService);
         reportGenerator.export(response);
 
         return null;

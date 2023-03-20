@@ -4,8 +4,11 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import org.aston.ecommerce.order.Order;
+import org.aston.ecommerce.order.OrderService;
 import org.aston.ecommerce.product.Product;
 import org.aston.ecommerce.product.ProductRepository;
+import org.aston.ecommerce.product.ProductService;
 import org.aston.ecommerce.user.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -19,11 +22,13 @@ public class ReportGenerator {
     private final Font secondHeaderFont = new Font(Font.FontFamily.HELVETICA, 14);
     private final Font subFont = new Font(Font.FontFamily.HELVETICA, 11);
     private final Font subFontBold = new Font(Font.FontFamily.HELVETICA, 11, Font.BOLD);
-    private final ProductRepository productRepository;
+    private final ProductService productService;
+    private final OrderService orderService;
 
-    public ReportGenerator(CustomUserDetails currUser, ProductRepository productRepository){
+    public ReportGenerator(CustomUserDetails currUser, ProductService productService, OrderService orderService){
         this.currUser = currUser;
-        this.productRepository = productRepository;
+        this.productService = productService;
+        this.orderService = orderService;
     }
 
 
@@ -33,6 +38,8 @@ public class ReportGenerator {
         document.open();
         this.addMetaData(document);
         this.addContent(document);
+        this.createStockLevelTable(document);
+        this.createOrdersTable(document);
         document.close();
     }
 
@@ -49,8 +56,6 @@ public class ReportGenerator {
                 subFontBold));
 
         document.add(preface);
-
-        this.createStockLevelTable(document);
     }
 
     private void createStockLevelTable(Document document) throws DocumentException {
@@ -68,7 +73,7 @@ public class ReportGenerator {
         c1 = new PdfPCell(new Phrase("Stock Level", subFontBold));
         table.addCell(c1);
 
-        for(Product product : this.productRepository.findAll()){
+        for(Product product : this.productService.findAllProductsInAscendingOrder()){
             table.addCell(product.getName());
             table.addCell(product.getAmountAvailable().toString());
         }
@@ -76,6 +81,39 @@ public class ReportGenerator {
         document.add(stockPara);
     }
 
+    public void createOrdersTable(Document document) throws DocumentException{
+        Paragraph ordersPara = new Paragraph();
+        // Empty line
+        this.addEmptyLine(ordersPara, 1);
+        // Write the header
+        ordersPara.add(new Paragraph("Incoming and Outgoing Orders", headerFont));
+        this.addEmptyLine(ordersPara, 1);
+        float [] pointColumnWidths = {35F, 40F, 25F};
+        PdfPTable table = new PdfPTable(pointColumnWidths);
+
+        PdfPCell c1 = new PdfPCell(new Phrase("Transaction Number", subFontBold));
+        table.addCell(c1);
+
+        c1 = new PdfPCell(new Phrase("Order", subFontBold));
+        table.addCell(c1);
+
+        c1 = new PdfPCell(new Phrase("Status", subFontBold));
+        table.addCell(c1);
+
+        for(Order order: this.orderService.findAllIncomingAndOutgoingOrders()){
+            table.addCell(order.getTransactionNumber());
+            String orderDesc = "";
+            for(int i = 0; i < order.getOrderItems().size(); i++){
+                Order.OrderItem orderItem = order.getOrderItems().get(i);
+                orderDesc += orderItem.getProduct().getName() + " " + "(x" + orderItem.getNumOfItems() + ")";
+                orderDesc += i < (order.getOrderItems().size() - 1) ? ", " : "";
+            }
+            table.addCell(orderDesc);
+            table.addCell(order.getStatus().toString());
+        }
+        ordersPara.add(table);
+        document.add(ordersPara);
+    }
     private void addMetaData(Document document){
         document.addTitle("PC Labs Admin Report");
         document.addSubject("Admin Report");

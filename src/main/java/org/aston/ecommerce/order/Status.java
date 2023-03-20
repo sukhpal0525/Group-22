@@ -3,7 +3,9 @@ package org.aston.ecommerce.order;
 public enum Status {
     UNPROCESSED(0),
     PROCESSED(1),
-    SHIPPED(2);
+    SHIPPED(2),
+    SUCCESS(3),
+    FAILED(4);
 
     private final Integer id;
 
@@ -27,6 +29,8 @@ public enum Status {
             case UNPROCESSED: return "Unprocessed";
             case PROCESSED: return "Processed";
             case SHIPPED: return "Shipped";
+            case SUCCESS: return "Success";
+            case FAILED: return "Failed";
             default: throw new IllegalArgumentException();
         }
     }

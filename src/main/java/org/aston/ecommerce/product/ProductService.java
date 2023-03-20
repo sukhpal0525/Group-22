@@ -48,6 +48,13 @@ public class ProductService {
         return Optional.of(this.productRepository.findAll());
     }
 
+    //Find all products by ascending order such that the products with the highest stock are shown first.
+    public List<Product> findAllProductsInAscendingOrder(){
+        List<Product> returnProducts = this.productRepository.findAll();
+        Collections.sort(returnProducts, (Product p1, Product p2) -> p2.getAmountAvailable() - p1.getAmountAvailable());
+        return returnProducts;
+    }
+
     public void updateProduct(Product product) {
         productRepository.save(product);
     }
