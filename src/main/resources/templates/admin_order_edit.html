@@ -23,6 +23,8 @@
                     <option th:selected="${editOrder.status.toString()} == 'Unprocessed'" value="unprocessed">Unprocessed</option>
                     <option th:selected="${editOrder.status.toString()} == 'Processed'" value="processed">Processed</option>
                     <option th:selected="${editOrder.status.toString()} == 'Shipped'" value="shipped">Shipped</option>
+                    <option th:selected="${editOrder.status.toString()} == 'Success'" value="success">Success</option>
+                    <option th:selected="${editOrder.status.toString()} == 'Failed'" value="failed">Failed</option>
                 </select>
             </div>
             <div class="col-md-3 col-sm-5 col-12 mt-3 mt-sm-0">
