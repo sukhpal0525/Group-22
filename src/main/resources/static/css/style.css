@@ -76,7 +76,7 @@ header {
 
 .back_area {
     width: 100%;
-    height: 432px;
+    height: 500px;
     overflow: hidden;
     position: absolute;
     z-index: -9999;
@@ -170,7 +170,7 @@ header {
     margin-top: 60px;
 }
 .home_row1_addition{
-margin-top:107px;
+margin-top:180px;
 }
 .home_row1 h1 {
     width: 17%;
