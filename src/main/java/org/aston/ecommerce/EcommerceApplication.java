@@ -21,7 +21,7 @@ public class EcommerceApplication implements CommandLineRunner {
 
     @Override
     public void run(String... arg) throws Exception {
-        fileStorageService.deleteAll();
+        //fileStorageService.deleteAll();
         fileStorageService.init();
     }
 

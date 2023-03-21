@@ -37,7 +37,7 @@
         <div class="clearfix">
             <div class="filter_main">
                 <div class="product_filter">
-                    <form th:action="@{/products/list/category}" method="get">
+                    <form th:action="@{/products/list_category}" method="get">
                         <label for="categorySelect">Filter by category:</label>
                         <select name="categorySelect" id="categorySelect" onchange="this.form.submit()">
                             <option th:selected="${categorySelect} == 'all'" value="all">All</option>

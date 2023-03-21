@@ -42,9 +42,14 @@ public class ProductController {
 //        return ResponseEntity.of(this.productService.findAll());
 //    }
 
-    @GetMapping("/products/list/category")
+    @GetMapping("/products/list_category")
     public String getProducts(Model model, @RequestParam(name = "categorySelect", required = false) String categoryStr) {
 
+        return "redirect:/products/list/" + categoryStr;
+    }
+
+    @GetMapping("/products/list/{category}")
+    public String getProductsLoad(Model model, @PathVariable("category") String categoryStr){
 
         List<Product> products = this.productService.findByCategory(categoryStr);
 
@@ -53,6 +58,7 @@ public class ProductController {
         model.addAttribute("products", products);
 
         model.addAttribute("categorySelect", categoryStr);
+
         return "products_list";
     }
 
