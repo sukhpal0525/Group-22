@@ -4,20 +4,18 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>Group 22</title>
-<!--    <link rel="stylesheet"-->
-<!--          type="text/css"-->
-<!--          href="/webjars/bootstrap/css/bootstrap.min.css"/>-->
-    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <!--    <link rel="stylesheet"-->
+    <!--          type="text/css"-->
+    <!--          href="/webjars/bootstrap/css/bootstrap.min.css"/>-->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <div th:replace="fragments/nav_bar :: styles"></div>
-    <script type="text/javascript"
-            src="/webjars/jquery/jquery.min.js"></script>
-    <script type="text/javascript"
-            src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
     <style>
         * ol {
             list-style-type: decimal !important;
         }
-
     </style>
 </head>
 
@@ -26,25 +24,20 @@
     <div th:replace="fragments/nav_bar :: header"></div>
 
     <div class="importContainer text-center">
-        <div th:if="${isNotLoggedIn}"
-             class="mt-2 alert alert-danger">
+        <div th:if="${isNotLoggedIn}" class="mt-2 alert alert-danger">
             Sorry. You need to be logged in to add items to view past orders.
         </div>
-        <div th:if="${empty}"
-             class="mt-2 alert alert-secondary">
+        <div th:if="${empty}" class="mt-2 alert alert-secondary">
             You have no past orders.
         </div>
         <div class="row w-100" th:unless="${isNotLoggedIn}">
-            <div class="col-12 w-100"
-                 th:unless="${empty}">
-                 <h1 class="display-4 mb-3">Past Orders</h1>
-                 <hr class="border-dark my-4" />
-                 <div th:each="order,iter: ${orders}">
-                    <h5 class="h5 text-muted"
-                        th:text="${'Order #' + (iter.index+1) + ' @ ' + order.orderDate}"></h5>
+            <div class="col-12 w-100" th:unless="${empty}">
+                <h1 class="display-4 mb-3">Past Orders</h1>
+                <hr class="border-dark my-4" />
+                <div th:each="order,iter: ${orders}">
+                    <h5 class="h5 text-muted" th:text="${'Order #' + (iter.index+1) + ' @ ' + order.orderDate}"></h5>
                     <table class="table table-dark table-striped table-sm">
-                        <caption class="bg-dark small text-white text-right p-2"
-                                th:text="${order.transactionNumber + ' - ' + order.orderAmount + ' - ' + order.orderDate}"></caption>
+                        <caption class="bg-dark small text-white text-right p-2" th:text="${order.transactionNumber + ' - ' + order.orderAmount + ' - ' + order.orderDate}"></caption>
                         <thead>
                             <tr>
                                 <th>Product</th>
@@ -63,11 +56,11 @@
 
                     <hr class="border-dark my-5" />
 
-                 </div>
+                </div>
             </div>
         </div>
     </div>
-
+    <div th:replace="fragments/footer :: footer"></div>
 </body>
 
 </html>
