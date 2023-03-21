@@ -16,19 +16,41 @@
 <div class="pagegrid">
   <div class="sidepanel">
 
+      <div class="dashredir">
+        <h6 id="current"><a th:href="@{/admin/dashboard}">Dashboard</a></h6>
+      </div>
+
+      <div class="adminpages">
+        <h4>ADMIN PAGES</h4>
+        <p><a th:href="@{/admin/products}">View Products</a></p>
+        <p><a th:href="@{/admin/products/new}">Add Product</a></p>
+        <p><a th:href="@{/admin/all-orders}">View Orders</a></p>
+        <p><a th:href="@{/report/add}">Generate Report</a></p>
+      </div>
+
+      <div class="customerpages">
+        <h4>CUSTOMER PAGES</h4>
+        <p><a th:href="@{/home}" class="active">Home</a></p>
+        <p><a th:href="@{/products}">Products</a></p>
+        <p><a th:href="@{/aboutus}">About Us</a></p>
+        <p><a th:href="@{/contactus}">Contact Us</a></p>
+      </div>
+
+      <div class="logout">
+        <h6>Basket</h6>
+        <h6>Log Out</h6>
+      </div>
+    </div>
+
   </div>
+
+
   <div class="pagecontent">
     
   </div>
-</div>
 
-<div class="importContainer text-center">
-  <h1 class="mt-2">Admin Dashboard</h1>
-  <h3><a th:href="@{/admin/products}">View Products</a></h3>
-  <h3><a th:href="@{/admin/products/new}">Add Product</a></h3>
-  <h3><a th:href="@{/admin/all-orders}">View Orders</a></h3>
-  <h3><a th:href="@{/report/add}">Generate Report</a></h3>
-</div>
 
+</div>
+<div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>
