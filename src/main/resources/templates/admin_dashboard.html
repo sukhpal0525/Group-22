@@ -4,6 +4,7 @@
   <meta charset="ISO-8859-1">
   <title>Admin Dashboard - Group 22</title>
   <link rel="stylesheet" type="text/css" href="/css/global.css" />
+  <link rel="stylesheet" type="text/css" href="/css/adminglobal.css" />
   <link rel="stylesheet" type="text/css" href="/css/admindash.css" />
   <div th:replace="fragments/nav_bar :: styles"></div>
   <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
@@ -37,8 +38,10 @@
       </div>
 
       <div class="logout">
-        <h6>Basket</h6>
-        <h6>Log Out</h6>
+        <h6><a th:href="@{/basket}">Basket</a></h6>
+        <h6 th:unless="${#request.userPrincipal == null}"><a href="javascript:;"
+          onclick="document.getElementById('logoutForm').submit();"
+          role="menuitem">Logout</a></h6>
       </div>
     </div>
 
