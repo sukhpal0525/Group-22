@@ -4,7 +4,7 @@
 
 .pagegrid{
     display: grid;
-    grid-template-columns: .5fr 1.5fr;
+    grid-template-columns: .3fr 1.5fr;
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
@@ -16,7 +16,7 @@
     color: #e7e7e7;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr .5fr 2fr .5fr 2fr 2.5fr 1.25fr;
+    grid-template-rows: 1fr .5fr 2fr .75fr 2fr 2.5fr 1.25fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     padding: 7vh 0 7vh 3vw;
@@ -100,6 +100,10 @@ sidepanel p{
 
 .logout a{
     color: #e7e7e7;
+}
+
+.logout a:hover{
+    color:#169c0a;
 }
 
 #current{
