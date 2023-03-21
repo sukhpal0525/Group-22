@@ -1,0 +1,108 @@
+*{
+    text-decoration: none;
+}
+
+.pagegrid{
+    display: grid;
+    grid-template-columns: .5fr 1.5fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.sidepanel{
+    grid-area: 1 / 1 / 2 / 2;
+    background-color: #323232;
+    color: #e7e7e7;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr .5fr 2fr .5fr 2fr 2.5fr 1.25fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    padding: 7vh 0 7vh 3vw;
+}
+
+sidepanel p{
+    font-size: 1rem;
+}
+
+.pagecontent{
+    grid-area: 1 / 2 / 2 / 3;
+    margin: 0;
+}
+
+.dashredir{
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.dashredir a{
+    color: #e7e7e7;
+}
+
+.dashredir a:hover{
+    color:#169c0a;
+}
+
+.dashredir h6{
+    font-size: 1.2rem;
+}
+
+.adminpages{
+    grid-area: 3 / 1 / 4 / 2;
+}
+
+.adminpages p{
+    margin: 8px 0;
+}
+
+.adminpages a{
+    color:#e7e7e7
+}
+
+.adminpages a:hover{
+    color: #169c0a;
+}
+
+.adminpages h4{
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.customerpages{
+    grid-area: 5 / 1 / 6 / 2; 
+}
+
+.customerpages p{
+    margin: 8px 0;
+}
+
+.customerpages h4{
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.customerpages a{
+    color:#e7e7e7;
+}
+
+.customerpages a:hover{
+    color: #169c0a;
+}
+
+.logout{
+    grid-area: 7 / 1 / 8 / 2;
+}
+
+.logout h6{
+    font-size: 1.1rem;
+    margin: 8px 0px;
+}
+
+.logout a{
+    color: #e7e7e7;
+}
+
+#current{
+    font-weight: 900;
+    color: #ffff;
+}
