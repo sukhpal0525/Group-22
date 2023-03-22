@@ -1,130 +1,166 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+  <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>PCLab | Home</title>
     <link href="/css/style.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="/css/aboutus.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/aboutus.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
     <div th:replace="fragments/nav_bar :: styles"></div>
-    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <link
+      href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic"
+      rel="stylesheet"
+      type="text/css"
+    />
 
     <!--backto top-->
 
-
     <script src="/scripts/top_to-bottom.js"></script>
-    <script src="/scripts/jquery.carouFredSel-6.2.0-packed.js" type="text/javascript"></script>
+    <script
+      src="/scripts/jquery.carouFredSel-6.2.0-packed.js"
+      type="text/javascript"
+    ></script>
     <script type="text/javascript">
-  $(function() {
-    $('#carousel').carouFredSel({
-      responsive: true,
-      items: {
-        visible: 1,
-        width: 900,
-        height: 500
-      },
-      scroll: {
-        duration: 800,
-        timeoutDuration: 3500,
-        //fx: 'uncover-fade'
-        fx: 'crossfade'
-      },
-      pagination: '#pager'
-    });
-  });
-</script>
-</head>
-<body>
+      $(function () {
+        $("#carousel").carouFredSel({
+          responsive: true,
+          items: {
+            visible: 1,
+            width: 900,
+            height: 500,
+          },
+          scroll: {
+            duration: 800,
+            timeoutDuration: 3500,
+            //fx: 'uncover-fade'
+            fx: "crossfade",
+          },
+          pagination: "#pager",
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <!-- Nav Bar -->
+    <div th:replace="fragments/nav_bar :: header"></div>
 
-<!-- Nav Bar -->
-<div th:replace="fragments/nav_bar :: header"></div>
-
-<div class="c"></div>
-
-<div class="back_area">
-    <div id="carousel">
-        <div><img src="/Images/header_1.jpg" /></div>
-        <div><img src="/Images/header_2.jpg" /></div>
-        <div><img src="/Images/header_3.jpg" /></div>
-    </div>
-</div>
-<!--back_area-->
-
-<div class="wrapper">
-    <header>
-        <div class="header_content">
-            <h1></h1>
+    <div class="homecontent">
+      <div class="video-container">
+        <video autoplay muted loop>
+          <source src="/Images/loginBackingEdit.mp4" type="video/mp4" />
+        </video>
+        <div class="caption">
+          <h2>WELCOME</h2>
         </div>
+      </div>
 
-    </header>
-    <div class="c"></div>
-    <div class="home_row1 home_row1_addition">
-        <h1>Our Products</h1>
-        <div class="cards-homepage">
+      <div class="bottominfo">
+        <div class="home_row1 extra_line">
+          <h1>Big News</h1>
+          <div class="home_row1_col1">
+            <img src="/Images/blackpc.png" />
+            <div class="home_row1_col1_row1">
+              <h1>Lorem ipsum dolor sit amet</h1>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exer. Lorem ipsum dolor sit
+                amet, consectetur adipisicing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                veniam,
+              </p>
+            </div>
+            <!--home_row1_col1_row1-->
+            <div class="home_row1_col2">
+              <h2>HOT DEALS</h2>
+              <marquee
+                direction="up"
+                onmouseover="this.stop();"
+                onmouseout="this.start();"
+              >
+                <ul>
+                  <li><a href="#">Lorem ipsum dolor sit amet</a></li>
+                  <li><a href="#">Consectetur adipisicing elit</a></li>
+                  <li><a href="#">Sed do eiusmod tempor incididunt ut</a></li>
+                  <li><a href="#">Dolore magna aliqua</a></li>
+                </ul>
+              </marquee>
+            </div>
+            <!--home_row1_col2-->
+          </div>
+          <!--home_row2-->
+        </div>
+      </div>
 
+      <div class="categorieshome">
+        <div class="home_row1 home_row1_addition">
+          <h1>Our Products</h1>
+          <div class="cards-homepage">
             <a class="homepage-card" th:href="@{/products/list/gpu}">
-                <div class="homepage-card2" id="hcard1">
-                    <p>GPUs</p>
-                </div>
+              <div class="homepage-card2" id="hcard1">
+                <p>GPUs</p>
+              </div>
             </a>
 
             <div class="homepage-card">
-                <div class="homepage-card2" id="hcard2">
-                    <p>CPUs</p>
-                </div>
+              <div class="homepage-card2" id="hcard2">
+                <p>CPUs</p>
+              </div>
             </div>
 
             <div class="homepage-card">
-                <div class="homepage-card2" id="hcard3">
-                    <p>Motherboard</p>
-                </div>
+              <div class="homepage-card2" id="hcard3">
+                <p>Motherboard</p>
+              </div>
             </div>
 
             <div class="homepage-card">
-                <div class="homepage-card2" id="hcard4">
-                    <p>Memory</p>
-                </div>
+              <div class="homepage-card2" id="hcard4">
+                <p>Memory</p>
+              </div>
             </div>
 
             <div class="homepage-card">
-                <div class="homepage-card2" id="hcard5">
-                    <p>Mouse</p>
-                </div>
+              <div class="homepage-card2" id="hcard5">
+                <p>Mouse</p>
+              </div>
             </div>
-
+          </div>
         </div>
+      </div>
+
+      <div class="carouselinfo">
+        <div class="back_area">
+          <div id="carousel">
+            <div><img src="/Images/header_1.jpg" /></div>
+            <div><img src="/Images/header_2.jpg" /></div>
+            <div><img src="/Images/header_3.jpg" /></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="texthome">
+        <h4>
+          WELCOME TO PC LABS. HERE WE AIM TO PROVIDE YOU WITH THE BEST QUALITY
+          PC PARTS, FOR THE BEST PRICE
+        </h4>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exer. Lorem ipsum dolor sit amet,
+          consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+          labore et dolore magna aliqua. Ut enim ad minim veniam,
+        </p>
+      </div>
+
+      <div class="redirhome">
+        <h6>LOREM IPSUM</h6>
+      </div>
     </div>
-    <!--home_row1-->
-    <div class="c"></div>
-    <div class="home_row1 extra_line">
-        <h1>Big News</h1>
-        <div class="home_row1_col1">
-            <img src="/Images/cashback.jpg" />
-            <div class="home_row1_col1_row1">
-                <h1 >Lorem ipsum dolor sit amet</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exer. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
-        </div>
-        <!--home_row1_col1_row1-->
-        <div class="home_row1_col2">
-            <h2>HOT DEALS</h2>
-            <marquee direction="up" onmouseover="this.stop();" onmouseout="this.start();">
-                <ul>
-                    <li><a href="#">Lorem ipsum dolor sit amet</a></li>
-                    <li><a href="#">Consectetur adipisicing elit</a></li>
-                    <li><a href="#">Sed do eiusmod tempor incididunt ut</a></li>
-                    <li><a href="#">Dolore magna aliqua</a></li>
-                </ul>
-            </marquee>
-        </div>
-        <!--home_row1_col2-->
-    </div>
-    <!--home_row2-->
-    </div><!--home_row1_col1-->
-</div>
-<!--wrapper-->
 
-
-<div class="c"></div>
-<div th:replace="fragments/footer :: footer"></div>
-</body>
+    <div th:replace="fragments/footer :: footer"></div>
+  </body>
 </html>
