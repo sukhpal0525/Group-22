@@ -8,6 +8,7 @@
     <!--          type="text/css"-->
     <!--          href="/webjars/bootstrap/css/bootstrap.min.css"/>-->
     <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/css/orders.css" />
     <div th:replace="fragments/nav_bar :: styles"></div>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
@@ -23,6 +24,51 @@
 
     <div th:replace="fragments/nav_bar :: header"></div>
 
+
+    <!--  <div class="order-notlogged" th:if="${isNotLoggedIn}">
+        <div class="image-notlogged">
+            <img src="/Images/notlogged.png" alt="Image not loading" class="centered">
+        </div>
+        <div class="text-notlogged">
+            <p>Sorry. You need to be logged in to view your past orders.</p>
+        </div>
+        <div class="button-tolog">
+            <button style="cursor: pointer" onclick="location.href='/login';"> LOG IN
+          </button>
+        </div> -->
+
+
+
+    <!-- 
+    <div class="order-notlogged" th:if="${empty}">
+        <div class="image-not">
+            <img src="/Images/emptybasket.png" alt="Image not loading" class="centered">
+        </div>
+        <div class="text-not">
+            <p>Your basket is currently empty.</p>
+        </div>
+        <div class="button-toprod">
+            <button style="cursor: pointer" onclick="location.href='/products';"> CONTINUE SHOPPING
+        </button>
+        </div>
+    </div>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
     <div class="importContainer text-center">
         <div th:if="${isNotLoggedIn}" class="mt-2 alert alert-danger">
             Sorry. You need to be logged in to add items to view past orders.
@@ -60,6 +106,7 @@
             </div>
         </div>
     </div>
+
     <div th:replace="fragments/footer :: footer"></div>
 </body>
 
