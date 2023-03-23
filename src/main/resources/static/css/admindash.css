@@ -1,0 +1,119 @@
+.pagecontent{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: .4fr 1fr 1.2fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.welcomedash{
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.welcomedash h3{
+    font-size: 32px;
+    color: #323232;
+    margin: 13vh 0 7vh 8vw;
+}
+
+.alertsect{
+    grid-area: 2 / 1 / 3 / 2;
+}
+
+.stocksect{
+    grid-area: 3 / 1 / 4 / 2;
+}
+
+.dashwrap{
+    background-color: #fff;
+    margin: 20px 8vw;
+    height: 42vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: .2fr 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    padding-bottom: 12px;
+}
+
+.dashtitle{
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.dashtitle h4{
+    font-size: 20px;
+    margin: 4vh 3vw 2vh 3vw;
+    color: #323232;
+}
+
+.dashcards{
+    grid-area: 2 / 1 / 3 / 2;
+    margin: 0 3vw 0 3vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-right:10px;
+    margin-bottom: 10px;
+}
+
+.alertcard{
+    width:100%;
+    height: 6vh;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.alertcard p{
+    vertical-align: middle;
+    padding: 1.7vh 3vw 1.7vh 2vw;
+}
+
+#urgentalert{
+    background-color: rgb(255, 173, 173);
+    color:rgb(110, 0, 0);
+}
+
+#urgentalert a{
+    color:rgb(110, 0, 0)
+}
+
+#urgentalert a:hover{
+    color: rgb(255, 0, 0);
+}
+
+#amberalert{
+    background-color: rgb(255, 231, 186);
+    color: rgb(114, 74, 0);
+}
+
+#amberalert a{
+    color:rgb(114, 74, 0);
+}
+
+#amberalert a:hover{
+    color: rgb(234, 152, 0);
+}
+
+.stockcard{
+    width:100%;
+    height: 6vh;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    color: #323232;
+    background-color: #e7e7e7;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.itemnamesect{
+    grid-area: 1 / 1 / 2 / 2;
+    padding: 1.7vh 3vw 1.7vh 2vw;
+}
+
+.quantitysect{
+    grid-area: 1 / 2 / 2 / 3;
+    text-align: right;
+    padding: 1.7vh 2vw 1.7vh 3vw;
+}

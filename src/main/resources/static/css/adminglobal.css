@@ -28,7 +28,6 @@ sidepanel p{
 
 .pagecontent{
     grid-area: 1 / 2 / 2 / 3;
-    margin: 0;
 }
 
 .dashredir{

@@ -12,49 +12,83 @@
 </head>
 <body>
 
-<div th:replace="fragments/nav_bar :: header"></div>
+  <div th:replace="fragments/nav_bar :: header"></div>
 
-<div class="pagegrid">
-  <div class="sidepanel">
+  <div class="pagegrid">
+    <div class="sidepanel">
 
-      <div class="dashredir">
-        <h6 id="current"><a th:href="@{/admin/dashboard}">Dashboard</a></h6>
+        <div class="dashredir">
+          <h6 id="current"><a th:href="@{/admin/dashboard}">Dashboard</a></h6>
+        </div>
+
+        <div class="adminpages">
+          <h4>ADMIN PAGES</h4>
+          <p><a th:href="@{/admin/products}">View Products</a></p>
+          <p><a th:href="@{/admin/products/new}">Add Product</a></p>
+          <p><a th:href="@{/admin/all-orders}">View Orders</a></p>
+          <p><a th:href="@{/report/add}">Generate Report</a></p>
+          <p>Analytics</p>
+        </div>
+
+        <div class="customerpages">
+          <h4>CUSTOMER PAGES</h4>
+          <p><a th:href="@{/home}" class="active">Home</a></p>
+          <p><a th:href="@{/products}">Products</a></p>
+          <p><a th:href="@{/aboutus}">About Us</a></p> 
+          <p><a th:href="@{/contactus}">Contact Us</a></p>
+        </div>
+
+        <div class="logout">
+          <h6><a th:href="@{/basket}">Basket</a></h6>
+          <h6 th:unless="${#request.userPrincipal == null}"><a href="javascript:;"
+            onclick="document.getElementById('logoutForm').submit();"
+            role="menuitem">Logout</a></h6>
+        </div>
+    </div>
+
+    <div class="pagecontent">
+      <div class="welcomedash">
+        <h3>Welcome NAME</h3>
       </div>
+      <div class="alertsect">
+        <div class="dashwrap">
+          <div class="dashtitle">
+            <h4>ALERTS</h4>
+          </div>
+          <div class="dashcards">
+            <div class="alertcard" id="urgentalert">
+             <p>alert placeholder text, XXX remaining. Click <a href="#">here</a> to edit.</p> 
+            </div>
+            <div class="alertcard" id="amberalert">
+              <p>alert placeholder text, XXX remaining. Click <a href="#">here</a> to edit.</p> 
+             </div>
+          </div>
+        </div>
 
-      <div class="adminpages">
-        <h4>ADMIN PAGES</h4>
-        <p><a th:href="@{/admin/products}">View Products</a></p>
-        <p><a th:href="@{/admin/products/new}">Add Product</a></p>
-        <p><a th:href="@{/admin/all-orders}">View Orders</a></p>
-        <p><a th:href="@{/report/add}">Generate Report</a></p>
-        <p>Analytics</p>
       </div>
-
-      <div class="customerpages">
-        <h4>CUSTOMER PAGES</h4>
-        <p><a th:href="@{/home}" class="active">Home</a></p>
-        <p><a th:href="@{/products}">Products</a></p>
-        <p><a th:href="@{/aboutus}">About Us</a></p>
-        <p><a th:href="@{/contactus}">Contact Us</a></p>
-      </div>
-
-      <div class="logout">
-        <h6><a th:href="@{/basket}">Basket</a></h6>
-        <h6 th:unless="${#request.userPrincipal == null}"><a href="javascript:;"
-          onclick="document.getElementById('logoutForm').submit();"
-          role="menuitem">Logout</a></h6>
+      <div class="stocksect">
+        <div class="dashwrap">
+          <div class="dashtitle">
+            <h4>STOCKS</h4>
+          </div>
+          <div class="dashcards">
+            <div class="stockcard">
+              <div class="itemnamesect">
+                <p>item name placeholder</p>
+              </div>
+              <div class="quantitysect">
+                <p>qty X</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
   </div>
+  
 
+  <div th:replace="fragments/footer :: footer"></div>
 
-  <div class="pagecontent">
-    
-  </div>
-
-
-</div>
-<div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>
