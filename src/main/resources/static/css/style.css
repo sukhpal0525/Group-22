@@ -378,6 +378,8 @@ box-shadow: 0px 0px 30px 1px #169c0a;
 
 .redirhome { 
     grid-area: 7 / 1 / 8 / 2; 
+    display: flex;
+    justify-content: center;
 }
 
 .texthome-wrapper{
@@ -396,8 +398,46 @@ box-shadow: 0px 0px 30px 1px #169c0a;
     text-align: center;
 }
 
+button {
+    border: none;
+    font-family: sans-serif;
+    font-size: 15px;
+    background: transparent;
+    color: #323232;
+    border: solid 1px #323232;
+    padding: 10px;
+    border-radius: 4px;
+    transition-duration: 0.2s;
+    margin:10px 0px;
+}
+
+button:before {
+    content: "»";
+    opacity: 0;
+    margin-left: -10px;
+    transition-duration: 0.2s;
+}
+
+button:hover:before {
+    margin-left: 0px;
+    opacity: 1;
+}
+
+button:hover {
+    color: #169c0a;
+    background: #fff;
+    border: solid 1px #169c0a;
+}
 
 
+.textredir h5{
+    font-size: 28px;
+    margin: 13vh 0 20px 0;
+}
+
+.textredir{
+    text-align: center;
+}
 
 
 
