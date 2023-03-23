@@ -15,4 +15,6 @@ public interface FileStorage {
     public void deleteAll();
 
     public Stream<Path> loadAll();
+
+    public Boolean isFileAcceptable(MultipartFile file);
 }

@@ -82,7 +82,14 @@ public class AdminProduct {
         Product editProduct = optProduct.get();
         editProduct.setName(nameStr); editProduct.setDescription(descriptionStr);
         editProduct.setAmount(amountD); editProduct.setAmountAvailable(amountAvailableI);
-        editProduct.setCategory(category); editProduct.setUrl(file.isEmpty() ? null : file.getOriginalFilename());
+        editProduct.setCategory(category);
+
+        if(!this.fileStorageService.isFileAcceptable(file)){
+            redirectAttrs.addFlashAttribute("fail_msg", "Error! File was not either .png or .jpg");
+            return "redirect:/admin/products/" + id;
+        }
+
+        editProduct.setUrl(file.isEmpty() ? null : file.getOriginalFilename());
 
         try{
             this.productRepository.save(editProduct);
@@ -133,7 +140,14 @@ public class AdminProduct {
         Product newProduct = new Product();
         newProduct.setName(nameStr); newProduct.setDescription(descriptionStr);
         newProduct.setAmount(amountD); newProduct.setAmountAvailable(amountAvailableI);
-        newProduct.setCategory(category); newProduct.setUrl(file.isEmpty() ? null : file.getOriginalFilename());
+        newProduct.setCategory(category);
+
+        if(!this.fileStorageService.isFileAcceptable(file)){
+            model.addAttribute("fail_msg", "Error! File was not either .png or .jpg");
+            return "admin_add_product";
+        }
+
+        newProduct.setUrl(file.isEmpty() ? null : file.getOriginalFilename());
 
         try{
             this.productRepository.save(newProduct);

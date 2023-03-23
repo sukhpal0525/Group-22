@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.aston.ecommerce.file.web.FileUploadController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
 import java.util.List;
@@ -34,5 +35,6 @@ public class FileService {
                 .findAny()
                 .orElse(null);
     }
+
 
 }

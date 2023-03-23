@@ -69,4 +69,20 @@ public class FileStorageImplement implements FileStorage {
             throw new RuntimeException("Files couldn't be loaded!");
         }
     }
+
+    //Return true if file is .jpg or .png
+    @Override
+    public Boolean isFileAcceptable(MultipartFile file){
+        if(file == null) return true;
+        if(file.isEmpty()) return true;
+        String extension = "";
+
+        int i = file.getOriginalFilename().lastIndexOf(".");
+        if(i == -1) return false;
+        if(i > 0){
+            extension = file.getOriginalFilename().substring(i+1);
+        }
+        if(extension.equals("png") || extension.equals("jpg")) return true;
+        return false;
+    }
 }
