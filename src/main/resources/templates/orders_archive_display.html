@@ -37,8 +37,8 @@
         </div>
         <div class="button-tolog">
             <button style="cursor: pointer" onclick="location.href='/login';">
-          LOG IN
-        </button>
+                LOG IN
+            </button>
         </div>
     </div>
 
@@ -51,8 +51,8 @@
         </div>
         <div class="button-toprod">
             <button style="cursor: pointer" onclick="location.href='/products';">
-          CONTINUE SHOPPING
-        </button>
+                CONTINUE SHOPPING
+            </button>
         </div>
     </div>
 
@@ -75,36 +75,48 @@
             You have no past orders.
         </div> -->
         <div class="row w-100" th:unless="${isNotLoggedIn}">
-            <div class="col-12 w-100" th:unless="${empty}">
-                <h1 class="display-4 mb-3">Past Orders</h1>
-                <hr class="border-dark my-4" />
-                <div th:each="order,iter: ${orders}">
-                    <h5 class="h5 text-muted" th:text="${'Order #' + (iter.index+1) + ' @ ' + order.orderDate}"></h5>
-                    <table class="table table-dark table-striped table-sm">
-                        <caption class="bg-dark small text-white text-right p-2" th:text="${order.transactionNumber + ' - ' + order.orderAmount + ' - ' + order.orderDate}"></caption>
-                        <thead>
-                            <tr>
-                                <th>Product</th>
-                                <th>Quantity</th>
-                                <th>Amount</th>
-                            </tr>
-                        </thead>
+            <div class="col-12 w-100" th:unlestle ">Past Orders</h1>
+                <!-- <hr class="border-dark my-4 " /> -->
+                <div th:each="order,iter: ${orders} " class="order ">
+                    <div class="order-title ">
+                        <h5 class="h51 text-muted " th:text="${ 'Order #' + (iter.index+1)} ">
+                        </h5>
+
+                        <h5 class="h52 text-muted " th:text="${ '@ ' + order.orderDate} ">
+                        </h5>
+                    </div>
+
+                    <table class="parent-OrderItems ">
+                        <!-- <caption class="bg-dark small text-white text-right p-2 " th:text="${order.transactionNumber + ' - ' + order.orderAmount + ' - ' + order.orderDate} "></caption> -->
                         <tbody>
-                            <tr th:each="item: ${order.orderItems}">
-                                <td th:text="${item.product.name}"></td>
-                                <td th:text="${item.numOfItems}"></td>
-                                <td th:text="${#numbers.formatCurrency(item.amount)}"></td>
+                            <tr th:each="item: ${order.orderItems} " class="childOrderItems ">
+                                <td th:text="${item.product.name} "></td>
+                                <td th:text="${item.numOfItems} "></td>
+                                <td th:text="${#numbers.formatCurrency(item.amount)} "></td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <hr class="border-dark my-5" />
+                    <div class="order-title ">
+                        <h5 class="h51 text-muted " th:text=" 'Sub-Total:   ' + ${#numbers.formatCurrency(order.orderAmount)} ">
+                        </h5>
+                    </div>
+
+                    <!-- <hr class="border-dark my-5 " /> -->
+                    <div class="padder "></div>
+                    <!-- remove that later -->
+
+
                 </div>
             </div>
         </div>
     </div>
 
-    <div th:replace="fragments/footer :: footer"></div>
+    <div th:replace="fragments/footer :: footer "></div>
 </body>
 
 </html>
+
+
+
+<!-- table table-dark table-striped table-sm  -->
