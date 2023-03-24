@@ -16,27 +16,31 @@
 <div class="pagegrid">
     <div class="sidepanel">
 
-        <div class="dashredir">
+        <div class="dashpages">
           <h6 id="current"><a th:href="@{/admin/dashboard}">Dashboard</a></h6>
-        </div>
-
-        <div class="adminpages">
+  
+          <br>
+          <br>
+          <br>
+  
           <h4>ADMIN PAGES</h4>
           <p><a th:href="@{/admin/products}">View Products</a></p>
           <p><a th:href="@{/admin/products/new}">Add Product</a></p>
           <p><a th:href="@{/admin/all-orders}">View Orders</a></p>
           <p><a th:href="@{/report/add}">Generate Report</a></p>
           <p>Analytics</p>
-        </div>
-
-        <div class="customerpages">
+  
+          <br>
+          <br>
+          <br>
+  
           <h4>CUSTOMER PAGES</h4>
           <p><a th:href="@{/home}" class="active">Home</a></p>
           <p><a th:href="@{/products}">Products</a></p>
           <p><a th:href="@{/aboutus}">About Us</a></p> 
           <p><a th:href="@{/contactus}">Contact Us</a></p>
         </div>
-
+  
         <div class="logout">
           <h6><a th:href="@{/basket}">Basket</a></h6>
           <h6 th:unless="${#request.userPrincipal == null}"><a href="javascript:;"
@@ -46,7 +50,95 @@
     </div>
 
     <div class="pagecontent">
-
+        <div class="titlepage">
+            <h3>Orders</h3>
+        </div>
+        <div class="ordersections">
+            <div class="pendingorders" id="box">
+                <div class="statustitle">
+                    <h4>PENDING</h4>
+                </div>
+                <div class="cardstack">
+                    <div class="cardsorder">
+                        <div class="orderidsect">
+                            <p>Order ID</p>
+                        </div>
+                        <div class="transactionsect">
+                            <p>Transaction Number</p>
+                        </div>
+                        <div class="datesect">
+                            <p>Order Date</p>
+                        </div>
+                        <div class="amountsect">
+                            <p>Order Amount</p>
+                        </div>
+                        <div class="ordersatus">
+                            <select class="orderst">
+                                <option>Pending</option>
+                                <option>Shipped</option>
+                                <option>Complete</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="shippedorders">
+                <div class="statustitle" id="box">
+                    <h4>SHIPPED</h4>
+                </div>
+                <div class="cardstack">
+                    <div class="cardsorder">
+                        <div class="orderidsect">
+                            <p>Order ID</p>
+                        </div>
+                        <div class="transactionsect">
+                            <p>Transaction Number</p>
+                        </div>
+                        <div class="datesect">
+                            <p>Order Date</p>
+                        </div>
+                        <div class="amountsect">
+                            <p>Order Amount</p>
+                        </div>
+                        <div class="ordersatus">
+                            <select class="orderst">
+                                <option>Pending</option>
+                                <option>Shipped</option>
+                                <option>Complete</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="completeorders" id="box">
+                <div class="statustitle">
+                    <h4>COMPLETE</h4>
+                </div>
+                <div class="cardstack">
+                    <div class="cardsorder">
+                        <div class="orderidsect">
+                            <p>Order ID</p>
+                        </div>
+                        <div class="transactionsect">
+                            <p>Transaction Number</p>
+                        </div>
+                        <div class="datesect">
+                            <p>Order Date</p>
+                        </div>
+                        <div class="amountsect">
+                            <p>Order Amount</p>
+                        </div>
+                        <div class="ordersatus">
+                            <select class="orderst">
+                                <option>Pending</option>
+                                <option>Shipped</option>
+                                <option>Complete</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
   </div>

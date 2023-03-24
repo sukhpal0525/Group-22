@@ -15,11 +15,15 @@
     background-color: #323232;
     color: #e7e7e7;
     display: grid;
-    grid-template-columns: 1fr;
+    /* grid-template-columns: 1fr;
     grid-template-rows: 1fr .5fr 2fr .75fr 2fr 2.5fr 1.25fr;
     grid-column-gap: 0px;
+    grid-row-gap: 0px; */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr .1fr;
+    grid-column-gap: 0px;
     grid-row-gap: 0px;
-    padding: 7vh 0 7vh 3vw;
 }
 
 sidepanel p{
@@ -28,10 +32,28 @@ sidepanel p{
 
 .pagecontent{
     grid-area: 1 / 2 / 2 / 3;
-}
+} 
 
 .dashredir{
     grid-area: 1 / 1 / 2 / 2;
+}
+
+.dashpages{
+    grid-area: 1 / 1 / 2 / 2;
+    padding-left: 2vw;
+    padding-top: 50px;
+}
+
+.dashpages p{
+    margin:8px 0;
+}
+
+.dashpages a{
+    color: #e7e7e7;
+}
+
+.dashpages a:hover{
+    color: #169c0a;
 }
 
 .dashredir a{
@@ -42,12 +64,13 @@ sidepanel p{
     color:#169c0a;
 }
 
-.dashredir h6{
+.dashpages h6{
     font-size: 1.2rem;
 }
 
 .adminpages{
     grid-area: 3 / 1 / 4 / 2;
+    margin-top: 3vh;
 }
 
 .adminpages p{
@@ -89,7 +112,9 @@ sidepanel p{
 }
 
 .logout{
-    grid-area: 7 / 1 / 8 / 2;
+    /* grid-area: 7 / 1 / 8 / 2; */
+    grid-area: 2 / 1 / 3 / 2;
+    padding-left: 2vw;
 }
 
 .logout h6{
