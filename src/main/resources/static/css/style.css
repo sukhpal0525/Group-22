@@ -133,14 +133,14 @@ header {
 box-shadow: 0px 0px 30px 1px #169c0a;
 }
 */
-
+/* ALERT: as it happens, images for GPU and CPU are mixed around */
 #hcard1 {
-    background-image: url('/Images/GPU.png');
+    background-image: url('/Images/CPU.png');
     background-size: cover;
 }
 
 #hcard2 {
-    background-image: url('/Images/CPU.png');
+    background-image: url('/Images/GPU.png');
     background-size: cover;
 }
 
