@@ -56,12 +56,18 @@
             <h4>ALERTS</h4>
           </div>
           <div class="dashcards">
-            <div class="alertcard" id="urgentalert">
-             <p>alert placeholder text, XXX remaining. Click <a href="#">here</a> to edit.</p> 
+            <div class="alertcard urgentalert" th:each="emptyProduct : ${emptyProducts}">
+              <p>Product [[${emptyProduct.name}]] is out of stock. Click
+                <a th:href="@{/admin/products/{id}(id=${emptyProduct.id})}">here</a> to edit.</p>
             </div>
-            <div class="alertcard" id="amberalert">
-              <p>alert placeholder text, XXX remaining. Click <a href="#">here</a> to edit.</p> 
-             </div>
+            <div class="alertcard amberalert" th:each="amberProduct : ${amberProducts}">
+             <p>Product [[${amberProduct.name}]] is low in stock, [[${amberProduct.AmountAvailable}]] remaining. Click
+               <a th:href="@{/admin/products/{id}(id=${amberProduct.id})}">here</a> to edit.</p>
+            </div>
+            <div class="alertcard urgentalert" th:each="unprocessedOrder : ${unprocessedOrders}">
+              <p>Order [[${unprocessedOrder.transactionNumber}]] is [[${unprocessedOrder.status.toString().toLowerCase()}]].
+                <a th:href="@{/admin/edit_order/{id}(id=${unprocessedOrder.id})}">here</a> to edit.</p>
+            </div>
           </div>
         </div>
 

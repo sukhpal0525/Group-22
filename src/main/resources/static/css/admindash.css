@@ -67,29 +67,29 @@
     padding: 1.7vh 3vw 1.7vh 2vw;
 }
 
-#urgentalert{
+.urgentalert{
     background-color: rgb(255, 173, 173);
     color:rgb(110, 0, 0);
 }
 
-#urgentalert a{
+.urgentalert a{
     color:rgb(110, 0, 0)
 }
 
-#urgentalert a:hover{
+.urgentalert a:hover{
     color: rgb(255, 0, 0);
 }
 
-#amberalert{
+.amberalert{
     background-color: rgb(255, 231, 186);
     color: rgb(114, 74, 0);
 }
 
-#amberalert a{
+.amberalert a{
     color:rgb(114, 74, 0);
 }
 
-#amberalert a:hover{
+.amberalert a:hover{
     color: rgb(234, 152, 0);
 }
 
