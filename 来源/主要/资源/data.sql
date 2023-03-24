@@ -31,6 +31,18 @@ INSERT INTO `webproduct` (`Name`, `Amount`, `Description`,`Category`,`AmountAvai
  UPDATE `webproduct`
  SET `url` = 'Intel Core i9-11900K.jpg'
  WHERE `Name` = 'Intel Core i9-11900K';
+  UPDATE`webproduct`
+ SET  `url` = 'AMD Ryzen 5 5600X.jpg'
+ WHERE`Name`='AMD Ryzen 5 5600X';
+ UPDATE`webproduct`
+ SET `url` = 'AMD Ryzen 7 5800X.jpg'
+  WHERE `Name` = 'AMD Ryzen 7 5800X';
+  UPDATE`webproduct`
+  SET `url` = 'AMD Ryzen 9 5900X.jpg'
+   WHERE `Name` = 'AMD Ryzen 9 5900X';
+   UPDATE`webproduct`
+   SET `url` = 'Intel Core i5-11600K.jpg'
+    WHERE `Name` = 'Intel Core i5-11600K';
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -45,6 +57,21 @@ INSERT INTO `webproduct` (`Name`, `Amount`, `Description`,`Category`,`AmountAvai
 -- Motherboard (SALE)
 INSERT INTO `webproduct` (`Name`, `Amount`, `Description`,`Category`,`AmountAvailable`, `OnSale`, `Sale`) VALUES
   ('ASUS ROG Maximus XIII Hero (SALE)', 329.99, 'Z590 chipset, WiFi 6, RGB lighting', @MOTHERBOARD, 20, 1, 0.30);
+  UPDATE`webproduct`
+SET `url` = 'ASRock B450 Steel Legend.jpg'
+WHERE `Name` = 'ASRock B450 Steel Legend';
+UPDATE`webproduct`
+SET `url` = 'ASUS ROG Maximus XIII Hero.jpg'
+WHERE `Name` = 'ASUS ROG Maximus XIII Hero (SALE)';
+UPDATE`webproduct`
+SET `url` = 'Gigabyte AORUS X570 Master.jpg'
+WHERE `Name` = 'Gigabyte AORUS X570 Master';
+UPDATE`webproduct`
+SET `url` = 'MSI MPG Z590 Gaming Edge WiFi.jpg'
+WHERE `Name` = 'MSI MPG Z590 Gaming Edge WiFi';
+UPDATE`webproduct`
+SET `url` = 'EVGA Z590 Dark.jpg'
+WHERE `Name` = 'EVGA Z590 Dark';
 
 ------------------------------------------------------------------------------------------------------------------------
 
