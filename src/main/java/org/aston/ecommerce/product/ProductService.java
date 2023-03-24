@@ -1,6 +1,7 @@
 package org.aston.ecommerce.product;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -52,6 +53,23 @@ public class ProductService {
     public List<Product> findAllProductsInAscendingOrder(){
         List<Product> returnProducts = this.productRepository.findAll();
         Collections.sort(returnProducts, (Product p1, Product p2) -> p2.getAmountAvailable() - p1.getAmountAvailable());
+        return returnProducts;
+    }
+
+    //Find all products by ascending order within their categories
+    public List<Product> findAllProductsInAscendingOrderCategory(){
+        List<Product> returnProducts = this.productRepository.findAll();
+        Collections.sort(returnProducts, new Comparator<Product>() {
+            @Override
+            public int compare(Product p1, Product p2) {
+                if(p1.getCategory() == p2.getCategory()){
+                    //DESCENDING
+                    return p2.getAmountAvailable().compareTo(p1.getAmountAvailable());
+                }else{
+                    return p1.getCategory().compareTo(p2.getCategory());
+                }
+            }
+        });
         return returnProducts;
     }
 

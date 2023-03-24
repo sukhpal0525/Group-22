@@ -26,4 +26,15 @@ public enum Category {
         return id;
     }
 
+    @Override
+    public String toString() {
+        switch(this){
+            case PROCESSOR: return "CPU";
+            case MOTHERBOARD: return "Motherboard";
+            case GPU: return "GPU";
+            case MEMORY: return "Memory";
+            case MOUSE: return "Mouse";
+            default: throw new IllegalArgumentException();
+        }
+    }
 }

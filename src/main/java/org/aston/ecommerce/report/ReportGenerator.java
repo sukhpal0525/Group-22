@@ -65,16 +65,21 @@ public class ReportGenerator {
         // Write the header
         stockPara.add(new Paragraph("Current Stock Level", headerFont));
         this.addEmptyLine(stockPara, 1);
-        PdfPTable table = new PdfPTable(2);
+        float [] pointColumnWidths = {45F, 28F, 27F};
+        PdfPTable table = new PdfPTable(pointColumnWidths);
 
         PdfPCell c1 = new PdfPCell(new Phrase("Name", subFontBold));
+        table.addCell(c1);
+
+        c1 = new PdfPCell(new Phrase("Category", subFontBold));
         table.addCell(c1);
 
         c1 = new PdfPCell(new Phrase("Stock Level", subFontBold));
         table.addCell(c1);
 
-        for(Product product : this.productService.findAllProductsInAscendingOrder()){
+        for(Product product : this.productService.findAllProductsInAscendingOrderCategory()){
             table.addCell(product.getName());
+            table.addCell(product.getCategory().toString());
             table.addCell(product.getAmountAvailable().toString());
         }
         stockPara.add(table);
