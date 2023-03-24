@@ -33,6 +33,12 @@
     margin: 5px;
 }
 
+.h5 {
+    text-align: left;
+    font-weight: bolder;
+    font-size: 25px;
+}
+
 button {
     border: none;
     font-family: sans-serif;
@@ -78,4 +84,106 @@ button:hover {
     grid-area: 3 / 1 / 4 / 2;
     text-align: center;
     margin: 5px;
+}
+
+
+/* ------------------------------------------------------------ .parent { */
+
+.padder {
+    padding-bottom: 3%;
+}
+
+.order-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: -20px;
+}
+
+.order-title .h51 {
+    text-align: left;
+}
+
+.order-title .h52 {
+    text-align: right;
+}
+
+h1 {
+    align-items: left;
+    text-align: left;
+    font-size: 30px;
+    font-weight: bolder;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.25fr 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+.order1 {
+    width: 100%;
+    padding: 20px 0px 20px 0px;
+    height: auto;
+    border-radius: 15px;
+    background: #ffffff;
+    color: #323232;
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 3fr .5fr 1fr .8fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.order1:hover {
+    background: #d2d2d2;
+}
+
+.parent-OrderItems tbody {
+    width: 100%;
+}
+
+.parent-OrderItems {
+    width: 100%;
+}
+
+.childOrderItems {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    /* margin: 10px; */
+}
+
+.childOrderItems {
+    /* borer */
+    margin: 5px;
+    background-color: white;
+    text-align: center;
+    border-radius: 5px;
+    width: 100%;
+    padding: 20px 0px 20px 0px;
+    height: auto;
+    border-radius: 15px;
+    background: #ffffff;
+    color: #323232;
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 3fr .5fr 1fr .8fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.childOrderItems:hover {
+    background-color: #d2d2d2;
 }
