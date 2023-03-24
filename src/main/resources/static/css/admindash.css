@@ -57,14 +57,13 @@
 
 .alertcard{
     width:100%;
-    height: 6vh;
     border-radius: 10px;
     margin-bottom: 1vh;
 }
 
 .alertcard p{
     vertical-align: middle;
-    padding: 1.25vh 2vw;
+    padding: 1.4vh 2vw;
 }
 
 .urgentalert{
@@ -107,7 +106,7 @@
 }
 
 .stockcard p{
-    padding: 1.25vh 2vw;
+    padding: 1.4vh 2vw;
 }
 
 .itemnamesect{
