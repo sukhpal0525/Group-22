@@ -7,12 +7,15 @@ import org.aston.ecommerce.product.Product;
 import org.aston.ecommerce.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -56,7 +59,20 @@ public class AdminProduct {
 
     @GetMapping("/admin/products/{id}")
     public String getProduct(Model model, @PathVariable("id") String id) {
-        Optional<Product> optProduct = this.productRepository.findById(Long.parseLong(id));
+
+        Long longId = null;
+        //If number is not supplied for url param 'id', then immediately redirect back to admin products
+        try{
+            longId = Long.parseLong(id);
+        }catch(Exception e){
+            return "redirect:/admin/products";
+        }
+
+        Optional<Product> optProduct = this.productRepository.findById(longId);
+        if(!optProduct.isPresent()){
+            return "redirect:/admin/products";
+        }
+
         Product product = optProduct.get();
         model.addAttribute("productId", id);
         model.addAttribute("productName", product.getName());
@@ -167,6 +183,34 @@ public class AdminProduct {
                 model.addAttribute("fail_msg", "Could not upload the image: " + file.getOriginalFilename() + ". Error: " + e.getMessage());
                 return "admin_add_product";
             }
+        }
+
+        return "redirect:/admin/products";
+    }
+
+    @GetMapping("/admin/products/delete/{id}")
+    public String deleteProduct(@PathVariable("id") String id,
+                                RedirectAttributes redirectAttrs){
+
+        Long longId = null;
+        //If number is not supplied for url param 'id', then immediately redirect back to admin products
+        try{
+            longId = Long.parseLong(id);
+        }catch(Exception e){
+            return "redirect:/admin/products";
+        }
+
+        //Also immediately redirect back if 'id' is not valid
+        Optional<Product> optProduct = this.productRepository.findById(longId);
+        if(!optProduct.isPresent()){
+            return "redirect:/admin/products";
+        }
+
+        try{
+            this.productRepository.deleteById(longId);
+        }catch(Exception e){
+            redirectAttrs.addFlashAttribute("fail_msg", "Error! Failed to delete product.");
+            return "redirect:/admin/products/" + id;
         }
 
         return "redirect:/admin/products";
