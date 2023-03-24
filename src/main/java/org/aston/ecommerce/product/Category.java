@@ -6,7 +6,7 @@ public enum Category {
     MOTHERBOARD(1),
     GPU(2),
     MEMORY(3),
-    STORAGE(4);
+    MOUSE(4);
 
     private final Integer id;
 
