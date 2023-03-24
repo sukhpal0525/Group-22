@@ -41,12 +41,12 @@
                         <label for="categorySelect">Filter by category:</label>
                         <select name="categorySelect" id="categorySelect" onchange="this.form.submit()">
                             <option th:selected="${categorySelect} == 'all'" value="all">All</option>
-                            <option th:selected="${categorySelect} == 'gpu'" value="gpu">GPUs</option>
-                            <option th:selected="${categorySelect} == 'processor'" value="processor">Processor</option>
+                            <option th:selected="${categorySelect} == 'gpu'" value="gpu">GPU</option>
+                            <option th:selected="${categorySelect} == 'processor'" value="processor">CPU</option>
                             <option th:selected="${categorySelect} == 'motherboard'" value="motherboard">Motherboard
                             </option>
                             <option th:selected="${categorySelect} == 'memory'" value="memory">Memory</option>
-                            <option th:selected="${categorySelect} == 'storage'" value="storage">Storage</option>
+                            <option th:selected="${categorySelect} == 'mouse'" value="mouse">Mouse</option>
                         </select>
                     </form>
                 </div><!--product_filter-->

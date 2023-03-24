@@ -31,10 +31,10 @@
             <label for="category">Category:</label>
             <select class="custom-select" name="category" id="category">
                 <option th:selected="${productCategory} == 'gpu'" value="gpu">GPU</option>
-                <option th:selected="${productCategory} == 'processor'" value="processor">Processor</option>
+                <option th:selected="${productCategory} == 'processor'" value="processor">CPU</option>
                 <option th:selected="${productCategory} == 'motherboard'" value="motherboard">Motherboard</option>
                 <option th:selected="${productCategory} == 'memory'" value="memory">Memory</option>
-                <option th:selected="${productCategory} == 'storage'" value="storage">Storage</option>
+                <option th:selected="${productCategory} == 'mouse'" value="mouse">Mouse</option>
             </select>
         </div>
         <div class="form-group">
