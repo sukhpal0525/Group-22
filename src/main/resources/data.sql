@@ -62,7 +62,6 @@ INSERT INTO `webproduct` (`Name`,`Amount`, `Description`,`Category`, `AmountAvai
 
 ------------------------------------------------------------------------------------------------------------------------
 
-
 -- Memory
 INSERT INTO `webproduct` (`Name`,`Amount`,`Description`,`Category`,`AmountAvailable`) VALUES
   ('Corsair Vengeance RGB Pro 32GB', 169.99, 'DDR4 3200MHz, CL16, RGB Lighting', @MEMORY, 25),
@@ -74,6 +73,14 @@ INSERT INTO `webproduct` (`Name`,`Amount`, `Description`,`Category`, `AmountAvai
   ('Team T-Force Delta RGB 32GB', 149.99, 'DDR4 3200MHz, CL16, RGB Lighting', @MEMORY, 20, 1, 0.15),
   ('Kingston HyperX Fury 16GB', 79.99, 'DDR4 3200MHz, CL16, Black Heat Spreader', @MEMORY, 40, 1, 0.15),
   ('Patriot Viper Steel Series 32GB', 129.99, 'DDR4 3200MHz, CL16, Low Profile Design', @MEMORY, 30, 1, 0.25);
+
+------------------------------------------------------------------------------------------------------------------------
+
+INSERT INTO `webproduct` (`Name`, `Amount`, `Description`, `Category`, `AmountAvailable`) VALUES
+  ('Logitech G Pro Wireless Gaming Mouse', 129.99, 'Lightweight Design, HERO 25K Sensor, Ambidextrous', @MOUSE, 20),
+  ('Razer DeathAdder V2 Gaming Mouse', 79.99, 'Optical Sensor, RGB Lighting, Ergonomic Design', @MOUSE, 30),
+  ('SteelSeries Rival 600 Gaming Mouse', 89.99, 'Dual Optical Sensor, Weight System, RGB Lighting', @MOUSE, 25),
+  ('HyperX Pulsefire FPS Pro Gaming Mouse', 59.99, 'Optical Sensor, RGB Lighting, Ergonomic Design', @MOUSE, 40);
 
 ------------------------------------------------------------------------------------------------------------------------
 
