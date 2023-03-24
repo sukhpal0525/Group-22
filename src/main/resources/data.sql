@@ -57,7 +57,7 @@ INSERT INTO `webproduct` (`Name`, `Amount`, `Description`,`Category`,`AmountAvai
 -- Motherboard (SALE)
 INSERT INTO `webproduct` (`Name`, `Amount`, `Description`,`Category`,`AmountAvailable`, `OnSale`, `Sale`) VALUES
   ('ASUS ROG Maximus XIII Hero (SALE)', 329.99, 'Z590 chipset, WiFi 6, RGB lighting', @MOTHERBOARD, 20, 1, 0.30);
-  UPDATE`webproduct`
+UPDATE`webproduct`
 SET `url` = 'ASRock B450 Steel Legend.jpg'
 WHERE `Name` = 'ASRock B450 Steel Legend';
 UPDATE`webproduct`
@@ -162,7 +162,6 @@ INSERT INTO `webuser` (`Email`, `UserName`, `Password`, `IsAdmin`) VALUES
   ('admin@aston.com', 'Admin', '$2a$10$AOYMzvkn8MISJsQR3Q0kXO0ZmFMJXQO6mw7IH/p2PfpJO.zCfrLlK', 1),
 -- Test Account (Password = 'admin')
   ('test@test.com', 'Test User', '$2a$10$AOYMzvkn8MISJsQR3Q0kXO0ZmFMJXQO6mw7IH/p2PfpJO.zCfrLlK', 0);
-
 ------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO `webbasket` (`UserID`) VALUES
