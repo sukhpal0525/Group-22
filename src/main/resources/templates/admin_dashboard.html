@@ -48,7 +48,7 @@
 
     <div class="pagecontent">
       <div class="welcomedash">
-        <h3>Welcome NAME</h3>
+        <h3>Welcome [[${#request.userPrincipal.principal.actualUsernameNotEmail}]]</h3>
       </div>
       <div class="alertsect">
         <div class="dashwrap">
@@ -72,12 +72,12 @@
             <h4>STOCKS</h4>
           </div>
           <div class="dashcards">
-            <div class="stockcard">
+            <div class="stockcard" th:each="product : ${products}">
               <div class="itemnamesect">
-                <p>item name placeholder</p>
+                <p th:text="${product.name}"></p>
               </div>
               <div class="quantitysect">
-                <p>qty X</p>
+                <p th:text="${product.amountAvailable}"></p>
               </div>
             </div>
           </div>

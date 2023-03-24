@@ -123,14 +123,24 @@ public class OrderService {
         });
     }
 
-    //Return all orders that are unprocessed in DESCENDING order based on when they were made such that the oldest unprocessed order is shown first
-    public List<Order> findUnprocessedOrders(){
+    //Return all orders that are unprocessed or failed in DESCENDING order based on when they were made such that the oldest unprocessed order is shown first
+    public List<Order> findUnprocessedFailedOrders(){
         List<Order> returnOrders = this.orderRepository.findAll()
                 .stream()
-                .filter(o -> o.getStatus() == Status.UNPROCESSED)
+                .filter(o -> o.getStatus() == Status.UNPROCESSED || o.getStatus() == Status.FAILED)
                 .collect(Collectors.toList());
-        //DESCENDING
-        Collections.sort(returnOrders, (Order o1, Order o2) -> o2.getOrderDate().compareTo(o1.getOrderDate()));
+        //DESCENDING, just ensure that unprocessed comes first
+        Collections.sort(returnOrders, new Comparator<Order>() {
+            @Override
+            public int compare(Order o1, Order o2) {
+                if(o1.getStatus() == o2.getStatus()){
+                    //DESCENDING
+                    return o2.getOrderDate().compareTo(o1.getOrderDate());
+                }else{
+                    return o1.getStatus() == Status.FAILED ? 1 : -1;
+                }
+            }
+        });
         return returnOrders;
     }
 }

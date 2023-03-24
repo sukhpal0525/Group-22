@@ -37,7 +37,7 @@ public class AdminOrders {
 //      List<Order> allOrders = this.orderRepository.findAll();
 //      log.debug("Number of orders: {}", allOrders.size());
         model.addAttribute("allOrders", this.orderService.findOrdersByStatusAndDate());
-        model.addAttribute("unprocessedOrders", this.orderService.findUnprocessedOrders());
+        model.addAttribute("unprocessedOrders", this.orderService.findUnprocessedFailedOrders());
         return "admin_orders";
     }
 

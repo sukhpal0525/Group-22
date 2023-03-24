@@ -560,32 +560,3 @@ button:hover {
     text-indent: 0px;
 }
 
-/*----- Animated Links -------*/
-
-.hover-underline-container {
-    cursor: pointer;
-}
-
-.hover-underline-container>.hover-underline-animation {
-    display: inline-block;
-    position: relative;
-    color: #007bff;
-}
-
-.hover-underline-container>.hover-underline-animation::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: #007bff;
-    transform-origin: bottom center;
-    transition: transform 0.25s ease-out;
-}
-
-.hover-underline-container:hover>.hover-underline-animation::after {
-    transform: scaleX(1);
-    transform-origin: bottom center;
-}

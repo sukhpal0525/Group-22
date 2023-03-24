@@ -4,6 +4,7 @@ import org.aston.ecommerce.order.Order;
 import org.aston.ecommerce.order.OrderRepository;
 import org.aston.ecommerce.order.OrderService;
 import org.aston.ecommerce.product.Product;
+import org.aston.ecommerce.product.ProductService;
 import org.aston.ecommerce.user.User;
 import org.aston.ecommerce.user.UserRepository;
 import org.aston.ecommerce.user.UserService;
@@ -25,9 +26,16 @@ public class AdminController {
     @Autowired private OrderService orderService;
     @Autowired private UserService userService;
     @Autowired private OrderRepository orderRepository;
+    @Autowired private ProductService productService;
 
     @GetMapping("/dashboard")
     public String viewDashboard(Model model) {
+
+        //TODO: Sort This out
+        model.addAttribute("products", this.productService.findAllProductsInAscendingOrder());
+        model.addAttribute("amberProducts", this.productService.findAmberProducts());
+        model.addAttribute("emptyProducts", this.productService.findProductsOutOfStock());
+
         return "admin_dashboard";
     }
 
