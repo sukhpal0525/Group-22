@@ -86,7 +86,24 @@ INSERT INTO `webproduct` (`Name`,`Amount`,`Description`,`Category`,`AmountAvaila
 -- GPU (SALE)
 INSERT INTO `webproduct` (`Name`,`Amount`, `Description`,`Category`, `AmountAvailable`,`OnSale`,`Sale`) VALUES
   ('GIGABYTE AORUS GeForce RTX 3080', 1699.99, '10GB GDDR6X, 2nd Gen Ray Tracing Cores', @GPU, 8, 1, 0.15);
-
+UPDATE`webproduct`
+SET `url` = 'ASUS ROG Strix GeForce RTX 3080.jpg'
+WHERE `Name` = 'ASUS ROG Strix GeForce RTX 3080';
+UPDATE`webproduct`
+SET `url` = 'NVIDIA GeForce RTX 3090.jpg'
+WHERE `Name` = 'NVIDIA GeForce RTX 3090';
+UPDATE`webproduct`
+SET `url` = 'AMD Radeon RX 6900 XT.jpg'
+WHERE `Name` = 'AMD Radeon RX 6900 XT';
+UPDATE`webproduct`
+SET `url` = 'EVGA GeForce RTX 3060 Ti.jpg'
+WHERE `Name` = 'EVGA GeForce RTX 3060 Ti';
+UPDATE`webproduct`
+SET `url` = 'MSI GeForce RTX 3070.jpg'
+WHERE `Name` = 'MSI GeForce RTX 3070';
+UPDATE`webproduct`
+SET `url` = 'GIGABYTE AORUS GeForce RTX 3080.jpg'
+WHERE `Name` = 'GIGABYTE AORUS GeForce RTX 3080';
 ------------------------------------------------------------------------------------------------------------------------
 
 -- Memory
@@ -100,7 +117,24 @@ INSERT INTO `webproduct` (`Name`,`Amount`, `Description`,`Category`, `AmountAvai
   ('Team T-Force Delta RGB 32GB', 149.99, 'DDR4 3200MHz, CL16, RGB Lighting', @MEMORY, 20, 1, 0.15),
   ('Kingston HyperX Fury 16GB', 79.99, 'DDR4 3200MHz, CL16, Black Heat Spreader', @MEMORY, 40, 1, 0.15),
   ('Patriot Viper Steel Series 32GB', 129.99, 'DDR4 3200MHz, CL16, Low Profile Design', @MEMORY, 30, 1, 0.25);
-
+UPDATE`webproduct`
+SET `url` = 'Corsair Vengeance RGB Pro 32GB.jpg'
+WHERE `Name` = 'Corsair Vengeance RGB Pro 32GB';
+UPDATE`webproduct`
+SET `url` = 'G.Skill Ripjaws V 16GB.jpg'
+WHERE `Name` = 'G.Skill Ripjaws V 16GB';
+UPDATE`webproduct`
+SET `url` = 'Crucial Ballistix RGB 64GB.jpg'
+WHERE `Name` = 'Crucial Ballistix RGB 64GB';
+UPDATE`webproduct`
+SET `url` = 'Team T-Force Delta RGB 32GB.jpg'
+WHERE `Name` = 'Team T-Force Delta RGB 32GB';
+UPDATE`webproduct`
+SET `url` = 'Kingston HyperX Fury 16GB.jpg'
+WHERE `Name` = 'Kingston HyperX Fury 16GB';
+UPDATE`webproduct`
+SET `url` = 'Patriot Viper Steel Series .jpg'
+WHERE `Name` = 'Patriot Viper Steel Series 32GB';
 ------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO `webproduct` (`Name`, `Amount`, `Description`, `Category`, `AmountAvailable`) VALUES
@@ -109,6 +143,18 @@ INSERT INTO `webproduct` (`Name`, `Amount`, `Description`, `Category`, `AmountAv
   ('SteelSeries Rival 600 Gaming Mouse', 89.99, 'Dual Optical Sensor, Weight System, RGB Lighting', @MOUSE, 25),
   ('HyperX Pulsefire FPS Pro Gaming Mouse', 59.99, 'Optical Sensor, RGB Lighting, Ergonomic Design', @MOUSE, 40);
 
+UPDATE`webproduct`
+SET `url` = 'Logitech G Pro Wireless Gaming Mouse.jpg'
+WHERE `Name` = 'Logitech G Pro Wireless Gaming Mouse';
+UPDATE`webproduct`
+SET `url` = 'Razer DeathAdder V2 Gaming Mouse.jpg'
+WHERE `Name` = 'Razer DeathAdder V2 Gaming Mouse';
+UPDATE`webproduct`
+SET `url` = 'SteelSeries Rival 600 Gaming Mouse.jpg'
+WHERE `Name` = 'SteelSeries Rival 600 Gaming Mouse';
+UPDATE`webproduct`
+SET `url` = 'HyperX Pulsefire FPS Pro Gaming Mouse.jpg'
+WHERE `Name` = 'HyperX Pulsefire FPS Pro Gaming Mouse';
 ------------------------------------------------------------------------------------------------------------------------
 
 -- Admin Account (Password = 'admin')
