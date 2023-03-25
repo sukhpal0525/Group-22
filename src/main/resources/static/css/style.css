@@ -414,7 +414,7 @@ button {
 button:before {
     content: "»";
     opacity: 0;
-    margin-left: -10px;
+    margin-left: -15px;
     transition-duration: 0.2s;
 }
 
