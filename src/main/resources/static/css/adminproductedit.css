@@ -14,7 +14,7 @@
 .editpage{
     grid-area: 2 / 1 / 3 / 2;
     background-color: #fff;
-    margin: 0 8vw 8vh 8vw;
+    margin: 0 8vw 15vh 8vw;
 }
 
 button {
@@ -30,6 +30,13 @@ button {
     margin:10px 0px;
 }
 
+button a{
+    color: #323232;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
 button:before {
     content: "»";
     opacity: 0;
@@ -44,8 +51,12 @@ button:hover:before {
 
 button:hover {
     color: #169c0a;
-    background: #e7e7e7;
+    background: #ffff;
     border: solid 1px #169c0a;
+}
+
+button a:hover{
+    color: #169c0a;
 }
 
 .prodname{
@@ -54,7 +65,7 @@ button:hover {
     color: #323232;
     width: 100%;
     padding: 1vh 0;
-    margin-bottom: 4vh;
+    margin-bottom: 10vh;
     background-color: #fff;
 }
 
@@ -105,12 +116,32 @@ button:hover {
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+    margin-bottom: 4vh;
 }
 
-buttonsprod{
+.buttonsprod{
     grid-area: 4 / 1 / 5 / 2;
     margin:auto;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    width: 100%;
+}
+
+.delprod{
+    grid-area: 1 / 1 / 2 / 2;
+    margin:auto;
+    height: 100%;
+}
+
+
+
+.saveprod{
+    grid-area: 1 / 2 / 2 / 3;
+    margin: auto;
+    height: 100%;
 }
 
 .catprod{

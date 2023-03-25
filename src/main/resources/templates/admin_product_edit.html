@@ -189,12 +189,19 @@
               </div>
               <div class="buttonsprod">
                 <div class="delprod">
-                  <a th:href="@{/admin/products/delete/{id}(id=${productId})}"
-                    >Delete Product</a
-                  >
+                    
+                    <a th:href="@{/admin/products/delete/{id}(id=${productId})}">
+                        <button>
+                            DELETE
+                        </button>
+                      </a>
+      
                 </div>
+
                 <div class="saveprod">
-                  <button type="submit">Save Changes</button>
+                    <button type="submit">
+                        SAVE
+                    </button>
                 </div>
               </div>
             </form>
@@ -211,7 +218,16 @@
 
 
 
-      
+
+
+
+
+
+
+
+
+
+
       <div
         class="mt-4 alert alert-danger"
         th:if="${fail_msg}"
