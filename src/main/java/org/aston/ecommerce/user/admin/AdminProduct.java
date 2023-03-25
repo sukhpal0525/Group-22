@@ -40,7 +40,7 @@ public class AdminProduct {
     public String displayProducts(Model model) {
         model.addAttribute("products", this.productService.findAll().get());
         model.addAttribute("amberProducts", this.productService.findAmberProducts());
-        model.addAttribute("emptyProducts", this.productService.findProductsOutOfStock());
+        model.addAttribute("redProducts", this.productService.findRedProducts());
         return "admin_products";
     }
     //TODO: Finish This

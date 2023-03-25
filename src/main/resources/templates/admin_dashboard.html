@@ -60,9 +60,9 @@
             <h4>ALERTS</h4>
           </div>
           <div class="dashcards">
-            <div class="alertcard urgentalert" th:each="emptyProduct : ${emptyProducts}">
-              <p>Product [[${emptyProduct.name}]] is out of stock. Click
-                <a th:href="@{/admin/products/{id}(id=${emptyProduct.id})}">here</a> to edit.</p>
+            <div class="alertcard urgentalert" th:each="redProduct : ${redProducts}">
+              <p>Product [[${redProduct.name}]] is at critical levels, [[${redProduct.AmountAvailable}]] remaining. Click
+                <a th:href="@{/admin/products/{id}(id=${redProduct.id})}">here</a> to edit.</p>
             </div>
             <div class="alertcard amberalert" th:each="amberProduct : ${amberProducts}">
              <p>Product [[${amberProduct.name}]] is low in stock, [[${amberProduct.AmountAvailable}]] remaining. Click
