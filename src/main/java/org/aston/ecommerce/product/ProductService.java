@@ -77,22 +77,23 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    //Return all products that are in stock yet have a stock level below 21 in ascending order such that the products with the lowest stock are shown first
+    //Find products that should be amber as per the admin alert system in ASCENDING order such that the products with the lowest stock are shown first.
     public List<Product> findAmberProducts(){
         List<Product> returnProducts = this.productRepository.findAll()
                 .stream()
-                .filter(c -> c.getAmountAvailable() <= 20 && c.getAmountAvailable() >= 1)
+                .filter(c -> c.getAmountAvailable() <= 20 && c.getAmountAvailable() >= 11)
                 .collect(Collectors.toList());
         Collections.sort(returnProducts, (Product p1, Product p2) -> p1.getAmountAvailable() - p2.getAmountAvailable());
         return returnProducts;
     }
 
-    //Return all products that are out of stock
-    public List<Product> findProductsOutOfStock(){
+    //Find products that should be red as per the admin alert system in ASCENDING order such that the products with the lowest stock are shown first.
+    public List<Product> findRedProducts(){
         List<Product> returnProducts = this.productRepository.findAll()
                 .stream()
-                .filter(c -> c.getAmountAvailable() < 1)
+                .filter(c -> c.getAmountAvailable() <= 10)
                 .collect(Collectors.toList());
+        Collections.sort(returnProducts, (Product p1, Product p2) -> p1.getAmountAvailable() - p2.getAmountAvailable());
         return returnProducts;
     }
     

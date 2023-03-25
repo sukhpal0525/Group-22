@@ -34,7 +34,7 @@ public class AdminController {
         //TODO: Sort This out
         model.addAttribute("products", this.productService.findAllProductsInAscendingOrder());
         model.addAttribute("amberProducts", this.productService.findAmberProducts());
-        model.addAttribute("emptyProducts", this.productService.findProductsOutOfStock());
+        model.addAttribute("redProducts", this.productService.findRedProducts());
         model.addAttribute("unprocessedOrders", this.orderService.findUnprocessedFailedOrders());
 
         return "admin_dashboard";

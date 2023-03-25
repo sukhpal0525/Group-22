@@ -28,13 +28,13 @@
 
 <div class="py-4 album">
     <div class="wrapper">
+        <div class="alert alert-danger mt-2 text-center" role="alert" th:each="redProduct : ${redProducts}">
+            Product [[${redProduct.name}]] is at critical levels. <strong>Only [[${redProduct.AmountAvailable}]] left. </strong>
+            <a class="alert-link" th:href="@{/admin/products/{id}(id=${redProduct.id})}">Click here to edit.</a>
+        </div>
         <div class="alert alert-warning mt-2 text-center" role="alert" th:each="amberProduct : ${amberProducts}">
             Product [[${amberProduct.name}]] is low in stock. <strong>Only [[${amberProduct.AmountAvailable}]] left. </strong>
             <a class="alert-link" th:href="@{/admin/products/{id}(id=${amberProduct.id})}">Click here to edit.</a>
-        </div>
-        <div class="alert alert-danger mt-2 text-center" role="alert" th:each="emptyProduct : ${emptyProducts}">
-            Product [[${emptyProduct.name}]] is out of stock.
-            <a class="alert-link" th:href="@{/admin/products/{id}(id=${emptyProduct.id})}">Click here to edit.</a>
         </div>
         <div class="clearfix">
             <div class="filter_main">
