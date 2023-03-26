@@ -15,7 +15,8 @@ TRUNCATE TABLE `weborderitem`;
 TRUNCATE TABLE `webbasket`;
 TRUNCATE TABLE `webbasketitem`;
 
-SET FOREIGN_KEY_CHECKS = 1;
+SET FOREIGN_KEY_CHECKS = 0;
+SET GLOBAL time_zone = '+00:00';
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -31,18 +32,18 @@ INSERT INTO `webproduct` (`Name`, `Amount`, `Description`,`Category`,`AmountAvai
  UPDATE `webproduct`
  SET `url` = 'Intel Core i9-11900K.jpg'
  WHERE `Name` = 'Intel Core i9-11900K';
-  UPDATE`webproduct`
+ UPDATE`webproduct`
  SET  `url` = 'AMD Ryzen 5 5600X.jpg'
  WHERE`Name`='AMD Ryzen 5 5600X';
  UPDATE`webproduct`
  SET `url` = 'AMD Ryzen 7 5800X.jpg'
-  WHERE `Name` = 'AMD Ryzen 7 5800X';
-  UPDATE`webproduct`
-  SET `url` = 'AMD Ryzen 9 5900X.jpg'
-   WHERE `Name` = 'AMD Ryzen 9 5900X';
-   UPDATE`webproduct`
-   SET `url` = 'Intel Core i5-11600K.jpg'
-    WHERE `Name` = 'Intel Core i5-11600K';
+ WHERE `Name` = 'AMD Ryzen 7 5800X';
+ UPDATE`webproduct`
+ SET `url` = 'AMD Ryzen 9 5900X.jpg'
+ WHERE `Name` = 'AMD Ryzen 9 5900X';
+ UPDATE`webproduct`
+ SET `url` = 'Intel Core i5-11600K.jpg'
+ WHERE `Name` = 'Intel Core i5-11600K';
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -57,21 +58,22 @@ INSERT INTO `webproduct` (`Name`, `Amount`, `Description`,`Category`,`AmountAvai
 -- Motherboard (SALE)
 INSERT INTO `webproduct` (`Name`, `Amount`, `Description`,`Category`,`AmountAvailable`, `OnSale`, `Sale`) VALUES
   ('ASUS ROG Maximus XIII Hero (SALE)', 329.99, 'Z590 chipset, WiFi 6, RGB lighting', @MOTHERBOARD, 20, 1, 0.30);
-UPDATE`webproduct`
-SET `url` = 'ASRock B450 Steel Legend.jpg'
-WHERE `Name` = 'ASRock B450 Steel Legend';
-UPDATE`webproduct`
-SET `url` = 'ASUS ROG Maximus XIII Hero.jpg'
-WHERE `Name` = 'ASUS ROG Maximus XIII Hero (SALE)';
-UPDATE`webproduct`
-SET `url` = 'Gigabyte AORUS X570 Master.jpg'
-WHERE `Name` = 'Gigabyte AORUS X570 Master';
-UPDATE`webproduct`
-SET `url` = 'MSI MPG Z590 Gaming Edge WiFi.jpg'
-WHERE `Name` = 'MSI MPG Z590 Gaming Edge WiFi';
-UPDATE`webproduct`
-SET `url` = 'EVGA Z590 Dark.jpg'
-WHERE `Name` = 'EVGA Z590 Dark';
+
+ UPDATE`webproduct`
+ SET `url` = 'ASRock B450 Steel Legend.jpg'
+ WHERE `Name` = 'ASRock B450 Steel Legend';
+ UPDATE`webproduct`
+ SET `url` = 'ASUS ROG Maximus XIII Hero.jpg'
+ WHERE `Name` = 'ASUS ROG Maximus XIII Hero (SALE)';
+ UPDATE`webproduct`
+ SET `url` = 'Gigabyte AORUS X570 Master.jpg'
+ WHERE `Name` = 'Gigabyte AORUS X570 Master';
+ UPDATE`webproduct`
+ SET `url` = 'MSI MPG Z590 Gaming Edge WiFi.jpg'
+ WHERE `Name` = 'MSI MPG Z590 Gaming Edge WiFi';
+ UPDATE`webproduct`
+ SET `url` = 'EVGA Z590 Dark.jpg'
+ WHERE `Name` = 'EVGA Z590 Dark';
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -86,24 +88,26 @@ INSERT INTO `webproduct` (`Name`,`Amount`,`Description`,`Category`,`AmountAvaila
 -- GPU (SALE)
 INSERT INTO `webproduct` (`Name`,`Amount`, `Description`,`Category`, `AmountAvailable`,`OnSale`,`Sale`) VALUES
   ('GIGABYTE AORUS GeForce RTX 3080', 1699.99, '10GB GDDR6X, 2nd Gen Ray Tracing Cores', @GPU, 8, 1, 0.15);
-UPDATE`webproduct`
-SET `url` = 'ASUS ROG Strix GeForce RTX 3080.jpg'
-WHERE `Name` = 'ASUS ROG Strix GeForce RTX 3080';
-UPDATE`webproduct`
-SET `url` = 'NVIDIA GeForce RTX 3090.jpg'
-WHERE `Name` = 'NVIDIA GeForce RTX 3090';
-UPDATE`webproduct`
-SET `url` = 'AMD Radeon RX 6900 XT.jpg'
-WHERE `Name` = 'AMD Radeon RX 6900 XT';
-UPDATE`webproduct`
-SET `url` = 'EVGA GeForce RTX 3060 Ti.jpg'
-WHERE `Name` = 'EVGA GeForce RTX 3060 Ti';
-UPDATE`webproduct`
-SET `url` = 'MSI GeForce RTX 3070.jpg'
-WHERE `Name` = 'MSI GeForce RTX 3070';
-UPDATE`webproduct`
-SET `url` = 'GIGABYTE AORUS GeForce RTX 3080.jpg'
-WHERE `Name` = 'GIGABYTE AORUS GeForce RTX 3080';
+
+ UPDATE`webproduct`
+ SET `url` = 'ASUS ROG Strix GeForce RTX 3080.jpg'
+ WHERE `Name` = 'ASUS ROG Strix GeForce RTX 3080';
+ UPDATE`webproduct`
+ SET `url` = 'NVIDIA GeForce RTX 3090.jpg'
+ WHERE `Name` = 'NVIDIA GeForce RTX 3090';
+ UPDATE`webproduct`
+ SET `url` = 'AMD Radeon RX 6900 XT.jpg'
+ WHERE `Name` = 'AMD Radeon RX 6900 XT';
+ UPDATE`webproduct`
+ SET `url` = 'EVGA GeForce RTX 3060 Ti.jpg'
+ WHERE `Name` = 'EVGA GeForce RTX 3060 Ti';
+ UPDATE`webproduct`
+ SET `url` = 'MSI GeForce RTX 3070.jpg'
+ WHERE `Name` = 'MSI GeForce RTX 3070';
+ UPDATE`webproduct`
+ SET `url` = 'GIGABYTE AORUS GeForce RTX 3080.jpg'
+ WHERE `Name` = 'GIGABYTE AORUS GeForce RTX 3080';
+
 ------------------------------------------------------------------------------------------------------------------------
 
 -- Memory
@@ -117,24 +121,26 @@ INSERT INTO `webproduct` (`Name`,`Amount`, `Description`,`Category`, `AmountAvai
   ('Team T-Force Delta RGB 32GB', 149.99, 'DDR4 3200MHz, CL16, RGB Lighting', @MEMORY, 20, 1, 0.15),
   ('Kingston HyperX Fury 16GB', 79.99, 'DDR4 3200MHz, CL16, Black Heat Spreader', @MEMORY, 40, 1, 0.15),
   ('Patriot Viper Steel Series 32GB', 129.99, 'DDR4 3200MHz, CL16, Low Profile Design', @MEMORY, 30, 1, 0.25);
-UPDATE`webproduct`
-SET `url` = 'Corsair Vengeance RGB Pro 32GB.jpg'
-WHERE `Name` = 'Corsair Vengeance RGB Pro 32GB';
-UPDATE`webproduct`
-SET `url` = 'G.Skill Ripjaws V 16GB.jpg'
-WHERE `Name` = 'G.Skill Ripjaws V 16GB';
-UPDATE`webproduct`
-SET `url` = 'Crucial Ballistix RGB 64GB.jpg'
-WHERE `Name` = 'Crucial Ballistix RGB 64GB';
-UPDATE`webproduct`
-SET `url` = 'Team T-Force Delta RGB 32GB.jpg'
-WHERE `Name` = 'Team T-Force Delta RGB 32GB';
-UPDATE`webproduct`
-SET `url` = 'Kingston HyperX Fury 16GB.jpg'
-WHERE `Name` = 'Kingston HyperX Fury 16GB';
-UPDATE`webproduct`
-SET `url` = 'Patriot Viper Steel Series .jpg'
-WHERE `Name` = 'Patriot Viper Steel Series 32GB';
+
+ UPDATE`webproduct`
+ SET `url` = 'Corsair Vengeance RGB Pro 32GB.jpg'
+ WHERE `Name` = 'Corsair Vengeance RGB Pro 32GB';
+ UPDATE`webproduct`
+ SET `url` = 'G.Skill Ripjaws V 16GB.jpg'
+ WHERE `Name` = 'G.Skill Ripjaws V 16GB';
+ UPDATE`webproduct`
+ SET `url` = 'Crucial Ballistix RGB 64GB.jpg'
+ WHERE `Name` = 'Crucial Ballistix RGB 64GB';
+ UPDATE`webproduct`
+ SET `url` = 'Team T-Force Delta RGB 32GB.jpg'
+ WHERE `Name` = 'Team T-Force Delta RGB 32GB';
+ UPDATE`webproduct`
+ SET `url` = 'Kingston HyperX Fury 16GB.jpg'
+ WHERE `Name` = 'Kingston HyperX Fury 16GB';
+ UPDATE`webproduct`
+ SET `url` = 'Patriot Viper Steel Series .jpg'
+ WHERE `Name` = 'Patriot Viper Steel Series 32GB';
+
 ------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO `webproduct` (`Name`, `Amount`, `Description`, `Category`, `AmountAvailable`) VALUES
@@ -143,25 +149,27 @@ INSERT INTO `webproduct` (`Name`, `Amount`, `Description`, `Category`, `AmountAv
   ('SteelSeries Rival 600 Gaming Mouse', 89.99, 'Dual Optical Sensor, Weight System, RGB Lighting', @MOUSE, 25),
   ('HyperX Pulsefire FPS Pro Gaming Mouse', 59.99, 'Optical Sensor, RGB Lighting, Ergonomic Design', @MOUSE, 40);
 
-UPDATE`webproduct`
-SET `url` = 'Logitech G Pro Wireless Gaming Mouse.jpg'
-WHERE `Name` = 'Logitech G Pro Wireless Gaming Mouse';
-UPDATE`webproduct`
-SET `url` = 'Razer DeathAdder V2 Gaming Mouse.jpg'
-WHERE `Name` = 'Razer DeathAdder V2 Gaming Mouse';
-UPDATE`webproduct`
-SET `url` = 'SteelSeries Rival 600 Gaming Mouse.jpg'
-WHERE `Name` = 'SteelSeries Rival 600 Gaming Mouse';
-UPDATE`webproduct`
-SET `url` = 'HyperX Pulsefire FPS Pro Gaming Mouse.jpg'
-WHERE `Name` = 'HyperX Pulsefire FPS Pro Gaming Mouse';
+ UPDATE`webproduct`
+ SET `url` = 'Logitech G Pro Wireless Gaming Mouse.jpg'
+ WHERE `Name` = 'Logitech G Pro Wireless Gaming Mouse';
+ UPDATE`webproduct`
+ SET `url` = 'Razer DeathAdder V2 Gaming Mouse.jpg'
+ WHERE `Name` = 'Razer DeathAdder V2 Gaming Mouse';
+ UPDATE`webproduct`
+ SET `url` = 'SteelSeries Rival 600 Gaming Mouse.jpg'
+ WHERE `Name` = 'SteelSeries Rival 600 Gaming Mouse';
+ UPDATE`webproduct`
+ SET `url` = 'HyperX Pulsefire FPS Pro Gaming Mouse.jpg'
+ WHERE `Name` = 'HyperX Pulsefire FPS Pro Gaming Mouse';
+
 ------------------------------------------------------------------------------------------------------------------------
 
+INSERT INTO `webuser` (`UserID`, `Email`, `UserName`, `Password`, `IsAdmin`) VALUES
 -- Admin Account (Password = 'admin')
-INSERT INTO `webuser` (`Email`, `UserName`, `Password`, `IsAdmin`) VALUES
-  ('admin@aston.com', 'Admin', '$2a$10$AOYMzvkn8MISJsQR3Q0kXO0ZmFMJXQO6mw7IH/p2PfpJO.zCfrLlK', 1),
--- Test Account (Password = 'admin')
-  ('test@test.com', 'Test User', '$2a$10$AOYMzvkn8MISJsQR3Q0kXO0ZmFMJXQO6mw7IH/p2PfpJO.zCfrLlK', 0);
+  (1, 'admin@aston.com', 'Admin', '$2a$10$AOYMzvkn8MISJsQR3Q0kXO0ZmFMJXQO6mw7IH/p2PfpJO.zCfrLlK', 1),
+-- Test Account  (Password = 'admin')
+  (2, 'test@test.com', 'Test User', '$2a$10$AOYMzvkn8MISJsQR3Q0kXO0ZmFMJXQO6mw7IH/p2PfpJO.zCfrLlK', 0);
+
 ------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO `webbasket` (`UserID`) VALUES
@@ -176,3 +184,12 @@ INSERT INTO `webbasketitem` (`BasketID`, `ProductID`, `Amount`) VALUES
   (1, 5, 3);
 
 ------------------------------------------------------------------------------------------------------------------------
+
+INSERT INTO `weborder` (`OrderID`, `TransactionNumber`, `UserID`, `OrderDate`, `CreationDate`, `Quantity`, `OrderAmount`, `Status`) VALUES
+  (1, 1234, 2, '2023-03-26T08:45:00', '2023-03-26T08:45:00', 1, 19.99, 0),
+  (2, 1235, 2, '2023-03-23T10:30:00', '2023-03-23T10:30:00', 2, 9.99, 1),
+  (3, 1236, 2, '2023-03-22T14:15:00', '2023-03-22T14:15:00', 1, 29.97, 2),
+  (4, 1237, 2, '2023-03-21T16:45:00', '2023-03-21T16:45:00', 3, 4.99, 3),
+  (5, 1238, 2, '2023-03-20T19:00:00', '2023-03-20T19:00:00', 1, 24.99, 4);
+
+
