@@ -27,17 +27,6 @@ a:hover {
     clear: both; 
 }
 
-.wrapper {
-    width: 100%;
-    max-width: 1130px;
-    margin: auto;
-}
-
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-}
 
 /*--------- slider --------*/
 
