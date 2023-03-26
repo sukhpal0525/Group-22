@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="/css/global.css" />
     <link rel="stylesheet" type="text/css" href="/css/adminglobal.css" />
     <link rel="stylesheet" type="text/css" href="/css/adminproductedit.css" />
+    
     <div th:replace="fragments/nav_bar :: styles"></div>
     <link
       href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic"
@@ -21,13 +22,7 @@
   <body>
     <div th:replace="fragments/nav_bar :: header"></div>
 
-    <div class="importContainer">
-      <div class="mt-4 alert alert-success" th:if="${success_msg}" role="alert">
-        Success! Product has been edited.
-        <a class="alert-link" th:href="@{/product/{id}(id=${productId})}"
-          >Click here to view it</a
-        >
-      </div>
+   
 
       <div class="pagegrid">
         <div class="sidepanel">
@@ -71,7 +66,15 @@
 
         <div class="pagecontent">
           <div class="backredir">
-            <button>BACK</button>
+            <button id="backgroundgr">
+              BACK
+            </button>
+            <div class="successalert" th:if="${success_msg}" role="alert">
+              Success! Product has been edited.
+              <a class="alert-link" th:href="@{/product/{id}(id=${productId})}"
+                >Click here to view it</a
+              >
+            </div>
           </div>
           <div class="editpage">
             <form

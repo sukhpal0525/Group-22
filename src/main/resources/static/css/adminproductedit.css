@@ -168,6 +168,10 @@ button a:hover{
     text-align: center;
 }
 
+#backgroundgr{
+    background-color: #e7e7e7 !important;
+}
+
 #dropd{
     display: grid;
     grid-template-columns: 1fr;
@@ -203,4 +207,43 @@ button a:hover{
 
 .dropdcontent input{
     text-align: center;
+}
+
+.successalert{
+    width: 95%;
+    color:#085f00;
+    background-color: #ace8a6;
+    padding: 2vh 1.5vw;
+    border-radius: 10px;
+    margin-bottom: 1vh;
+}
+
+.successalert a{
+    color:#085f00;
+}
+
+.successalert a:hover{
+    color: #0fb800;
+}
+
+.alertfail{
+    width: 95%;
+    color:#5f0000;
+    background-color: #e8a6a6;
+    padding: 2vh 1.5vw;
+    border-radius: 10px;
+    margin-bottom: 1vh;
+}
+
+.alertfail a{
+    color:#5f0000;
+}
+
+.alertfail a:hover{
+    color: #b80000;
+}
+
+.buttonsprod2{
+    display: flex;
+    justify-content: center;
 }
