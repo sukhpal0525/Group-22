@@ -59,11 +59,13 @@ nav a:hover {
     grid-area: 1 / 2 / 2 / 3;
     padding: 25px 10px;
     margin: auto;
-    align-items: center;
 }
 
 .pages ul {
     padding: 0 15px;
+    margin: auto;
+    align-items: center;
+    display: flex !important;
 }
 
 .right-icons {
