@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Orders Summary</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2>Orders Summary</h2>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Time Period</th>
+          <th>Total Orders</th>
+          <th>Total Profits</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Daily</td>
+          <td th:text="${#lists.size(dayOrders)}"></td>
+          <td th:text="${'&pound;' + #aggregates.sum(dayOrders.![orderAmount])}"></td>
+        </tr>
+        <tr>
+<!--          ${#numbers.formatDecimal(#aggregates.sum(weekOrders.![orderAmount]), 0, 'COMMA', 2, 'POINT')}-->
+          <td>Weekly</td>
+          <td th:text="${#lists.size(weekOrders)}"></td>
+          <td th:text="${'&pound;' + #aggregates.sum(weekOrders.![orderAmount])}"></td>
+        </tr>
+        <tr>
+          <td>Monthly</td>
+          <td th:text="${#lists.size(monthOrders)}"></td>
+          <td th:text="${'&pound;' + #aggregates.sum(monthOrders.![orderAmount])}"></td>
+        </tr>
+        <tr>
+          <td>Yearly</td>
+          <td th:text="${#lists.size(yearOrders)}"></td>
+          <td th:text="${'&pound;' + #aggregates.sum(yearOrders.![orderAmount])}"></td>
+        </tr>
+        <tr>
+          <td>All</td>
+          <td th:text="${#lists.size(allOrders)}"></td>
+          <td th:text="${'&pound;' + #aggregates.sum(allOrders.![orderAmount])}"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>
