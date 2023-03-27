@@ -3,6 +3,7 @@ package org.aston.ecommerce.user.admin;
 import org.aston.ecommerce.order.Order;
 import org.aston.ecommerce.order.OrderRepository;
 import org.aston.ecommerce.order.OrderService;
+import org.aston.ecommerce.product.Product;
 import org.aston.ecommerce.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,8 @@ public class AdminReport {
         model.addAttribute("findAllOrders", findAllOrders);
         List<Order> unprocessedOrders = orderService.findUnprocessedOrders();
         model.addAttribute("unprocessedOrders", unprocessedOrders);
+        List<Product> lowStockProducts = productService.findAmberProducts();
+        model.addAttribute("lowStockProducts", lowStockProducts);
         return "admin_report";
     }
 
