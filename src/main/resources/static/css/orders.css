@@ -143,10 +143,6 @@ h1 {
     grid-row-gap: 0px;
 }
 
-.order1:hover {
-    background: #d2d2d2;
-}
-
 .parent-OrderItems tbody {
     width: 100%;
 }

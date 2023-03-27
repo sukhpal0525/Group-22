@@ -1,70 +1,86 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     <title>PCLabs | Product</title>
-<!--    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />-->
-    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <!--    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />-->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="/css/style.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="/css/aboutus.css" type="text/css" />
-<!--    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>-->
+    <!--    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>-->
     <div th:replace="fragments/nav_bar :: styles"></div>
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
+
 <body>
 
-<div th:replace="fragments/nav_bar :: header"></div>
-<div class="product_container">
-    <div class="container2">
-        <div class="sub_page_product">
-            <h2>Products</h2>
-            <form class="row align-items-center my-3" th:action="@{/products/search}" method="get">
-                <div class="col-xl-11 col-lg-10 col-md-10">
-                    <input type="text" name="searchQuery" id="searchQuery" class="form-control" placeholder="Search..." th:value="${searchQuery}">
-                </div>
-                <div class="col-xl-1 col-lg-2 col-md-2 mt-md-0 mt-2">
-                    <button type="submit" class="btn btn-primary">Search</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<div class="py-4 album">
-    <div class="wrapper">
-        <div class="clearfix">
-            <div class="filter_main">
-                <div class="product_filter">
-                    <form th:action="@{/products/list_category}" method="get">
-                        <label for="categorySelect">Filter by category:</label>
-                        <select name="categorySelect" id="categorySelect" onchange="this.form.submit()">
-                            <option th:selected="${categorySelect} == 'all'" value="all">All</option>
-                            <option th:selected="${categorySelect} == 'gpu'" value="gpu">GPU</option>
-                            <option th:selected="${categorySelect} == 'processor'" value="processor">CPU</option>
-                            <option th:selected="${categorySelect} == 'motherboard'" value="motherboard">Motherboard
-                            </option>
-                            <option th:selected="${categorySelect} == 'memory'" value="memory">Memory</option>
-                            <option th:selected="${categorySelect} == 'mouse'" value="mouse">Mouse</option>
-                        </select>
-                    </form>
-                </div><!--product_filter-->
+    <div th:replace="fragments/nav_bar :: header"></div>
+    <div class="product_container">
+        <div class="container2">
+            <div class="sub_page_product">
+                <h2>PRODUCTS</h2>
+                <form class="row align-items-center my-3" th:action="@{/products/search}" method="get">
+                    <div class="col-xl-11 col-lg-10 col-md-10">
+                        <input type="text" name="searchQuery" id="searchQuery" class="form-control" placeholder="Search..." th:value="${searchQuery}">
+                    </div>
+                    <div class="col-xl-1 col-lg-2 col-md-2 mt-md-0 mt-2">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </form>
             </div>
         </div>
+    </div>
+
+
+
+
+    <div class="py-4 album">
+
+        <div class="wrapper">
+            <div class="truncate1"></div>
+            <div class="truncate2"></div>
+            <div class="clearfix">
+                <div class="filter_main">
+                    <div class="product_filter">
+                        <form th:action="@{/products/list_category}" method="get">
+                            <!-- <label for="categorySelect">Filter by category:</label> -->
+                            <i class='bx bxs-filter-alt'></i>
+                            <select name="categorySelect" id="categorySelect" onchange="this.form.submit()">
+                                <option th:selected="${categorySelect} == 'all'" value="all">All</option>
+                                <option th:selected="${categorySelect} == 'gpu'" value="gpu">GPU</option>
+                                <option th:selected="${categorySelect} == 'processor'" value="processor">CPU</option>
+                                <option th:selected="${categorySelect} == 'motherboard'" value="motherboard">Motherboard
+                                </option>
+                                <option th:selected="${categorySelect} == 'memory'" value="memory">Memory</option>
+                                <option th:selected="${categorySelect} == 'mouse'" value="mouse">Mouse</option>
+                            </select>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="row" th:if="${products.size() > 0}">
             <div class="col-md-4" th:each="products : ${products}">
                 <div class="card mb-4">
                     <div class="card-body">
+                        <!-- add a image place holder use placeholder from web not my images-->
+                        <img th:src="@{/Images/CPU.png}" class="card-img-top" alt="..." />
+
                         <p class="card-title" th:text="${products.name}"></p>
-						<div class="text-danger card-text" th:if="${products.onSale}">
+                        <div class="text-danger card-text" th:if="${products.onSale}">
                             <del th:text="'&pound;' + ${products.amount}" style="text-decoration: line-through !important;"></del>&nbsp;
                             <strong th:text="'&pound;' + ${#numbers.formatDecimal(products.amount - products.amount * products.sale, 0, 'COMMA', 2, 'POINT')}"></strong>
                         </div>
                         <p class="card-text" th:if="!${products.onSale}"><span th:text="'&pound;' + ${products.amount}"></span></p>
                         <div class="d-flex justify-content-center">
                             <a th:href="@{/product/{id}(id=${products.id})}" class="text-reset text-decoration-none d-inline">
-                                <button type="button" class="btn mt-2 btn-sm btn-outline-secondary mx-auto text-center">Buy Now</button>
+                                <button type="button" class="btn mt-2 btn-sm btn-outline-secondary mx-auto text-center">Buy
+                                    Now</button>
                             </a>
                         </div>
                     </div>
@@ -74,10 +90,10 @@
         <div th:unless="${products.size() > 0}" class="mt-2 alert alert-secondary">
             Sorry. No products were found.
         </div>
+
     </div>
-</div><!--wrapper-->
-<div th:replace="fragments/footer :: footer"></div>
+    <!--wrapper-->
+    <div th:replace="fragments/footer :: footer"></div>
 </body>
+
 </html>
-
-
