@@ -526,7 +526,7 @@ button:hover {
 }
 
 .btn-outline-secondary {
-    border-color: #169c0a;
+    border-color: grey;
     text-indent: 6px;
 }
 
