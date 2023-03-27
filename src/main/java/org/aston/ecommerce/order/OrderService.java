@@ -73,6 +73,31 @@ public class OrderService {
         return String.format("%.2f", totalProfit);
     }
 
+    public double getTotalProfit(List<Order> orderItems) {
+        double markupMultiplier = productService.getMarkupMultiplier();
+        double totalProfit = orderRepository.findAll().stream()
+                .flatMap(order -> order.getOrderItems().stream())
+                .mapToDouble(orderItem -> {
+                    double itemCost = (orderItem.getProduct().getCost() != null ? orderItem.getProduct().getCost() : 0.0);
+                    double markupAmount = (orderItem.getAmount() - (orderItem.getAmount() * markupMultiplier));
+                    return (markupAmount - itemCost) * orderItem.getNumOfItems();
+                })
+                .sum();
+        return totalProfit;
+    }
+
+    public double calculateProfit(List<OrderItem> orderItems) {
+        double markupMultiplier = productService.getMarkupMultiplier();
+        double totalProfit = orderItems.stream()
+                .mapToDouble(orderItem -> {
+                    double itemCost = (orderItem.getProduct().getCost() != null ? orderItem.getProduct().getCost() : 0.0);
+                    double markupAmount = (orderItem.getAmount() - (orderItem.getAmount() * markupMultiplier));
+                    return (markupAmount - itemCost) * orderItem.getNumOfItems();
+                })
+                .sum();
+        return totalProfit;
+    }
+
     @Transactional
     public Order placeOrder(final Order order) {
 
