@@ -33,7 +33,7 @@ public class ProductController {
 
     @GetMapping("/products")
     private String getProducts(Model model) {
-        model.addAttribute("products", this.productService.findAll().get());
+        model.addAttribute("products", this.productService.findAllProductImage(this.productService.findAll().get()));
         return "products_list";
     }
 
@@ -55,7 +55,7 @@ public class ProductController {
 
         if(products == null) products = this.productService.findAll().get();
 
-        model.addAttribute("products", products);
+        model.addAttribute("products", this.productService.findAllProductImage(products));
 
         model.addAttribute("categorySelect", categoryStr);
 
@@ -91,7 +91,7 @@ public class ProductController {
         } else {
             products = this.productService.search(query);
         }
-        model.addAttribute("products", products);
+        model.addAttribute("products", this.productService.findAllProductImage(products));
         model.addAttribute("searchQuery", query);
 
         return "products_list";

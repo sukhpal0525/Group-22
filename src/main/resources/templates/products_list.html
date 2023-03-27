@@ -69,16 +69,19 @@
                 <div class="card mb-4">
                     <div class="card-body">
                         <!-- add a image place holder use placeholder from web not my images-->
-                        <img th:src="@{/Images/CPU.png}" class="card-img-top" alt="..." />
+                        <img th:src="@{${products.imageInfo != null} ? ${products.imageInfo.url} : '/Images/CPU.png'}"
+                             class="img-fluid" th:alt="${products.imageInfo != null} ? ${products.imageInfo.name} : 'template'"
+                             style="object-fit: contain; height: 343px;"
+                        />
 
-                        <p class="card-title" th:text="${products.name}"></p>
-                        <div class="text-danger card-text" th:if="${products.onSale}">
-                            <del th:text="'&pound;' + ${products.amount}" style="text-decoration: line-through !important;"></del>&nbsp;
-                            <strong th:text="'&pound;' + ${#numbers.formatDecimal(products.amount - products.amount * products.sale, 0, 'COMMA', 2, 'POINT')}"></strong>
+                        <p class="card-title" th:text="${products.product.name}"></p>
+                        <div class="text-danger card-text" th:if="${products.product.onSale}">
+                            <del th:text="'&pound;' + ${products.product.amount}" style="text-decoration: line-through !important;"></del>&nbsp;
+                            <strong th:text="'&pound;' + ${#numbers.formatDecimal(products.product.amount - products.product.amount * products.product.sale, 0, 'COMMA', 2, 'POINT')}"></strong>
                         </div>
-                        <p class="card-text" th:if="!${products.onSale}"><span th:text="'&pound;' + ${products.amount}"></span></p>
+                        <p class="card-text" th:if="!${products.product.onSale}"><span th:text="'&pound;' + ${products.product.amount}"></span></p>
                         <div class="d-flex justify-content-center">
-                            <a th:href="@{/product/{id}(id=${products.id})}" class="text-reset text-decoration-none d-inline">
+                            <a th:href="@{/product/{id}(id=${products.product.id})}" class="text-reset text-decoration-none d-inline">
                                 <button type="button" class="btn mt-2 btn-sm btn-outline-secondary mx-auto text-center">Buy
                                     Now</button>
                             </a>
