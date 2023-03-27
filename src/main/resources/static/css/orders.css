@@ -179,7 +179,3 @@ h1 {
     grid-column-gap: 0px;
     grid-row-gap: 0px;
 }
-
-.childOrderItems:hover {
-    background-color: #d2d2d2;
-}
