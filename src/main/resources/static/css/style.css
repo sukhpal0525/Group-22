@@ -469,8 +469,8 @@ button:hover {
 }
 
 .btn-primary {
-    background-color: #169c0a;
-    border-color: #169c0a;
+    background-color: grey;
+    border-color: grey;
     text-indent: 6px;
 }
 
