@@ -22,8 +22,10 @@ import java.time.LocalTime;
 import java.time.temporal.TemporalAdjusters;
 import java.time.temporal.WeekFields;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Controller
@@ -83,7 +85,7 @@ public class AdminController {
 
     @GetMapping("/orders")
     public String getAllOrders(Model model) {
-        List<Order> orders = this.orderRepository.findAll();
+        List<Order> orders = orderRepository.findAll();
 
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime dayStartTime = now.with(LocalTime.MIN);
@@ -91,10 +93,10 @@ public class AdminController {
         LocalDateTime monthStartTime = LocalDateTime.from(now.with(TemporalAdjusters.firstDayOfMonth()));
         LocalDateTime yearStartTime = LocalDateTime.from(now.with(TemporalAdjusters.firstDayOfYear()));
 
-        List<Order> dayOrders = this.orderRepository.findByCreationDateAfter(dayStartTime);
-        List<Order> weekOrders = this.orderRepository.findByCreationDateAfter(weekStartTime);
-        List<Order> monthOrders = this.orderRepository.findByCreationDateAfter(monthStartTime);
-        List<Order> yearOrders = this.orderRepository.findByCreationDateAfter(yearStartTime);
+        List<Order> dayOrders = orderRepository.findByCreationDateAfter(dayStartTime);
+        List<Order> weekOrders = orderRepository.findByCreationDateAfter(weekStartTime);
+        List<Order> monthOrders = orderRepository.findByCreationDateAfter(monthStartTime);
+        List<Order> yearOrders = orderRepository.findByCreationDateAfter(yearStartTime);
 
         model.addAttribute("dayOrders", dayOrders);
         model.addAttribute("weekOrders", weekOrders);
