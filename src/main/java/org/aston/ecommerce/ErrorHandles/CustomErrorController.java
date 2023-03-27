@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 public class CustomErrorController implements ErrorController {
     @RequestMapping("/error")
     public String handleErrors(HttpServletRequest request) {
-        //Handle Error 403, 404, 500
+        //Handle Error 404, 500
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
         if(status != null) {
             Integer statusCode = Integer.valueOf(status.toString());
