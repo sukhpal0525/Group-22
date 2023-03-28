@@ -39,7 +39,7 @@
           <p><a th:href="@{/products}">Products</a></p>
           <p><a th:href="@{/aboutus}">About Us</a></p> 
           <p><a th:href="@{/contactus}">Contact Us</a></p>
-        </div>
+        </div> 
   
         <div class="logout">
           <h6><a th:href="@{/basket}">Basket</a></h6>
@@ -54,9 +54,9 @@
             <h3>Orders</h3>
         </div>
         <div class="ordersections">
-            <div class="pendingorders" id="box">
+            <div class="unprocessedorders" id="box">
                 <div class="statustitle">
-                    <h4>PENDING</h4>
+                    <h4>UNPROCESSED</h4>
                 </div>
                 <div class="cardstack">
                     <div class="cardsorder">
@@ -74,16 +74,48 @@
                         </div>
                         <div class="ordersatus">
                             <select class="orderst">
-                                <option>Pending</option>
+                                <option>Unprocessed</option>
+                                <option>Processed</option>
                                 <option>Shipped</option>
-                                <option>Complete</option>
+                                <option>Success</option>
+                                <option>Failed</option>
                             </select>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="shippedorders">
+            <div class="processedorders">
                 <div class="statustitle" id="box">
+                    <h4>PROCESSED</h4>
+                </div>
+                <div class="cardstack">
+                    <div class="cardsorder">
+                        <div class="orderidsect">
+                            <p>Order ID</p>
+                        </div>
+                        <div class="transactionsect">
+                            <p>Transaction Number</p>
+                        </div>
+                        <div class="datesect">
+                            <p>Order Date</p>
+                        </div>
+                        <div class="amountsect">
+                            <p>Order Amount</p>
+                        </div>
+                        <div class="ordersatus">
+                            <select class="orderst">
+                                <option>Unprocessed</option>
+                                <option>Processed</option>
+                                <option>Shipped</option>
+                                <option>Success</option>
+                                <option>Failed</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="shippedorders" id="box">
+                <div class="statustitle">
                     <h4>SHIPPED</h4>
                 </div>
                 <div class="cardstack">
@@ -102,17 +134,19 @@
                         </div>
                         <div class="ordersatus">
                             <select class="orderst">
-                                <option>Pending</option>
+                                <option>Unprocessed</option>
+                                <option>Processed</option>
                                 <option>Shipped</option>
-                                <option>Complete</option>
+                                <option>Success</option>
+                                <option>Failed</option>
                             </select>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="completeorders" id="box">
+            <div class="successorders" id="box">
                 <div class="statustitle">
-                    <h4>COMPLETE</h4>
+                    <h4>SUCCESS</h4>
                 </div>
                 <div class="cardstack">
                     <div class="cardsorder">
@@ -130,9 +164,41 @@
                         </div>
                         <div class="ordersatus">
                             <select class="orderst">
-                                <option>Pending</option>
+                                <option>Unprocessed</option>
+                                <option>Processed</option>
                                 <option>Shipped</option>
-                                <option>Complete</option>
+                                <option>Success</option>
+                                <option>Failed</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="failedorders" id="box">
+                <div class="statustitle">
+                    <h4>FAILED</h4>
+                </div>
+                <div class="cardstack">
+                    <div class="cardsorder">
+                        <div class="orderidsect">
+                            <p>Order ID</p>
+                        </div>
+                        <div class="transactionsect">
+                            <p>Transaction Number</p>
+                        </div>
+                        <div class="datesect">
+                            <p>Order Date</p>
+                        </div>
+                        <div class="amountsect">
+                            <p>Order Amount</p>
+                        </div>
+                        <div class="ordersatus">
+                            <select class="orderst">
+                                <option>Unprocessed</option>
+                                <option>Processed</option>
+                                <option>Shipped</option>
+                                <option>Success</option>
+                                <option>Failed</option>
                             </select>
                         </div>
                     </div>

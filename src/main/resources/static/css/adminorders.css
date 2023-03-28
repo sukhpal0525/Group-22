@@ -1,4 +1,4 @@
-.pagecontent{
+.pagecontent{ 
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: .1fr 1fr;
@@ -14,9 +14,10 @@
     grid-area: 2 / 1 / 3 / 2;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     grid-column-gap: 0px;
-    grid-row-gap: 0px; 
+    grid-row-gap: 0px;
+    margin-bottom:5vh;
 }
 
 .titlepage h3{
@@ -25,16 +26,24 @@
     margin: 13vh 0 7vh 8vw;
 }
 
-.pendingorders{
+.unprocessedorders{
     grid-area: 1 / 1 / 2 / 2;
 }
 
-.shippedorders{
+.processedorders{
     grid-area: 2 / 1 / 3 / 2;
 }
 
-.completeorders{
+.shippedorders{
     grid-area: 3 / 1 / 4 / 2;
+}
+
+.successorders{
+    grid-area: 4 / 1 / 5 / 2;
+}
+
+.failedorders{
+    grid-area: 5 / 1 / 6 / 2;
 }
 
 .statustitle{
