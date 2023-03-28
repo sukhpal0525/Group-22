@@ -39,10 +39,7 @@
 
 .rightsmall{
     grid-area: 1 / 2 / 2 / 3;
-<<<<<<< HEAD
-=======
     padding: 20px 15px;
->>>>>>> Lena's-Branch
 }
 
 .leftsmall{
@@ -56,8 +53,6 @@
 #box {
     background-color: #fff;
     margin: 20px;
-<<<<<<< HEAD
-=======
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: .1fr 1fr;
@@ -108,5 +103,4 @@
     grid-area: 1 / 2 / 2 / 3;
     padding: 15px;
     text-align: right;
->>>>>>> Lena's-Branch
 }
