@@ -39,6 +39,10 @@
 
 .rightsmall{
     grid-area: 1 / 2 / 2 / 3;
+<<<<<<< HEAD
+=======
+    padding: 20px 15px;
+>>>>>>> Lena's-Branch
 }
 
 .leftsmall{
@@ -52,4 +56,57 @@
 #box {
     background-color: #fff;
     margin: 20px;
+<<<<<<< HEAD
+=======
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: .1fr 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+#boxtb{
+    background-color: #fff;
+    margin: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: .1fr 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.cardtitle{
+    grid-area: 1 / 1 / 2 / 2;  
+    margin: 0 1vw; 
+}
+
+.cardstats{
+    grid-area: 2 / 1 / 3 / 2;
+}
+
+.cardtb{
+    background-color: #e7e7e7;
+    margin: 0 1vw 1vh 1vw;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr .2fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.cardtb p{
+    margin-bottom: 0 !important;
+}
+
+.stattime{
+    grid-area: 1 / 1 / 2 / 2;
+    padding: 15px;
+}
+
+.statfigure{
+    grid-area: 1 / 2 / 2 / 3;
+    padding: 15px;
+    text-align: right;
+>>>>>>> Lena's-Branch
 }
