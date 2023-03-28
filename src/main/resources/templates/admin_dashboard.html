@@ -1,93 +1,130 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="ISO-8859-1">
-  <title>Admin Dashboard - Group 22</title>
-  <link rel="stylesheet" type="text/css" href="/css/global.css" />
-  <link rel="stylesheet" type="text/css" href="/css/adminglobal.css" />
-  <link rel="stylesheet" type="text/css" href="/css/admindash.css" />
-  <div th:replace="fragments/nav_bar :: styles"></div>
-  <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-  <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-</head>
-<body>
+  <head>
+    <meta charset="ISO-8859-1" />
+    <title>Admin Dashboard - Group 22</title>
+    <link rel="stylesheet" type="text/css" href="/css/global.css" />
+    <link rel="stylesheet" type="text/css" href="/css/adminglobal.css" />
+    <link rel="stylesheet" type="text/css" href="/css/admindash.css" />
+    <div th:replace="fragments/nav_bar :: styles"></div>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script
+      type="text/javascript"
+      src="/webjars/bootstrap/js/bootstrap.min.js"
+    ></script>
+  </head>
+  <body>
+    <div th:replace="fragments/nav_bar :: header"></div>
 
-  <div th:replace="fragments/nav_bar :: header"></div>
+    <div class="pagegrid">
+      <div class="sidepanel">
+        <div class="dashpages">
+          <h6 id="current"><a th:href="@{/admin/dashboard}">Dashboard</a></h6>
 
-  <div class="pagegrid">
-    <div class="sidepanel">
+          <br />
+          <br />
+          <br />
 
-      <div class="dashpages">
-        <h6 id="current"><a th:href="@{/admin/dashboard}">Dashboard</a></h6>
+          <h4>ADMIN PAGES</h4>
+          <p><a th:href="@{/admin/products}">View Products</a></p>
+          <p><a th:href="@{/admin/products/new}">Add Product</a></p>
+          <p><a th:href="@{/admin/all-orders}">View Orders</a></p>
+          <p><a th:href="@{/report/add}">Generate Report</a></p>
+          <p><a th:href="@{/admin/orders}">Analytics</a></p>
 
-        <br>
-        <br>
-        <br>
+          <br />
+          <br />
+          <br />
 
-        <h4>ADMIN PAGES</h4>
-        <p><a th:href="@{/admin/products}">View Products</a></p>
-        <p><a th:href="@{/admin/products/new}">Add Product</a></p>
-        <p><a th:href="@{/admin/all-orders}">View Orders</a></p>
-        <p><a th:href="@{/report/add}">Generate Report</a></p>
-        <p><a th:href="@{/admin/orders}">Analytics</a></p>
+          <h4>CUSTOMER PAGES</h4>
+          <p><a th:href="@{/home}" class="active">Home</a></p>
+          <p><a th:href="@{/products}">Products</a></p>
+          <p><a th:href="@{/aboutus}">About Us</a></p>
+          <p><a th:href="@{/contactus}">Contact Us</a></p>
+        </div>
 
-        <br>
-        <br>
-        <br>
-
-        <h4>CUSTOMER PAGES</h4>
-        <p><a th:href="@{/home}" class="active">Home</a></p>
-        <p><a th:href="@{/products}">Products</a></p>
-        <p><a th:href="@{/aboutus}">About Us</a></p> 
-        <p><a th:href="@{/contactus}">Contact Us</a></p>
+        <div class="logout">
+          <h6><a th:href="@{/basket}">Basket</a></h6>
+          <h6 th:unless="${#request.userPrincipal == null}">
+            <a
+              href="javascript:;"
+              onclick="document.getElementById('logoutForm').submit();"
+              role="menuitem"
+              >Logout</a
+            >
+          </h6>
+        </div>
       </div>
 
-      <div class="logout">
-        <h6><a th:href="@{/basket}">Basket</a></h6>
-        <h6 th:unless="${#request.userPrincipal == null}"><a href="javascript:;"
-          onclick="document.getElementById('logoutForm').submit();"
-          role="menuitem">Logout</a></h6>
-      </div>
-  </div>
-
-    <div class="pagecontent">
-      <div class="welcomedash">
-        <h3>Welcome [[${#request.userPrincipal.principal.actualUsernameNotEmail}]]</h3>
-      </div>
-      <div class="alertsect">
-        <div class="dashwrap">
-          <div class="dashtitle">
-            <h4>ALERTS</h4>
-          </div>
-          <div class="dashcards">
-            <div class="alertcard urgentalert" th:each="redProduct : ${redProducts}">
-              <p>Product [[${redProduct.name}]] is at critical levels, [[${redProduct.AmountAvailable}]] remaining. Click
-                <a th:href="@{/admin/products/{id}(id=${redProduct.id})}">here</a> to edit.</p>
+      <div class="pagecontent">
+        <div class="welcomedash">
+          <h3>
+            Welcome
+            [[${#request.userPrincipal.principal.actualUsernameNotEmail}]]
+          </h3>
+        </div>
+        <div class="alertsect">
+          <div class="dashwrap">
+            <div class="dashtitle">
+              <h4>ALERTS</h4>
             </div>
-            <div class="alertcard amberalert" th:each="amberProduct : ${amberProducts}">
-             <p>Product [[${amberProduct.name}]] is low in stock, [[${amberProduct.AmountAvailable}]] remaining. Click
-               <a th:href="@{/admin/products/{id}(id=${amberProduct.id})}">here</a> to edit.</p>
-            </div>
-            <div class="alertcard urgentalert" th:each="unprocessedOrder : ${unprocessedOrders}">
-              <p>Order [[${unprocessedOrder.transactionNumber}]] is [[${unprocessedOrder.status.toString().toLowerCase()}]].
-                <a th:href="@{/admin/edit_order/{id}(id=${unprocessedOrder.id})}">here</a> to edit.</p>
+            <div class="dashcards">
+              <div
+                class="alertcard urgentalert"
+                th:each="redProduct : ${redProducts}"
+              >
+                <p>
+                  Product [[${redProduct.name}]] is at critical levels,
+                  [[${redProduct.AmountAvailable}]] remaining. Click
+                  <a th:href="@{/admin/products/{id}(id=${redProduct.id})}"
+                    >here</a
+                  >
+                  to edit.
+                </p>
+              </div>
+              <div
+                class="alertcard amberalert"
+                th:each="amberProduct : ${amberProducts}"
+              >
+                <p>
+                  Product [[${amberProduct.name}]] is low in stock,
+                  [[${amberProduct.AmountAvailable}]] remaining. Click
+                  <a th:href="@{/admin/products/{id}(id=${amberProduct.id})}"
+                    >here</a
+                  >
+                  to edit.
+                </p>
+              </div>
+              <div
+                class="alertcard urgentalert"
+                th:each="unprocessedOrder : ${unprocessedOrders}"
+              >
+                <p>
+                  Order [[${unprocessedOrder.transactionNumber}]] is
+                  [[${unprocessedOrder.status.toString().toLowerCase()}]].
+                  <a
+                    th:href="@{/admin/edit_order/{id}(id=${unprocessedOrder.id})}"
+                    >here</a
+                  >
+                  to edit.
+                </p>
+              </div>
             </div>
           </div>
         </div>
-
-      </div>
-      <div class="stocksect">
-        <div class="dashwrap">
-          <div class="dashtitle">
-            <h4>STOCKS</h4>
-          </div>
-          <div class="dashcards">
-            <div class="stockcard" th:each="product : ${products}">
-              <div class="itemnamesect">
-                <p th:text="${product.name}"></p>
-              </div>
-              <div class="quantitysect">
-                <p th:text="${product.amountAvailable}"></p>
+        <div class="stocksect">
+          <div class="dashwrap">
+            <div class="dashtitle">
+              <h4>STOCKS</h4>
+            </div>
+            <div class="dashcards">
+              <div class="stockcard" th:each="product : ${products}">
+                <div class="itemnamesect">
+                  <p th:text="${product.name}"></p>
+                </div>
+                <div class="quantitysect">
+                  <p th:text="${product.amountAvailable}"></p>
+                </div>
               </div>
             </div>
           </div>
@@ -95,10 +132,6 @@
       </div>
     </div>
 
-</div>
-  
-
-<div th:replace="fragments/footer :: footer"></div>
-
-</body>
+    <div th:replace="fragments/footer :: footer"></div>
+  </body>
 </html>
