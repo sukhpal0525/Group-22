@@ -53,7 +53,28 @@
     </div>
 
     <div class="pagecontent">
+        <div class="titlepage">
+            <h3>Products</h3>
+        </div>
+        <div class="productsadminwrap">
+            <div class="prodcard" th:each="products : ${products}">
+                <div class="prodtitle">
+                    <p th:text="${products.name}"></p>
+                </div>
+                <div class="prodview">
+                    <p><a>View</a></p>
+                </div>
+                <div class="prodedit">
+                    <p><a th:href="@{/admin/products/{id}(id=${products.id})}">Edit</a></p>
+                </div>
+            </div>
 
+        </div>
+        <div class="addbutton">
+            <button th:href="@{/admin/products/new}">
+                ADD PRODUCT
+            </button>
+        </div>
     </div>
 
 </div>
@@ -61,63 +82,5 @@
 
 <div th:replace="fragments/footer :: footer"></div>
 
-
-
-
-
-
-
-
-
-
-<div class="product_container">
-    <div class="container2 text-center">
-        <div class="sub_page_product">
-            <h2>Edit Products</h2>
-            <form class="row align-items-center my-3" th:action="@{/admin/products/get}" method="get">
-            </form>
-        </div>
-    </div>
-</div>
-
-<div class="py-4 album">
-    <div class="wrapper">
-        <div class="alert alert-danger mt-2 text-center" role="alert" th:each="redProduct : ${redProducts}">
-            Product [[${redProduct.name}]] is at critical levels. <strong>Only [[${redProduct.AmountAvailable}]] left. </strong>
-            <a class="alert-link" th:href="@{/admin/products/{id}(id=${redProduct.id})}">Click here to edit.</a>
-        </div>
-        <div class="alert alert-warning mt-2 text-center" role="alert" th:each="amberProduct : ${amberProducts}">
-            Product [[${amberProduct.name}]] is low in stock. <strong>Only [[${amberProduct.AmountAvailable}]] left. </strong>
-            <a class="alert-link" th:href="@{/admin/products/{id}(id=${amberProduct.id})}">Click here to edit.</a>
-        </div>
-        <div class="clearfix">
-            <div class="filter_main">
-                <div class="product_filter">
-                </div><!--maybe add later on-->
-            </div>
-        </div>
-        <div class="row" th:if="${products.size() > 0}">
-            <div class="col-md-4" th:each="products : ${products}">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <p class="card-title" th:text="${products.name}"></p>
-                        <p class="card-text" th:text="'&pound;' + ${products.amount}"></p>
-                        <div class="d-flex justify-content-center">
-                            <a th:href="@{/admin/products/{id}(id=${products.id})}"
-                               class="text-reset text-decoration-none d-inline">
-                                <button type="button" class="btn mt-2 btn-sm btn-outline-secondary mx-auto text-center">Edit Product</button><!--Edit-->
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="d-flex justify-content-center">
-            <a th:href="@{/admin/products/new}">
-                <button type="button" class="btn btn-sm btn-outline-secondary mx-auto text-center">Add New Product</button>
-            </a>
-        </div>
-    </div>
-</div>
 </body>
 </html>
