@@ -57,15 +57,23 @@
             <h3>Products</h3>
         </div>
         <div class="productsadminwrap">
-            <div class="prodcard">
-                <p>test</p>
-            </div>
-            <div class="prodcard">
-                <p>test</p>
+            <div class="prodcard" th:each="products : ${products}">
+                <div class="prodtitle">
+                    <p th:text="${products.name}"></p>
+                </div>
+                <div class="prodview">
+                    <p><a>View</a></p>
+                </div>
+                <div class="prodedit">
+                    <p><a th:href="@{/admin/products/{id}(id=${products.id})}">Edit</a></p>
+                </div>
             </div>
 
         </div>
     </div>
+    <button th:href="@{/admin/products/new}">
+        ADD PRODUCT
+    </button>
 
 </div>
   
