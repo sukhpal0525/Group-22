@@ -44,6 +44,10 @@ sidepanel p{
     padding-top: 50px;
 }
 
+.dashpages h4{
+    font-size: 18px;
+}
+
 .dashpages p{
     margin:8px 0;
 }
@@ -87,7 +91,7 @@ sidepanel p{
 
 .adminpages h4{
     margin-bottom: 10px;
-    font-size: 1rem;
+    font-size: 24px !important;
 }
 
 .customerpages{
@@ -100,7 +104,7 @@ sidepanel p{
 
 .customerpages h4{
     margin-bottom: 10px;
-    font-size: 1rem;
+    font-size: 24px !important;
 }
 
 .customerpages a{

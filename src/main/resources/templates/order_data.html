@@ -3,10 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <title>Orders Summary</title>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    />
     <link rel="stylesheet" type="text/css" href="/css/global.css" />
     <link rel="stylesheet" type="text/css" href="/css/adminglobal.css" />
     <link rel="stylesheet" type="text/css" href="/css/adminanalytics.css" />
@@ -55,18 +51,72 @@
       </div>
 
       <div class="pagecontent">
+
+        <div class="analyticstitle">
+          <h4>Analytics</h4>
+        </div>
+        
         <div class="analyticrow1">
+
+
           <div class="leftlarge" id="box">
-            <p>test</p>
-          </div>
-          <div class="rightsmall" id="box">
             <div class="cardtitle">
-              <h4>ORDERS</h4>
+              <h3>PLACEHOLDER</h3>
             </div>
             <div class="cardstats">
               <div class="cardtb">
                 <div class="stattime">
-                  <p>Daily</p>
+                  <p>Today</p>
+                </div>
+                <div class="statfigure">
+                  <p>placeholder</p>
+                </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>This Week</p>
+                </div>
+                <div class="statfigure">
+                  <p>placeholder</p>
+                </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>This Month</p>
+                </div>
+                <div class="statfigure">
+                  <p>placeholder</p>
+                </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>This Year</p>
+                </div>
+                <div class="statfigure">
+                  <p>placeholder</p>
+                </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>All Time</p>
+                </div>
+                <div class="statfigure">
+                  <p>placeholder</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
+
+          <div class="rightsmall" id="box">
+            <div class="cardtitle">
+              <h3>ORDERS</h3>
+            </div>
+            <div class="cardstats">
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>Today</p>
                 </div>
                 <div class="statfigure">
                   <p th:text="${#lists.size(dayOrders)}"></p>
@@ -74,54 +124,251 @@
               </div>
               <div class="cardtb">
                 <div class="stattime">
-                  <p>Weekly</p>
+                  <p>This Week</p>
                 </div>
                 <div class="statfigure">
                   <p th:text="${#lists.size(weekOrders)}"></p>
                 </div>
               </div>
-            </div>
-            <div class="cardtb">
-              <div class="stattime">
-                <p>Monthly</p>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>This Month</p>
+                </div>
+                <div class="statfigure">
+                  <p th:text="${#lists.size(monthOrders)}"></p>
+                </div>
               </div>
-              <div class="statfigure">
-                <p th:text="${#lists.size(monthOrders)}"></p>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>This Year</p>
+                </div>
+                <div class="statfigure">
+                  <p th:text="${#lists.size(yearOrders)}"></p>
+                </div>
               </div>
-            </div>
-            <div class="cardtb">
-              <div class="stattime">
-                <p>Yearly</p>
-              </div>
-              <div class="statfigure">
-                <p th:text="${#lists.size(yearOrders)}"></p>
-              </div>
-            </div>
-            <div class="cardtb">
-              <div class="stattime">
-                <p>All</p>
-              </div>
-              <div class="statfigure">
-                <p th:text="${#lists.size(allOrders)}"></p>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>All Time</p>
+                </div>
+                <div class="statfigure">
+                  <p th:text="${#lists.size(allOrders)}"></p>
+                </div>
               </div>
             </div>
           </div>
+
         </div>
+
+
+
+
         <div class="analyticrow2">
-          <div class="leftsmall" id="box"></div>
+
+          <div class="leftsmall" id="box">
+            <div class="cardtitle">
+              <h3>PLACEHOLDER</h3>
+            </div>
+            <div class="cardstats">
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>Today</p>
+                </div>
+                <div class="statfigure">
+                  <p>placeholder</p>
+                </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>This Week</p>
+                </div>
+                <div class="statfigure">
+                  <p>placeholder</p>
+                </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>This Month</p>
+                </div>
+                <div class="statfigure">
+                  <p>placeholder</p>
+                </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>This Year</p>
+                </div>
+                <div class="statfigure">
+                  <p>placeholder</p>
+                </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>All Time</p>
+                </div>
+                <div class="statfigure">
+                  <p>placeholder</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
           <div class="rightlarge" id="box">
-            <p>test</p>
+            <div class="cardtitle">
+              <h3>PROFITS</h3>
+            </div>
+            <div class="cardstats">
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>Today</p>
+                </div>
+                <div class="statfigure">
+                  <p th:text="${'&pound;' + #aggregates.sum(dayOrders.![orderAmount])}"></p>
+                </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>This Week</p>
+                </div>
+                <div class="statfigure">
+                  <p th:text="${'&pound;' + #aggregates.sum(weekOrders.![orderAmount])}"></p>
+                </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>This Month</p>
+                </div>
+                <div class="statfigure">
+                  <p th:text="${'&pound;' + #aggregates.sum(monthOrders.![orderAmount])}"></p>
+                </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>This Year</p>
+                </div>
+                <div class="statfigure">
+                  <p th:text="${'&pound;' + #aggregates.sum(yearOrders.![orderAmount])}"></p>
+                </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>All Time</p>
+                </div>
+                <div class="statfigure">
+                  <p th:text="${'&pound;' + #aggregates.sum(allOrders.![orderAmount])}"></p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
+
+
+
+
         <div class="analyticrow3">
+
+
           <div class="leftlarge" id="box">
-            <p>test</p>
+            <div class="cardtitle">
+              <h3>PLACEHOLDER</h3>
+            </div>
+            <div class="cardstats">
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>Today</p>
+                </div>
+                <div class="statfigure">
+                  <p>placeholder</p>
+                </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>This Week</p>
+                </div>
+                <div class="statfigure">
+                  <p>placeholder</p>
+                </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>This Month</p>
+                </div>
+                <div class="statfigure">
+                  <p>placeholder</p>
+                </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>This Year</p>
+                </div>
+                <div class="statfigure">
+                  <p>placeholder</p>
+                </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>All Time</p>
+                </div>
+                <div class="statfigure">
+                  <p>placeholder</p>
+                </div>
+              </div>
+            </div>
           </div>
+
+          
           <div class="rightsmall" id="box">
-            <p>test</p>
+            <div class="cardtitle">
+              <h3>PLACEHOLDER</h3>
+            </div>
+            <div class="cardstats">
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>Today</p>
+                </div>
+                <div class="statfigure">
+                  <p>placeholder</p>
+                </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>This Week</p>
+                </div>
+                <div class="statfigure">
+                  <p>placeholder</p>
+                </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>This Month</p>
+                </div>
+                <div class="statfigure">
+                  <p>placeholder</p>
+                </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>This Year</p>
+                </div>
+                <div class="statfigure">
+                  <p>placeholder</p>
+                </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>All Time</p>
+                </div>
+                <div class="statfigure">
+                  <p>placeholder</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+
+        
       </div>
     </div>
 

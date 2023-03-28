@@ -1,40 +1,51 @@
 .pagecontent{
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, 2fr);
+    grid-template-rows: .3fr repeat(3, 1fr);
     grid-column-gap: 0px;
-    grid-row-gap: 0px; 
+    grid-row-gap: 0px;
+}
+
+.analyticstitle{
+    font-size: 32px;
+    color: #323232;
+    margin: 13vh 0 7vh 8vw;
 }
 
 .analyticrow1{
-    grid-area: 1 / 1 / 2 / 2;
+    grid-area: 2 / 1 / 3 / 2;
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+    margin: 0 7vw;
 }
 
 .analyticrow2{
-    grid-area: 2 / 1 / 3 / 2;
+    grid-area: 3 / 1 / 4 / 2;
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+    margin: 0 7vw;
 }
 
 .analyticrow3{
-    grid-area: 3 / 1 / 4 / 2; 
+    grid-area: 4 / 1 / 5 / 2;
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+    margin: 0 7vw;
+    margin-bottom: 7vh;
 }
 
 .leftlarge{
     grid-area: 1 / 1 / 2 / 2;
+    padding: 20px 15px;
 }
 
 .rightsmall{
@@ -44,10 +55,12 @@
 
 .leftsmall{
     grid-area: 1 / 1 / 2 / 2;
+    padding: 20px 15px;
 }
 
 .rightlarge{
     grid-area: 1 / 2 / 2 / 3; 
+    padding: 20px 15px;
 }
 
 #box {
@@ -72,7 +85,11 @@
 
 .cardtitle{
     grid-area: 1 / 1 / 2 / 2;  
-    margin: 0 1vw; 
+    margin: 2vh 1vw; 
+}
+
+cardtitle h3{
+    padding: 10px;
 }
 
 .cardstats{
