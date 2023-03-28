@@ -1,12 +1,11 @@
 package org.aston.ecommerce.product;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import lombok.extern.slf4j.Slf4j;
+import org.aston.ecommerce.file.FileService;
+import org.aston.ecommerce.file.ImageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,11 +16,13 @@ import org.springframework.stereotype.Service;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final FileService fileService;
     private final double markupMultiplier = 0.80;
 
     @Autowired
-    public ProductService(ProductRepository productRepository) {
+    public ProductService(ProductRepository productRepository, FileService fileService) {
         this.productRepository = productRepository;
+        this.fileService = fileService;
     }
 
     public List<Product> search(String query) {
@@ -47,6 +48,19 @@ public class ProductService {
 
     public Optional<List<Product>> findAll() {
         return Optional.of(this.productRepository.findAll());
+    }
+
+    //Find all products alongside their image
+    public List<ProductImage> findAllProductImage(List<Product> products){
+        List<ProductImage> returnProductImages = new ArrayList<>();
+
+        for(Product product : products){
+            ImageInfo imageInfo = this.fileService.getImageByName(product.getUrl());
+            ProductImage productImage = new ProductImage(product, imageInfo);
+            returnProductImages.add(productImage);
+        }
+
+        return returnProductImages;
     }
 
     //Find all products by ascending order such that the products with the highest stock are shown first.

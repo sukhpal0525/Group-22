@@ -1,9 +1,12 @@
 package org.aston.ecommerce.order;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.temporal.TemporalAdjusters;
+import java.time.temporal.WeekFields;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +20,8 @@ import org.aston.ecommerce.product.ProductService;
 import org.aston.ecommerce.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import static com.fasterxml.jackson.databind.type.LogicalType.Collection;
 
 @Slf4j
 @Service
@@ -66,6 +71,31 @@ public class OrderService {
                 })
                 .sum();
         return String.format("%.2f", totalProfit);
+    }
+
+    public double getTotalProfit(List<Order> orderItems) {
+        double markupMultiplier = productService.getMarkupMultiplier();
+        double totalProfit = orderRepository.findAll().stream()
+                .flatMap(order -> order.getOrderItems().stream())
+                .mapToDouble(orderItem -> {
+                    double itemCost = (orderItem.getProduct().getCost() != null ? orderItem.getProduct().getCost() : 0.0);
+                    double markupAmount = (orderItem.getAmount() - (orderItem.getAmount() * markupMultiplier));
+                    return (markupAmount - itemCost) * orderItem.getNumOfItems();
+                })
+                .sum();
+        return totalProfit;
+    }
+
+    public double calculateProfit(List<OrderItem> orderItems) {
+        double markupMultiplier = productService.getMarkupMultiplier();
+        double totalProfit = orderItems.stream()
+                .mapToDouble(orderItem -> {
+                    double itemCost = (orderItem.getProduct().getCost() != null ? orderItem.getProduct().getCost() : 0.0);
+                    double markupAmount = (orderItem.getAmount() - (orderItem.getAmount() * markupMultiplier));
+                    return (markupAmount - itemCost) * orderItem.getNumOfItems();
+                })
+                .sum();
+        return totalProfit;
     }
 
     @Transactional

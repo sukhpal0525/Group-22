@@ -1,5 +1,6 @@
 package org.aston.ecommerce.user.admin;
 
+import lombok.extern.slf4j.Slf4j;
 import org.aston.ecommerce.order.Order;
 import org.aston.ecommerce.order.OrderRepository;
 import org.aston.ecommerce.order.OrderService;
@@ -15,16 +16,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.temporal.TemporalAdjusters;
+import java.time.temporal.WeekFields;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
 
-
+@Slf4j
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
 
     @Autowired private OrderService orderService;
     @Autowired private UserService userService;
+    @Autowired private UserRepository userRepository;
     @Autowired private OrderRepository orderRepository;
     @Autowired private ProductService productService;
 
@@ -73,4 +83,27 @@ public class AdminController {
         return "user_orders";
     }
 
+    @GetMapping("/orders")
+    public String getAllOrders(Model model) {
+        List<Order> orders = orderRepository.findAll();
+
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime dayStartTime = now.with(LocalTime.MIN);
+        LocalDateTime weekStartTime = LocalDate.now().with(WeekFields.of(Locale.ENGLISH).dayOfWeek(), 1).atStartOfDay();
+        LocalDateTime monthStartTime = LocalDateTime.from(now.with(TemporalAdjusters.firstDayOfMonth()));
+        LocalDateTime yearStartTime = LocalDateTime.from(now.with(TemporalAdjusters.firstDayOfYear()));
+
+        List<Order> dayOrders = orderRepository.findByCreationDateAfter(dayStartTime);
+        List<Order> weekOrders = orderRepository.findByCreationDateAfter(weekStartTime);
+        List<Order> monthOrders = orderRepository.findByCreationDateAfter(monthStartTime);
+        List<Order> yearOrders = orderRepository.findByCreationDateAfter(yearStartTime);
+
+        model.addAttribute("dayOrders", dayOrders);
+        model.addAttribute("weekOrders", weekOrders);
+        model.addAttribute("monthOrders", monthOrders);
+        model.addAttribute("yearOrders", yearOrders);
+        model.addAttribute("allOrders", orders);
+
+        return "order_data";
+    }
 }

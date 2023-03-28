@@ -38,6 +38,9 @@ public class Order {
     @Column(name = "OrderDate")
     private LocalDateTime orderDate;
 
+    @Column(name = "CreationDate")
+    private LocalDateTime creationDate;
+
     @Column(name = "Quantity")
     private int quantity;
 

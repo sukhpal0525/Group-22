@@ -83,6 +83,7 @@ public class AdminProduct {
         return "admin_product_edit";
     }
 
+    //Edit product
     @PostMapping("/admin/products/{id}")
     public String updateProduct(@PathVariable("id") String id,
                                 @RequestParam("name") String nameStr,
@@ -142,7 +143,7 @@ public class AdminProduct {
         //model.addAttribute("product", new Product());
         return "admin_add_product";
     }
-    //TODO: Handle category input
+    //Add new product
     @PostMapping("/admin/products/new")
     public String addProduct(Model model, @RequestParam("name") String nameStr,
                                      @RequestParam("description") String descriptionStr,

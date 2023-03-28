@@ -26,47 +26,43 @@
 
       <div class="pagegrid">
         <div class="sidepanel">
+
           <div class="dashpages">
             <h6 id="current"><a th:href="@{/admin/dashboard}">Dashboard</a></h6>
-
-            <br />
-            <br />
-            <br />
-
+    
+            <br>
+            <br>
+            <br>
+    
             <h4>ADMIN PAGES</h4>
             <p><a th:href="@{/admin/products}">View Products</a></p>
             <p><a th:href="@{/admin/products/new}">Add Product</a></p>
             <p><a th:href="@{/admin/all-orders}">View Orders</a></p>
             <p><a th:href="@{/report/add}">Generate Report</a></p>
-            <p>Analytics</p>
-
-            <br />
-            <br />
-            <br />
-
+            <p><a th:href="@{/admin/orders}">Analytics</a></p>
+    
+            <br>
+            <br>
+            <br>
+    
             <h4>CUSTOMER PAGES</h4>
             <p><a th:href="@{/home}" class="active">Home</a></p>
             <p><a th:href="@{/products}">Products</a></p>
-            <p><a th:href="@{/aboutus}">About Us</a></p>
+            <p><a th:href="@{/aboutus}">About Us</a></p> 
             <p><a th:href="@{/contactus}">Contact Us</a></p>
           </div>
-
+    
           <div class="logout">
             <h6><a th:href="@{/basket}">Basket</a></h6>
-            <h6 th:unless="${#request.userPrincipal == null}">
-              <a
-                href="javascript:;"
-                onclick="document.getElementById('logoutForm').submit();"
-                role="menuitem"
-                >Logout</a
-              >
-            </h6>
+            <h6 th:unless="${#request.userPrincipal == null}"><a href="javascript:;"
+              onclick="document.getElementById('logoutForm').submit();"
+              role="menuitem">Logout</a></h6>
           </div>
-        </div>
+      </div>
 
         <div class="pagecontent">
           <div class="backredir">
-            <button id="backgroundgr">
+            <button id="backgroundgr" onclick="location.href = '/admin/dashboard'; return false;" style="cursor: pointer;">
               BACK
             </button>
             <div class="successalert" th:if="${success_msg}" role="alert">
@@ -75,6 +71,7 @@
                 >Click here to view it</a
               >
             </div>
+            <div class="alertfail" th:if="${fail_msg}" th:text="${fail_msg}" role="alert"></div>
           </div>
           <div class="editpage">
             <form
@@ -194,7 +191,8 @@
                 <div class="delprod">
                     
                     <a th:href="@{/admin/products/delete/{id}(id=${productId})}">
-                        <button>
+                        <button style="cursor: pointer;" type="button"
+                                th:attr="onclick=|deleteClicked('${productId}')|">
                             DELETE
                         </button>
                       </a>
@@ -202,7 +200,7 @@
                 </div>
 
                 <div class="saveprod">
-                    <button type="submit">
+                    <button type="submit" style="cursor: pointer;">
                         SAVE
                     </button>
                 </div>
@@ -214,8 +212,10 @@
 
       <div th:replace="fragments/footer :: footer"></div>
 
-
-
-
   </body>
+  <script>
+    function deleteClicked(id) {
+      location.href = "/admin/products/delete/" + id;
+    }
+  </script>
 </html>
