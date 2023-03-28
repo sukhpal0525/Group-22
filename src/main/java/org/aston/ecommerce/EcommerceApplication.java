@@ -3,17 +3,18 @@ package org.aston.ecommerce;
 import java.util.Random;
 
 import org.aston.ecommerce.file.FileStorage;
+import org.aston.ecommerce.file.FileStorageImplement;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
 @SpringBootApplication
 public class EcommerceApplication implements CommandLineRunner {
-
-    @Resource
-    FileStorage fileStorageService;
 
     public static void main(String[] args) {
         SpringApplication.run(EcommerceApplication.class, args);
@@ -21,6 +22,7 @@ public class EcommerceApplication implements CommandLineRunner {
 
     @Override
     public void run(String... arg) throws Exception {
+        FileStorageImplement fileStorageService = new FileStorageImplement();
         //fileStorageService.deleteAll();
         fileStorageService.init();
     }

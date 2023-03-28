@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class FileService {
 
     @Autowired
-    private FileStorage fileStorageService;
+    private FileStorageImplement fileStorageService;
 
     public List<ImageInfo> getListImages(){
         List<ImageInfo> imageInfos = this.fileStorageService.loadAll().map(path -> {

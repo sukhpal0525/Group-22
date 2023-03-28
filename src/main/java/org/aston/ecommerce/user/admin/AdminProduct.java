@@ -1,21 +1,18 @@
 package org.aston.ecommerce.user.admin;
 
-import org.aston.ecommerce.file.FileStorage;
+import org.aston.ecommerce.file.FileStorageImplement;
 import org.aston.ecommerce.product.Category;
 import org.aston.ecommerce.product.ProductRepository;
 import org.aston.ecommerce.product.Product;
 import org.aston.ecommerce.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -28,10 +25,10 @@ public class AdminProduct {
 
     private final ProductRepository productRepository;
 
-    private final FileStorage fileStorageService;
+    private final FileStorageImplement fileStorageService;
 
     @Autowired
-    public AdminProduct(ProductRepository productRepository, ProductService productService, FileStorage fileStorageService) {
+    public AdminProduct(ProductRepository productRepository, ProductService productService, FileStorageImplement fileStorageService) {
         this.productRepository = productRepository;
         this.productService = productService;
         this.fileStorageService = fileStorageService;
