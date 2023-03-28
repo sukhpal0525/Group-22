@@ -1,0 +1,30 @@
+.pagecontent{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: .5fr 4fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.titlepage h3{
+    grid-area: 1 / 1 / 2 / 2;
+    color: #323232;
+    font-size: 32px;
+    margin: 13vh 0 7vh 8vw;
+}
+
+.productsadminwrap{
+    grid-area: 2 / 1 / 3 / 2;
+    margin: 0 8vw 7vh 8vw;
+}
+
+.prodcard{
+    background-color: #fff;
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 1vh;
+}
+
+.prodcard p{
+    padding: 15px 10px;
+}
