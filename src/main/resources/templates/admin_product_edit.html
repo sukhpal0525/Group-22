@@ -66,7 +66,7 @@
 
         <div class="pagecontent">
           <div class="backredir">
-            <button id="backgroundgr">
+            <button id="backgroundgr" onclick="window.history.go(-1); return false;" style="cursor: pointer">
               BACK
             </button>
             <div class="successalert" th:if="${success_msg}" role="alert">

@@ -542,6 +542,10 @@ button:hover {
     text-align: right;
 }
 
+.wrapper a{
+text-align: center;
+}
+
 .wrapper .clearfix {
     position: relative;
 }
