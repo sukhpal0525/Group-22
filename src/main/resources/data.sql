@@ -43,6 +43,9 @@ INSERT INTO `WebProduct` (`Name`, `Amount`, `Description`,`Category`,`AmountAvai
  UPDATE`WebProduct`
  SET `url` = 'Intel Core i5-11600K.jpg'
  WHERE `Name` = 'Intel Core i5-11600K';
+ UPDATE`WebProduct`
+ SET `url` = 'Intel Core i7-11700K.jpg'
+ WHERE `Name` = 'Intel Core i7-11700K';
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -73,6 +76,9 @@ INSERT INTO `WebProduct` (`Name`, `Amount`, `Description`,`Category`,`AmountAvai
  UPDATE`WebProduct`
  SET `url` = 'EVGA Z590 Dark.jpg'
  WHERE `Name` = 'EVGA Z590 Dark';
+ UPDATE`WebProduct`
+ SET `url` = 'ASUS ROG Maximus XIII Hero.jpg'
+ WHERE `Name` = 'ASUS ROG Maximus XIII Hero';
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -137,7 +143,7 @@ INSERT INTO `WebProduct` (`Name`,`Amount`, `Description`,`Category`, `AmountAvai
  SET `url` = 'Kingston HyperX Fury 16GB.jpg'
  WHERE `Name` = 'Kingston HyperX Fury 16GB';
  UPDATE`WebProduct`
- SET `url` = 'Patriot Viper Steel Series .jpg'
+ SET `url` = 'Patriot Viper Steel Series 32GB.jpg'
  WHERE `Name` = 'Patriot Viper Steel Series 32GB';
 
 ------------------------------------------------------------------------------------------------------------------------
