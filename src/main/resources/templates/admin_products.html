@@ -62,7 +62,7 @@
                     <p th:text="${products.name}"></p>
                 </div>
                 <div class="prodview">
-                    <p><a>View</a></p>
+                    <p><a th:href="@{/product/{id}(id=${products.id})}">View</a></p>
                 </div>
                 <div class="prodedit">
                     <p><a th:href="@{/admin/products/{id}(id=${products.id})}">Edit</a></p>

@@ -62,7 +62,7 @@
 
         <div class="pagecontent">
           <div class="backredir">
-            <button id="backgroundgr" onclick="location.href = '/admin/dashboard'; return false;" style="cursor: pointer;">
+            <button id="backgroundgr" onclick="history.back(); return false;" style="cursor: pointer;">
               BACK
             </button>
             <div class="successalert" th:if="${success_msg}" role="alert">
