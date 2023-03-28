@@ -1,5 +1,6 @@
+![logo](https://user-images.githubusercontent.com/116152412/228357949-eba1a23a-5988-4623-a6a7-28ff92e9af1a.png)
 
-# PC Lab
+## PC Lab
 
 Welcome to the PC parts store! An online store for the people who are looking forward to Upgrade their PC's using different GPUs, Processor, Motherboard, Memory, and Storage for a better user experience. Here is everything you need to know to get started:
 
