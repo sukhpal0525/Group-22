@@ -1,5 +1,6 @@
+![logo](https://user-images.githubusercontent.com/116152412/228357949-eba1a23a-5988-4623-a6a7-28ff92e9af1a.png)
 
-# PC Lab
+## PC Lab
 
 Welcome to the PC parts store! An online store for the people who are looking forward to Upgrade their PC's using different GPUs, Processor, Motherboard, Memory, and Storage for a better user experience. Here is everything you need to know to get started:
 
@@ -20,15 +21,15 @@ To run this project, the following prerequisites are required:
 
 A few components on your computer must be installed before you can use our PC Lab website. The hosting and operation of our website locally require these elements:
 
-- Installing XAMPP, a free and open-source software bundle that consists of the Apache web server, MySQL database, and PHP programming language, will enable you to run our website locally. The official Apache Friends website offers XAMPP for download, which is compatible with Windows, Mac, and Linux operating systems.
+- Install MySQL, an open source relational database management system. MySQL can be downloaded for free from the official MySQL website. 
 
-- The Apache and MySQL services must be started from the XAMPP Control Panel after you have downloaded and installed XAMPP. You will then be able to access our website through your web browser and host it locally on your computer.
+- After installing MySQL, we recommend that you also install MySQL Workbench, a visual tool for managing MySQL databases. MySQL Workbench can also be downloaded for free from the official MySQL website. 
 
-- In addition to XAMPP, you will need to install Tomcat, a web server that supports Java Server Pages (JSP) and Java Servlets. On the Apache Tomcat website, Tomcat is also available for free download.
+- Installing Apache Tomcat, a web server that supports JavaServer Pages (JSP) and Java Servlets, is also required in addition to MySQL. Tomcat can be downloaded from the Apache Tomcat website.
 
-- After setting up Tomcat, you can deploy our website on it by copying its files to the proper directory. Tomcat might need to be set up to use the MySQL database for data storing and retrieval.
+- After setting up Tomcat, you can deploy our website on it by copying its files to the proper directory. Tomcat may need to be set up to use the MySQL database for data storing and retrieval.
 
-- You can host and operate our PC Lab website locally on your computer and access it via a web browser by installing these components. Please do not hesitate to get in touch with our customer service team for help if you have any inquiries or run into any problems.
+- You can host and run our PC Labs website locally on your computer and access it through your web browser by installing these components, using MySQL Workbench to manage the MySQL database, and configuring your computer. Contacting our customer service team for help is always welcome if you have any questions or run into any problems.
 
 ## Products
 
