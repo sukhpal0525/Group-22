@@ -66,7 +66,7 @@
 
         <div class="pagecontent">
           <div class="backredir">
-            <button id="backgroundgr" onclick="window.history.go(-1); return false;" style="cursor: pointer">
+            <button id="backgroundgr" onclick="location.href = '/admin/dashboard'; return false;" style="cursor: pointer;">
               BACK
             </button>
             <div class="successalert" th:if="${success_msg}" role="alert">
@@ -75,6 +75,7 @@
                 >Click here to view it</a
               >
             </div>
+            <div class="alertfail" th:if="${fail_msg}" th:text="${fail_msg}" role="alert"></div>
           </div>
           <div class="editpage">
             <form
@@ -194,7 +195,8 @@
                 <div class="delprod">
                     
                     <a th:href="@{/admin/products/delete/{id}(id=${productId})}">
-                        <button>
+                        <button style="cursor: pointer;" type="button"
+                                th:attr="onclick=|deleteClicked('${productId}')|">
                             DELETE
                         </button>
                       </a>
@@ -202,7 +204,7 @@
                 </div>
 
                 <div class="saveprod">
-                    <button type="submit">
+                    <button type="submit" style="cursor: pointer;">
                         SAVE
                     </button>
                 </div>
@@ -214,8 +216,10 @@
 
       <div th:replace="fragments/footer :: footer"></div>
 
-
-
-
   </body>
+  <script>
+    function deleteClicked(id) {
+      location.href = "/admin/products/delete/" + id;
+    }
+  </script>
 </html>
