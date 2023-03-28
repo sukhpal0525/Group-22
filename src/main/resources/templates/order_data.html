@@ -81,6 +81,105 @@
 
 
 
+<<<<<<< Updated upstream
+=======
+          <br />
+          <br />
+          <br />
+
+          <h4>CUSTOMER PAGES</h4>
+          <p><a th:href="@{/home}" class="active">Home</a></p>
+          <p><a th:href="@{/products}">Products</a></p>
+          <p><a th:href="@{/aboutus}">About Us</a></p>
+          <p><a th:href="@{/contactus}">Contact Us</a></p>
+        </div>
+
+        <div class="logout">
+          <h6><a th:href="@{/basket}">Basket</a></h6>
+          <h6 th:unless="${#request.userPrincipal == null}">
+            <a
+              href="javascript:;"
+              onclick="document.getElementById('logoutForm').submit();"
+              role="menuitem"
+              >Logout</a
+            >
+          </h6>
+        </div>
+      </div>
+
+      <div class="pagecontent">
+        <div class="analyticrow1">
+          <div class="leftlarge" id="box">
+            <p>test</p>
+          </div>
+          <div class="rightsmall" id="box">
+            <div class="cardtitle">
+              <h4>ORDERS</h4>
+            </div>
+            <div class="cardstats">
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>Daily</p>
+                </div>
+                <div class="statfigure">
+                  <p th:text="${#lists.size(dayOrders)}"></p>
+                </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>Weekly</p>
+                </div>
+                <div class="statfigure">
+                  <p th:text="${#lists.size(weekOrders)}"></p>
+                </div>
+              </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>Monthly</p>
+                </div>
+                <div class="statfigure">
+                  <p th:text="${#lists.size(monthOrders)}"></p>
+                </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>Yearly</p>
+                </div>
+                <div class="statfigure">
+                  <p th:text="${#lists.size(yearOrders)}"></p>
+                </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>All</p>
+                </div>
+                <div class="statfigure">
+                  <p th:text="${#lists.size(allOrders)}"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="analyticrow2">
+            <div class="leftsmall" id="box">
+  
+            </div>
+            <div class="rightlarge" id="box">
+              <p>test</p>
+            </div>
+          </div>
+  
+          <div class="analyticrow3">
+            <div class="leftlarge" id="box">
+              <p>test</p>
+            </div>
+            <div class="rightsmall" id="box">
+              <p>test</p>
+            </div>
+        </div>
+        
+      </div>
+>>>>>>> Stashed changes
     </div>
   </div>
 </div>
