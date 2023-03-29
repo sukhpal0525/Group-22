@@ -1,76 +1,33 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
   <footer th:fragment="footer">
-    <div class="footer_box b1">
-      <div class="footer_nav">
-        <h1>PRODUCTS</h1>
-        <br>
-        <ul>
-          <li><a href="/aboutus">All Products</a></li>
-          <li><a href="/contactus">Graphic Cards</a></li>
-          <li><a href="/faq">CPU's</a></li>
-          <li><a href="/faq">Monitors</a></li>
-          <li><a href="/faq">Keyboards</a></li>
-          <li><a href="/faq">Mouses</a></li>
-        </ul>
 
-      </div>
-
-
-
+    <div class="productsnav">
+      <h3>PRODUCTS</h3>
+      <p><a th:href="@{/products}">All Products</a></p>
+      <p><a  th:href="@{/products/list/gpu}">GPU's</a></p>
+      <p><a th:href="@{/products/list/processor}">CPU's</a></p>
+      <p><a th:href="@{/products/list/motherboard}">Motherboards</a></p>
+      <p><a th:href="@{/products/list/memory}">Memory</a></p>
+      <p><a th:href="@{/products/list/mouse}"></a>Mouses</a></p>
     </div>
-
-
-    <div class="footer_box b2">
-      <h1>ACCOUNT</h1>
-
-      <br>
-      <div class="footer_nav">
-        <ul>
-
-          <li><a href="/basket">Basket</a></li>
-          <li><a href="/login">Log In</a></li>
-          <li><a href="/login">Sign Up</a></li>
-
-
-        </ul>
-
-      </div>
-
-
-
+    <div class="accountnav">
+      <h3>ACCOUNT</h3>
+      <p><a th:href="@{/basket}">Basket</a></p>
+      <p th:if="${#request.userPrincipal == null}"><a th:href="@{/login}">Log In</a></p>
+      <p th:if="${#request.userPrincipal == null}"><a th:href="@{/register}">Sign Up</a></p>
+      <p th:unless="${#request.userPrincipal == null}"><a href="javascript:;"
+        onclick="document.getElementById('logoutForm').submit();"
+        role="menuitem">Logout</a></p>
     </div>
-
-    <div class="footer_box b3">
-
-      <div class="logo">
-        <img src="/Images/footer_logo.png" alt="logo" width="250">
+    <div class="logosocials">
+      <div class="logofooter">
+        <img src="/Images/footer_logo.png">
       </div>
-
-
-
-      <div class="icons">
-
-        <a href="https://www.instagram.com/">
-          <i class='bx bxl-instagram'></i>
-        </a>
-
-        <a href="https://www.facebook.com/">
-          <i class='bx bxl-facebook'></i>
-        </a>
-
-        <a href="https://twitter.com/">
-          <i class='bx bxl-twitter'></i>
-        </a>
-
-
+      <div class="socialsfooter">
 
       </div>
-
-
-
     </div>
-
 
 
   </footer>
