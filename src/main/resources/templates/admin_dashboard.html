@@ -102,6 +102,7 @@
                 <p>
                   Order [[${unprocessedOrder.transactionNumber}]] is
                   [[${unprocessedOrder.status.toString().toLowerCase()}]].
+                  Click
                   <a
                     th:href="@{/admin/edit_order/{id}(id=${unprocessedOrder.id})}"
                     >here</a
