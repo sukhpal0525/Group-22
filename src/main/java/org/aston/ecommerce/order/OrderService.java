@@ -138,6 +138,15 @@ public class OrderService {
         return returnOrders;
     }
 
+    public List<Order> findOrdersByStatusFilter(Status status){
+        List<Order> returnOrders = this.orderRepository.findAll()
+                .stream()
+                .filter(o -> o.getStatus() == status)
+                .collect(Collectors.toList());
+        Collections.sort(returnOrders, (Order o1, Order o2) -> o1.getOrderDate().compareTo(o2.getOrderDate()));
+        return returnOrders;
+    }
+
     //Sort all orders in ASCENDING order based on their date grouped by their enum status such that the most recent orders are shown first
     private void sortOrdersByStatusThenDate(List<Order> takeOrders){
         Collections.sort(takeOrders, new Comparator<Order>() {

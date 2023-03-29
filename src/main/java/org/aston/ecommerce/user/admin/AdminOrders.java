@@ -36,8 +36,12 @@ public class AdminOrders {
     public String returnAllOrders(Model model) {
 //      List<Order> allOrders = this.orderRepository.findAll();
 //      log.debug("Number of orders: {}", allOrders.size());
-        model.addAttribute("allOrders", this.orderService.findOrdersByStatusAndDate());
-        model.addAttribute("unprocessedOrders", this.orderService.findUnprocessedFailedOrders());
+
+        model.addAttribute("unprocessedOrders", this.orderService.findOrdersByStatusFilter(Status.UNPROCESSED));
+        model.addAttribute("processedOrders", this.orderService.findOrdersByStatusFilter(Status.PROCESSED));
+        model.addAttribute("shippedOrders", this.orderService.findOrdersByStatusFilter(Status.SHIPPED));
+        model.addAttribute("successOrders", this.orderService.findOrdersByStatusFilter(Status.SUCCESS));
+        model.addAttribute("failedOrders", this.orderService.findOrdersByStatusFilter(Status.FAILED));
         return "admin_orders";
     }
 
@@ -69,7 +73,7 @@ public class AdminOrders {
         Optional<Order> optOrder = this.orderRepository.findById(Long.parseLong(editOrderId));
         if(!optOrder.isPresent()) {
             redirectAttrs.addFlashAttribute("fail_msg", "Error! Failed to update order.");
-            return "redirect:/admin/all-orders";
+            return "redirect:/admin/edit_order/" + editOrderId;
         }
         Order updateOrder = optOrder.get();
 
@@ -80,7 +84,7 @@ public class AdminOrders {
             this.orderRepository.save(updateOrder);
         }catch(Exception e){
             redirectAttrs.addFlashAttribute("fail_msg", "Error! Failed to update order.");
-            return "redirect:/admin/all-orders";
+            return "redirect:/admin/edit_order/" + editOrderId;
         }
 
         return "redirect:/admin/all-orders";
@@ -104,6 +108,25 @@ public class AdminOrders {
         Order order = optOrder.get();
         model.addAttribute("viewOrder", order);
         return "admin_view_order";
+    }
+
+    @PostMapping("/admin/status_dropdown")
+    public String changeOrderStatus(@RequestParam("orderStatus") String orderStatus,
+                                    @RequestParam("orderId") String orderId,
+                                    RedirectAttributes redirectAttrs){
+        Optional<Order> optOrder = this.orderRepository.findById(Long.parseLong(orderId));
+        Order updateOrder = optOrder.get();
+
+        Status status = Status.parseStatusStr(orderStatus.toUpperCase());
+        updateOrder.setStatus(status);
+
+        try{
+            this.orderRepository.save(updateOrder);
+        }catch(Exception e){
+            return "redirect:/admin/all-orders";
+        }
+
+        return "redirect:/admin/all-orders";
     }
 
 }
