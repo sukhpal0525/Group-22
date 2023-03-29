@@ -102,6 +102,9 @@
                         <h5 class="h51 text-muted" th:text="'Sub-Total:   ' + ${#numbers.formatCurrency(order.orderAmount)}">
                         </h5>
                     </div>
+                    <div class="order-title">
+                        <h5 class="h51 text-muted" th:text="'Status: ' + ${order.status.toString()}"></h5>
+                    </div>
 
                     <!-- <hr class="border-dark my-5" /> -->
                     <div class="padder"></div>
