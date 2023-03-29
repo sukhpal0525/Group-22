@@ -162,6 +162,21 @@ public class OrderService {
         });
     }
 
+    //Sort all orders in DESCENDING order based on when they were made such that the oldest unprocessed order is shown first
+    private void sortOrdersByStatusThenDateDesc(List<Order> takeOrders){
+        Collections.sort(takeOrders, new Comparator<Order>() {
+            @Override
+            public int compare(Order o1, Order o2) {
+                if(o1.getStatus() == o2.getStatus()){
+                    //DESCENDING
+                    return o2.getOrderDate().compareTo(o1.getOrderDate());
+                }else{
+                    return o1.getStatus().compareTo(o2.getStatus());
+                }
+            }
+        });
+    }
+
     //Return all orders that are unprocessed or failed in DESCENDING order based on when they were made such that the oldest unprocessed order is shown first
     public List<Order> findUnprocessedFailedOrders(){
         List<Order> returnOrders = this.orderRepository.findAll()
@@ -169,17 +184,16 @@ public class OrderService {
                 .filter(o -> o.getStatus() == Status.UNPROCESSED || o.getStatus() == Status.FAILED)
                 .collect(Collectors.toList());
         //DESCENDING, just ensure that unprocessed comes first
-        Collections.sort(returnOrders, new Comparator<Order>() {
-            @Override
-            public int compare(Order o1, Order o2) {
-                if(o1.getStatus() == o2.getStatus()){
-                    //DESCENDING
-                    return o2.getOrderDate().compareTo(o1.getOrderDate());
-                }else{
-                    return o1.getStatus() == Status.FAILED ? 1 : -1;
-                }
-            }
-        });
+        this.sortOrdersByStatusThenDateDesc(returnOrders);
+        return returnOrders;
+    }
+
+    public List<Order> findUnprocessedOrders(){
+        List<Order> returnOrders = this.orderRepository.findAll()
+                .stream()
+                .filter(o -> o.getStatus() == Status.UNPROCESSED)
+                .collect(Collectors.toList());
+        this.sortOrdersByStatusThenDateDesc(returnOrders);
         return returnOrders;
     }
 }
