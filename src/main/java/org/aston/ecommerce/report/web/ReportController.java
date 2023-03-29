@@ -27,6 +27,22 @@ public class ReportController {
     @Autowired
     private OrderService orderService;
 
+    @GetMapping
+    public String generateReport(){
+        //BEGIN: User is only able to generate report if they are an admin. Otherwise, they will be redirected back to the homepage.
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if(!(principal instanceof CustomUserDetails)) return "redirect:/home";
+
+        CustomUserDetails currUser = (CustomUserDetails) principal;
+
+        if(!currUser.getIsAdmin()) return "redirect:/home";
+
+        //END
+
+        return "generate_report";
+    }
+
 
     @GetMapping("/add")
     public String generatePdf(HttpServletResponse response) throws DocumentException, IOException {
