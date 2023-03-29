@@ -73,7 +73,9 @@ public class OrderService {
         return String.format("%.2f", totalProfit);
     }
 
-    public double getTotalProfit(List<Order> orderItems) {
+
+
+    public double getTotalProfit(List<Order> orders) {
         double markupMultiplier = productService.getMarkupMultiplier();
         double totalProfit = orderRepository.findAll().stream()
                 .flatMap(order -> order.getOrderItems().stream())
