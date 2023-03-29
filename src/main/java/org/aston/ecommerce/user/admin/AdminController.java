@@ -36,6 +36,7 @@ public class AdminController {
     @Autowired private UserService userService;
     @Autowired private UserRepository userRepository;
     @Autowired private OrderRepository orderRepository;
+    @Autowired private AdminService adminService;
     @Autowired private ProductService productService;
 
     @GetMapping("/dashboard")
@@ -83,8 +84,8 @@ public class AdminController {
         return "user_orders";
     }
 
-    @GetMapping("/orders")
-    public String getAllOrders(Model model) {
+    @GetMapping("/analytics")
+    public String getOrderData(Model model) {
         List<Order> orders = orderRepository.findAll();
 
         LocalDateTime now = LocalDateTime.now();
@@ -98,12 +99,21 @@ public class AdminController {
         List<Order> monthOrders = orderRepository.findByCreationDateAfter(monthStartTime);
         List<Order> yearOrders = orderRepository.findByCreationDateAfter(yearStartTime);
 
+        double dailyProfit = adminService.getDailyProfit();
+        double weeklyProfit = adminService.getWeeklyProfit();
+        double monthlyProfit = adminService.getMonthlyProfit();
+        double yearlyProfit = adminService.getYearlyProfit();
+
         model.addAttribute("dayOrders", dayOrders);
+        model.addAttribute("dailyProfit", dailyProfit);
         model.addAttribute("weekOrders", weekOrders);
+        model.addAttribute("weeklyProfit", weeklyProfit);
         model.addAttribute("monthOrders", monthOrders);
+        model.addAttribute("monthlyProfit", monthlyProfit);
         model.addAttribute("yearOrders", yearOrders);
+        model.addAttribute("yearlyProfit", yearlyProfit);
         model.addAttribute("allOrders", orders);
 
-        return "order_data";
+        return "admin_analytics";
     }
 }
