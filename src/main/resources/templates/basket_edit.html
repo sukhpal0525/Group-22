@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Edit [[${basketItem.product.Name}]] - Group 22</title>
   <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" type="text/css" href="/css/edit.css" />
   <div th:replace="fragments/nav_bar :: styles"></div>
   <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
   <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
@@ -11,10 +12,10 @@
 <body>
 <div th:replace="fragments/nav_bar :: header"></div>
 
-<div class="importContainer text-center" style="max-width: 700px;">
+<div class="importContainer text-center" style="max-width: 700px; margin-top: 13vh;">
     <div class="mt-4 alert alert-danger" th:if="${edit_fail}" th:text="${edit_fail}" role="alert"></div>
-    <h1 class="mt-4">Edit Amount</h1>
-    <h4 th:text="${basketItem.product.Name}"></h4>
+    <h1 class="mt-4" style="margin-bottom: 3vh">Edit Amount</h1>
+    <h4 th:text="${basketItem.product.Name}" style="margin-bottom: 2vh"></h4>
     <div class="alert alert-warning" role="alert"
          th:if="${basketItem.product.AmountAvailable <= 20 && basketItem.product.AmountAvailable >= 1}">
         Warning! This item is low in stock. <strong>Only [[${basketItem.product.AmountAvailable}]] left</strong>
@@ -31,7 +32,9 @@
                        placeholder="Amount" name="newAmount"/>
             </div>
             <div class="col-md-3 col-sm-5 col-12 mt-3 mt-sm-0">
-                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="submit" >
+                    UPDATE
+                </button>
             </div>
         </div>
     </form>
