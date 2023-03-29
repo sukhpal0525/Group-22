@@ -84,15 +84,19 @@
                     </div>
                     <div th:each="order : ${unprocessedOrders}" class="cardsorder">
                         <div class="orderidsect">
-                            <p th:text="${order.id}">Order ID</p>
+                            <p th:text="${order.id}" style="cursor: pointer;"
+                               th:attr="onclick=|rowClicked('${order.id}')|">Order ID</p>
                         </div>
-                        <div class="transactionsect">
+                        <div class="transactionsect" style="cursor: pointer;"
+                             th:attr="onclick=|rowClicked('${order.id}')|">
                             <p th:text="${order.transactionNumber}">Transaction Number</p>
                         </div>
-                        <div class="datesect">
+                        <div class="datesect" style="cursor: pointer;"
+                             th:attr="onclick=|rowClicked('${order.id}')|">
                             <p th:text="${#temporals.format(order.orderDate, 'dd/MM/yyyy HH:mm:ss')}">Order Date</p>
                         </div>
-                        <div class="amountsect">
+                        <div class="amountsect" style="cursor: pointer;"
+                             th:attr="onclick=|rowClicked('${order.id}')|">
                             <p th:text="${#numbers.formatCurrency(order.orderAmount)}">Order Amount</p>
                         </div>
                         <div class="ordersatus">
@@ -140,15 +144,19 @@
                     </div>
                     <div th:each="order : ${processedOrders}" class="cardsorder">
                         <div class="orderidsect">
-                            <p th:text="${order.id}">Order ID</p>
+                            <p th:text="${order.id}" style="cursor: pointer;"
+                               th:attr="onclick=|rowClicked('${order.id}')|">Order ID</p>
                         </div>
-                        <div class="transactionsect">
+                        <div class="transactionsect" style="cursor: pointer;"
+                             th:attr="onclick=|rowClicked('${order.id}')|">
                             <p th:text="${order.transactionNumber}">Transaction Number</p>
                         </div>
-                        <div class="datesect">
+                        <div class="datesect" style="cursor: pointer;"
+                             th:attr="onclick=|rowClicked('${order.id}')|">
                             <p th:text="${#temporals.format(order.orderDate, 'dd/MM/yyyy HH:mm:ss')}">Order Date</p>
                         </div>
-                        <div class="amountsect">
+                        <div class="amountsect" style="cursor: pointer;"
+                             th:attr="onclick=|rowClicked('${order.id}')|">
                             <p th:text="${#numbers.formatCurrency(order.orderAmount)}">Order Amount</p>
                         </div>
                         <div class="ordersatus">
@@ -195,16 +203,20 @@
                         </div>
                     </div>
                     <div th:each="order : ${shippedOrders}" class="cardsorder">
-                        <div class="orderidsect">
+                        <div class="orderidsect" style="cursor: pointer;"
+                             th:attr="onclick=|rowClicked('${order.id}')|">
                             <p th:text="${order.id}">Order ID</p>
                         </div>
-                        <div class="transactionsect">
+                        <div class="transactionsect" style="cursor: pointer;"
+                             th:attr="onclick=|rowClicked('${order.id}')|">
                             <p th:text="${order.transactionNumber}">Transaction Number</p>
                         </div>
-                        <div class="datesect">
+                        <div class="datesect" style="cursor: pointer;"
+                             th:attr="onclick=|rowClicked('${order.id}')|">
                             <p th:text="${#temporals.format(order.orderDate, 'dd/MM/yyyy HH:mm:ss')}">Order Date</p>
                         </div>
-                        <div class="amountsect">
+                        <div class="amountsect" style="cursor: pointer;"
+                             th:attr="onclick=|rowClicked('${order.id}')|">
                             <p th:text="${#numbers.formatCurrency(order.orderAmount)}">Order Amount</p>
                         </div>
                         <div class="ordersatus">
@@ -251,16 +263,20 @@
                         </div>
                     </div>
                     <div th:each="order : ${successOrders}" class="cardsorder">
-                        <div class="orderidsect">
+                        <div class="orderidsect" style="cursor: pointer;"
+                             th:attr="onclick=|rowClicked('${order.id}')|">
                             <p th:text="${order.id}">Order ID</p>
                         </div>
-                        <div class="transactionsect">
+                        <div class="transactionsect" style="cursor: pointer;"
+                             th:attr="onclick=|rowClicked('${order.id}')|">
                             <p th:text="${order.transactionNumber}">Transaction Number</p>
                         </div>
-                        <div class="datesect">
+                        <div class="datesect" style="cursor: pointer;"
+                             th:attr="onclick=|rowClicked('${order.id}')|">
                             <p th:text="${#temporals.format(order.orderDate, 'dd/MM/yyyy HH:mm:ss')}">Order Date</p>
                         </div>
-                        <div class="amountsect">
+                        <div class="amountsect" style="cursor: pointer;"
+                             th:attr="onclick=|rowClicked('${order.id}')|">
                             <p th:text="${#numbers.formatCurrency(order.orderAmount)}">Order Amount</p>
                         </div>
                         <div class="ordersatus">
@@ -307,16 +323,20 @@
                         </div>
                     </div>
                     <div th:each="order : ${failedOrders}" class="cardsorder">
-                        <div class="orderidsect">
+                        <div class="orderidsect" style="cursor: pointer;"
+                             th:attr="onclick=|rowClicked('${order.id}')|">
                             <p th:text="${order.id}">Order ID</p>
                         </div>
-                        <div class="transactionsect">
+                        <div class="transactionsect" style="cursor: pointer;"
+                             th:attr="onclick=|rowClicked('${order.id}')|">
                             <p th:text="${order.transactionNumber}">Transaction Number</p>
                         </div>
-                        <div class="datesect">
+                        <div class="datesect" style="cursor: pointer;"
+                             th:attr="onclick=|rowClicked('${order.id}')|">
                             <p th:text="${#temporals.format(order.orderDate, 'dd/MM/yyyy HH:mm:ss')}">Order Date</p>
                         </div>
-                        <div class="amountsect">
+                        <div class="amountsect" style="cursor: pointer;"
+                             th:attr="onclick=|rowClicked('${order.id}')|">
                             <p th:text="${#numbers.formatCurrency(order.orderAmount)}">Order Amount</p>
                         </div>
                         <div class="ordersatus">
