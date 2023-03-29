@@ -117,3 +117,7 @@
 .orderstatus{
     grid-area: 1 / 5 / 2 / 6; 
 }
+
+#headingsorder{
+    background:none !important;
+}
