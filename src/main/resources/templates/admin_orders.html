@@ -82,6 +82,32 @@
                             </select>
                         </div>
                     </div>
+                    <div th:each="order : ${unprocessedOrders}" class="cardsorder">
+                        <div class="orderidsect">
+                            <p th:text="${order.id}">Order ID</p>
+                        </div>
+                        <div class="transactionsect">
+                            <p th:text="${order.transactionNumber}">Transaction Number</p>
+                        </div>
+                        <div class="datesect">
+                            <p th:text="${#temporals.format(order.orderDate, 'dd/MM/yyyy HH:mm:ss')}">Order Date</p>
+                        </div>
+                        <div class="amountsect">
+                            <p th:text="${#numbers.formatCurrency(order.orderAmount)}">Order Amount</p>
+                        </div>
+                        <div class="ordersatus">
+                            <form th:action="@{/admin/status_dropdown}" method="post">
+                                <input type="hidden" name="orderId" th:value="${order.id}" />
+                                <select name="orderStatus" class="orderst" onchange="this.form.submit()">
+                                    <option th:selected="${order.status.toString()} == 'Unprocessed'" value="unprocessed">Unprocessed</option>
+                                    <option th:selected="${order.status.toString()} == 'Processed'" value="processed">Processed</option>
+                                    <option th:selected="${order.status.toString()} == 'Shipped'" value="shipped">Shipped</option>
+                                    <option th:selected="${order.status.toString()} == 'Success'" value="success">Success</option>
+                                    <option th:selected="${order.status.toString()} == 'Failed'" value="failed">Failed</option>
+                                </select>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="processedorders">
@@ -112,6 +138,32 @@
                             </select>
                         </div>
                     </div>
+                    <div th:each="order : ${processedOrders}" class="cardsorder">
+                        <div class="orderidsect">
+                            <p th:text="${order.id}">Order ID</p>
+                        </div>
+                        <div class="transactionsect">
+                            <p th:text="${order.transactionNumber}">Transaction Number</p>
+                        </div>
+                        <div class="datesect">
+                            <p th:text="${#temporals.format(order.orderDate, 'dd/MM/yyyy HH:mm:ss')}">Order Date</p>
+                        </div>
+                        <div class="amountsect">
+                            <p th:text="${#numbers.formatCurrency(order.orderAmount)}">Order Amount</p>
+                        </div>
+                        <div class="ordersatus">
+                            <form th:action="@{/admin/status_dropdown}" method="post">
+                                <input type="hidden" name="orderId" th:value="${order.id}" />
+                                <select name="orderStatus" class="orderst" onchange="this.form.submit()">
+                                    <option th:selected="${order.status.toString()} == 'Unprocessed'" value="unprocessed">Unprocessed</option>
+                                    <option th:selected="${order.status.toString()} == 'Processed'" value="processed">Processed</option>
+                                    <option th:selected="${order.status.toString()} == 'Shipped'" value="shipped">Shipped</option>
+                                    <option th:selected="${order.status.toString()} == 'Success'" value="success">Success</option>
+                                    <option th:selected="${order.status.toString()} == 'Failed'" value="failed">Failed</option>
+                                </select>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="shippedorders" id="box">
@@ -140,6 +192,32 @@
                                 <option>Success</option>
                                 <option>Failed</option>
                             </select>
+                        </div>
+                    </div>
+                    <div th:each="order : ${shippedOrders}" class="cardsorder">
+                        <div class="orderidsect">
+                            <p th:text="${order.id}">Order ID</p>
+                        </div>
+                        <div class="transactionsect">
+                            <p th:text="${order.transactionNumber}">Transaction Number</p>
+                        </div>
+                        <div class="datesect">
+                            <p th:text="${#temporals.format(order.orderDate, 'dd/MM/yyyy HH:mm:ss')}">Order Date</p>
+                        </div>
+                        <div class="amountsect">
+                            <p th:text="${#numbers.formatCurrency(order.orderAmount)}">Order Amount</p>
+                        </div>
+                        <div class="ordersatus">
+                            <form th:action="@{/admin/status_dropdown}" method="post">
+                                <input type="hidden" name="orderId" th:value="${order.id}" />
+                                <select name="orderStatus" class="orderst" onchange="this.form.submit()">
+                                    <option th:selected="${order.status.toString()} == 'Unprocessed'" value="unprocessed">Unprocessed</option>
+                                    <option th:selected="${order.status.toString()} == 'Processed'" value="processed">Processed</option>
+                                    <option th:selected="${order.status.toString()} == 'Shipped'" value="shipped">Shipped</option>
+                                    <option th:selected="${order.status.toString()} == 'Success'" value="success">Success</option>
+                                    <option th:selected="${order.status.toString()} == 'Failed'" value="failed">Failed</option>
+                                </select>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -226,6 +304,32 @@
                                 <option>Success</option>
                                 <option>Failed</option>
                             </select>
+                        </div>
+                    </div>
+                    <div th:each="order : ${failedOrders}" class="cardsorder">
+                        <div class="orderidsect">
+                            <p th:text="${order.id}">Order ID</p>
+                        </div>
+                        <div class="transactionsect">
+                            <p th:text="${order.transactionNumber}">Transaction Number</p>
+                        </div>
+                        <div class="datesect">
+                            <p th:text="${#temporals.format(order.orderDate, 'dd/MM/yyyy HH:mm:ss')}">Order Date</p>
+                        </div>
+                        <div class="amountsect">
+                            <p th:text="${#numbers.formatCurrency(order.orderAmount)}">Order Amount</p>
+                        </div>
+                        <div class="ordersatus">
+                            <form th:action="@{/admin/status_dropdown}" method="post">
+                                <input type="hidden" name="orderId" th:value="${order.id}" />
+                                <select name="orderStatus" class="orderst" onchange="this.form.submit()">
+                                    <option th:selected="${order.status.toString()} == 'Unprocessed'" value="unprocessed">Unprocessed</option>
+                                    <option th:selected="${order.status.toString()} == 'Processed'" value="processed">Processed</option>
+                                    <option th:selected="${order.status.toString()} == 'Shipped'" value="shipped">Shipped</option>
+                                    <option th:selected="${order.status.toString()} == 'Success'" value="success">Success</option>
+                                    <option th:selected="${order.status.toString()} == 'Failed'" value="failed">Failed</option>
+                                </select>
+                            </form>
                         </div>
                     </div>
                 </div>
