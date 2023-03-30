@@ -10,6 +10,8 @@ import org.aston.ecommerce.user.User;
 import org.aston.ecommerce.user.UserRepository;
 import org.aston.ecommerce.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,10 +23,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.TemporalAdjusters;
 import java.time.temporal.WeekFields;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -87,6 +86,13 @@ public class AdminController {
     @GetMapping("/analytics")
     public String getOrderData(Model model) {
         List<Order> orders = orderRepository.findAll();
+//
+//        Map<User, List<Order>> customerOrders = new HashMap<>();
+//        List<Order> topCustomers = this.orderRepository.findAllOrderByCustomerDesc();
+//        for (Order order : topCustomers) {
+//            customerOrders.put(order.getCustomer(), orderRepository.findAllByCustomer(order.getCustomer()));
+//        }
+//        model.addAttribute("topCustomers", customerOrders);
 
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime dayStartTime = now.with(LocalTime.MIN);
@@ -103,17 +109,21 @@ public class AdminController {
         double weeklyProfit = adminService.getWeeklyProfit();
         double monthlyProfit = adminService.getMonthlyProfit();
         double yearlyProfit = adminService.getYearlyProfit();
+        double allTimeProfit = Double.parseDouble(orderService.getTotalProfit());
 
         model.addAttribute("dayOrders", dayOrders);
-        model.addAttribute("dailyProfit", dailyProfit);
+        model.addAttribute("dayProfit", dailyProfit);
         model.addAttribute("weekOrders", weekOrders);
-        model.addAttribute("weeklyProfit", weeklyProfit);
+        model.addAttribute("weekProfit", weeklyProfit);
         model.addAttribute("monthOrders", monthOrders);
-        model.addAttribute("monthlyProfit", monthlyProfit);
+        model.addAttribute("monthProfit", monthlyProfit);
         model.addAttribute("yearOrders", yearOrders);
-        model.addAttribute("yearlyProfit", yearlyProfit);
+        model.addAttribute("yearProfit", yearlyProfit);
         model.addAttribute("allOrders", orders);
+        model.addAttribute("allTimeProfit", allTimeProfit);
 
-        return "admin_analytics";
+//        model.addAttribute("topCustomers", customerOrders);
+
+        return "order_data";
     }
 }
