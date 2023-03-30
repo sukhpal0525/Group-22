@@ -37,6 +37,9 @@
         <span th:text="${product.category.toString()}">Monitors</span>
         <h1 th:text="${product.Name}"></h1>
         <p th:text="${product.Description}"></p>
+          <p th:if="${product.amountAvailable > 20}" style="color: #169c0a;">In Stock</p>
+          <p th:if="${product.amountAvailable <= 20 and product.amountAvailable > 0}" style="color: #ff8c00;">Low Stock</p>
+          <p th:if="${product.amountAvailable <= 0}" style="color: red;">Out of Stock</p>
       </div>
 
         <form th:action="@{/basket/add}" method="post" name="productForm">

@@ -180,6 +180,12 @@ public class BasketService {
         return success;
     }
 
+    public void respondToBasketItemDelete(BasketItem toDelete){
+        Product updateProductAmount = toDelete.getProduct();
+        updateProductAmount.setAmountAvailable(updateProductAmount.getAmountAvailable() + toDelete.getAmount());
+        this.productRepository.save(updateProductAmount);
+    }
+
     public Double getTotalOfBasket(Basket basket) {
         Double returnDouble = 0.0;
 
