@@ -18,7 +18,7 @@
 <body>
 
     <div th:replace="fragments/nav_bar :: header"></div>
-    <div class="product_container">
+    <div class="product_container" style="height: 400px;">
         <div class="container2">
             <div class="sub_page_product">
                 <h2>PRODUCTS</h2>
@@ -27,7 +27,7 @@
                         <input type="text" name="searchQuery" id="searchQuery" class="form-control" placeholder="Search..." th:value="${searchQuery}">
                     </div>
                     <div class="col-xl-1 col-lg-2 col-md-2 mt-md-0 mt-2">
-                        <button type="submit" class="btn btn-primary">Search</button>
+                        <button type="submit" class="searchbutton">SEARCH</button>
                     </div>
                 </form>
             </div>
@@ -66,7 +66,7 @@
 
         <div class="row" th:if="${products.size() > 0}">
             <div class="col-md-4" th:each="products : ${products}">
-                <div class="card mb-4">
+                <div class="card mb-4" style="border-radius: 10px; margin-bottom: 7vh;">
                     <div class="card-body">
                         <!-- add a image place holder use placeholder from web not my images-->
                         <img th:src="@{${products.imageInfo != null} ? ${products.imageInfo.url} : '/Images/CPU.png'}"
@@ -83,8 +83,9 @@
                         <p class="card-text" th:if="!${products.product.onSale}"><span th:text="'&pound;' + ${products.product.amount}"></span></p>
                         <div class="d-flex justify-content-center">
                             <a th:href="@{/product/{id}(id=${products.product.id})}" class="text-reset text-decoration-none d-inline">
-                                <button type="button" class="btn mt-2 btn-sm btn-outline-secondary mx-auto text-center">Buy
-                                    Now</button>
+                                <button type="button" id="whiteback">
+                                    Buy Now
+                                </button>
                             </a>
                         </div>
                     </div>
