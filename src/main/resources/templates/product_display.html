@@ -13,6 +13,11 @@
 <body>
 <div th:replace="fragments/nav_bar :: header"></div>
 
+<div class="mt-4 alert alert-success" th:if="${purchase_success}" role="alert" style="margin: 1vh 1vw">Success! Product has been added to
+  basket. <a class="alert-link" th:href="@{/basket}">Click here to view it</a>
+</div>
+<div class="mt-4 alert alert-danger" th:if="${purchase_fail}" th:text="${purchase_fail}" role="alert" style="margin: 1vh 1vw"></div>
+
 <main class="container">
  
     <!-- Left Column / Headphones Image -->
@@ -65,7 +70,7 @@
       <div class="product-price">
         <span th:text="${#numbers.formatCurrency(product.Amount)}"></span>
         <button type="submit">
-            Add to Basket
+            ADD TO BASKET
         </button>
       </div>
     </div>
