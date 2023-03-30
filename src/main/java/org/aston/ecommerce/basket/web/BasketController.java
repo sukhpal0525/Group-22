@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 import java.util.Optional;
 
@@ -29,8 +31,8 @@ public class BasketController {
     @Autowired private BasketService basketService;
 
     @GetMapping
-    public String viewBasket(Model model) {
-
+    public String viewBasket(Model model, HttpSession session) {
+        System.out.println(session.getAttribute("BASKET_ID"));
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if (principal instanceof CustomUserDetails) {
@@ -75,13 +77,15 @@ public class BasketController {
     public String processRegister(
             @RequestParam("numOrdered") String numOrderedStr,
             @RequestParam("productId") String productIdStr,
-            RedirectAttributes redirectAttrs) {
+            RedirectAttributes redirectAttrs,
+            HttpServletRequest request) {
 
         //See if user is logged in
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         //If user is not logged in, then send them to the login page because they need to be logged-in in order to add a product to their basket
         if (!(principal instanceof CustomUserDetails)) {
+            request.getSession().setAttribute("BASKET_ID", "zzz");
             return "redirect:/login";
         }
         //Find currently logged-in user
