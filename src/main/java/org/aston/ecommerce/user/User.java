@@ -6,13 +6,14 @@ import lombok.ToString;
 import org.aston.ecommerce.basket.Basket;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 import org.aston.ecommerce.product.Product;
 
 @Entity
 @Data
 @Table(name = "WebUser")
-public class User {
+public class User implements Serializable {
 
     public Long getId() {
         return id;

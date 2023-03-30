@@ -2,6 +2,7 @@ package org.aston.ecommerce.basket.web;
 
 import org.aston.ecommerce.basket.Basket;
 import org.aston.ecommerce.basket.BasketItem;
+import org.aston.ecommerce.basket.BasketRepository;
 import org.aston.ecommerce.basket.BasketService;
 import org.aston.ecommerce.user.CustomUserDetails;
 import org.aston.ecommerce.user.User;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 import java.util.Optional;
 
@@ -27,10 +30,11 @@ public class BasketController {
 
     @Autowired private UserRepository userRepo;
     @Autowired private BasketService basketService;
+    @Autowired private BasketRepository basketRepository;
 
     @GetMapping
-    public String viewBasket(Model model) {
-
+    public String viewBasket(Model model, HttpSession session) {
+        System.out.println(session.getAttribute("BASKET_ID"));
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if (principal instanceof CustomUserDetails) {
@@ -43,14 +47,28 @@ public class BasketController {
                 model.addAttribute("listBaskets", loggedInUser.getBasket().getBasketItems());
                 model.addAttribute("basketTotal", this.basketService.getTotalOfBasket(loggedInUser.getBasket()));
             }
-        } else {
-            model.addAttribute("isNotLoggedIn", "yes");
+        } else { //If user is not logged in
+            String basketId = (String) session.getAttribute("BASKET_ID");
+            if(!this.checkSafeBasketIdAttribute(basketId)){
+                model.addAttribute("empty", "yes");
+                return "basket";
+            }
+
+            Optional<Basket> optBasket = this.basketRepository.findById(Long.parseLong(basketId));
+            Basket basket = optBasket.get();
+            if(basket.getBasketItems().isEmpty()){
+                model.addAttribute("empty", "yes");
+                return "basket";
+            }
+            model.addAttribute("listBaskets", basket.getBasketItems());
+            model.addAttribute("basketTotal", this.basketService.getTotalOfBasket(basket));
+            //model.addAttribute("isNotLoggedIn", "yes");
         }
         return "basket";
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteBasketItem(Model model, @PathVariable("id") String id) {
+    public String deleteBasketItem(@PathVariable("id") String id, HttpSession session) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if (principal instanceof CustomUserDetails) {
@@ -65,8 +83,22 @@ public class BasketController {
                 basket.getBasketItems().remove(toDelete);
                 userRepo.save(loggedInUser);
             }
-        } else {
-            model.addAttribute("isNotLoggedIn", "yes");
+        } else { //If user is not logged in
+            String basketId = (String) session.getAttribute("BASKET_ID");
+            if(!this.checkSafeBasketIdAttribute(basketId)){
+                return "redirect:/basket";
+            }
+            Optional<Basket> optBasket = this.basketRepository.findById(Long.parseLong(basketId));
+            Basket basket = optBasket.get();
+            BasketItem toDelete = basket.getBasketItems().stream()
+                    .filter((item) -> item.getId().equals(Long.parseLong(id)))
+                    .findFirst()
+                    .orElse(null);
+            if (toDelete != null) {
+                basket.getBasketItems().remove(toDelete);
+                this.basketRepository.save(basket);
+            }
+            //model.addAttribute("isNotLoggedIn", "yes");
         }
         return "redirect:/basket";
     }
@@ -75,15 +107,27 @@ public class BasketController {
     public String processRegister(
             @RequestParam("numOrdered") String numOrderedStr,
             @RequestParam("productId") String productIdStr,
-            RedirectAttributes redirectAttrs) {
+            RedirectAttributes redirectAttrs,
+            HttpServletRequest request) {
 
         //See if user is logged in
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        //If user is not logged in, then send them to the login page because they need to be logged-in in order to add a product to their basket
+        Integer numOrdered = Integer.parseInt(numOrderedStr);
+        Long productId = Long.parseLong(productIdStr);
+
+        //If user is not logged in, then use sessions to submit a basket item
         if (!(principal instanceof CustomUserDetails)) {
-            return "redirect:/login";
+            boolean purchaseSuccess = this.basketService.addItemToBasket(productId, numOrdered, request);
+
+            if (purchaseSuccess) {
+                redirectAttrs.addFlashAttribute("purchase_success", "yes");
+            } else {
+                redirectAttrs.addFlashAttribute("purchase_fail", "Error! You tried to order more products than there is currently available in stock.");
+            }
+            return "redirect:/product/" + productId;
         }
+
         //Find currently logged-in user
         String username = ((CustomUserDetails) principal).getUsername();
         User loggedInUser = userRepo.findByEmail(username);
@@ -91,11 +135,8 @@ public class BasketController {
         //If user is admin, then do not allow them to add item to basket
         if(loggedInUser.isAdmin()){
             redirectAttrs.addFlashAttribute("purchase_fail", "Error! Admin users cannot add products to their basket.");
-            return "redirect:/product/" + Long.parseLong(productIdStr);
+            return "redirect:/product/" + productId;
         }
-
-        Integer numOrdered = Integer.parseInt(numOrderedStr);
-        Long productId = Long.parseLong(productIdStr);
 
         boolean purchaseSuccess = this.basketService.addItemToBasket(productId, numOrdered, loggedInUser);
         if (purchaseSuccess) {
@@ -107,8 +148,15 @@ public class BasketController {
     }
 
     @GetMapping("/edit/{id}")
-    public String editBasketItem(Model model, @PathVariable("id") String id) {
+    public String editBasketItem(Model model, @PathVariable("id") String id, HttpSession session) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        //If number is not supplied for url param 'id', then immediately redirect back to basket
+        try{
+            Long.parseLong(id);
+        }catch(Exception e){
+            return "redirect:/basket";
+        }
 
         if (principal instanceof CustomUserDetails) {
             String username = ((CustomUserDetails) principal).getUsername();
@@ -121,8 +169,20 @@ public class BasketController {
             if(toEdit == null) return "redirect:/basket";
             model.addAttribute("basketItem", toEdit);
             return "basket_edit";
-        }else{
-            return "redirect:/basket";
+        }else{ // If user is not logged in
+            String basketId = (String) session.getAttribute("BASKET_ID");
+            if(!this.checkSafeBasketIdAttribute(basketId)){
+                return "redirect:/basket";
+            }
+            Optional<Basket> optBasket = this.basketRepository.findById(Long.parseLong(basketId));
+            Basket basket = optBasket.get();
+            BasketItem toEdit = basket.getBasketItems().stream()
+                    .filter((item) -> item.getId().equals(Long.parseLong(id)))
+                    .findFirst()
+                    .orElse(null);
+            if(toEdit == null) return "redirect:/basket";
+            model.addAttribute("basketItem", toEdit);
+            return "basket_edit";
         }
     }
 
@@ -131,21 +191,28 @@ public class BasketController {
             @RequestParam("newAmount") String newAmountStr,
             @RequestParam("productId") String productIdStr,
             @RequestParam("basketItemId") String basketItemIdStr,
-            RedirectAttributes redirectAttrs) {
+            RedirectAttributes redirectAttrs,
+            HttpServletRequest request) {
 
         //See if user is logged in
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        //If user is not logged in, then send them to the login page because they need to be logged-in in order to add a product to their basket
+        Integer newAmount = Integer.parseInt(newAmountStr);
+        Long productId = Long.parseLong(productIdStr);
+
+        ////If user is not logged in, then use sessions to edit a basket item
         if (!(principal instanceof CustomUserDetails)) {
+            boolean editSuccess = this.basketService.editBasketItemAmount(productId, newAmount, request);
+
+            if (!editSuccess) {
+                redirectAttrs.addFlashAttribute("edit_fail", "Error! You tried to order more products than there is currently available in stock.");
+                return "redirect:/basket/edit/" + basketItemIdStr;
+            }
             return "redirect:/basket";
         }
         //Find currently logged-in user
         String username = ((CustomUserDetails) principal).getUsername();
         User loggedInUser = userRepo.findByEmail(username);
-
-        Integer newAmount = Integer.parseInt(newAmountStr);
-        Long productId = Long.parseLong(productIdStr);
 
         boolean editSuccess = this.basketService.editBasketItemAmount(productId, newAmount, loggedInUser);
         if (!editSuccess) {
@@ -156,5 +223,18 @@ public class BasketController {
         return "redirect:/basket";
     }
 
+    private Boolean checkSafeBasketIdAttribute(String basketId){
+        Boolean returnBool = true;
+
+        if(basketId == null){
+            return false;
+        }
+        Optional<Basket> optBasket = this.basketRepository.findById(Long.parseLong(basketId));
+        if(!optBasket.isPresent()){
+            returnBool = false;
+        }
+
+        return returnBool;
+    }
 
 }
