@@ -20,11 +20,11 @@ public interface OrderRepository extends CrudRepository<Order, Long> {
     List<Order> findByCreationDateAfter(LocalDateTime date);
     List<Order> findByOrderDateBetween(LocalDateTime startOfMonth, LocalDateTime now);
 
-    @Query("SELECT o FROM Order o GROUP BY o.customer ORDER BY SUM(o.totalPrice) DESC")
-    Page<Order> findAllOrderByCustomerDesc(Pageable pageable);
-
-    default List<Order> findAllOrderByCustomerDesc() {
-        Pageable limit = PageRequest.of(0, 5);
-        return findAllOrderByCustomerDesc(limit).getContent();
-    }
+//    @Query("SELECT o FROM Order o GROUP BY o.customer ORDER BY SUM(o.totalPrice) DESC")
+//    Page<Order> findAllOrderByCustomerDesc(Pageable pageable);
+//
+//    default List<Order> findAllOrderByCustomerDesc() {
+//        Pageable limit = PageRequest.of(0, 5);
+//        return findAllOrderByCustomerDesc(limit).getContent();
+//    }
 }
