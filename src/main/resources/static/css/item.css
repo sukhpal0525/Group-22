@@ -1,0 +1,234 @@
+/* Basic Styling */
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+    display: flex;
+    margin-bottom: 11vh;
+  }
+  
+  /* Columns */
+  .left-column {
+    width: 65%;
+    position: relative;
+    margin-bottom: 8vh;
+  }
+  
+  .right-column {
+    width: 35%;
+    margin-top: 60px;
+    margin-bottom: 8vh;
+  }
+  
+  
+  /* Left Column */
+  .left-column img {
+    width: 500px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transition: all 0.3s ease;
+    margin-top: 5vh;
+  }
+  
+  .left-column img.active {
+    opacity: 1;
+  }
+  
+  
+  /* Right Column */
+  
+  /* Product Description */
+  .product-description {
+    border-bottom: 1px solid #E1E8EE;
+    margin-bottom: 20px;
+  }
+  .product-description span {
+    font-size: 12px;
+    color: #169c0a;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .product-description h1 {
+    font-weight: 300;
+    font-size: 52px;
+    color: #323232;
+    letter-spacing: -2px;
+  }
+  .product-description p {
+    font-size: 16px;
+    font-weight: 300;
+    color: #656565;
+    line-height: 24px;
+  }
+  
+  
+  /* product Quantity */
+  .num-quantity {
+    margin-bottom: 20px;
+  }
+  
+  .num-quantity button,
+  .num-quantity select {
+    border: 2px solid #E1E8EE;
+    border-radius: 6px;
+    padding: 13px 20px;
+    font-size: 14px;
+    color: #5E6977;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all .5s;
+  }
+
+  
+  .num-quantity button:hover,
+  .num-quantity button:active,
+  .num-quantity button:focus,
+  .num-quantity select:hover,
+  .num-quantity select:active,
+  .num-quantity select:focus {
+    border: 2px solid #86939E;
+    outline: none;
+  }
+  
+  .quantity-num {
+    border-bottom: 1px solid #E1E8EE;
+    margin-bottom: 20px;
+  }
+  
+  .quantity-num a {
+    color: #169c0a;
+    text-decoration: none;
+    font-size: 12px;
+    position: relative;
+    margin: 10px 0;
+    display: inline-block;
+  }
+  .quantity-num a:before {
+    content: "?";
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    border: 2px solid rgba(53, 142, 215, 0.5);
+    display: inline-block;
+    text-align: center;
+    line-height: 16px;
+    opacity: 0.5;
+    margin-right: 5px;
+  }
+  
+  /* Product Price */
+  .product-price {
+    display: flex;
+    align-items: center;
+  }
+  
+  .product-price span {
+    font-size: 26px;
+    font-weight: 300;
+    color: #43474D;
+    margin-right: 20px;
+  }
+  
+  .cart-btn {
+    display: inline-block;
+    background-color: #7DC855;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 12px 30px;
+    transition: all .5s;
+  }
+  .cart-btn:hover {
+    background-color: #64af3d;
+  }
+  
+  /* Responsive */
+  @media (max-width: 940px) {
+    .container {
+      flex-direction: column;
+      margin-top: 60px;
+    }
+  
+    .left-column,
+    .right-column {
+      width: 100%;
+    }
+  
+    .left-column img {
+      width: 300px;
+      right: 0;
+      top: -65px;
+      left: initial;
+    }
+  }
+  
+  @media (max-width: 535px) {
+    .left-column img {
+      width: 220px;
+      top: -85px;
+    }
+  }
+
+
+.product-price button {
+    border: none;
+    font-family: sans-serif;
+    font-size: 15px;
+    background: transparent;
+    color: #323232;
+    border: solid 1px #323232;
+    padding: 10px;
+    border-radius: 4px;
+    transition-duration: 0.2s;
+    margin:10px 0px;
+}
+
+.product-price button:before {
+    content: "»";
+    opacity: 0;
+    margin-left: -15px;
+    transition-duration: 0.2s;
+}
+
+.product-price button:hover:before {
+    margin-left: 0px;
+    opacity: 1;
+}
+
+.product-price button:hover {
+    color: #169c0a;
+    background: #e7e7e7;
+    border: solid 1px #169c0a;
+}
+
+.Num-quantity button{
+    padding: 10px 15px;
+    background-color: #fff;
+    margin: 1vh .1vw;
+    color: #323232;
+    border-radius: 6px;
+}
+
+.Num-quantity button:hover{
+    background-color: #dfdddd;
+    transition: .3s;
+}
+
+.Num-quantity select{
+  padding: 10px 15px;
+  margin: 1vh .1vw;
+  background-color: #fff;
+  color: #323232;
+  border-radius: 6px;
+}
