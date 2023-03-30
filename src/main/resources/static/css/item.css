@@ -121,7 +121,7 @@ html, body {
     height: 15px;
     width: 15px;
     border-radius: 50%;
-    border: 2px solid rgba(53, 142, 215, 0.5);
+    border: 2px solid #169c0a;
     display: inline-block;
     text-align: center;
     line-height: 16px;
