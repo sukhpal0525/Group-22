@@ -4,6 +4,7 @@ import org.aston.ecommerce.basket.Basket;
 import org.aston.ecommerce.basket.BasketItem;
 import org.aston.ecommerce.basket.BasketRepository;
 import org.aston.ecommerce.basket.BasketService;
+import org.aston.ecommerce.product.Product;
 import org.aston.ecommerce.user.CustomUserDetails;
 import org.aston.ecommerce.user.User;
 import org.aston.ecommerce.user.UserRepository;
@@ -82,6 +83,7 @@ public class BasketController {
             if (toDelete != null) {
                 basket.getBasketItems().remove(toDelete);
                 userRepo.save(loggedInUser);
+                this.basketService.respondToBasketItemDelete(toDelete);
             }
         } else { //If user is not logged in
             String basketId = (String) session.getAttribute("BASKET_ID");
@@ -97,6 +99,7 @@ public class BasketController {
             if (toDelete != null) {
                 basket.getBasketItems().remove(toDelete);
                 this.basketRepository.save(basket);
+                this.basketService.respondToBasketItemDelete(toDelete);
             }
             //model.addAttribute("isNotLoggedIn", "yes");
         }
