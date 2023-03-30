@@ -3,6 +3,7 @@ package org.aston.ecommerce.file;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
@@ -88,15 +89,16 @@ public class FileStorageImplement implements FileStorage {
     }
 
     public String getPathForImages() {
-        File jarDir = new File(ClassLoader.getSystemClassLoader().getResource("uploads").getPath());
+
+        URL getResource = ClassLoader.getSystemClassLoader().getResource("uploads");
+
+        if(getResource == null) return "./src/main/resources/uploads";
+
+        File jarDir = new File(getResource.getPath());
         String decodedPath = "";
         try{
             decodedPath = URLDecoder.decode(jarDir.getAbsolutePath(), "UTF-8");
         }catch(Exception e){
-
-        }
-
-        if(!jarDir.isDirectory()){
             decodedPath = "./src/main/resources/uploads";
         }
 
