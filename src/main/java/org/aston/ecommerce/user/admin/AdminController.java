@@ -124,6 +124,6 @@ public class AdminController {
 
 //        model.addAttribute("topCustomers", customerOrders);
 
-        return "order_data";
+        return "admin_analytics";
     }
 }
