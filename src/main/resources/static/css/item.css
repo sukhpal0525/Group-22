@@ -11,7 +11,7 @@ html, body {
     margin: 0 auto;
     padding: 15px;
     display: flex;
-    margin-bottom: 11vh;
+    margin-bottom: 15vh;
   }
   
   /* Columns */
@@ -30,13 +30,16 @@ html, body {
   
   /* Left Column */
   .left-column img {
-    width: 500px;
+    width: auto;
     position: absolute;
     left: 0;
     top: 0;
     opacity: 0;
     transition: all 0.3s ease;
     margin-top: 5vh;
+    margin-bottom: 5vh;
+    max-height:500px;
+    min-height: 500px;
   }
   
   .left-column img.active {

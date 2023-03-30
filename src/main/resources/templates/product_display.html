@@ -68,7 +68,11 @@
    
       <!-- Product Pricing -->
       <div class="product-price">
-        <span th:text="${#numbers.formatCurrency(product.Amount)}"></span>
+        <span th:if="!${product.OnSale}" th:text="${#numbers.formatCurrency(product.Amount)}"></span>
+        <span th:if="${product.OnSale}" th:text="${#numbers.formatCurrency(product.Amount)}" style="text-decoration: line-through !important; color:rgb(210, 0, 0)">
+        </span>
+        <span th:if="${product.OnSale}" th:text="${#numbers.formatCurrency(product.Amount - product.Amount * product.Sale)}" style="color: rgb(210,0,0)">
+        </span>
         <button type="submit">
             ADD TO BASKET
         </button>
@@ -91,6 +95,7 @@
     <div class="mt-4 alert alert-danger" th:if="${purchase_fail}" th:text="${purchase_fail}" role="alert"></div>
     <div class="h1 mt-4" th:text="${product.Name}"></div>
     <p th:text="${product.Description}"></p>
+
     <div class="text-danger" th:if="${product.OnSale}">
         <del th:text="${#numbers.formatCurrency(product.Amount)}" style="text-decoration: line-through !important;"></del>&nbsp;
         <strong th:text="${#numbers.formatCurrency(product.Amount - product.Amount * product.Sale)}"></strong>
