@@ -32,7 +32,9 @@ public class OrderService {
     @Autowired private ProductService productService;
 
     public List<Order> getOrdersByCustomerId(Long customerId) {
-        return orderRepository.findAllByCustomerId(customerId);
+        List<Order> returnOrders = orderRepository.findAllByCustomerId(customerId);
+        this.sortOrdersByStatusThenDate(returnOrders);
+        return returnOrders;
     }
 
     public Order createOrder(User user) {
@@ -153,7 +155,8 @@ public class OrderService {
                 .stream()
                 .filter(o -> o.getStatus() == status)
                 .collect(Collectors.toList());
-        Collections.sort(returnOrders, (Order o1, Order o2) -> o1.getOrderDate().compareTo(o2.getOrderDate()));
+        //DESCENDING
+        Collections.sort(returnOrders, (Order o1, Order o2) -> o2.getOrderDate().compareTo(o1.getOrderDate()));
         return returnOrders;
     }
 
@@ -162,18 +165,19 @@ public class OrderService {
                 .stream()
                 .filter(o -> o.getStatus() == status)
                 .collect(Collectors.toList());
-        Collections.sort(returnOrders, (Order o1, Order o2) -> o1.getOrderDate().compareTo(o2.getOrderDate()));
+        //DESCENDING
+        Collections.sort(returnOrders, (Order o1, Order o2) -> o2.getOrderDate().compareTo(o1.getOrderDate()));
         return returnOrders;
     }
 
-    //Sort all orders in ASCENDING order based on their date grouped by their enum status such that the most recent orders are shown first
+    //Sort all orders in DESCENDING order based on their date grouped by their enum status such that the most recent orders are shown first
     private void sortOrdersByStatusThenDate(List<Order> takeOrders){
         Collections.sort(takeOrders, new Comparator<Order>() {
             @Override
             public int compare(Order o1, Order o2) {
                 if(o1.getStatus() == o2.getStatus()){
-                    //ASCENDING
-                    return o1.getOrderDate().compareTo(o2.getOrderDate());
+                    //DESCENDING
+                    return o2.getOrderDate().compareTo(o1.getOrderDate());
                 }else{
                     return o1.getStatus().compareTo(o2.getStatus());
                 }
@@ -181,14 +185,14 @@ public class OrderService {
         });
     }
 
-    //Sort all orders in DESCENDING order based on when they were made such that the oldest unprocessed order is shown first
+    //Sort all orders in ASCENDING order based on when they were made such that the oldest unprocessed order is shown first
     private void sortOrdersByStatusThenDateDesc(List<Order> takeOrders){
         Collections.sort(takeOrders, new Comparator<Order>() {
             @Override
             public int compare(Order o1, Order o2) {
                 if(o1.getStatus() == o2.getStatus()){
-                    //DESCENDING
-                    return o2.getOrderDate().compareTo(o1.getOrderDate());
+                    //ASCENDING
+                    return o1.getOrderDate().compareTo(o2.getOrderDate());
                 }else{
                     return o1.getStatus().compareTo(o2.getStatus());
                 }
