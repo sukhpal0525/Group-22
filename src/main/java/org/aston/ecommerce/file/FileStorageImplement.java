@@ -1,7 +1,9 @@
 package org.aston.ecommerce.file;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URLDecoder;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -16,7 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class FileStorageImplement implements FileStorage {
-    private final Path root = Paths.get("./src/main/resources/uploads");
+    private final Path root = Paths.get(this.getPathForImages());
 
     @Override
     public void init() {
@@ -83,5 +85,22 @@ public class FileStorageImplement implements FileStorage {
         }
         if(extension.equals("png") || extension.equals("jpg")) return true;
         return false;
+    }
+
+    public String getPathForImages() {
+        File jarDir = new File(ClassLoader.getSystemClassLoader().getResource("uploads").getPath());
+        String decodedPath = "";
+        try{
+            decodedPath = URLDecoder.decode(jarDir.getAbsolutePath(), "UTF-8");
+        }catch(Exception e){
+
+        }
+
+        if(!jarDir.isDirectory()){
+            decodedPath = "./src/main/resources/uploads";
+        }
+
+        //System.out.println(decodedPath);
+        return decodedPath;
     }
 }

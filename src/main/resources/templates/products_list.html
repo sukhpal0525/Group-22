@@ -68,7 +68,6 @@
             <div class="col-md-4" th:each="products : ${products}">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <input type="hidden" name="seeWhatImageURLReallyIs" th:value="${products.imageInfo.url}" />
                         <!-- add a image place holder use placeholder from web not my images-->
                         <img th:src="@{${products.imageInfo != null} ? ${products.imageInfo.url} : '/Images/CPU.png'}"
                              class="img-fluid" th:alt="${products.imageInfo != null} ? ${products.imageInfo.name} : 'template'"
