@@ -23,7 +23,7 @@
           <p><a th:href="@{/admin/products}">View Products</a></p>
           <p><a th:href="@{/admin/products/new}">Add Product</a></p>
           <p><a th:href="@{/admin/all-orders}">View Orders</a></p>
-          <p><a th:href="@{/report}">Generate Report</a></p>
+          <p><a th:href="@{/report/add}">Generate Report</a></p>
           <p><a th:href="@{/admin/orders}">Analytics</a></p>
 
           <br />
@@ -318,25 +318,53 @@
             </div>
           </div>
 
-          <div class="col-sm-12">
-            <h2>Users Summary</h2>
-            <table class="table table-striped">
-              <thead>
-              <tr>
-                <th>Email</th>
-                <th>Total Orders</th>
-                <th>Order Amount</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr th:each="customer : ${topCustomers}">
-                <td th:text="${customer.key.email}">Daily</td>
-                <td th:text="${#lists.size(customer.value)}"></td>
-                <td th:text="${'&pound;' + #aggregates.sum(customer.value.![orderAmount])}"></td>
-              </tr>
 
-              </tbody>
-            </table>
+          <div class="rightsmall" id="box">
+            <div class="cardtitle">
+              <h3>COSTS</h3>
+            </div>
+            <div class="cardstats">
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>Today</p>
+                </div>
+                <div class="statfigure">
+                  <p>£250.00</p>
+                </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>This Week</p>
+                </div>
+                <div class="statfigure">
+                  <p>£1,750.00</p>
+                </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>This Month</p>
+                </div>
+                <div class="statfigure">
+                  <p>£7,500.00</p>
+                </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>This Year</p>
+                </div>
+                <div class="statfigure">
+                  <p>£90,000.00</p>
+                </div>
+              </div>
+              <div class="cardtb">
+                <div class="stattime">
+                  <p>All Time</p>
+                </div>
+                <div class="statfigure">
+                  <p>£115,000.00</p>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
