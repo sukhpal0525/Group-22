@@ -56,6 +56,7 @@ public class ProductService {
 
         for(Product product : products){
             ImageInfo imageInfo = this.fileService.getImageByName(product.getUrl());
+            imageInfo.setUrl(imageInfo.getUrl().replaceAll("http://localhost:10293", ""));
             ProductImage productImage = new ProductImage(product, imageInfo);
             returnProductImages.add(productImage);
         }
