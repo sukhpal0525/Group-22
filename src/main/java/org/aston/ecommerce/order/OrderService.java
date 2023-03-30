@@ -140,6 +140,23 @@ public class OrderService {
         return returnOrders;
     }
 
+    public List<Order> findByStatus(String statusStr, Long customerId){
+        Status status = Status.parseStatusStr(statusStr.toUpperCase());
+        if(status != null){
+            return this.findOrdersByStatusFilter(status, customerId);
+        }
+        return null;
+    }
+
+    public List<Order> findOrdersByStatusFilter(Status status, Long customerId){
+        List<Order> returnOrders = this.getOrdersByCustomerId(customerId)
+                .stream()
+                .filter(o -> o.getStatus() == status)
+                .collect(Collectors.toList());
+        Collections.sort(returnOrders, (Order o1, Order o2) -> o1.getOrderDate().compareTo(o2.getOrderDate()));
+        return returnOrders;
+    }
+
     public List<Order> findOrdersByStatusFilter(Status status){
         List<Order> returnOrders = this.orderRepository.findAll()
                 .stream()
