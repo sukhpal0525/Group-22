@@ -107,13 +107,14 @@ public class BasketController {
     public String processRegister(
             @RequestParam("numOrdered") String numOrderedStr,
             @RequestParam("productId") String productIdStr,
+            @RequestParam("numOrderedDropDown") String numOrderedDropDown,
             RedirectAttributes redirectAttrs,
             HttpServletRequest request) {
 
         //See if user is logged in
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        Integer numOrdered = Integer.parseInt(numOrderedStr);
+        Integer numOrdered = numOrderedDropDown.equals("Other") ? Integer.parseInt(numOrderedStr) : Integer.parseInt(numOrderedDropDown);
         Long productId = Long.parseLong(productIdStr);
 
         //If user is not logged in, then use sessions to submit a basket item

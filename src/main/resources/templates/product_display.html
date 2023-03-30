@@ -33,10 +33,13 @@
       <!-- Product Description -->
       <div class="product-description">
         <!--THIS SHOULD CHANGE DEPENDING ON PRODUCT-->
-        <span>Monitors</span>
+        <span th:text="${product.category.toString()}">Monitors</span>
         <h1 th:text="${product.Name}"></h1>
         <p th:text="${product.Description}"></p>
       </div>
+
+        <form th:action="@{/basket/add}" method="post" name="productForm">
+            <input type="hidden" th:value="${productId}" name="productId" />
    
       <!-- Product Configuration -->
       <div class="product-configuration">
@@ -47,13 +50,14 @@
           <span>Quantity</span>
    
           <div class="Num-quantity">
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
-            <select name="Other" id="Num-quantity"         
-            <option value="N/A">N/A</option>
+              <input type="hidden" value="1" name="numOrdered" />
+              <button type="button" style="cursor: pointer;" onclick="numOrderedBtnClick(1)">1</button>
+              <button type="button" style="cursor: pointer;" onclick="numOrderedBtnClick(2)">2</button>
+              <button type="button" style="cursor: pointer;" onclick="numOrderedBtnClick(3)">3</button>
+              <button type="button" style="cursor: pointer;" onclick="numOrderedBtnClick(4)">4</button>
+              <button type="button" style="cursor: pointer;" onclick="numOrderedBtnClick(5)">5</button>
+            <select name="numOrderedDropDown" id="Num-quantity" onchange="changeDropDown()" >
+<!--            <option value="N/A">N/A</option>-->
             <option value="Other">Other</option>
             <option value="7">7</option>
             <option value="8">8</option>
@@ -73,10 +77,11 @@
         </span>
         <span th:if="${product.OnSale}" th:text="${#numbers.formatCurrency(product.Amount - product.Amount * product.Sale)}" style="color: rgb(210,0,0)">
         </span>
-        <button type="submit">
+        <button type="submit" style="cursor: pointer;">
             ADD TO BASKET
         </button>
       </div>
+        </form>
     </div>
 </main>
 
@@ -125,4 +130,16 @@
     </form>
 </div>
 </body>
+
+<script>
+    function numOrderedBtnClick(ele){
+        document.forms["productForm"]["numOrdered"].value = ele;
+        $(document.forms["productForm"]).find( "button" ).css( "background-color", "" );
+        $(document.forms["productForm"]).find( "button" ).eq(ele - 1).css( "background-color", "#dfdddd" );
+    }
+
+    function changeDropDown(){
+        $(document.forms["productForm"]).find( "button" ).css( "background-color", "" );
+    }
+</script>
 </html>
