@@ -61,7 +61,7 @@
 
           <div class="leftlarge" id="box">
             <div class="cardtitle">
-              <h3>PLACEHOLDER</h3>
+              <h3>Revenue</h3>
             </div>
             <div class="cardstats">
               <div class="cardtb">
@@ -69,7 +69,7 @@
                   <p>Today</p>
                 </div>
                 <div class="statfigure">
-                  <p>placeholder</p>
+                  <p th:text="${#aggregates.sum(dayOrders.![orderAmount]) == null ? '&pound;0.00' : '&pound;' + #aggregates.sum(dayOrders.![orderAmount])}"></p>
                 </div>
               </div>
               <div class="cardtb">
@@ -77,7 +77,7 @@
                   <p>This Week</p>
                 </div>
                 <div class="statfigure">
-                  <p>placeholder</p>
+                  <p th:text="${'&pound;' + #aggregates.sum(weekOrders.![orderAmount])}"></p>
                 </div>
               </div>
               <div class="cardtb">
@@ -85,7 +85,7 @@
                   <p>This Month</p>
                 </div>
                 <div class="statfigure">
-                  <p>placeholder</p>
+                  <p th:text="${'&pound;' + #aggregates.sum(monthOrders.![orderAmount])}"></p>
                 </div>
               </div>
               <div class="cardtb">
@@ -93,7 +93,7 @@
                   <p>This Year</p>
                 </div>
                 <div class="statfigure">
-                  <p>placeholder</p>
+                  <p th:text="${'&pound;' + #aggregates.sum(yearOrders.![orderAmount])}"></p>
                 </div>
               </div>
               <div class="cardtb">
@@ -101,7 +101,7 @@
                   <p>All Time</p>
                 </div>
                 <div class="statfigure">
-                  <p>placeholder</p>
+                  <p th:text="${'&pound;' + #aggregates.sum(allOrders.![orderAmount])}"></p>
                 </div>
               </div>
             </div>
@@ -166,7 +166,7 @@
 
           <div class="leftsmall" id="box">
             <div class="cardtitle">
-              <h3>PLACEHOLDER</h3>
+              <h3>PLACEHOLDER GRAPH</h3>
             </div>
             <div class="cardstats">
               <div class="cardtb">
@@ -174,7 +174,7 @@
                   <p>Today</p>
                 </div>
                 <div class="statfigure">
-                  <p>placeholder</p>
+                  <p th:text="${dayProfit}"></p>
                 </div>
               </div>
               <div class="cardtb">
@@ -182,7 +182,7 @@
                   <p>This Week</p>
                 </div>
                 <div class="statfigure">
-                  <p>placeholder</p>
+                  <p th:text="${weekProfit}"></p>
                 </div>
               </div>
               <div class="cardtb">
@@ -190,7 +190,7 @@
                   <p>This Month</p>
                 </div>
                 <div class="statfigure">
-                  <p>placeholder</p>
+                  <p th:text="${monthProfit}"></p>
                 </div>
               </div>
               <div class="cardtb">
@@ -198,7 +198,7 @@
                   <p>This Year</p>
                 </div>
                 <div class="statfigure">
-                  <p>placeholder</p>
+                  <p th:text="${yearProfit}"></p>
                 </div>
               </div>
               <div class="cardtb">
@@ -224,7 +224,7 @@
                   <p>Today</p>
                 </div>
                 <div class="statfigure">
-                  <p th:text="${'&pound;' + #aggregates.sum(dayOrders.![orderAmount])}"></p>
+                  <p th:text="${dayProfit == 0.0 ? '&pound;0.00' : '&pound;' + dayProfit}"></p>
                 </div>
               </div>
               <div class="cardtb">
@@ -232,7 +232,7 @@
                   <p>This Week</p>
                 </div>
                 <div class="statfigure">
-                  <p th:text="${'&pound;' + #aggregates.sum(weekOrders.![orderAmount])}"></p>
+                  <p th:text="${weekProfit == 0.0 ? '&pound;0.00' : '&pound;' + weekProfit}"></p>
                 </div>
               </div>
               <div class="cardtb">
@@ -240,7 +240,7 @@
                   <p>This Month</p>
                 </div>
                 <div class="statfigure">
-                  <p th:text="${'&pound;' + #aggregates.sum(monthOrders.![orderAmount])}"></p>
+                  <p th:text="${monthProfit == 0.0 ? '&pound;0.00' : '&pound;' + monthProfit}"></p>
                 </div>
               </div>
               <div class="cardtb">
@@ -248,7 +248,7 @@
                   <p>This Year</p>
                 </div>
                 <div class="statfigure">
-                  <p th:text="${'&pound;' + #aggregates.sum(yearOrders.![orderAmount])}"></p>
+                  <p th:text="${yearProfit == 0.0 ? '&pound;0.00' : '&pound;' + yearProfit}"></p>
                 </div>
               </div>
               <div class="cardtb">
@@ -256,7 +256,7 @@
                   <p>All Time</p>
                 </div>
                 <div class="statfigure">
-                  <p th:text="${'&pound;' + #aggregates.sum(allOrders.![orderAmount])}"></p>
+                  <p th:text="${allTimeProfit == 0.0 ? '&pound;0.00' : '&pound;' + allTimeProfit}"></p>
                 </div>
               </div>
             </div>
@@ -318,146 +318,32 @@
             </div>
           </div>
 
-          
-          <div class="rightsmall" id="box">
-            <div class="cardtitle">
-              <h3>PLACEHOLDER</h3>
-            </div>
-            <div class="cardstats">
-              <div class="cardtb">
-                <div class="stattime">
-                  <p>Today</p>
-                </div>
-                <div class="statfigure">
-                  <p>placeholder</p>
-                </div>
-              </div>
-              <div class="cardtb">
-                <div class="stattime">
-                  <p>This Week</p>
-                </div>
-                <div class="statfigure">
-                  <p>placeholder</p>
-                </div>
-              </div>
-              <div class="cardtb">
-                <div class="stattime">
-                  <p>This Month</p>
-                </div>
-                <div class="statfigure">
-                  <p>placeholder</p>
-                </div>
-              </div>
-              <div class="cardtb">
-                <div class="stattime">
-                  <p>This Year</p>
-                </div>
-                <div class="statfigure">
-                  <p>placeholder</p>
-                </div>
-              </div>
-              <div class="cardtb">
-                <div class="stattime">
-                  <p>All Time</p>
-                </div>
-                <div class="statfigure">
-                  <p>placeholder</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+          <div class="col-sm-12">
+            <h2>Users Summary</h2>
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>Email</th>
+                <th>Total Orders</th>
+                <th>Order Amount</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr th:each="customer : ${topCustomers}">
+                <td th:text="${customer.key.email}">Daily</td>
+                <td th:text="${#lists.size(customer.value)}"></td>
+                <td th:text="${'&pound;' + #aggregates.sum(customer.value.![orderAmount])}"></td>
+              </tr>
 
-        
+              </tbody>
+            </table>
+          </div>
+
+        </div>
       </div>
     </div>
 
     <div th:replace="fragments/footer :: footer"></div>
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-12">
-          <h2>Orders Summary</h2>
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Time Period</th>
-                <th>Total Orders</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Daily</td>
-                <td th:text="${#lists.size(dayOrders)}"></td>
-                <!--          <td th:text="${'&pound;' + #aggregates.sum(dayOrders.![orderAmount])}"></td>-->
-              </tr>
-              <tr>
-                <!--          ${#numbers.formatDecimal(#aggregates.sum(weekOrders.![orderAmount]), 0, 'COMMA', 2, 'POINT')}-->
-                <td>Weekly</td>
-                <td th:text="${#lists.size(weekOrders)}"></td>
-                <!--          <td th:text="${'&pound;' + #aggregates.sum(weekOrders.![orderAmount])}"></td>-->
-              </tr>
-              <tr>
-                <td>Monthly</td>
-                <td th:text="${#lists.size(monthOrders)}"></td>
-                <!--          <td th:text="${'&pound;' + #aggregates.sum(monthOrders.![orderAmount])}"></td>-->
-              </tr>
-              <tr>
-                <td>Yearly</td>
-                <td th:text="${#lists.size(yearOrders)}"></td>
-                <!--          <td th:text="${'&pound;' + #aggregates.sum(yearOrders.![orderAmount])}"></td>-->
-              </tr>
-              <tr>
-                <td>All</td>
-                <td th:text="${#lists.size(allOrders)}"></td>
-                <!--          <td th:text="${'&pound;' + #aggregates.sum(allOrders.![orderAmount])}"></td>-->
-              </tr>
-            </tbody>
-          </table>
-
-          <h2>Profit Summary</h2>
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Time Period</th>
-                <th>Total Profits</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Daily</td>
-                <td
-                  th:text="${'&pound;' + #aggregates.sum(dayOrders.![orderAmount])}"
-                ></td>
-              </tr>
-              <tr>
-                <td>Weekly</td>
-                <td
-                  th:text="${'&pound;' + #aggregates.sum(weekOrders.![orderAmount])}"
-                ></td>
-              </tr>
-              <tr>
-                <td>Monthly</td>
-                <td
-                  th:text="${'&pound;' + #aggregates.sum(monthOrders.![orderAmount])}"
-                ></td>
-              </tr>
-              <tr>
-                <td>Yearly</td>
-                <td
-                  th:text="${'&pound;' + #aggregates.sum(yearOrders.![orderAmount])}"
-                ></td>
-              </tr>
-              <tr>
-                <td>All</td>
-                <td
-                  th:text="${'&pound;' + #aggregates.sum(allOrders.![orderAmount])}"
-                ></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
   </body>
 </html>
