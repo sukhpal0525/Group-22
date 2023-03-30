@@ -1,78 +1,71 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
-    <title>Basket - Group 22</title>
+    <title>PCLabs | Basket</title>
     <link rel="stylesheet" type="text/css" href="/css/global.css" />
     <link rel="stylesheet" type="text/css" href="/css/basket.css" />
     <div th:replace="fragments/nav_bar :: styles"></div>
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-    <script
-      type="text/javascript"
-      src="/webjars/bootstrap/js/bootstrap.min.js"
-    ></script>
-  </head>
-  <body>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+<body>
 
     <div th:replace="fragments/nav_bar :: header"></div>
 
     <div class="basket-notlogged" th:if="${isNotLoggedIn}">
-      <div class="image-notlogged">
-        <img src="/Images/notlogged.png" alt="Image not loading" class="centered">
-      </div>
-      <div class="text-notlogged">
-        <p>Sorry. You need to be logged in to add items to your basket.</p>
-      </div>
-      <div class="button-tolog">
-        <button style="cursor: pointer" onclick="location.href='/login';"> LOG IN
+        <div class="image-notlogged">
+            <img src="/Images/notlogged.png" alt="Image not loading" class="centered">
+        </div>
+        <div class="text-notlogged">
+            <p>Sorry. You need to be logged in to add items to your basket.</p>
+        </div>
+        <div class="button-tolog">
+            <button style="cursor: pointer" onclick="location.href='/login';"> LOG IN
         </button>
-      </div>
+        </div>
 
     </div>
 
     <div class="basket-notlogged" th:if="${empty}">
-      <div class="image-notlogged">
-        <img src="/Images/emptybasket.png" alt="Image not loading" class="centered">
-      </div>
-      <div class="text-notlogged">
-        <p>Your basket is currently empty.</p>
-      </div>
-      <div class="button-tolog">
-          <button style="cursor: pointer" onclick="location.href='/products';"> CONTINUE SHOPPING
+        <div class="image-notlogged">
+            <img src="/Images/emptybasket.png" alt="Image not loading" class="centered">
+        </div>
+        <div class="text-notlogged">
+            <p>Your basket is currently empty.</p>
+        </div>
+        <div class="button-tolog">
+            <button style="cursor: pointer" onclick="location.href='/products';"> CONTINUE SHOPPING
           </button>
-      </div>
+        </div>
 
     </div>
 
     <div class="basket-active" th:if="${listBaskets != null}">
         <div class="basket-items">
-          <div
-            class="item-card"
-            th:each="basket: ${listBaskets}"
-            style="cursor: pointer"
-            th:attr="onclick=|rowClicked('${basket.id}')|"
-          >
-              <div class="product-title">
-                  <h4 th:text="${basket.product.name}"></h4>
-              </div>
-              <div class="product-quan"><p th:text="${basket.amount}"></p></div>
-              <div class="pricing">
-                  <div th:if="${basket.product.onSale}">
-                      <span class="text-danger">
+            <div class="item-card" th:each="basket: ${listBaskets}" style="cursor: pointer" th:attr="onclick=|rowClicked('${basket.id}')|">
+                <div class="product-title">
+                    <h4 th:text="${basket.product.name}"></h4>
+                </div>
+                <div class="product-quan">
+                    <p th:text="${basket.amount}"></p>
+                </div>
+                <div class="pricing">
+                    <div th:if="${basket.product.onSale}">
+                        <span class="text-danger">
                           <del th:text="'&pound;' + ${#numbers.formatDecimal(basket.product.amount, 0, 'COMMA', 2, 'POINT')}" style="text-decoration: line-through !important;"></del>&nbsp;
                           <strong th:text="'&pound;' + ${#numbers.formatDecimal((basket.product.amount - basket.product.amount * basket.product.sale) * basket.amount, 0, 'COMMA', 2, 'POINT')}"></strong>
                       </span>
-                  </div>
-                  <div th:if="!${basket.product.onSale}">
-                      <p th:text="${#numbers.formatCurrency(basket.product.amount * basket.amount)}"></p>
-                  </div>
-              </div>
+                    </div>
+                    <div th:if="!${basket.product.onSale}">
+                        <p th:text="${#numbers.formatCurrency(basket.product.amount * basket.amount)}"></p>
+                    </div>
+                </div>
 
-            <div class="del-item">
-              <a
-                th:href="@{/basket/delete/{id}(id=${basket.id})}"
-                style="margin-top: -1px"
-                >Delete</a
+                <div class="del-item">
+                    <a th:href="@{/basket/delete/{id}(id=${basket.id})}" style="margin-top: -1px">Delete</a
               >
             </div>
           </div>
@@ -110,10 +103,11 @@
         </div>
     </div>
 
-  <script>
-    function rowClicked(id) {
-      location.href = "/basket/edit/" + id;
-    }
-  </script>
-  <div th:replace="fragments/footer :: footer"></div>
+    <script>
+        function rowClicked(id) {
+            location.href = "/basket/edit/" + id;
+        }
+    </script>
+    <div th:replace="fragments/footer :: footer"></div>
+
 </html>
