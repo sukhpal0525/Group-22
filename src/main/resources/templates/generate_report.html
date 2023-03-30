@@ -5,7 +5,7 @@
   <title>Generate Report</title>
   <link rel="stylesheet" type="text/css" href="/css/global.css" />
   <link rel="stylesheet" type="text/css" href="/css/adminglobal.css" />
-  <link rel="stylesheet" type="text/css" href="/css/adminproductedit.css" />
+  <link rel="stylesheet" type="text/css" href="/css/generatereport.css" />
 
   <div th:replace="fragments/nav_bar :: styles"></div>
   <link
@@ -61,14 +61,17 @@
   </div>
 
   <div class="pagecontent">
-    <div class="backredir">
-      <button id="backgroundgr" onclick="history.back(); return false;" style="cursor: pointer;">
-        BACK
-      </button>
-    </div>
-    <div class="editpage">
-
-    </div>
+      <div class="image-notlogged">
+        <img src="/Images/genrep.png" alt="Image not loading" class="centered">
+      </div>
+      <div class="text-notlogged">
+        <p>Lets generate a report. Click the button below.</p>
+      </div>
+      <div class="button-tolog">
+        <button style="cursor: pointer" onclick="location.href='/report/add';"> 
+          GENERATE REPORT
+        </button>
+      </div>
   </div>
 </div>
 
