@@ -19,6 +19,7 @@
             <th>Transaction Number</th>
             <th>Order Date</th>
             <th>Total</th>
+            <th>Status</th>
         </tr>
         </thead>
         <tbody>
@@ -27,6 +28,7 @@
             <td th:text="${order.TransactionNumber}"></td>
             <td th:text="${#temporals.format(order.OrderDate, 'd MMMM yyyy, hh:mm a')}"></td>
             <td th:text="${order.OrderAmount}"></td>
+            <td th:text="${order.Status}"></td>
         </tr>
         </tbody>
     </table>
