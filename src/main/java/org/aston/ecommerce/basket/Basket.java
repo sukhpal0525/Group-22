@@ -1,5 +1,6 @@
 package org.aston.ecommerce.basket;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -23,7 +24,7 @@ import org.aston.ecommerce.user.User;
 @ToString(exclude = "user")
 @EqualsAndHashCode(exclude = "user")
 @Table(name = "WebBasket")
-public class Basket {
+public class Basket implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
