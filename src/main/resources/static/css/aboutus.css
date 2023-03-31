@@ -319,3 +319,17 @@ button:hover {
     background: none;
     text-transform: uppercase;
 }
+
+.searchbutton{
+    background-color: #e7e7e7;
+    border-radius: 10px;
+}
+
+.searchbutton:hover{
+    color:#fff;
+    background-color: #169c0a;
+}
+
+#whiteback{
+    background-color: #fff;
+}

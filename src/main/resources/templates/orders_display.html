@@ -1,77 +1,73 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
+
+<head>
     <meta charset="ISO-8859-1" />
-    <title>Group 22</title>
+    <title>PCLabs | Orders</title>
     <link rel="stylesheet" type="text/css" href="/css/global.css" />
     <link rel="stylesheet" type="text/css" href="/css/checkout.css" />
     <!--    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>-->
     <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <div th:replace="fragments/nav_bar :: styles"></div>
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-    <script
-      type="text/javascript"
-      src="/webjars/bootstrap/js/bootstrap.min.js"
-    ></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
     <style>
-      * ol {
-        list-style-type: decimal !important;
-      }
+        * ol {
+            list-style-type: decimal !important;
+        }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <div th:replace="fragments/nav_bar :: header"></div>
 
     <div class="checkout-page">
-      <div class="order-success">
-        <div class="success-image">
-          <img
-            src="/Images/greentick.png"
-            alt="Image not loading"
-            class="centered"
-          />
-        </div>
-        <div class="success-text">
-          <h3>Order Successful!</h3>
-          <br />
-          <h6>Thanks for shopping with PCLabs.</h6>
-          <h6>Shop again with us soon</h6>
-        </div>
-        <div class="return-home-btn">
-          <button style="cursor: pointer;" onclick="location.href = '/home';">
+        <div class="order-success">
+            <div class="success-image">
+                <img src="/Images/greentick.png" alt="Image not loading" class="centered" />
+            </div>
+            <div class="success-text">
+                <h3>Order Successful!</h3>
+                <br />
+                <h6>Thanks for shopping with PCLabs.</h6>
+                <h6>Shop again with us soon</h6>
+            </div>
+            <div class="return-home-btn">
+                <button style="cursor: pointer;" onclick="location.href = '/home';">
             RETURN HOME
           </button>
-        </div>
-      </div>
-      <div class="order-summ">
-        <div class="summ-title">
-          <h3>Order Summary</h3>
-        </div>
-        <div class="summ-val" th:text="${#numbers.formatCurrency(order.orderAmount)}"></div>
-        <div class="summ-items">
-          <div class="item-card" th:each="orderItem : ${order.orderItems}">
-            <div class="prod-name">
-              <h4 th:text="${orderItem.product.name}"></h4>
             </div>
-            <div class="prod-quan">
-              <p th:text="${orderItem.numOfItems}"></p>
+        </div>
+        <div class="order-summ">
+            <div class="summ-title">
+                <h3>Order Summary</h3>
             </div>
-            <div class="prod-price" th:if="${orderItem.product.onSale}">
-                <span class="text-danger">
+            <div class="summ-val" th:text="${#numbers.formatCurrency(order.orderAmount)}"></div>
+            <div class="summ-items">
+                <div class="item-card" th:each="orderItem : ${order.orderItems}">
+                    <div class="prod-name">
+                        <h4 th:text="${orderItem.product.name}"></h4>
+                    </div>
+                    <div class="prod-quan">
+                        <p th:text="${orderItem.numOfItems}"></p>
+                    </div>
+                    <div class="prod-price" th:if="${orderItem.product.onSale}">
+                        <span class="text-danger">
                     <del th:text="'&pound;' + ${#numbers.formatDecimal(orderItem.product.amount, 0, 'COMMA', 2, 'POINT')}" style="text-decoration: line-through !important;"></del>&nbsp;
                     <strong th:text="'&pound;' + ${#numbers.formatDecimal((orderItem.product.amount - orderItem.product.amount * orderItem.product.sale), 0, 'COMMA', 2, 'POINT')}"></strong>
                 </span>
+                    </div>
+                    <div class="prod-price" th:if="!${orderItem.product.onSale}">
+                        <p th:text="${#numbers.formatCurrency(orderItem.product.amount)}"></p>
+                    </div>
+                </div>
             </div>
-            <div class="prod-price" th:if="!${orderItem.product.onSale}">
-              <p th:text="${#numbers.formatCurrency(orderItem.product.amount)}"></p>
-            </div>
-          </div>
         </div>
-      </div>
 
     </div>
 
 
-  </body>
-  <div th:replace="fragments/footer :: footer"></div>
+</body>
+<div th:replace="fragments/footer :: footer"></div>
+
 </html>

@@ -13,6 +13,44 @@
 <body>
 
 <div th:replace="fragments/nav_bar :: header"></div>
+<div class="pagecontain">
+    <div class="backredir">
+        <button th:href="@{/admin/all-orders}">
+            BACK
+        </button>
+    </div>
+    <div class="orderdetails">
+        <div class="detailstitle">
+            <h3>Order Details</h3>
+        </div>
+        <div class="detailsinfo">
+            <h4>Username: [[${viewOrder.customer.username}]]</h4>
+            <h4>Email Address: [[${viewOrder.customer.email}]]</h4>
+        </div>
+    </div>
+    <div class="ordersummary">
+        <div class="ordertitle">
+            <h3>Order Summary</h3>
+        </div>
+        <div class="totalamount">
+            <h3>[[${totalAmount == 0.0 ? '0.00' : #numbers.formatCurrency(totalAmount)}]]</h3>
+        </div>
+        <div class="summcards">
+            <div th:each="orderItem : ${viewOrder.orderItems}" class="cardorder">
+                <div class="prodname">
+                    <p th:text="${orderItem.product.name}"></p>
+                </div>
+                <div class="prodquan">
+                    <p th:text="${orderItem.numOfItems}"></p>
+                </div>
+                <div class="prodtotal">
+                    <p th:text="${#numbers.formatCurrency(orderItem.amount)}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 <div th:replace="fragments/footer :: footer"></div>

@@ -34,7 +34,7 @@
             </div>
             <div class="right-icons">
                 <div class="person">
-                    <a th:href="@{/home}" style="display: block;" ><i class="fas fa-user"></i></a>
+                    <a th:href="@{/login}" style="display: block;" ><i class="fas fa-user"></i></a>
                     <div class="dropdown-menu">
                         <li th:if="${#request.userPrincipal == null}"><a th:href="@{/login}">Login</a></li>
                         <li th:if="${#request.userPrincipal == null}"><a th:href="@{/register}">Signup</a></li>

@@ -1,0 +1,143 @@
+.pagecontain{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: .1fr 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.backredir{
+    grid-area: 1 / 1 / 2 / 2;
+    margin: 2vh 1vw;
+}
+
+.orderdetails{
+    grid-area: 2 / 1 / 3 / 2;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: .2fr 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    height: 80vh;
+}
+
+.ordersummary{
+    grid-area: 2 / 2 / 3 / 3; 
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: .2fr 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    height: 80vh;
+}
+
+button {
+    border: none;
+    font-family: sans-serif;
+    font-size: 15px;
+    background: transparent;
+    color: #323232;
+    border: solid 1px #323232;
+    padding: 10px;
+    border-radius: 4px;
+    transition-duration: 0.2s;
+}
+
+button:before {
+    content: "»";
+    opacity: 0;
+    margin-left: -15px;
+    transition-duration: 0.2s;
+}
+
+button:hover:before {
+    margin-left: 0px;
+    opacity: 1;
+}
+
+button:hover {
+    color: #169c0a;
+    background: #e7e7e7;
+    border: solid 1px #169c0a;
+}
+
+.detailstitle{
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.detailsinfo{
+    grid-area: 2 / 1 / 3 / 2;
+}
+
+.detailstitle h3{
+    font-size: 32px;
+    color: #323232;
+    margin: 8vh 4vw 5vh 13vw;
+    font-weight: 700;
+}
+
+.detailsinfo h4{
+    font-size: 18px;
+    margin: 15px 4vw 1vh 13vw;
+}
+
+.ordertitle{
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.ordertitle h3{
+    font-size: 32px;
+    font-weight: 700;
+    margin: 8vh 4vw 5vw 4vw;
+}
+
+.totalamount{
+    grid-area: 1 / 2 / 2 / 3;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 8vh 13vw 5vw 4vw;
+    text-align: right;
+}
+
+.summcards{
+    grid-area: 2 / 1 / 3 / 3;
+    height: 50vh;
+}
+
+.cardorder{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    width: 70%;
+    margin-bottom: 1vh;
+    margin-left: 4vw;
+    overflow-x:hidden;
+    overflow-y:auto;
+    padding-right: 15px;
+}
+
+.cardorder p{
+    font-size: 18px;
+}
+
+.prodname{
+    grid-area: 1 / 1 / 2 / 2; 
+}
+
+.prodquan{
+    grid-area: 1 / 2 / 2 / 3;
+    text-align: center;
+}
+
+.prodtotal{
+    grid-area: 1 / 3 / 2 / 4;
+    text-align: right;
+}
+
+.cardorder{
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px 15px;
+}

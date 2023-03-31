@@ -91,22 +91,24 @@ public class AdminOrders {
     }
 
     @GetMapping("/admin/view_order/{id}")
-    public String adminViewOrder(Model model, @PathVariable("id") String id){
-
-        Long longId = null;
-        //ToDo: do this protection for the other routes where it is necessary to do so
-        try{
+    public String adminViewOrder(Model model, @PathVariable("id") String id) {
+        Long longId;
+        try {
             longId = Long.parseLong(id);
-        }catch(Exception e){
-            throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "page not found"
-            );
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Page not found");
         }
-
         Optional<Order> optOrder = this.orderRepository.findById(longId);
-        if(!optOrder.isPresent()) return "redirect:/admin/all-orders";
+        if (!optOrder.isPresent()) {
+            return "redirect:/admin/all-orders";
+        }
         Order order = optOrder.get();
+        double totalAmount = 0.0;
+        for (Order.OrderItem item : order.getOrderItems()) {
+            totalAmount += item.getAmount();
+        }
         model.addAttribute("viewOrder", order);
+        model.addAttribute("totalAmount", totalAmount);
         return "admin_view_order";
     }
 
