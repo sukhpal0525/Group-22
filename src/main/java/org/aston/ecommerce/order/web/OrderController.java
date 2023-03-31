@@ -61,7 +61,7 @@ public class OrderController {
 
             if(orders == null) orders = orderService.getOrdersByCustomerId(user.getId());
             model.addAttribute("orders", orders);
-            model.addAttribute("empty", orders.isEmpty());
+            //model.addAttribute("empty", orders.isEmpty());
             model.addAttribute("statusSelect", statusStr);
         }else{
             model.addAttribute("isNotLoggedIn", "yes");

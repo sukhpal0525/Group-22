@@ -113,7 +113,7 @@ public class OrderService {
             //This was the old 'if condition'. Created a better one now, though it may not be totally accurate.
             //if (item.getNumOfItems() < product.getAmountAvailable()) {
             if (((product.getAmountAvailable() + item.getNumOfItems()) - item.getNumOfItems()) >= 0) {
-                product.setAmountAvailable(product.getAmountAvailable() - item.getNumOfItems());
+                //product.setAmountAvailable(product.getAmountAvailable() - item.getNumOfItems());
                 product = this.productRepository.save(product);
                 amount = product.getAmount() * item.getNumOfItems();
             } else {
