@@ -15,7 +15,9 @@
 <div th:replace="fragments/nav_bar :: header"></div>
 <div class="pagecontain">
     <div class="backredir">
-        <button th:href="@{/admin/all-orders}">
+        <button id="backgroundgr"
+                onclick="history.back(); return false;"
+                style="cursor: pointer">
             BACK
         </button>
     </div>

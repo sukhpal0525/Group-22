@@ -76,7 +76,9 @@ public class ProductController {
         model.addAttribute("numOrdered", "1");
 
         ImageInfo imageInfo = this.fileService.getImageByName(product.getUrl());
-        imageInfo.setUrl(imageInfo.getUrl().replaceAll("http://localhost:10293", ""));
+        if(imageInfo != null){
+            imageInfo.setUrl(imageInfo.getUrl().replaceAll("http://localhost:10293", ""));
+        }
         model.addAttribute("productImage", imageInfo);
 
         return "product_display";
