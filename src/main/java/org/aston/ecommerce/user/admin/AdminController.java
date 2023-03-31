@@ -126,4 +126,11 @@ public class AdminController {
 
         return "admin_analytics";
     }
+
+    @GetMapping("/users")
+    public String viewUsers(Model model) {
+        List<User> users = userRepository.findAll();
+        model.addAttribute("users", users);
+        return "admin_users";
+    }
 }

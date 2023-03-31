@@ -1,87 +1,67 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
+
+<head>
     <meta charset="ISO-8859-1" />
-    <title>Login - Group 22</title>
+    <title>PCLabs | Login</title>
     <link rel="stylesheet" type="text/css" href="/css/global.css" />
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <link
-      rel="stylesheet"
-      href="/css/accountforms.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="/css/accountforms.css" />
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-    <script
-      type="text/javascript"
-      src="/webjars/bootstrap/js/bootstrap.min.js"
-    ></script>
-  </head>
-  <body>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+<body>
     <div th:replace="fragments/nav_bar :: header"></div>
 
     <div class="login-box">
 
-      <div class="account-form">
+        <div class="account-form">
 
-        <div class="spacing"></div>
+            <div class="spacing"></div>
 
-        <h3>LOGIN</h3>
-        <form th:action="@{/login}" method="post">
-            <div
-                th:if="${errorMsg}"
-                th:text="${errorMsg}"
-                style="color: red"
-            ></div>
-            <div th:if="${msg}" th:text="${msg}" style="color: red"></div>
+            <h3>LOGIN</h3>
+            <form th:action="@{/login}" method="post">
+                <div th:if="${errorMsg}" th:text="${errorMsg}" style="color: red"></div>
+                <div th:if="${msg}" th:text="${msg}" style="color: red"></div>
 
-            <div class="inputs-account">
-                <input
-                    type="text"
-                    name="email"
-                    id="email"
-                    class="form-control"
-                    placeholder="Email"
-                />
-            </div>
+                <div class="inputs-account">
+                    <input type="text" name="email" id="email" class="form-control" placeholder="Email" />
+                </div>
 
-            <div class="inputs-account">
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    class="form-control"
-                    placeholder="Password"
-                />
-            </div>
+                <div class="inputs-account">
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Password" />
+                </div>
 
-            <br>
-            <button type="submit" style="cursor: pointer">
+                <br>
+                <button type="submit" style="cursor: pointer">
                 LOG IN
             </button>
-        
-        </form>
 
-        <div class="redirect">
-        <p>
-            Don't have an account?
-            <a th:href="@{/register}" class="">Sign up!</a>
-        </p>
+            </form>
+
+            <div class="redirect">
+                <p>
+                    Don't have an account?
+                    <a th:href="@{/register}" class="">Sign up!</a>
+                </p>
+            </div>
+
+            <div class="spacing"></div>
+
         </div>
 
-        <div class="spacing"></div>
-
-      </div>
-
-      <div class="video-bar">
-        <video autoplay muted loop>
+        <div class="video-bar">
+            <video autoplay muted loop>
             <source src="/Images/loginBackingEdit.mp4" type="video/mp4" />
         </video>
-      </div>
+        </div>
     </div>
 
     <div class="footer-acc">
-      <div th:replace="fragments/footer :: footer"></div>
+        <div th:replace="fragments/footer :: footer"></div>
     </div>
 
-  </body>
+</body>
 
 </html>

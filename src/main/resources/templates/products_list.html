@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>PCLabs | Product</title>
+    <title>PCLabs | Products</title>
     <!--    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />-->
     <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="/css/style.css" rel="stylesheet" type="text/css" />
@@ -69,11 +69,8 @@
                 <div class="card mb-4" style="border-radius: 10px; margin-bottom: 7vh;">
                     <div class="card-body">
                         <!-- add a image place holder use placeholder from web not my images-->
-                        <img th:src="@{${products.imageInfo != null} ? ${products.imageInfo.url} : '/Images/CPU.png'}"
-                             class="img-fluid" th:alt="${products.imageInfo != null} ? ${products.imageInfo.name} : 'template'"
-                             style="object-fit: contain; height: 343px; cursor: pointer;"
-                             th:attr="onclick=|imageClicked('${products.product.id}')|"
-                        />
+                        <img th:src="@{${products.imageInfo != null} ? ${products.imageInfo.url} : '/Images/CPU.png'}" class="img-fluid" th:alt="${products.imageInfo != null} ? ${products.imageInfo.name} : 'template'" style="object-fit: contain; height: 343px; cursor: pointer;"
+                            th:attr="onclick=|imageClicked('${products.product.id}')|" />
 
                         <p class="card-title" th:text="${products.product.name}"></p>
                         <div class="text-danger card-text" th:if="${products.product.onSale}">
@@ -103,8 +100,8 @@
 
 <script>
     function imageClicked(id) {
-      location.href = "/product/" + id;
+        location.href = "/product/" + id;
     }
-  </script>
+</script>
 
 </html>
