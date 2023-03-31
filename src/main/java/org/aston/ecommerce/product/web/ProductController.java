@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.aston.ecommerce.file.FileService;
+import org.aston.ecommerce.file.ImageInfo;
 import org.aston.ecommerce.product.Product;
 import org.aston.ecommerce.product.ProductRepository;
 import org.aston.ecommerce.product.ProductService;
@@ -74,7 +75,9 @@ public class ProductController {
         model.addAttribute("productId", id);
         model.addAttribute("numOrdered", "1");
 
-        model.addAttribute("productImage", this.fileService.getImageByName(product.getUrl()));
+        ImageInfo imageInfo = this.fileService.getImageByName(product.getUrl());
+        imageInfo.setUrl(imageInfo.getUrl().replaceAll("http://localhost:10293", ""));
+        model.addAttribute("productImage", imageInfo);
 
         return "product_display";
     }
