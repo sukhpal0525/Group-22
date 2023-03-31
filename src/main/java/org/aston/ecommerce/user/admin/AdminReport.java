@@ -27,6 +27,8 @@ public class AdminReport {
         model.addAttribute("unprocessedOrders", unprocessedOrders);
         List<Product> lowStockProducts = productService.findAmberProducts();
         model.addAttribute("lowStockProducts", lowStockProducts);
+        List<Product> redProducts = productService.findRedProducts();
+        model.addAttribute("redProducts", redProducts);
         return "admin_report";
     }
 
