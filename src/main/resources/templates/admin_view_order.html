@@ -33,7 +33,7 @@
             <h3>Order Summary</h3>
         </div>
         <div class="totalamount">
-            <h3>£XX.XX</h3>
+            <h3>[[${totalAmount == 0.0 ? '0.00' : #numbers.formatCurrency(totalAmount)}]]</h3>
         </div>
         <div class="summcards">
             <div th:each="orderItem : ${viewOrder.orderItems}" class="cardorder">
