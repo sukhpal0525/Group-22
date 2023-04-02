@@ -11,6 +11,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.util.Optional;
+
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @Rollback(false)
@@ -36,5 +38,19 @@ public class UserRepositoryTests {
 
         assertThat(user.getEmail()).isEqualTo(existUser.getEmail());
 
+    }
+
+    @Test
+    public void testAdmin(){
+        //Make non admin into an admin
+        Optional<User> optUser = this.repo.findById(Long.parseLong("2"));
+        User editUser = optUser.get();
+        assertThat(editUser.isAdmin()).isEqualTo(false);
+        editUser.setAdmin(true);
+        this.repo.save(editUser);
+
+        User existUser = entityManager.find(User.class, editUser.getId());
+
+        assertThat(existUser.isAdmin()).isEqualTo(true);
     }
 }
