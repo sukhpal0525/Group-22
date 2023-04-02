@@ -5,6 +5,7 @@ import org.aston.ecommerce.order.Order;
 import org.aston.ecommerce.order.OrderRepository;
 import org.aston.ecommerce.order.OrderService;
 import org.aston.ecommerce.product.Product;
+import org.aston.ecommerce.product.ProductRepository;
 import org.aston.ecommerce.product.ProductService;
 import org.aston.ecommerce.user.User;
 import org.aston.ecommerce.user.UserRepository;
@@ -37,6 +38,7 @@ public class AdminController {
     @Autowired private OrderRepository orderRepository;
     @Autowired private AdminService adminService;
     @Autowired private ProductService productService;
+    @Autowired private ProductRepository productRepository;
 
     @GetMapping("/dashboard")
     public String viewDashboard(Model model) {
@@ -86,7 +88,23 @@ public class AdminController {
     @GetMapping("/analytics")
     public String getOrderData(Model model) {
         List<Order> orders = orderRepository.findAll();
-//
+        List<Product> products = productRepository.findAll();
+
+        List<Product> returnProducts = this.productRepository.findAll()
+                .stream()
+                .sorted(Comparator.comparingInt(Product::getAmountAvailable))
+                .limit(5)
+                .collect(Collectors.toList());
+
+        List<Map<String, Object>> productStock = new ArrayList<>();
+        for (Product product : returnProducts) {
+            Map<String, Object> productStockInfo = new HashMap<>();
+            productStockInfo.put("name", product.getName());
+            productStockInfo.put("stock", product.getAmountAvailable());
+            productStock.add(productStockInfo);
+        }
+
+
 //        Map<User, List<Order>> customerOrders = new HashMap<>();
 //        List<Order> topCustomers = this.orderRepository.findAllOrderByCustomerDesc();
 //        for (Order order : topCustomers) {
@@ -111,6 +129,7 @@ public class AdminController {
         double yearlyProfit = adminService.getYearlyProfit();
         double allTimeProfit = Double.parseDouble(orderService.getTotalProfit());
 
+        model.addAttribute("productStock", productStock);
         model.addAttribute("dayOrders", dayOrders);
         model.addAttribute("dayProfit", dailyProfit);
         model.addAttribute("weekOrders", weekOrders);
@@ -121,8 +140,6 @@ public class AdminController {
         model.addAttribute("yearProfit", yearlyProfit);
         model.addAttribute("allOrders", orders);
         model.addAttribute("allTimeProfit", allTimeProfit);
-
-//        model.addAttribute("topCustomers", customerOrders);
 
         return "admin_analytics";
     }
