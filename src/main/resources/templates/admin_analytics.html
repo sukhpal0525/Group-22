@@ -78,7 +78,7 @@
                   <p>This Week</p>
                 </div>
                 <div class="statfigure">
-                  <p th:text="${'&pound;' + #aggregates.sum(weekOrders.![orderAmount])}"></p>
+                  <p th:text="${#aggregates.sum(weekOrders.![orderAmount]) == null ? '&pound;0.00' : '&pound;' + #aggregates.sum(weekOrders.![orderAmount])}"></p>
                 </div>
               </div>
               <div class="cardtb">
@@ -86,7 +86,7 @@
                   <p>This Month</p>
                 </div>
                 <div class="statfigure">
-                  <p th:text="${'&pound;' + #aggregates.sum(monthOrders.![orderAmount])}"></p>
+                  <p th:text="${#aggregates.sum(monthOrders.![orderAmount]) == null ? '&pound;0.00' : '&pound;' + #aggregates.sum(monthOrders.![orderAmount])}"></p>
                 </div>
               </div>
               <div class="cardtb">
@@ -94,7 +94,7 @@
                   <p>This Year</p>
                 </div>
                 <div class="statfigure">
-                  <p th:text="${'&pound;' + #aggregates.sum(yearOrders.![orderAmount])}"></p>
+                  <p th:text="${#aggregates.sum(yearOrders.![orderAmount]) == null ? '&pound;0.00' : '&pound;' + #aggregates.sum(yearOrders.![orderAmount])}"></p>
                 </div>
               </div>
               <div class="cardtb">
