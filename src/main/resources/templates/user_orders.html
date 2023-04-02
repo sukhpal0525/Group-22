@@ -55,57 +55,47 @@
 
         <br><br><br>
 
-
-
         <div class="section4fields">
-            <div class="secttitle">
-                <h3>PLACEHOLDER4</h3>
-
-            <div class="section4fields">
-                <div class="sectcards">
-                    <div class="card4field">
-                        <div class="cardsection1">
-                            <b>ID</b>
-<!--                            <br>-->
-                        </div>
-                        <div class="cardsection2">
-                            <b>Order Date</b>
-<!--                            <br>-->
-                        </div>
-                        <div class="cardsection3">
-                            <b>Quantity</b>
-<!--                            <br>-->
-                        </div>
-                        <div class="cardsection4">
-                            <b>Total</b>
-<!--                            <br>-->
-                        </div>
+            <div class="sectcards">
+                <div class="card4field">
+                    <div class="cardsection1">
+                        <p>ID</p>
+<!--                        <br>-->
+                    </div>
+                    <div class="cardsection2">
+                        <p>Order Date</p>
+<!--                        <br>-->
+                    </div>
+                    <div class="cardsection3">
+                        <p>Quantity</p>
+<!--                        <br>-->
+                    </div>
+                    <div class="cardsection4">
+                        <p>Total</p>
+<!--                        <br>-->
                     </div>
                 </div>
             </div>
         </div>
 
+        <div class="section4fields">
             <div class="sectcards">
                 <div class="card4field" th:each="order : ${orders}" >
                     <div class="cardsection1">
-<!--                        <p>ID</p>-->
-                        <br>
+<!--                        <br>-->
                         <p th:text="${order.id}"></p>
                     </div>
                     <div class="cardsection2">
-<!--                        <p>Order Date</p>-->
                         <br>
                         <p th:text="${order.orderDate}"></p>
                     </div>
                     <div class="cardsection3">
-<!--                        <p>Quantity</p>-->
-                        <br>
+<!--                        <br>-->
                         <p th:text="${order.quantity}"></p>
                     </div>
                     <div class="cardsection4">
-<!--                        <p>Total</p>-->
-                        <br>
-                        <p th:text="${order.orderAmount}"></p>
+<!--                        <br>-->
+                        <p th:text="'£' + ${order.orderAmount}"></p>
                     </div>
                 </div>
             </div>
@@ -113,47 +103,92 @@
 
         <br><br><br>
 
-        <div class="section3fields">
-            <div class="secttitle">
-                <h3>PLACEHOLDER3</h3>
+        <div class="section4fields">
+            <div class="sectcards">
+                <div class="card4field">
+                    <div class="cardsection1">
+                        <p>Product Name</p>
+<!--                        <br>-->
+                    </div>
+                    <div class="cardsection2">
+                        <p>Quantity</p>
+<!--                        <br>-->
+                    </div>
+                    <div class="cardsection3">
+                        <p></p>
+<!--                        <br>-->
+                    </div>
+                    <div class="cardsection4">
+                        <p>Price</p>
+<!--                        <br>-->
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <div class="section3fields">
+<!--            <div class="secttitle">-->
+<!--                <h3>test</h3>-->
+<!--            </div>-->
+            <div class="sectcards" th:each="orderItem : ${orderItems}">
+                <div class="card3field">
+                    <div class="cardsect1">
+                        <p th:text="${orderItem.product.name}"></p>
+                    </div>
+                    <div class="cardsect2">
+                        <p th:text="${orderItem.numOfItems}"></p>
+                    </div>
+                    <div class="cardsect3">
+                        <p th:text="'£' + ${orderItem.amount}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br><br><br>
+
+        <div class="section4fields">
+            <div class="sectcards">
+                <div class="card4field">
+                    <div class="cardsection1">
+                        <p>Total Orders</p>
+<!--                        <br>-->
+                    </div>
+                    <div class="cardsection2">
+                        <p>Products Purchased</p>
+<!--                        <br>-->
+                    </div>
+                    <div class="cardsection3">
+                        <p></p>
+<!--                        <br>-->
+                    </div>
+                    <div class="cardsection4">
+                        <p>Money Spent</p>
+<!--                        <br>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section3fields">
+<!--            <div class="secttitle">-->
+<!--                <h3>test</h3>-->
+<!--            </div>-->
             <div class="sectcards">
                 <div class="card3field">
                     <div class="cardsect1">
-                        <p>Placeholder</p>
+                        <p th:text="${totalOrders}"></p>
                     </div>
                     <div class="cardsect2">
-                        <p>Placeholder</p>
+                        <p th:text="${totalProductsPurchased}"></p>
                     </div>
                     <div class="cardsect3">
-                        <p>placeholder</p>
+<!--                        <p th:text="${totalAmountSpent == 0.0 ? &pound;${totalAmountSpent}, 0, 'COMMA', 2, 'POINT' : '0.00'"></p>-->
+                        <p th:text="${totalAmountSpent == 0.0 ? '&pound;0.00' : '&pound;' + totalAmountSpent}"></p>
                     </div>
                 </div>
             </div>
         </div>
-
-        <br><br><br>
-
-
-        <div class="analyticrow2">
-            <div class="section3fields">
-                <div class="secttitle">
-                    <h3>PLACEHOLDER3</h3>
-                </div>
-                <div class="sectcards">
-                    <div class="card3field">
-                        <div class="cardsect1">
-                            <p>Placeholder</p>
-                        </div>
-                        <div class="cardsect2">
-                            <p>Placeholder</p>
-                        </div>
-                        <div class="cardsect3">
-                            <p>placeholder</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
 
 
