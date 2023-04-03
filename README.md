@@ -99,26 +99,6 @@ The newly generated "Schema" must be named "ecommerce" in its entirety because t
 
 ![mySQL Workbench (10)](https://user-images.githubusercontent.com/116152412/229388805-31985d22-548f-4478-a53e-ff329e28f9ad.png)
 
-- Creating the necessary ‘WEBUSER’ table.
-
-Going to the main entry point of the application, "EcommerceApplication.java," the server is almost ready to be started via the standard method in IntelliJ, clicking on the green arrow to the left of the "main" method. This is assuming that you have cloned the GitHub repository and have run the "pull" command, pulling in the most up to date version if the local repository is not already reflective of this.
-
-![Webuser](https://user-images.githubusercontent.com/116152412/229389469-434e4739-38de-4648-bae6-4f82304b0fb0.png)
-
-The problem is that the application currently needs the creation of two tables in the database, one of which, "webproduct," is automatically created when the server starts and deleted when it stops, while "webuser," is not.
-Hence, it is essential to establish this "webuser" table right away in order for the server to function without a hitch.
-In order to do this, open MySQL Workbench again, double-click the newly created "ecommerce" Schema to pick it, and then select the option to add a new tab for running SQL queries. (pointed out with an arrow in the below image).
-
-![mySQL Workbench (11)](https://user-images.githubusercontent.com/116152412/229389626-52bd9656-59d8-4b88-b81c-624066a158a7.png)
-
-On the basis of that, the following query should have been typed into the text box that ought to have appeared, creating the "webuser" database in accordance with the structure that the application requires of it. After entering this, it's time to launch the application and select the lightning bolt icon to build the table.
-
-![mySQL Workbench (12)](https://user-images.githubusercontent.com/116152412/229389863-c48e9952-eb72-4422-86a0-26f0d9d10f8b.png)
-
-Beyond that, if all has gone well, then the ‘ecommerce’ database should now be retrofitted with some new options, proving that this table has been created.
-
-![mySQL Workbench (13)](https://user-images.githubusercontent.com/116152412/229390087-d044b8e1-6e1e-49fc-8044-2d5f31569d01.png)
-
 After all these installations and setup processes you should be able to run the server without any errors, following the image below.
 
 ![Run Server](https://user-images.githubusercontent.com/116152412/229390279-06e1d0bf-16f7-4586-acb8-b3966d7c30f4.png)
