@@ -1,112 +1,87 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8"/>
-    <title>PCLabs | Product</title>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <meta charset="UTF-8" />
+    <title>PCLabs | Products</title>
+    <!--    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />-->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="/css/style.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/aboutus.css" type="text/css" />
+    <!--    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>-->
     <div th:replace="fragments/nav_bar :: styles"></div>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
+
 <body>
-<!--video here-->
-<div class="video-container">
-    <video autoplay muted loop>
-        <source src="/Images/productpageVideo.mp4" type="video/mp4" />
-    </video>
-    <div class="caption">
-        <!--Nar Bar-->
-        <div class="top_box_main">
-            <div class="top_bar">
-                <div class="wrapper">
-                    <ul class="right">
-                        <li><a href="#">Login</a></li>
-                        <li>| </li>
-                        <li><a href="#">Signup</a></li>
-                        <li>| </li>
-                        <li><a href="#">Basket</a></li>
-                    </ul>
-                </div>
+
+    <div th:replace="fragments/nav_bar :: header"></div>
+    <div class="product_container" style="height: 400px;">
+        <div class="container2">
+            <div class="sub_page_product">
+                <h2>PRODUCTS</h2>
+                <form class="row align-items-center my-3" th:action="@{/products/search}" method="get">
+                    <div class="col-xl-11 col-lg-10 col-md-10">
+                        <input type="text" name="searchQuery" id="searchQuery" class="form-control" placeholder="Search..." th:value="${searchQuery}">
+                    </div>
+                    <div class="col-xl-1 col-lg-2 col-md-2 mt-md-0 mt-2">
+                        <button type="submit" class="searchbutton">SEARCH</button>
+                    </div>
+                </form>
             </div>
-            <!--top_bar-->
-        </div><!--top_box_main-->
+        </div>
+    </div>
 
-        <div class="wrapper pad_top">
-            <div class="header_top">
-                <div class="logo"> <a href="index.html"><img src="/Images/logo.png" /></a> </div>
-                <div class="main_nav">
-                    <nav>
-                        <ul>
-                            <li><a href="index.html" class="active">Home </a></li>
-                            <li><a href="#">About us</a></li>
-                            <li><a href="projects.html">Products </a></li>
-                            <li><a href="#"> Button</a></li>
-                            <li><a href="#">Contact </a></li>
-                        </ul>
 
-                    </nav>
+
+
+    <div class="py-4 album">
+
+        <div class="wrapper">
+            <div class="truncate1"></div>
+            <div class="truncate2"></div>
+            <div class="clearfix">
+                <div class="filter_main">
+                    <div class="product_filter">
+                        <form th:action="@{/products/list_category}" method="get">
+                            <!-- <label for="categorySelect">Filter by category:</label> -->
+                            <i class='bx bxs-filter-alt'></i>
+                            <select name="categorySelect" id="categorySelect" onchange="this.form.submit()">
+                                <option th:selected="${categorySelect} == 'all'" value="all">All</option>
+                                <option th:selected="${categorySelect} == 'gpu'" value="gpu">GPU</option>
+                                <option th:selected="${categorySelect} == 'processor'" value="processor">CPU</option>
+                                <option th:selected="${categorySelect} == 'motherboard'" value="motherboard">Motherboard
+                                </option>
+                                <option th:selected="${categorySelect} == 'memory'" value="memory">Memory</option>
+                                <option th:selected="${categorySelect} == 'mouse'" value="mouse">Mouse</option>
+                            </select>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-        <h2>Products</h2>
-    </div>
-</div>
-<div class="wrapper">
-    <div class="py-4 album">
-        <div class="container">
-            <div class="row">
 
-                <!--          <div class="col-xl-3" th:each="products : ${products}">-->
-                <!--              <div class="card" style="width: 16rem;">-->
-                <!--                  <img class="card-img-top" src="..." alt="Image">-->
-                <!--                  <div class="card-body">-->
-                <!--                      <p class="card-title" th:text = "${products.Name}"></p>-->
-                <!--                      <hr>-->
-                <!--                      <p class="card-text" th:text = "${products.Amount}"></p>-->
-                <!--                      <a href="#" class="btn btn-primary">Buy</a>-->
-                <!--                  </div>-->
-                <!--              </div>-->
-                <!--          </div>-->
 
-                <div class="col-md-4" th:each="products : ${products}">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <!-- <p class="card-text" th:text = "${products.ID}"></p>
-                            <img class="img-custom mx-auto d-block" src="..." width="300" height="200">-->
-                            <p class="card-title" th:text = "${products.Name}"></p>
-                            <p class="card-text" th:text = "${products.Amount}"></p>
-                            <button type="button" class="btn btn-sm btn-outline-secondary mx-auto d-block">Buy</button>
-
-<div th:replace="fragments/nav_bar :: header"></div>
-
-<div class="py-4 album">
-    <div class="container">
-        <div class="row">
-
-            <!--          <div class="col-xl-3" th:each="products : ${products}">-->
-            <!--              <div class="card" style="width: 16rem;">-->
-            <!--                  <img class="card-img-top" src="..." alt="Image">-->
-            <!--                  <div class="card-body">-->
-            <!--                      <p class="card-title" th:text = "${products.Name}"></p>-->
-            <!--                      <hr>-->
-            <!--                      <p class="card-text" th:text = "${products.Amount}"></p>-->
-            <!--                      <a href="#" class="btn btn-primary">Buy</a>-->
-            <!--                  </div>-->
-            <!--              </div>-->
-            <!--          </div>-->
-
+        <div class="row" th:if="${products.size() > 0}">
             <div class="col-md-4" th:each="products : ${products}">
-                <div class="card mb-4">
+                <div class="card mb-4" style="border-radius: 10px; margin-bottom: 7vh;">
                     <div class="card-body">
-                        <!-- <p class="card-text" th:text = "${products.ID}"></p>
-                        <img class="img-custom mx-auto d-block" src="..." width="300" height="200">-->
-                        <p class="card-title" th:text="${products.Name}"></p>
-                        <p class="card-text" th:text="${products.Amount}"></p>
+                        <!-- add a image place holder use placeholder from web not my images-->
+                        <img th:src="@{${products.imageInfo != null} ? ${products.imageInfo.url} : '/Images/CPU.png'}" class="img-fluid" th:alt="${products.imageInfo != null} ? ${products.imageInfo.name} : 'template'" style="object-fit: contain; height: 343px; cursor: pointer;"
+                            th:attr="onclick=|imageClicked('${products.product.id}')|" />
+
+                        <p class="card-title" th:text="${products.product.name}"></p>
+                        <div class="text-danger card-text" th:if="${products.product.onSale}">
+                            <del th:text="'&pound;' + ${products.product.amount}" style="text-decoration: line-through !important;"></del>&nbsp;
+                            <strong th:text="'&pound;' + ${#numbers.formatDecimal(products.product.amount - products.product.amount * products.product.sale, 0, 'COMMA', 2, 'POINT')}"></strong>
+                        </div>
+                        <p class="card-text" th:if="!${products.product.onSale}"><span th:text="'&pound;' + ${products.product.amount}"></span></p>
                         <div class="d-flex justify-content-center">
-                            <a th:href="@{/product/{id}(id=${products.id})}"
-                               class="text-reset text-decoration-none d-inline">
-                                <button type="button" class="btn btn-sm btn-outline-secondary mx-auto text-center">Buy
+                            <a th:href="@{/product/{id}(id=${products.product.id})}" class="text-reset text-decoration-none d-inline">
+                                <button type="button" id="whiteback">
+                                    Buy Now
                                 </button>
                             </a>
                         </div>
@@ -114,7 +89,19 @@
                 </div>
             </div>
         </div>
+        <div th:unless="${products.size() > 0}" class="mt-2 alert alert-secondary">
+            Sorry. No products were found.
+        </div>
+
     </div>
-</div><!--wrapper-->
+    <!--wrapper-->
+    <div th:replace="fragments/footer :: footer"></div>
 </body>
+
+<script>
+    function imageClicked(id) {
+        location.href = "/product/" + id;
+    }
+</script>
+
 </html>

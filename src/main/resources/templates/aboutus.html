@@ -5,15 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title>PCLabs | About Us</title>
     <link rel="stylesheet" href="/css/aboutus.css">
+    <link rel="stylesheet" href="/css/global.css">
     <div th:replace="fragments/nav_bar :: styles"></div>
-    <!-- <link rel="stylesheet" href="/css/style.css"> -->
+    <!-- import boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
 
 <body>
-
     <div th:replace="fragments/nav_bar :: header"></div>
     <!--
     <div class="bottom-content">
@@ -35,36 +36,60 @@
                 <ion-icon name="logo-instagram"></ion-icon>
             </a>
 -->
-    <div class="about_us__container">
+    <!--   <div class="about_us__container">
         <div class="container2">
             <div class="sub-page">
                 <h2>About Us</h2>
             </div>
         </div>
     </div>
-
-
-    <div class="container3">
-        <div class="c3padder">
-            <img src="/Images/aboutus_pic.jpg" alt="aboutus" width="450">
-            <h3><span>About Us</span></h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+ -->
+    <div class="video-container">
+        <video autoplay muted loop>
+        <source src="/Images/loginBackingEdit.mp4" type="video/mp4" />
+    </video>
+        <div class="caption">
+            <h2>ABOUT US</h2>
         </div>
     </div>
 
-    <div class="container4">
+    <div class="container3 container">
+        <div class="c3padder">
+            <img src="/Images/greenpc.png" alt="aboutus" width="350">
+            <h3><span>About Us</span></h3>
+            <p>PC Labs is an online sales e-commerce platform created by a group of college students to sell PC parts. We are led by Sam(210028353), Sukhpal(200045962) as the back-end leader lead Luke(200126984) Kaneshk(220256126) Zixu(200105886) and Rehan(210034413)
+                to complete the back-end work of the web page, and Lena(21010859) leads Sehrish(200096252) Rehan(210034413)and Ismail(210150056) to complete the front-end work of the web page.</p>
+        </div>
+    </div>
+
+    <div class="container4 container">
+        <div class="c5padder">
+            <h3>Our Mission</h3>
+            <p>We are committed to bringing consumers the most favorable price to buy electronic equipment.</p>
+        </div>
+
+
+    </div>
+
+    <div class="container3 container">
         <div class="c4padder">
-            <img src="/Images/aboutus_pic.jpg" alt="aboutus" width="450"></img>
-
-            <h3><span>We Strive To Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, aperiam.</span></h3>
-
+            <h3><span>FEEL LIKE SUPPORTING US?</span></h3>
+            <div class="button">
+                <button style="cursor: pointer;" onclick="location.href = '/products';">
+                    SHOP NOW
+                </button>
+            </div>
         </div>
     </div>
 
 
     <div class="padding">
     </div>
+
+
+    <div th:replace="fragments/footer :: footer"></div>
+
+
 </body>
 
 </html>

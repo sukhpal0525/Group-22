@@ -1,0 +1,33 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <footer th:fragment="footer">
+
+    <div class="productsnav">
+      <h3>PRODUCTS</h3>
+      <p><a th:href="@{/products}">All Products</a></p>
+      <p><a  th:href="@{/products/list/gpu}">GPU's</a></p>
+      <p><a th:href="@{/products/list/processor}">CPU's</a></p>
+      <p><a th:href="@{/products/list/motherboard}">Motherboards</a></p>
+      <p><a th:href="@{/products/list/memory}">Memory</a></p>
+      <p><a th:href="@{/products/list/mouse}"></a>Mouses</a></p>
+    </div>
+    <div class="accountnav">
+      <h3>ACCOUNT</h3>
+      <p><a th:href="@{/basket}">Basket</a></p>
+      <p th:if="${#request.userPrincipal == null}"><a th:href="@{/login}">Log In</a></p>
+      <p th:if="${#request.userPrincipal == null}"><a th:href="@{/register}">Sign Up</a></p>
+      <p th:unless="${#request.userPrincipal == null}"><a href="javascript:;"
+        onclick="document.getElementById('logoutForm').submit();"
+        role="menuitem">Logout</a></p>
+    </div>
+    <div class="logosocials">
+      <div class="logofooter">
+        <img src="/Images/footer_logo.png">
+      </div>
+      <div class="socialsfooter">
+
+      </div>
+    </div>
+
+
+  </footer>

@@ -6,7 +6,7 @@ public enum Category {
     MOTHERBOARD(1),
     GPU(2),
     MEMORY(3),
-    STORAGE(4);
+    MOUSE(4);
 
     private final Integer id;
 
@@ -26,4 +26,15 @@ public enum Category {
         return id;
     }
 
+    @Override
+    public String toString() {
+        switch(this){
+            case PROCESSOR: return "CPU";
+            case MOTHERBOARD: return "Motherboard";
+            case GPU: return "GPU";
+            case MEMORY: return "Memory";
+            case MOUSE: return "Mouse";
+            default: throw new IllegalArgumentException();
+        }
+    }
 }

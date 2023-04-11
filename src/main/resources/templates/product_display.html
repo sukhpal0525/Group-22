@@ -3,44 +3,105 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>[[${product.Name}]] - Group 22</title>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
     <div th:replace="fragments/nav_bar :: styles"></div>
+    <link rel="stylesheet" type="text/css" href="/css/global.css" />
+    <link rel="stylesheet" type="text/css" href="/css/item.css" />
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-
 <div th:replace="fragments/nav_bar :: header"></div>
 
-<div class="container text-center" style="max-width: 700px;">
-    <div class="mt-4 alert alert-success" th:if="${purchase_success}" role="alert">Success! Product has been added to
-        basket. <a class="alert-link" th:href="@{/basket}">Click here to view it</a>
-    </div>
-    <div class="mt-4 alert alert-danger" th:if="${purchase_fail}" th:text="${purchase_fail}" role="alert"></div>
-    <div class="h1 mt-4" th:text="${product.Name}"></div>
-    <p th:text="${product.Description}"></p>
-    <p class="text-muted" th:text="${#numbers.formatCurrency(product.Amount)}"></p>
-    <div class="alert alert-warning" role="alert"
-         th:if="${product.AmountAvailable <= 20 && product.AmountAvailable >= 1}">
-        Warning! This item is low in stock. <strong>Only [[${product.AmountAvailable}]] left</strong>
-    </div>
-    <div class="alert alert-danger" role="alert" th:if="${product.AmountAvailable < 1}">
-        Warning! The product is out of stock.
-    </div>
-    <form th:if="${product.AmountAvailable >= 1}" th:action="@{/product_purchase}" th:object="${purchase}"
-          method="post">
-        <input type="hidden" th:field="*{product_id}"/>
-        <div class="row justify-content-between mx-auto">
-            <div class="col-md-9 col-sm-7 col-12">
-                <input type="number" th:field="*{num_ordered}" min="1" value="1" class="form-control"
-                       placeholder="Amount"/>
-            </div>
-            <div class="col-md-3 col-sm-5 col-12 mt-3 mt-sm-0">
-                <button type="submit" class="btn btn-primary">Add to Basket</button>
-            </div>
-        </div>
-    </form>
+<div class="mt-4 alert alert-success" th:if="${purchase_success}" role="alert" style="margin: 1vh 1vw">Success! Product has been added to
+  basket. <a class="alert-link" th:href="@{/basket}">Click here to view it</a>
 </div>
+<div class="mt-4 alert alert-danger" th:if="${purchase_fail}" th:text="${purchase_fail}" role="alert" style="margin: 1vh 1vw"></div>
+
+<main class="container">
+ 
+    <!-- Left Column / Headphones Image -->
+    <div class="left-column">
+   
+      <img data-image="red" class="active" th:if="${productImage != null}" th:src="@{${productImage.url}}"
+           style="object-fit: contain; max-width: 500px;" th:alt="${productImage.name}">
+    </div>
+   
+   
+    <!-- Right Column -->
+    <div class="right-column">
+   
+      <!-- Product Description -->
+      <div class="product-description">
+        <!--THIS SHOULD CHANGE DEPENDING ON PRODUCT-->
+        <span th:text="${product.category.toString()}">Monitors</span>
+        <h1 th:text="${product.Name}"></h1>
+        <p th:text="${product.Description}"></p>
+          <p th:if="${product.amountAvailable > 20}" style="color: #169c0a;">In Stock</p>
+          <p th:if="${product.amountAvailable <= 20 and product.amountAvailable > 0}" style="color: #ff8c00;">Low Stock</p>
+          <p th:if="${product.amountAvailable <= 0}" style="color: red;">Out of Stock</p>
+      </div>
+
+        <form th:action="@{/basket/add}" method="post" name="productForm">
+            <input type="hidden" th:value="${productId}" name="productId" />
+   
+      <!-- Product Configuration -->
+      <div class="product-configuration">
+   
+       
+        <!-- Product Quanitiy -->
+        <div class="quantity-num">
+          <span>Quantity</span>
+   
+          <div class="Num-quantity">
+              <input type="hidden" value="1" name="numOrdered" />
+              <button type="button" style="cursor: pointer;" onclick="numOrderedBtnClick(1)">1</button>
+              <button type="button" style="cursor: pointer;" onclick="numOrderedBtnClick(2)">2</button>
+              <button type="button" style="cursor: pointer;" onclick="numOrderedBtnClick(3)">3</button>
+              <button type="button" style="cursor: pointer;" onclick="numOrderedBtnClick(4)">4</button>
+              <button type="button" style="cursor: pointer;" onclick="numOrderedBtnClick(5)">5</button>
+            <select name="numOrderedDropDown" id="Num-quantity" onchange="changeDropDown()" >
+<!--            <option value="N/A">N/A</option>-->
+            <option value="Other">Other</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+          </div>
+   
+          <a th:href="@{/contactus}">Having any issues? Click here to contact us.</a>
+        </div>
+      </div>
+   
+      <!-- Product Pricing -->
+      <div class="product-price">
+        <span th:if="!${product.OnSale}" th:text="${#numbers.formatCurrency(product.Amount)}"></span>
+        <span th:if="${product.OnSale}" th:text="${#numbers.formatCurrency(product.Amount)}" style="text-decoration: line-through !important; color:rgb(210, 0, 0)">
+        </span>
+        <span th:if="${product.OnSale}" th:text="${#numbers.formatCurrency(product.Amount - product.Amount * product.Sale)}" style="color: rgb(210,0,0)">
+        </span>
+        <button type="submit" style="cursor: pointer;">
+            ADD TO BASKET
+        </button>
+      </div>
+        </form>
+    </div>
+</main>
+
+<div th:replace="fragments/footer :: footer"></div>
 
 </body>
+
+<script>
+    function numOrderedBtnClick(ele){
+        document.forms["productForm"]["numOrdered"].value = ele;
+        $(document.forms["productForm"]).find( "button" ).css( "background-color", "" );
+        $(document.forms["productForm"]).find( "button" ).eq(ele - 1).css( "background-color", "#dfdddd" );
+    }
+
+    function changeDropDown(){
+        $(document.forms["productForm"]).find( "button" ).css( "background-color", "" );
+    }
+</script>
 </html>

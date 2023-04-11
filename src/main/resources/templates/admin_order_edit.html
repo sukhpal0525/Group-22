@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Order Edit [[${editOrder.transactionNumber}]] - Group 22</title>
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="/css/edit.css" />
+    <div th:replace="fragments/nav_bar :: styles"></div>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:replace="fragments/nav_bar :: header"></div>
+
+<div class="importContainer text-center" style="max-width: 700px; margin-top: 13vh;">
+    <div class="mt-4 alert alert-danger" th:if="${fail_msg}" th:text="${fail_msg}" role="alert"></div>
+    <h1 class="mt-4" style="margin-bottom: 3vh;">Edit Status</h1>
+    <h4 style="margin-bottom:2vh;">Order [[${editOrder.transactionNumber}]]</h4>
+    <form  th:action="@{/admin/edit_order}" method="post">
+        <input type="hidden" th:value="${editOrder.id}" name="editOrderId"/>
+        <div class="row justify-content-between mx-auto">
+            <div class="col-md-9 col-sm-7 col-12">
+                <select name="updateStatus" id="updateStatus" class="form-control" >
+                    <option th:selected="${editOrder.status.toString()} == 'Unprocessed'" value="unprocessed">Unprocessed</option>
+                    <option th:selected="${editOrder.status.toString()} == 'Processed'" value="processed">Processed</option>
+                    <option th:selected="${editOrder.status.toString()} == 'Shipped'" value="shipped">Shipped</option>
+                    <option th:selected="${editOrder.status.toString()} == 'Success'" value="success">Success</option>
+                    <option th:selected="${editOrder.status.toString()} == 'Failed'" value="failed">Failed</option>
+                </select>
+            </div>
+            <div class="col-md-3 col-sm-5 col-12 mt-3 mt-sm-0">
+                <button type="submit">
+                    UPDATE
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

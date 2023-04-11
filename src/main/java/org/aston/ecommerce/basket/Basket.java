@@ -1,59 +1,54 @@
 package org.aston.ecommerce.basket;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.aston.ecommerce.product.Product;
 import org.aston.ecommerce.user.User;
 
-import javax.persistence.*;
-
 @Entity
+@Data
+@ToString(exclude = "user")
+@EqualsAndHashCode(exclude = "user")
 @Table(name = "WebBasket")
-public class Basket {
+public class Basket implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BasketID")
     private Long id;
 
-    @Column(nullable = false, columnDefinition = "INT default 0")
+    @Column(columnDefinition = "INT default 0")
     private Integer amount;
 
-    @ManyToOne
-    @JoinColumn(referencedColumnName = "ProductID")
-    private Product product;
-
-    @ManyToOne()
+    @OneToOne
     @JoinColumn(name = "UserID")
     private User user;
 
-    public Long getId() {
-        return id;
+    @OneToMany(mappedBy = "basket", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<BasketItem> basketItems = new ArrayList<>();
+
+    public BasketItem getBasketItemForProduct(Product product) {
+        return basketItems.stream()
+                .filter((item) -> item.getProduct().equals(product))
+                .findAny()
+                .orElse(null);
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Integer getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Integer amount) {
-        this.amount = amount;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public boolean containsProduct(Product product) {
+        return basketItems.stream().anyMatch((item) -> item.getProduct().equals(product));
     }
 }
